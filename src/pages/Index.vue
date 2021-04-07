@@ -1,33 +1,91 @@
 <template>
   <Layout>
-
-    <!-- Learn how to use images here: https://gridsome.org/docs/images -->
-    <g-image alt="Example image" src="~/favicon.png" width="135" />
-
-    <h1 class="box-heading">Hello, world!</h1>
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur excepturi labore tempore expedita, et iste tenetur suscipit explicabo! Dolores, aperiam non officia eos quod asperiores
-    </p>
-
-    <p class="home-links">
-      <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">Gridsome Docs</a>
-      <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
-    </p>
-
+    <div class="container-fluid p-0">
+      <About/>
+      <hr class="m-0">
+      <Experience/>
+      <hr class="m-0">
+      <Education/>
+      <hr class="m-0">
+      <Skills/>
+      <hr class="m-0">
+      <Interests/>
+      <hr class="m-0">
+      <Awards/>
+    </div>
   </Layout>
 </template>
 
 <script>
+import About from "../components/About";
+import Experience from "../components/Experience";
+import Education from "../components/Education";
+import Skills from "../components/Skills";
+import Interests from "../components/Interests";
+import Awards from "../components/Awards";
+
 export default {
+  components: {
+    About,
+    Experience,
+    Education,
+    Skills,
+    Interests,
+    Awards
+  },
   metaInfo: {
-    title: 'Hello, world!'
+    title: "Home",
+    titleTemplate: "%s - Pixu Resume"
   }
-}
+};
 </script>
 
-<style>
-.home-links a {
-  margin-right: 1rem;
+<style lang="scss">
+.subheading {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-family: "Saira Extra Condensed", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 2rem;
+}
+
+.fa-ul > li {
+  display: flex;
+  align-items: center;
+}
+
+.dev-icons {
+  font-size: 3rem;
+}
+
+.dev-icons .list-inline-item svg:hover {
+  color: var(--primary);
+}
+
+section.resume-section {
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+  max-width: 75rem;
+}
+
+section.resume-section .resume-item .resume-date {
+  min-width: none;
+}
+
+@media (min-width: 768px) {
+  section.resume-section {
+    min-height: 100vh;
+  }
+  section.resume-section .resume-item .resume-date {
+    min-width: 18rem;
+  }
+}
+
+@media (min-width: 992px) {
+  section.resume-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
 }
 </style>

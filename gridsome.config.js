@@ -1,10 +1,23 @@
-// This is where project configuration and plugin options are located.
-// Learn more: https://gridsome.org/docs/config
-
-// Changes here require a server restart.
-// To restart press CTRL + C in terminal and run `gridsome develop`
-
 module.exports = {
-  siteName: 'Pixu Blog',
-  plugins: []
+  siteName: 'Pixu Resume',
+  siteDescription: 'Emiliano Pisu - UI/UX Engineer - Resume',
+  siteUrl: 'https://pixu.dev',
+  plugins: [{
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: 'UA-XXXXXXXX-XX'
+      }
+    },
+    {
+      use: '@gridsome/plugin-sitemap',
+      options: {
+        cacheTime: 600000
+      }
+    }
+  ],
+  css: {
+    loaderOptions: {
+      scss: {}
+    }
+  }
 }
