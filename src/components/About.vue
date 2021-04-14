@@ -36,7 +36,7 @@
       <p class="lead mb-3">He are my links:</p>
       <div class="social-icons">
         <a
-          href="https://inkedin.com/in/pixu1980/"
+          href="https://linkedin.com/in/pixu1980/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn Profile"
