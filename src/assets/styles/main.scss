@@ -1,10 +1,7 @@
-@import "variables";
-@import "mixins";
-
-@import 'node_modules/bootstrap/scss/bootstrap';
-@import 'node_modules/bootstrap-vue/src/index';
-
-@import "nav";
-@import "global";
-@import "resume-item";
-@import "bootstrap-overrides";
+@import 'variables';
+@import 'mixins';
+@import 'global';
+@import 'resume-item';
+@import 'nav';
+@import 'components/components';
+@import 'layout';

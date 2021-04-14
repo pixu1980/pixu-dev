@@ -8,7 +8,7 @@
         <br />from Rome, Italy · (39) 3662580888 · <a href="mailto:pixu@pixu.dev">pixu@pixu.dev</a>
       </h3>
       <p class="lead mb-4">
-        First of all I'm an addicted developer, for me the passion in coding is the only way to approach this job.
+        First of all I'm an addicted developer, to me the passion in coding is the only way to approach this job.
         <br />
         <br />
         My "computer childhood" is of the most common for millennials: Commodore 64 at home at the tender age of 3... so
@@ -24,7 +24,7 @@
         <br />
         The first project was a windows application developed by a team of 5 people.
         <br />
-        The first IDE i used in that company was, listen here, Borland Delphi 4 (ops... I mean it.... again ;-).
+        The first IDE used for that project was, listen here, Borland Delphi 4 (ops... I mean it.... again ;-).
         <br />
         <br />
         About my experience I met on my way the most disparate list of languages, databases, IDEs, frameworks, patterns,
@@ -75,35 +75,3 @@
     </div>
   </section>
 </template>
-
-<style lang="scss" scoped>
-.social-icons a {
-  cursor: pointer;
-  display: inline-block;
-  height: 3.5rem;
-  width: 3.5rem;
-  background-color: var(--secondary);
-  color: #fff !important;
-  border-radius: 100%;
-  text-align: center;
-  font-size: 1.5rem;
-  line-height: 3.5rem;
-  margin-right: 1rem;
-
-  @media (max-width: 380px) {
-    margin-right: 0.5rem;
-  }
-
-  @media (max-width: 350px) {
-    margin-right: 0.2rem;
-  }
-}
-
-.social-icons a:last-child {
-  margin-right: 0;
-}
-
-.social-icons a:hover {
-  background-color: var(--primary);
-}
-</style>

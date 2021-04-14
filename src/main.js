@@ -1,7 +1,6 @@
 import DefaultLayout from '~/layouts/Default.vue'
 
 import VueScrollTo from 'vue-scrollto'
-import BootstrapVue from 'bootstrap-vue'
 import './assets/styles/main.scss'
 
 import {
@@ -75,7 +74,6 @@ export default function (Vue, {
   head,
 }) {
   Vue.use(VueScrollTo)
-  Vue.use(BootstrapVue)
   Vue.component('Layout', DefaultLayout)
 
   Vue.component('font-awesome', FontAwesomeIcon)
