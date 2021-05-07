@@ -1,5 +1,5 @@
 <template>
-  <div class="social-icons">
+  <div class="links-icons">
     <a
       href="https://linkedin.com/in/pixu1980/"
       target="_blank"
