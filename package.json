@@ -2,6 +2,7 @@
   "name": "pixu-dev-resume",
   "private": true,
   "scripts": {
+    "favicon": "real-favicon generate favicon.config.json favicon.data.json ./static",
     "build": "gridsome build",
     "start": "gridsome develop",
     "explore": "gridsome explore"
@@ -14,7 +15,6 @@
     "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
-    "@gridsome/plugin-google-analytics": "^0.1.2",
     "@gridsome/plugin-sitemap": "^0.4.0",
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.6.4",

@@ -1,0 +1,51 @@
+.about {
+  // background-image: url('~@/assets/images/backgrounds/app-development.svg');
+  // background-repeat: no-repeat;
+  // background-position: 95% center;
+  // background-size: 30rem;
+  // background-attachment: scroll;
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: var(--base-block-margin);
+  }
+
+  .content {
+    p {
+      // font-size: 1.6rem;
+      max-inline-size: 90ch;
+    }
+  }
+}
+
+// .social-icons a {
+//   cursor: pointer;
+//   display: inline-block;
+//   height: 3.5rem;
+//   width: 3.5rem;
+//   background-color: var(--secondary);
+//   color: #fff;
+//   border-radius: 100%;
+//   text-align: center;
+//   font-size: 1.5rem;
+//   line-height: 3.5rem;
+//   margin-right: 1rem;
+
+//   @media (max-width: 380px) {
+//     margin-right: 0.5rem;
+//   }
+
+//   @media (max-width: 350px) {
+//     margin-right: 0.2rem;
+//   }
+// }
+
+// .social-icons a:last-child {
+//   margin-right: 0;
+// }
+
+// .social-icons a:hover {
+//   background-color: var(--primary);
+// }

@@ -1,20 +1,18 @@
 <template>
   <Layout>
-    <div class="container-fluid p-0">
-      <About />
-      <hr class="m-0" />
-      <Education />
-      <hr class="m-0" />
-      <Skills />
-      <hr class="m-0" />
-      <Projects />
-      <hr class="m-0" />
-      <Awards />
-      <hr class="m-0" />
-      <Experience />
-      <hr class="m-0" />
-      <Interests />
-    </div>
+    <About />
+    <hr />
+    <Education />
+    <hr />
+    <Skills />
+    <hr />
+    <Projects />
+    <hr />
+    <Awards />
+    <hr />
+    <Experience />
+    <hr />
+    <Interests />
   </Layout>
 </template>
 

@@ -1,0 +1,16 @@
+header {
+  position: sticky;
+  top: 0;
+  background-color: var(--base-background-color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-area: header;
+  block-size: var(--header-height);
+  z-index: 2;
+  padding: 0 var(--base-gutter);
+  
+  h1 {
+    
+  }
+}

@@ -1,43 +1,98 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-    <div v-on:click.prevent="$scrollTo('#about')" class="navbar-brand">
-      <span class="d-block d-lg-none">Emiliano Pisu</span>
-      <span class="d-none d-lg-block">
-        <g-image
-          alt="Image of Loke"
-          src="../assets/images/pixu.jpg"
-          class="img-fluid img-profile rounded-circle mx-auto mb-2"
-        />
-      </span>
-    </div>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" v-on:click.prevent="$scrollTo('#about')">About</a>
+  <aside>
+    <nav>
+      <figure
+        v-on:click="scrollTo('#about')"
+        v-on:mouseover="
+          () => {
+            figureHovered = true;
+            figureAnimationMode = 'enter';
+          }
+        "
+        v-on:mouseleave="
+          () => {
+            figureHovered = false;
+            figureAnimationMode = 'leave';
+          }
+        "
+        v-bind:style="{
+          '--animation-name': figureHovered && figureAnimationMode === 'enter' ? 'portrait-enter' : 'portrait-leave',
+          '--animation-duration': !!figureAnimationMode ? '.7s' : '0',
+          '--translate-x': figureAnimationMode === 'enter' ? 0 : '-120%',
+        }"
+      >
+        <g-image alt="profile of Emiliano Pisu" src="~/assets/images/profile.png" />
+        <g-image alt="portrait of Emiliano Pisu" src="../assets/images/portrait.jpg" />
+      </figure>
+      <ul>
+        <li>
+          <a v-on:click="scrollTo('#about')">About</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" v-on:click.prevent="$scrollTo('#education')">Education</a>
+        <li>
+          <a v-on:click="scrollTo('#education')">Education</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" v-on:click.prevent="$scrollTo('#skills')">Skills</a>
+        <li>
+          <a v-on:click="scrollTo('#skills')">Skills</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" v-on:click.prevent="$scrollTo('#projects')">Projects</a>
+        <li>
+          <a v-on:click="scrollTo('#projects')">Projects</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" v-on:click.prevent="$scrollTo('#awards')">Awards</a>
+        <li>
+          <a v-on:click="scrollTo('#awards')">Awards</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" v-on:click.prevent="$scrollTo('#experience')">Experience</a>
+        <li>
+          <a v-on:click="scrollTo('#experience')">Experience</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" v-on:click.prevent="$scrollTo('#interests')">Interests</a>
+        <li>
+          <a v-on:click="scrollTo('#interests')">Interests</a>
         </li>
       </ul>
-    </div>
-  </nav>
+      <Links />
+    </nav>
+    <a href="#" class="aside-nav--close" title="Close Menu" aria-label="Close Menu"></a>
+  </aside>
 </template>
 
-<style scoped lang="scss">
-</style>
+<script>
+import Links from "../components/Links";
+
+export default {
+  aside: null,
+  asideClose: null,
+  components: {
+    Links,
+  },
+  methods: {
+    scrollTo(id) {
+      this.aside.classList.remove("open");
+      this.$scrollTo(id, 500, { offset: -document.querySelector("header").getBoundingClientRect().height });
+    },
+  },
+  data() {
+    return {
+      figureHovered: false,
+      figureAnimationMode: null,
+    };
+  },
+  mounted() {
+    this.aside = document.querySelector("aside");
+    this.asideClose = document.querySelector(".aside-nav--close");
+
+    // set focus to our open/close buttons after animation
+    this.aside.addEventListener("transitionend", (e) => {
+      if (e.propertyName !== "transform") return;
+
+      this.aside.classList.contains("open") && this.asideClose.focus();
+    });
+
+    this.asideClose.addEventListener("click", () => {
+      this.aside.classList.remove("open");
+    });
+
+    // close our menu when esc is pressed
+    this.aside.addEventListener("keyup", (e) => {
+      if (e.code === "Escape") this.aside.classList.remove("open");
+    });
+  },
+};
+</script>
