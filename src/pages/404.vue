@@ -1,5 +1,5 @@
 <template>
   <Layout>
-    <h1>Nothing here to see!</h1>
+    <h1>WHOPS - Nothing to see here!!!</h1>
   </Layout>
 </template>

@@ -2,38 +2,38 @@
   <Layout>
     <About />
     <hr />
-    <Education />
+    <Workflow />
     <hr />
     <Skills />
     <hr />
     <Projects />
     <hr />
-    <Awards />
-    <hr />
-    <Experience />
+    <Education />
     <hr />
     <Interests />
+    <hr />
+    <Experience />
   </Layout>
 </template>
 
 <script>
 import About from "../components/About";
-import Education from "../components/Education";
+import Workflow from "../components/Workflow";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
-import Awards from "../components/Awards";
-import Experience from "../components/Experience";
+import Education from "../components/Education";
 import Interests from "../components/Interests";
+import Experience from "../components/Experience";
 
 export default {
   components: {
     About,
-    Education,
+    Workflow,
     Skills,
     Projects,
-    Awards,
-    Experience,
+    Education,
     Interests,
+    Experience,
   },
   metaInfo: {
     title: "Home",

@@ -2,27 +2,52 @@
   <section class="resume-section" id="projects">
     <h2 class="text-primary">Projects</h2>
     <ul class="fa-ul">
-      <li>detector-js</li>
-      <li>flavor-js</li>
-      <li>flavor-scss</li>
-      <li>flavor-ui</li>
-      <li>mtg-maniac</li>
-      <li><font-awesome class="fa-li" :icon="['fas', 'trophy']" />CSS Design Awards</li>
-      <li><font-awesome class="fa-li" :icon="['fas', 'trophy']" />Shopify Commerce Awards</li>
       <li>
-        <font-awesome class="fa-li" :icon="['fas', 'trophy']" />1
-        <sup>st</sup>
-        Place - Foobar - Emerging Tech Competition 2012
+        <font-awesome class="fa-li" :icon="['fab', 'github']" />
+        <a
+          href="https://detector.js.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="detector-js"
+          title="detector-js"
+        >
+          detector-js
+        </a>
+        (zero-dependency platform/environment detector written in ES6)
       </li>
       <li>
-        <font-awesome class="fa-li" :icon="['fas', 'trophy']" />1
-        <sup>st</sup>
-        Place - Foo Bar High School - Hackathon 2010
+        <font-awesome class="fa-li" :icon="['fab', 'github']" />
+        <a
+          href="https://flavor.js.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="flavor-js"
+          title="flavor-js"
+        >
+          flavor-js
+        </a>
+        (zero-dependency JS natives chainable extensions methods)
       </li>
       <li>
-        <font-awesome class="fa-li" :icon="['fas', 'trophy']" />3
-        <sup>rd</sup>
-        Place - Foo Bar High School - Hackathon 2009
+        <font-awesome class="fa-li" :icon="['fab', 'github']" />
+        <a
+          href="https://pixu1980.github.io/flavor-scss/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="flavor-scss"
+          title="flavor-scss"
+        >
+          flavor-scss
+        </a>
+        (advanced type checking Sass/SCSS Framework with Mixins & Helpers and a fully customizable Grid System)
+      </li>
+      <!-- <li>
+        <font-awesome class="fa-li" :icon="['fab', 'github']" />
+        flavor-ui (currently under development)
+      </li> -->
+      <li>
+        <font-awesome class="fa-li" :icon="['fab', 'github']" />
+        mtg-maniac (Magic The Gathering collection and decks editor - currently under development)
       </li>
     </ul>
   </section>

@@ -15,8 +15,10 @@ article {
   }
 }
 
-.resume-section {
-  min-block-size: 100vh;
+.skills {
+  display: inline-flex;
+  gap: 1rem;
+  font-size: clamp(100%, calc(3rem + var(--base-clamp-threshold)), 5rem);
 }
 
 @import 'about';

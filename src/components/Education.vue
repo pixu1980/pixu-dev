@@ -4,47 +4,47 @@
     <div class="resume-item">
       <div class="resume-content">
         <h3>I.T.I.S. G. Armellini - Rome</h3>
-        <h5 class="subheading">Industrial Technical Expert</h5>
-        <span>spec. Computer Science</span>
-      </div>
-      <div class="resume-date">
-        <span class="text-primary">1995 - 2001</span>
+        <h5 class="subheading">Industrial Technical Expert spec. Informatics</h5>
+        <div class="resume-date">
+          <span class="text-primary">June 2001</span>
+        </div>
+        <p>Italian equivalent of Informatics/Computer Science high-school diploma</p>
       </div>
     </div>
     <div class="resume-item">
       <div class="resume-content">
-        <h3>Microsoft Certification</h3>
+        <h3>Microsoft Certified Professional</h3>
         <h5>#070-229</h5>
-        <span>Designing and Implementing Databases with Microsoft SQL Server 2000 Enterprise Edition</span>
-      </div>
-      <div class="resume-date">
-        <span class="text-primary">October 2004</span>
+        <div class="resume-date">
+          <span class="text-primary">October 2004</span>
+        </div>
+        <p>Designing and Implementing Databases with Microsoft SQL Server 2000 Enterprise Edition</p>
       </div>
     </div>
     <div class="resume-item">
       <div class="resume-content">
-        <h3>Microsoft Certification</h3>
+        <h3>Microsoft Certified Professional</h3>
         <h5>#070-315</h5>
-        <span>
+        <div class="resume-date">
+          <span class="text-primary">June 2004</span>
+        </div>
+        <p>
           Developing and Implementing Web Applications with Microsoft Visual C# .NET and Microsoft Visual Studio .NET
           2003
-        </span>
-      </div>
-      <div class="resume-date">
-        <span class="text-primary">June 2004</span>
+        </p>
       </div>
     </div>
     <div class="resume-item">
       <div class="resume-content">
-        <h3>Microsoft Certification</h3>
+        <h3>Microsoft Certified Professional</h3>
         <h5>#070-316</h5>
-        <span>
+        <div class="resume-date">
+          <span class="text-primary">June 2004</span>
+        </div>
+        <p>
           Developing and Implementing Windows-based Applications with Microsoft Visual C# .NET and Microsoft Visual
           Studio .NET 2003
-        </span>
-      </div>
-      <div class="resume-date">
-        <span class="text-primary">June 2004</span>
+        </p>
       </div>
     </div>
   </section>

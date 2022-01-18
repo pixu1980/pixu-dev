@@ -1,66 +1,31 @@
-
 import {
   library
 } from '@fortawesome/fontawesome-svg-core';
 
 import {
-  faBars,
-  faTrophy,
-  faRss,
-  faCheck
-} from '@fortawesome/free-solid-svg-icons';
-
-import {
-  faGithub,
-  faGitAlt,
-  faTwitter,
-  faFacebook,
-  faLinkedin,
-  faHtml5,
-  faJsSquare,
-  faMarkdown,
-  faCss3Alt,
-  faAngular,
-  faReact,
-  faVuejs,
-  faNodeJs,
-  faSass,
-  faLess,
-  faCodepen,
-  faGulp,
-  faGrunt,
-  faNpm,
-  faSketch,
-  faDAndD,
-  faCreativeCommons,
+  faAngular, faAtlassian, faAutoprefixer, faAws, faBitbucket, faChrome,
+  faCodepen, faCreativeCommons, faCss3Alt, faDAndD, faDocker, faEdge,
+  faFigma, faFirefox, faGit, faGitAlt, faGithub, faGithubSquare, faGitlab,
+  faGrunt, faGulp, faHtml5, faInternetExplorer, faJenkins, faJsSquare,
+  faLess, faLinkedin, faMarkdown, faNodeJs, faNpm, faOpera, faPython,
+  faRaspberryPi, faReact, faRebel, faSafari, faSass, faSketch, faSlack,
+  faStackOverflow, faTrello, faTwitter, faVuejs, faXbox, faYarn
 } from '@fortawesome/free-brands-svg-icons';
 
+import {
+  faBars, faCheck, faCode, faCodeBranch, faCoffee, faKeyboard, faRss,
+  faTerminal, faTrophy
+} from '@fortawesome/free-solid-svg-icons';
+
 library.add(
-  faBars,
-  faTrophy,
-  faRss,
-  faCheck,
-  faGithub,
-  faGitAlt,
-  faTwitter,
-  faFacebook,
-  faLinkedin,
-  faHtml5,
-  faJsSquare,
-  faMarkdown,
-  faCss3Alt,
-  faAngular,
-  faReact,
-  faVuejs,
-  faNodeJs,
-  faSass,
-  faLess,
-  faCodepen,
-  faGulp,
-  faGrunt,
-  faNpm,
-  faSketch,
-  faDAndD,
-  faCreativeCommons,
+  faBars, faCheck, faCode, faCodeBranch, faCoffee, faKeyboard, faRss,
+  faTerminal, faTrophy,
+  faAngular, faAtlassian, faAutoprefixer, faAws, faBitbucket, faChrome,
+  faCodepen, faCreativeCommons, faCss3Alt, faDAndD, faDocker, faEdge,
+  faFigma, faFirefox, faGit, faGitAlt, faGithub, faGithubSquare, faGitlab,
+  faGrunt, faGulp, faHtml5, faInternetExplorer, faJenkins, faJsSquare,
+  faLess, faLinkedin, faMarkdown, faNodeJs, faNpm, faOpera, faPython,
+  faRaspberryPi, faReact, faRebel, faSafari, faSass, faSketch, faSlack,
+  faStackOverflow, faTrello, faTwitter, faVuejs, faXbox, faYarn
 );
 

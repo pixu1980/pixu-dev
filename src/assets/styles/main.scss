@@ -17,7 +17,7 @@
   --text: lch(90 0 0);
   --text2: lch(70 0 0);
   --brandHSL: hsl(33, 95%, 48%);
-  
+
   --base-clamp-threshold: 0.65vw;
 
   @media (prefers-color-scheme: light) {
@@ -26,7 +26,7 @@
     --text: lch(20 0 0);
     --text2: lch(40 0 0);
   }
-  
+
   @media (min-width: 1200px) {
     --header-height: 7rem;
   }
@@ -38,13 +38,14 @@ html {
 }
 
 body {
-  font-size: clamp(100%, calc(1rem + var(--base-clamp-threshold)), 2.4rem);
-  line-height: clamp(100%, calc(1.2rem + var(--base-clamp-threshold)), 2.6rem);
+  font-size: clamp(100%, calc(1.2rem + var(--base-clamp-threshold)), 2rem);
+  line-height: clamp(100%, calc(1.4rem + var(--base-clamp-threshold)), 2.4rem);
 }
 
 p {
   color: var(--text2);
-  max-inline-size: 50ch;
+  margin: 4rem 0;
+  max-inline-size: 90ch;
 }
 
 a {

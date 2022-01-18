@@ -1,45 +1,35 @@
 <template>
   <section class="resume-section about" id="about">
     <div class="profile">
-      <h2>Father, Developer, Millennial....</h2>
+      <h2>Father, Husband, Teacher, Developer</h2>
       <h3>
-        <span class="text-primary">coding with love since 1997</span>
-        <br />from Rome, Italy · (39) 3662580888 · <a href="mailto:pixu@pixu.dev">pixu@pixu.dev</a>
+        <span class="text-primary">coding with love since 1997</span> <br />from Rome, Italy · (39) 3662580888 ·
+        <a href="mailto:pixu@pixu.dev">pixu@pixu.dev</a>
       </h3>
     </div>
-    <div class="content">
-      <p>
-        I'm an addicted developer: to me the "passion" in coding is the only way to approach this
-        knowledge/technology/profession (pick one ;-)
-        <br />
-        <br />
-        My "computer childhood" is of the most common for millennials: C64 at home at the tender age of 3... so I
-        learned writing with the keyboard before the pen, writing those few lines necessary to run Buck Rogers and Ghost
-        Busters games, during the era of videogames distributed on cassette tapes (I mean it! ;-)
-        <br />
-        <br />
-        I started getting paid to write code way back in 1997, before finishing high school I started doing
-        "internships" at various companies
-        <br />
-        <br />
-        The first "real job" was at a company in Rome, the city where I was born and raised
-        <br />
-        The first project was a windows application developed by a team of 5 people
-        <br />
-        The first IDE used for that project was, listen here, Borland Delphi 4 (ops... I mean it... again ;-)
-        <br />
-        <br />
-        About my experience I met on my way the most disparate list of languages, databases, IDEs, frameworks, patterns,
-        servers... as can be guessed
-        <br />
-        <br />
-        Finally I found my comfort-zone in the Frontend Development and more particularly in the UI/UX Engineering
-        <br />
-        <br />
-        Here are my links:
-      </p>
+    <p class="content">
+      My mantra is: "<u>Make learning an habit!</u>" <br /><br />
+      I'm an addicted developer: to me the <span class="text-primary">"passion" in coding</span> is the only way to
+      approach this knowledge/technology/profession. (pick one 😆) <br /><br />
+      My "computer childhood" is one of the most common for millennials: C64 at home at the tender age of 3... so I
+      <span class="text-primary">learned to write with the keyboard before the pen</span>, writing those few lines
+      necessary to run Buck Rogers and Ghost Busters games, during the era of videogames distributed on cassette tapes.
+      (I mean it! 😂) <br /><br />
+      I started getting paid to write code way back in 1997, before finishing high school I started doing "internships"
+      at various companies. The <span class="text-primary">first "real job"</span> was at a company in Rome, the city
+      where I was born and raised. The <span class="text-primary">first project</span> was a windows application
+      developed by a team of 5 people. The <span class="text-primary">first IDE used</span> for that project was, listen
+      here, Borland Delphi 4. (ops... I mean it... again 🤣) <br /><br />
+      About my experience I learned/experimented (pick one... again 🙃) on my way a long list of
+      <span class="text-primary">languages, databases, IDEs, frameworks, patterns, servers</span>... as can be guessed.
+      <br /><br />
+      I found my comfort-zone as seasoned developer in <span class="text-primary">Frontend Development</span> and more
+      particularly in the <span class="text-primary">UI/UX Engineering and Development</span>. Then I finally landed in
+      <span class="text-primary">Teaching</span>, i'm actually planning, redacting and presenting courses concerning
+      Frontend and UI/UX Engineering. <br /><br />
+      Here are my links:
       <Links />
-    </div>
+    </p>
   </section>
 </template>
 

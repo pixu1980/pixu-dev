@@ -1,74 +1,60 @@
 <template>
   <section class="resume-section" id="skills">
     <h2 class="text-primary">Skills</h2>
-    <h5>Programming Languages &amp; Tools</h5>
-    <ul class="list-inline dev-icons">
-      <li>
-        <font-awesome :icon="['fab', 'html5']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'markdown']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'css3-alt']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'js-square']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'angular']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'react']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'vuejs']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'node-js']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'sass']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'less']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'git-alt']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'github']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'gulp']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'grunt']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'sketch']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'npm']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'codepen']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'creative-commons']" />
-      </li>
-      <li>
-        <font-awesome :icon="['fab', 'd-and-d']" />
-      </li>
-    </ul>
-    <h5 class="subheading">Workflow</h5>
-    <ul class="fa-ul">
-      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Mobile-First, Responsive Design</li>
-      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Cross Browser Testing &amp; Debugging</li>
-      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Cross Functional Teams</li>
-      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Agile Development &amp; Scrum</li>
-      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Cutting edge JavaScript frameworks</li>
-      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Design principles and UX</li>
-    </ul>
+    <h5>Markup, Styling &amp; Scripting</h5>
+    <div class="skills">
+      <font-awesome :icon="['fab', 'html5']" />
+      <font-awesome :icon="['fab', 'markdown']" />
+      <font-awesome :icon="['fab', 'css3-alt']" />
+      <font-awesome :icon="['fab', 'sass']" />
+      <font-awesome :icon="['fab', 'less']" />
+      <font-awesome :icon="['fab', 'js-square']" />
+      <font-awesome :icon="['fab', 'node-js']" />
+      <font-awesome :icon="['fab', 'python']" />
+    </div>
+    <br /><br />
+    <h5>Frameworks &amp; Libraries</h5>
+    <div class="skills">
+      <font-awesome :icon="['fab', 'angular']" />
+      <font-awesome :icon="['fab', 'react']" />
+      <font-awesome :icon="['fab', 'vuejs']" />
+    </div>
+    <br /><br />
+    <h5>DevOps, CI &amp; Versioning</h5>
+    <div class="skills">
+      <font-awesome :icon="['fab', 'git-alt']" />
+      <font-awesome :icon="['fab', 'github-square']" />
+      <font-awesome :icon="['fab', 'gitlab']" />
+      <font-awesome :icon="['fab', 'bitbucket']" />
+      <font-awesome :icon="['fab', 'aws']" />
+      <font-awesome :icon="['fab', 'docker']" />
+      <font-awesome :icon="['fab', 'jenkins']" />
+      <font-awesome :icon="['fab', 'atlassian']" />
+      <font-awesome :icon="['fab', 'trello']" />
+    </div>
+    <br /><br />
+    <h5>Building, Tooling &amp; Beyond</h5>
+    <div class="skills">
+      <font-awesome :icon="['fab', 'sketch']" />
+      <font-awesome :icon="['fab', 'figma']" />
+      <font-awesome :icon="['fab', 'yarn']" />
+      <font-awesome :icon="['fab', 'npm']" />
+      <font-awesome :icon="['fab', 'gulp']" />
+      <font-awesome :icon="['fab', 'grunt']" />
+      <font-awesome :icon="['fab', 'codepen']" />
+      <font-awesome :icon="['fab', 'creative-commons']" />
+      <font-awesome :icon="['fab', 'slack']" />
+      <font-awesome :icon="['fab', 'stack-overflow']" />
+    </div>
+    <br /><br />
+    <h5>Browsers (&amp; IE - r.i.p. thanks but no thanks!!!)</h5>
+    <div class="skills">
+      <font-awesome :icon="['fab', 'chrome']" />
+      <font-awesome :icon="['fab', 'firefox']" />
+      <font-awesome :icon="['fab', 'safari']" />
+      <font-awesome :icon="['fab', 'opera']" />
+      <font-awesome :icon="['fab', 'edge']" />
+      <font-awesome :icon="['fab', 'internet-explorer']" />
+    </div>
   </section>
 </template>

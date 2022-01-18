@@ -29,7 +29,7 @@
           <a v-on:click="scrollTo('#about')">About</a>
         </li>
         <li>
-          <a v-on:click="scrollTo('#education')">Education</a>
+          <a v-on:click="scrollTo('#workflow')">Workflow</a>
         </li>
         <li>
           <a v-on:click="scrollTo('#skills')">Skills</a>
@@ -38,13 +38,13 @@
           <a v-on:click="scrollTo('#projects')">Projects</a>
         </li>
         <li>
-          <a v-on:click="scrollTo('#awards')">Awards</a>
-        </li>
-        <li>
-          <a v-on:click="scrollTo('#experience')">Experience</a>
+          <a v-on:click="scrollTo('#education')">Education</a>
         </li>
         <li>
           <a v-on:click="scrollTo('#interests')">Interests</a>
+        </li>
+        <li>
+          <a v-on:click="scrollTo('#experience')">Experience</a>
         </li>
       </ul>
       <Links />

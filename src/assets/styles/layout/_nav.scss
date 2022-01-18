@@ -11,6 +11,7 @@
     transform: translateX(0);
   }
 }
+
 @keyframes portrait-leave {
   0% {
     clip-path: polygon(100% 0%, 100% 50%, 100% 100%, 0% 100%, 0% 50%, 0% 0%);
@@ -154,11 +155,16 @@ nav {
 
   ul {
     padding: 0;
-  }
 
-  a {
-    text-decoration: none;
-    line-height: 1.25;
+    li {
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+      line-height: 1.25;
+      cursor: pointer;
+    }
   }
 
   figure {

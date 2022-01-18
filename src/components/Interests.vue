@@ -2,12 +2,25 @@
   <section class="resume-section" id="interests">
     <h2 class="text-primary">Interests</h2>
     <p>
-      Apart from being a frontend developer, I enjoy most of my time being outdoors. In the winter, I like to go ski and
-      sometimes go ice fishing. During the summer, I enjoy mountain biking, running, and fishing.
+      Apart from being a teacher and developer, I enjoy most of my free time
+      <span class="text-primary">being outdoors with my family</span>, trying to learn how to
+      <span class="text-primary">grow vegetables and re-connect with nature</span> whenever its possible.
     </p>
     <p>
-      I like to create websites for fun, trying out new technologies and tools to improve myself as developer and stay
-      up to date with current tech. I love watching ted talks and reading development stories on Reddit.
+      I'm a <span class="text-primary">Dungeons & Dragons</span> and a
+      <span class="text-primary">Magic the Gathering</span> addicted player.
     </p>
+    <p>I can't stop creating web based software for fun and profit.</p>
+    <p>
+      I enjoy to create/contribute open source projects, experimenting latest technologies and tools to improve myself
+      and stay up to date.
+    </p>
+    <h5>Play, Fun &amp; Experiments</h5>
+    <div class="skills">
+      <font-awesome :icon="['fab', 'd-and-d']" />
+      <font-awesome :icon="['fab', 'xbox']" />
+      <font-awesome :icon="['fab', 'rebel']" />
+      <font-awesome :icon="['fab', 'raspberry-pi']" />
+    </div>
   </section>
 </template>
