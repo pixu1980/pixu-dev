@@ -10,12 +10,11 @@
     </div>
     <br /><br />
     <ul class="fa-ul">
-      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Mobile-First, Responsive Design</li>
-      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Cross Browser Testing &amp; Debugging</li>
-      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Cross Functional Teams</li>
-      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Agile Development &amp; Scrum</li>
-      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Cutting edge JavaScript frameworks</li>
       <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Design principles and UX</li>
+      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Design Analysis</li>
+      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Accessibility-First, Mobile-First Responsive</li>
+      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Cross Browser Testing &amp; Debugging</li>
+      <li><font-awesome class="fa-li" :icon="['fas', 'check']" />Cutting edge JavaScript frameworks</li>
     </ul>
   </section>
 </template>
