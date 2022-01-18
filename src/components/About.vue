@@ -4,7 +4,7 @@
       <h2>Father, Husband, Teacher, Developer</h2>
       <h3>
         <span class="text-primary">coding with love since 1997</span> <br />from Rome, Italy · (39) 3662580888 ·
-        <a href="mailto:pixu@pixu.dev">pixu@pixu.dev</a>
+        pisuemiliano.1980 (at) gmail.com
       </h3>
     </div>
     <p class="content">
