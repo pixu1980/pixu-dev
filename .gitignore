@@ -1,15 +1,20 @@
-/.cache
+.cache
+.parcel-cache
 .DS_Store
-/src/.temp
-/node_modules
-/dist
+src/.temp
 
 *.log
 .env
 .env.*
+
+node_modules
+dist
 
 yarn.lock
 package-lock.json
 
 # Local Netlify folder
 .netlify
+/test-results/
+/playwright-report/
+/playwright/.cache/
