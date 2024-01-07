@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "posthtml-expressions": { removeScriptLocals: true },
+    "posthtml-extend": { root: './src', strict: false },
+    "posthtml-include": { root: './src' },
+    "posthtml-modules": { root: './src' }
+  }
+}
