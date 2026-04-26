@@ -1,0 +1,10 @@
+<article data-talk data-surface="lifted" data-hover-surface data-generated="sessionize-talk" data-reveal>
+  <h3>{{ talk.title }}</h3>
+  <p>{{ talk.abstractText }}</p>
+  <footer>
+    <include src="./_link.html" data='{"link": {{ talk.sessionizeLink | json | raw }}}'></include>
+    <if condition="talk.githubLink">
+      <include src="./_link.html" data='{"link": {{ talk.githubLink | json | raw }}}'></include>
+    </if>
+  </footer>
+</article>

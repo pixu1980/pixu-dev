@@ -1,0 +1,20 @@
+@layer components {
+  pointer-glow {
+    position: fixed;
+    top: calc(var(--y, 50vh) - 10rem);
+    left: calc(var(--x, 50vw) - 10rem);
+    width: 20rem;
+    height: 20rem;
+    pointer-events: none;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--accent) 32%, transparent 100%),
+      color-mix(in srgb, var(--accent-2) 62%, transparent 100%),
+      transparent 70%
+    );
+    filter: blur(4rem);
+    will-change: top, left;
+    opacity: 0.5;
+    z-index: 1;
+  }
+}

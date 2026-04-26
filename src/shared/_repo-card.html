@@ -1,0 +1,19 @@
+<article data-repo data-surface="lifted" data-hover-surface data-generated="github-repo" data-reveal>
+  <header>
+    <p data-kicker>{{ repo.language || 'Mixed' }}</p>
+    <strong>{{ repo.starsLabel }}</strong>
+  </header>
+  <h3>{{ repo.name }}</h3>
+  <p>{{ repo.descriptionText }}</p>
+  <include
+    src="./_tag-list.html"
+    data='{"items": {{ repo.tagsPreview | json | raw }}, "ariaLabel": ""}'
+  ></include>
+  <footer>
+    <span>{{ repo.updatedLabel }}</span>
+    <include src="./_link.html" data='{"link": {{ repo.repoLink | json | raw }}}'></include>
+    <if condition="repo.siteLink">
+      <include src="./_link.html" data='{"link": {{ repo.siteLink | json | raw }}}'></include>
+    </if>
+  </footer>
+</article>

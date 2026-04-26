@@ -1,0 +1,10 @@
+<div data-about-layout>
+  <div data-about-story data-surface="accent" data-reveal>{{ section.leadHtml | raw }}</div>
+  <div data-about-panels>
+    <include src="../shared/_linkedin-panel.html" data='{"linkedin": {{ section.linkedin | json | raw }}}'></include>
+    <for each="block in section.insightBlocks">
+      <include src="../shared/_insight-panel.html" data='{"block": {{ block | json | raw }}}'></include>
+    </for>
+    <include src="../shared/_contact-panel.html" data='{"contact": {{ section.contact | json | raw }}}'></include>
+  </div>
+</div>

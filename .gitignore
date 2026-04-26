@@ -1,5 +1,5 @@
-.cache
 .parcel-cache
+.vite
 .DS_Store
 src/.temp
 
@@ -10,11 +10,15 @@ src/.temp
 node_modules
 dist
 
+.vscode
+
 yarn.lock
 package-lock.json
+pnpm-lock.yaml
 
 # Local Netlify folder
 .netlify
 /test-results/
 /playwright-report/
 /playwright/.cache/
+.tokensave

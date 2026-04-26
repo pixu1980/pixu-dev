@@ -1,0 +1,8 @@
+<div>
+  <div data-markdown>{{ section.leadHtml | raw }}</div>
+  <div data-skill-grid>
+    <for each="block in section.blocks">
+      <include src="../shared/_insight-panel.html" data='{"block": {{ block | json | raw }}}'></include>
+    </for>
+  </div>
+</div>

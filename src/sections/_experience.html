@@ -1,0 +1,8 @@
+<div>
+  <div data-markdown>{{ section.leadHtml | raw }}</div>
+  <div data-timeline>
+    <for each="entry in section.entries">
+      <include src="../shared/_timeline-entry.html" data='{"entry": {{ entry | json | raw }}}'></include>
+    </for>
+  </div>
+</div>

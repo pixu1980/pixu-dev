@@ -1,0 +1,30 @@
+<section id="{{ section.slug }}" data-section="{{ section.slug }}" aria-labelledby="{{ section.titleId }}" data-reveal>
+  <header data-section-header>
+    <p data-kicker>{{ section.indexLabel }}</p>
+    <h2 id="{{ section.titleId }}">{{ section.label }}</h2>
+  </header>
+
+  <switch expr="section.slug">
+    <case value="about">
+      <include src="./_about.html" data='{"section": {{ section | json | raw }}}'></include>
+    </case>
+    <case value="experience">
+      <include src="./_experience.html" data='{"section": {{ section | json | raw }}}'></include>
+    </case>
+    <case value="skills">
+      <include src="./_skills.html" data='{"section": {{ section | json | raw }}}'></include>
+    </case>
+    <case value="projects">
+      <include src="./_projects.html" data='{"section": {{ section | json | raw }}}'></include>
+    </case>
+    <case value="talks-speaking">
+      <include src="./_speaking.html" data='{"section": {{ section | json | raw }}}'></include>
+    </case>
+    <case value="education">
+      <include src="./_education.html" data='{"section": {{ section | json | raw }}}'></include>
+    </case>
+    <default>
+      <include src="./_default.html" data='{"section": {{ section | json | raw }}}'></include>
+    </default>
+  </switch>
+</section>

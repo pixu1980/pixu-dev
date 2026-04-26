@@ -1,0 +1,102 @@
+@layer components {
+  [data-surface] {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  [data-surface="accent"] {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    border-inline-start: 4px solid var(--accent);
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--accent) 14%, transparent),
+      transparent
+    );
+  }
+
+  [data-surface="lifted"] {
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.075), rgb(255 255 255 / 0.035));
+    box-shadow: 0 18px 48px rgb(0 0 0 / 0.22);
+  }
+
+  :where([data-panel], [data-speaker-panel], [data-event-strip]) {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  :is([data-panel], [data-speaker-panel]) > * {
+    margin-block: 0;
+  }
+
+  :where([data-panel], [data-speaker-panel], [data-event-strip]):has([data-chip-list]) {
+    align-content: start;
+  }
+
+  [data-panel="linkedin"] {
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--accent-2) 18%, transparent), transparent 44%),
+      linear-gradient(180deg, rgb(255 255 255 / 0.075), rgb(255 255 255 / 0.035));
+  }
+
+  :where(
+      [data-about-panels],
+      [data-skill-grid],
+      [data-repo-grid],
+      [data-talk-grid],
+      [data-timeline]
+    ) {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  [data-stat] {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.9rem;
+    background: color-mix(in srgb, var(--paper-elevated) 84%, var(--ink) 8%);
+  }
+
+  [data-stat] strong {
+    color: var(--accent);
+    font-size: var(--step-2);
+    line-height: 1;
+  }
+
+  [data-stat] span {
+    color: var(--ink-strong);
+    font-weight: 750;
+  }
+
+  [data-stat] small,
+  [data-repo] footer span,
+  [data-talk] footer span,
+  [data-event-strip] span {
+    color: var(--ink-soft);
+  }
+
+  [data-timeline-item] {
+    display: grid;
+    gap: 0.85rem;
+    padding-block: 1.1rem;
+    border-block-end: 1px solid var(--line);
+  }
+
+  [data-timeline-item] time {
+    color: var(--accent);
+    font-weight: 850;
+  }
+
+  :where(
+      [data-timeline-item] h3,
+      [data-timeline-item] p,
+      [data-repo] h3,
+      [data-repo] p,
+      [data-talk] h3,
+      [data-talk] p
+    ) {
+    margin-block: 0 0.55rem;
+  }
+}

@@ -1,0 +1,10 @@
+<aside data-panel="linkedin" data-surface="lifted" data-hover-surface data-generated="linkedin-profile" data-reveal>
+  <h3>{{ linkedin.headline || 'Profile snapshot' }}</h3>
+  <p>
+    {{ linkedin.summary || 'Authenticated LinkedIn data can update headline, profile summary, skills, experience, education, name, and profile image during build.' }}
+  </p>
+  <include
+    src="./_tag-list.html"
+    data='{"items": {{ linkedin.displaySkills | json | raw }}, "ariaLabel": "LinkedIn skills"}'
+  ></include>
+</aside>

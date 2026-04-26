@@ -1,0 +1,53 @@
+<section id="top" data-hero aria-labelledby="hero-title">
+  <div data-hero-copy data-reveal>
+    <p data-kicker>{{ site.location }}</p>
+    <h1 id="hero-title">{{ site.name }}</h1>
+    <p data-role>{{ site.title }}</p>
+    <p data-motto>{{ site.motto }}</p>
+    <p data-summary>{{ site.summary }}</p>
+
+    <ul data-hero-meta>
+      <for each="item in site.heroMeta">
+        <li>{{ item }}</li>
+      </for>
+    </ul>
+
+    <div data-actions>
+      <for each="link in site.headerLinks">
+        <include
+          src="../shared/_link.html"
+          data='{"link": {{ link | json | raw }}}'
+        ></include>
+      </for>
+    </div>
+  </div>
+
+  <figure data-portrait data-reveal>
+    <img src="{{ site.profileImage }}" alt="{{ site.profileImageAlt }}" loading="eager" decoding="async" />
+    <figcaption>
+      <span>{{ site.name }}</span>
+      <strong>{{ site.title }}</strong>
+    </figcaption>
+  </figure>
+
+  <aside data-signal-panel data-surface="lifted" data-reveal>
+    <p data-kicker>Live Data</p>
+    <div data-stat-grid="hero">
+      <for each="metric in site.heroMetrics">
+        <include
+          src="../shared/_metric.html"
+          data='{"metric": {{ metric | json | raw }}}'
+        ></include>
+      </for>
+    </div>
+
+    <ul data-source-status>
+      <for each="source in site.sourceStatus">
+        <li data-source-state="{{ source.status }}">
+          <span>{{ source.label }}</span>
+          <strong>{{ source.statusLabel }}</strong>
+        </li>
+      </for>
+    </ul>
+  </aside>
+</section>

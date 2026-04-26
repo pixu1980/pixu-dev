@@ -1,0 +1,15 @@
+<aside id="contact" data-panel="contact" data-surface="lifted" data-hover-surface data-reveal>
+  <p data-kicker>Contact</p>
+  <h3>{{ contact.headline }}</h3>
+  <p>{{ contact.summary }}</p>
+  <div data-chip-list>
+    <for each="method in contact.methods">
+      <span data-chip>{{ method }}</span>
+    </for>
+  </div>
+  <div data-link-list>
+    <for each="link in contact.links">
+      <include src="./_link.html" data='{"link": {{ link | json | raw }}}'></include>
+    </for>
+  </div>
+</aside>

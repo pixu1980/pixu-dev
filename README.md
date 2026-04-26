@@ -1,35 +1,79 @@
-illustrations
-https://isometric.online
+# pixu-dev-resume
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c6a0b67d-7f94-4676-acd9-03ad7716ee98/deploy-status)](https://app.netlify.com/sites/gridsome-starter-resume/deploys)
+Static resume for Emiliano Pisu, built from Markdown, Vite, and build-time public profile data.
 
-# Gridsome starter resume
+## Features
 
-This is a starter project for Gridsome that helps you set up a resume quick and easy. It utilizes Bootstrap that is well known for powerful styling and layout.
+- Markdown resume source in `content/resume.md`.
+- GitHub public repositories, stats, languages, topics, and update dates.
+- Sessionize talks and events, filtered to English versions.
+- Optional LinkedIn enrichment for headline, description, skills, experience, education, name, and profile image.
+- Theme-aware SVG favicon and generated PNG fallbacks from `src/assets/images/logo.svg`.
+- Plain CSS system with `@layer`, custom properties, nesting, and data attributes.
+- Playwright checks for layout, navigation, data, and responsive behavior.
 
-### Demo
+## Requirements
 
-[https://gridsome-starter-resume.loke.dev](https://gridsome-starter-resume.loke.dev)
+- Node.js 22 or newer.
+- pnpm 10.15 or newer.
 
-### Features
+## Commands
 
-This starter project includes some of the latest powerful technologies.
+```sh
+pnpm install
+pnpm dev
+pnpm build
+pnpm preview
+pnpm test
+```
 
-- **Gridsome -** Vue.js & GraphQL powered framework genrating static files.
-- **Bootstrap & Bootstrap Vue -** Powerful styling and layout with styled Vue components.
-- **SASS -** Professional grade CSS extension with many features.
-- **Google Analytics -** Just add your tracking ID in the config.
-- **Sitemap generator -** Automatically generates a sitemap.xml file.
+## Release
 
-### Getting started
+Release commands run a full build, bump `package.json`, and create a matching git tag.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/LokeCarlsson/gridsome-starter-resume)
+```sh
+pnpm rel:patch
+pnpm rel:minor
+pnpm rel:major
+```
 
-**or manually follow the guide below**
+Tags use the `vX.Y.Z` format.
 
-If you haven't already installed Gridsome CLI: `npm install --global @gridsome/cli`
+## Build Sources
 
-1. `gridsome create my-gridsome-site https://github.com/LokeCarlsson/gridsome-starter-resume.git`
-2. `cd my-gridsome-site` to open folder
-3. `yarn dev` to start local dev server at `http://localhost:8080`
-4. Happy hacking 🎉🙌
+Source configuration lives in YAML frontmatter inside `content/resume.md`.
+
+- GitHub profile: `sourceConfig.github.profile`
+- Sessionize profile: `sourceConfig.sessionize.profile`
+- LinkedIn profile: `sourceConfig.linkedin.profile`
+
+Environment variables:
+
+- `GITHUB_TOKEN`, optional, raises GitHub API limits.
+- `LINKEDIN_COOKIE_LI_AT`, optional, enables authenticated LinkedIn fetch.
+
+Every dev or production build regenerates `dist` from source and live public data, then falls back to local frontmatter data when a remote source is unavailable. Public generated data is written to `dist/data/resume.json`.
+
+## Structure
+
+```text
+content/
+  resume.md
+scripts/
+  build.js
+  generate-favicons.js
+  lint-content.js
+src/
+  assets/
+  scripts/app.js
+  styles/main.css
+  index.html
+static/
+tests/
+  resume.spec.js
+vite.config.js
+```
+
+## Contributing
+
+See `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, and `AGENTS.md`.

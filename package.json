@@ -1,26 +1,56 @@
 {
   "name": "pixu-dev-resume",
-  "private": true,
-  "scripts": {
-    "favicon": "real-favicon generate favicon.config.json favicon.data.json ./static",
-    "reset": "rm -rf .parcel-cache dist node_modules && yarn",
-    "start": "parcel serve ./src/index.html",
-    "build": "parcel build ./src/index.html --no-content-hash --no-source-maps --public-url=https://pixu.dev"
+  "version": "0.1.0",
+  "description": "Static resume for Emiliano Pisu, built from Markdown and live public profile data.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Emiliano \"Pixu\" Pisu",
+  "homepage": "https://pixu.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixu1980/pixu-dev-resume.git"
   },
+  "bugs": {
+    "url": "https://github.com/pixu1980/pixu-dev-resume/issues"
+  },
+  "keywords": [
+    "resume",
+    "portfolio",
+    "static-site",
+    "vite",
+    "design-engineering",
+    "accessibility"
+  ],
+  "scripts": {
+    "assets:favicons": "node scripts/generate-favicons.js",
+    "build": "pnpm assets:favicons && pnpm format && pnpm lint && vite build",
+    "dev": "vite dev",
+    "format": "biome format --write .",
+    "format:check": "biome format --reporter=summary --diagnostic-level=error .",
+    "generate": "node scripts/build.js --out dist --public dist",
+    "lint": "biome lint . && pnpm lint:content",
+    "lint:content": "node scripts/lint-content.js",
+    "preview": "vite preview . --outDir dist",
+    "start": "pnpm dev",
+    "test": "playwright test",
+    "test:e2e": "playwright test",
+    "rel:major": "pnpm build && pnpm version major --message \"chore(release): v%s\"",
+    "rel:minor": "pnpm build && pnpm version minor --message \"chore(release): v%s\"",
+    "rel:patch": "pnpm build && pnpm version patch --message \"chore(release): v%s\""
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.33.2"
+  },
+  "packageManager": "pnpm@10.33.2",
   "devDependencies": {
-    "@parcel/packager-raw-url": "2.12.0",
-    "@parcel/transformer-sass": "2.12.0",
-    "@parcel/transformer-webmanifest": "2.12.0",
-    "@playwright/test": "^1.48.2",
-    "@types/node": "^22.8.1",
-    "parcel": "^2.12.0",
-    "postcss": "^8.4.47",
-    "postcss-combine-media-query": "^1.0.1",
-    "posthtml": "^0.16.6",
-    "posthtml-doctype": "^1.1.1",
-    "posthtml-extend": "^0.6.5",
-    "posthtml-include": "^2.0.1",
-    "posthtml-modules": "^0.9.1",
-    "posthtml-render": "^3.0.0"
+    "@biomejs/biome": "2.4.13",
+    "@playwright/test": "1.59.1",
+    "cheerio": "1.2.0",
+    "gray-matter": "4.0.3",
+    "jsdom": "29.1.0",
+    "marked": "18.0.2",
+    "sharp": "0.34.5",
+    "vite": "8.0.10"
   }
 }

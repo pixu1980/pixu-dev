@@ -1,0 +1,11 @@
+<if condition="languages.length > 0">
+  <div data-language-bars data-surface>
+    <for each="language in languages">
+      <div data-language-row>
+        <span>{{ language.name }}</span>
+        <span aria-hidden="true"><i style="--size: {{ language.percent }}%"></i></span>
+        <strong>{{ language.percent }}%</strong>
+      </div>
+    </for>
+  </div>
+</if>
