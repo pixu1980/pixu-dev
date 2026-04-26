@@ -1,0 +1,19 @@
+<footer data-site-footer>
+  <div>
+    <p data-kicker>Now</p>
+    <h2>Design systems, frontend architecture, public speaking.</h2>
+    <p>Pixu turns frontend craft into accessible systems, open tools, and clear talks.</p>
+  </div>
+  <div data-footer-meta>
+    <p>Build {{ site.buildDate }}</p>
+    <p>&copy; {{ site.year }} {{ site.name }}</p>
+    <div data-link-list>
+      <for each="link in site.footerLinks">
+        <include
+          src="../shared/_link.html"
+          data='{"link": {{ link | json | raw }}}'
+        ></include>
+      </for>
+    </div>
+  </div>
+</footer>

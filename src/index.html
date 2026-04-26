@@ -1,29 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-nav-state="closed" data-color-scheme="system" data-resolved-scheme="light">
   <head>
     <meta charset="utf-8" />
-    <title>Pixu.Dev</title>
-    <include src="../static/html_code.html"></include>
-    <link rel="stylesheet" href="./styles/index.scss" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ site.name }} | {{ site.title }}</title>
+    <meta name="description" content="{{ site.summary }}" />
+    <meta property="og:title" content="{{ site.name }} - {{ site.title }}" />
+    <meta property="og:description" content="{{ site.description }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{ site.profileImage }}" />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#663399" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f3e7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#080a0f" />
+    <script>
+      (() => {
+        try {
+          const schemeOptions = ["light", "dark", "system"];
+          const accentOptions = [
+            "sea-glass",
+            "sage-blush",
+            "peach-fuzz",
+            "lavender-mint",
+            "butter-plum",
+          ];
+          const media = window.matchMedia("(prefers-color-scheme: dark)");
+          const resolveScheme = (value) =>
+            value === "system" ? (media.matches ? "dark" : "light") : value;
+          const scheme = localStorage.getItem("pixu:color-scheme") || "system";
+          if (schemeOptions.includes(scheme)) {
+            const resolvedScheme = resolveScheme(scheme);
+            document.documentElement.dataset.colorScheme = scheme;
+            document.documentElement.dataset.resolvedScheme = resolvedScheme;
+            document.documentElement.style.colorScheme = resolvedScheme;
+          }
+          const accent = localStorage.getItem("pixu:accent-pair") || "sea-glass";
+          if (accentOptions.includes(accent)) {
+            document.documentElement.dataset.accent = accent;
+          }
+        } catch {}
+      })();
+    </script>
+    <link rel="stylesheet" href="styles/index.css" />
   </head>
   <body>
-    <include src="./components/header.html" locals='{"basePath":"."}'></include>
-    <include src="./components/nav.html" locals='{"basePath":"."}'></include>
-    <main>
-      <include src="./components/about.html" locals='{"basePath":"."}'></include>
-      <hr />
-      <include src="./components/workflow.html" locals='{"basePath":"."}'></include>
-      <hr />
-      <include src="./components/skills.html" locals='{"basePath":"."}'></include>
-      <hr />
-      <include src="./components/projects.html" locals='{"basePath":"."}'></include>
-      <hr />
-      <include src="./components/education.html" locals='{"basePath":"."}'></include>
-      <hr />
-      <include src="./components/interests.html" locals='{"basePath":"."}'></include>
-      <hr />
-      <include src="./components/experience.html" locals='{"basePath":"."}'></include>
-    </main>
-    <script src="./scripts/index.js"></script>
+    <skip-link href="#main"></skip-link>
+    <scroll-progress></scroll-progress>
+    <pointer-glow></pointer-glow>
+
+    <include src="./layout/_header.html"></include>
+
+    <div data-layout-shell>
+      <aside data-site-rail>
+        <include src="./layout/_nav.html"></include>
+      </aside>
+
+      <main id="main">
+        <include src="./layout/_hero.html"></include>
+        <for each="section in sections">
+          <include
+            src="./sections/_section.html"
+            data='{"section": {{ section | json | raw }}}'
+          ></include>
+        </for>
+      </main>
+    </div>
+
+    <include src="./layout/_footer.html"></include>
+
+    <p data-live-region aria-live="polite"></p>
+    <script type="module" src="scripts/app.js"></script>
   </body>
 </html>

@@ -1,0 +1,33 @@
+<switch expr="link.kind">
+  <case value="action">
+    <a
+      data-action
+      href="{{ link.href }}"
+      target="{{ link.isExternal ? '_blank' : '' }}"
+      rel="{{ link.isExternal ? 'noopener noreferrer' : '' }}"
+    >
+      {{ link.label }}
+    </a>
+  </case>
+  <case value="related-repo">
+    <a
+      data-link
+      data-related-repo
+      href="{{ link.href }}"
+      target="{{ link.isExternal ? '_blank' : '' }}"
+      rel="{{ link.isExternal ? 'noopener noreferrer' : '' }}"
+    >
+      {{ link.label }}
+    </a>
+  </case>
+  <default>
+    <a
+      data-link
+      href="{{ link.href }}"
+      target="{{ link.isExternal ? '_blank' : '' }}"
+      rel="{{ link.isExternal ? 'noopener noreferrer' : '' }}"
+    >
+      {{ link.label }}
+    </a>
+  </default>
+</switch>

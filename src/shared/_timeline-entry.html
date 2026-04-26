@@ -1,0 +1,25 @@
+<article data-timeline-item data-reveal>
+  <div>
+    <time>{{ entry.dateRange || 'Selected work' }}</time>
+  </div>
+  <div>
+    <h3>{{ entry.title }}</h3>
+    <if condition="entry.organization || entry.subtitle">
+      <p data-eyebrow>{{ entry.organization || entry.subtitle }}</p>
+    </if>
+    <if condition="entry.summary">
+      <p>{{ entry.summary }}</p>
+    </if>
+    <if condition="entry.highlights.length > 0">
+      <ul>
+        <for each="item in entry.highlights">
+          <li>{{ item }}</li>
+        </for>
+      </ul>
+    </if>
+    <include
+      src="./_tag-list.html"
+      data='{"items": {{ entry.skills | json | raw }}, "ariaLabel": ""}'
+    ></include>
+  </div>
+</article>

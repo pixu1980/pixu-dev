@@ -1,0 +1,34 @@
+<div data-portfolio>
+  <div data-portfolio-summary data-reveal>
+    <div data-markdown>{{ section.leadHtml | raw }}</div>
+    <div data-stat-grid="portfolio">
+      <article data-stat data-surface>
+        <strong>{{ section.stats.publicRepos }}</strong>
+        <span>public repos</span>
+        <small>{{ section.stats.ownRepos }} owned repos</small>
+      </article>
+      <article data-stat data-surface>
+        <strong>{{ section.stats.totalStars }}</strong>
+        <span>stars</span>
+        <small>{{ section.stats.totalForks }} forks</small>
+      </article>
+      <article data-stat data-surface>
+        <strong>{{ section.stats.languages }}</strong>
+        <span>languages</span>
+        <small>Detected from repo metadata</small>
+      </article>
+      <article data-stat data-surface>
+        <strong>{{ section.stats.latestUpdate }}</strong>
+        <span>latest update</span>
+        <small>{{ section.stats.username }}</small>
+      </article>
+    </div>
+    <include src="../shared/_language-bars.html" data='{"languages": {{ section.languageBars | json | raw }}}'></include>
+    <include src="../shared/_tag-list.html" data='{"items": {{ section.topicLabels | json | raw }}, "ariaLabel": "GitHub topic badges"}'></include>
+  </div>
+  <div data-repo-grid>
+    <for each="repo in section.repos">
+      <include src="../shared/_repo-card.html" data='{"repo": {{ repo | json | raw }}}'></include>
+    </for>
+  </div>
+</div>

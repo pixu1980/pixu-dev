@@ -1,0 +1,14 @@
+<article data-panel="principle" data-surface="lifted" data-hover-surface data-reveal>
+  <p data-kicker>Principle</p>
+  <h3>{{ block.heading }}</h3>
+  <for each="paragraph in block.paragraphs">
+    <p>{{ paragraph }}</p>
+  </for>
+  <if condition="block.listItems.length > 0">
+    <ul>
+      <for each="item in block.listItems">
+        <li>{{ item }}</li>
+      </for>
+    </ul>
+  </if>
+</article>

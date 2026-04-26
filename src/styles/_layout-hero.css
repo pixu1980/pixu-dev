@@ -1,0 +1,97 @@
+@layer layout {
+  [data-nav-list] {
+    display: grid;
+    gap: 0.25rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  [data-nav-link] {
+    display: block;
+    padding: 0.75rem 0.85rem;
+    border-radius: var(--radius);
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+
+  main {
+    display: grid;
+    min-width: 0;
+    overflow: visible;
+  }
+
+  :where([data-hero], main > [data-section]) {
+    width: min(100% - (var(--gutter) * 2), var(--max));
+    margin-inline: auto;
+  }
+
+  [data-hero] {
+    display: grid;
+    gap: clamp(1rem, 4vw, 2rem);
+    min-height: min(46rem, calc(100svh - var(--header-height)));
+    padding-block: clamp(1.5rem, 6vw, 4rem);
+    align-items: center;
+  }
+
+  [data-hero-copy] {
+    display: grid;
+    align-content: end;
+    gap: 1rem;
+    max-width: 48rem;
+  }
+
+  [data-role] {
+    max-width: 36rem;
+    color: var(--accent);
+    font-size: var(--step-2);
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  [data-motto] {
+    max-width: 34rem;
+    color: var(--ink-strong);
+    font-size: var(--step-1);
+  }
+
+  [data-summary] {
+    max-width: 42rem;
+    font-size: var(--step-1);
+  }
+
+  :where([data-actions], [data-link-list], [data-chip-list], [data-related-list]) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  [data-action]:first-child {
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-color: var(--accent);
+    font-weight: 850;
+  }
+
+  :where([data-hero-meta], [data-source-status], [data-tags]) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  [data-signal-panel] [data-source-status] {
+    padding-block-start: var(--space-2);
+  }
+
+  :where([data-hero-meta], [data-source-status], [data-tags]) li {
+    padding: 0.45rem 0.65rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-round);
+    color: var(--ink-muted);
+    background: rgb(255 255 255 / 0.035);
+    font-size: 0.9rem;
+  }
+}

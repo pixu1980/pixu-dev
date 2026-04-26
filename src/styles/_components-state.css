@@ -1,0 +1,15 @@
+@layer components {
+  [data-nav-link][data-active="true"],
+  [data-nav-link]:hover {
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    color: var(--ink-strong);
+  }
+
+  [data-source-state="live"] strong {
+    color: var(--accent);
+  }
+
+  [data-source-state="fallback"] strong {
+    color: var(--accent-3);
+  }
+}

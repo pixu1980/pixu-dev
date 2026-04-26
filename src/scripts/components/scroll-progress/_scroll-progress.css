@@ -1,0 +1,14 @@
+@layer components {
+  scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent), var(--accent-2));
+    transform-origin: left;
+    transform: scaleX(calc(var(--progress, 0) / 100));
+    transition: transform 50ms linear;
+    z-index: 9999;
+  }
+}

@@ -1,0 +1,79 @@
+@layer components {
+  color-scheme-selector {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    align-items: center;
+    padding: var(--space-1);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-2);
+    background: color-mix(in srgb, var(--surface-2) 92%, transparent);
+
+    &:focus-within {
+      outline: var(--focus-outline);
+      outline-offset: var(--focus-offset);
+    }
+
+    & label {
+      position: relative;
+      display: grid;
+      place-items: center;
+      inline-size: 2.4rem;
+      block-size: 2.4rem;
+      border-radius: var(--radius-1);
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition:
+        background-color var(--duration-2) var(--ease-standard),
+        color var(--duration-2) var(--ease-standard),
+        transform var(--duration-2) var(--ease-standard);
+    }
+
+    & label:hover {
+      color: var(--ink-strong);
+      background: var(--surface-hover);
+      transform: translateY(-1px);
+    }
+
+    & input {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      margin: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    & label:has(input:checked) {
+      color: var(--accent-ink);
+      background: var(--accent);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent-ink) 18%, transparent);
+    }
+
+    & [data-icon] {
+      display: grid;
+      place-items: center;
+      inline-size: 1.1rem;
+      block-size: 1.1rem;
+    }
+
+    & svg {
+      inline-size: 100%;
+      block-size: 100%;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.8;
+    }
+
+    & [data-label] {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+}

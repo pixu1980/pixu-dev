@@ -1,0 +1,28 @@
+<div data-speaking>
+  <aside data-speaker-panel data-surface="lifted" data-hover-surface data-generated="sessionize-speaker" data-reveal>
+    <p data-kicker>Sessionize</p>
+    <h3>{{ section.speaker.headline || 'Public speaking' }}</h3>
+    <p>{{ section.speaker.summary }}</p>
+    <include src="../shared/_tag-list.html" data='{"items": {{ section.speaker.topics | json | raw }}, "ariaLabel": ""}'></include>
+    <div data-link-list>
+      <include src="../shared/_link.html" data='{"link": {{ section.profileLink | json | raw }}}'></include>
+    </div>
+  </aside>
+  <div data-speaking-content>
+    <div data-talk-grid>
+      <for each="talk in section.talks">
+        <include src="../shared/_talk-card.html" data='{"talk": {{ talk | json | raw }}}'></include>
+      </for>
+    </div>
+    <if condition="section.events.length > 0">
+      <section data-event-strip data-surface="lifted" data-reveal aria-label="Sessionize events">
+        <p data-kicker>Events</p>
+        <ol>
+          <for each="event in section.events">
+            <include src="../shared/_event-item.html" data='{"event": {{ event | json | raw }}}'></include>
+          </for>
+        </ol>
+      </section>
+    </if>
+  </div>
+</div>
