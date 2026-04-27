@@ -1,6 +1,6 @@
 {
   "name": "pixu-dev-resume",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Static resume for Emiliano Pisu, built from Markdown and live public profile data.",
   "type": "module",
   "license": "MIT",
@@ -34,9 +34,9 @@
     "start": "pnpm dev",
     "test": "playwright test",
     "test:e2e": "playwright test",
-    "rel:major": "pnpm build && pnpm version major --message \"chore(release): v%s\"",
-    "rel:minor": "pnpm build && pnpm version minor --message \"chore(release): v%s\"",
-    "rel:patch": "pnpm build && pnpm version patch --message \"chore(release): v%s\""
+    "rel:major": "pnpm build && pnpm version major --message \"chore(release): v%s\" && git push && git push --tags",
+    "rel:minor": "pnpm build && pnpm version minor --message \"chore(release): v%s\" && git push && git push --tags",
+    "rel:patch": "pnpm build && pnpm version patch --message \"chore(release): v%s\" && git push && git push --tags"
   },
   "engines": {
     "node": ">=22.0.0",
