@@ -27,6 +27,8 @@ pnpm preview
 pnpm test
 ```
 
+After `pnpm install`, Husky configures a pre-push hook that runs the same local quality gate used in place of the removed CI workflow: build, Playwright browser install, and end-to-end tests.
+
 ## Release
 
 Release commands run a full build, bump `package.json`, and create a matching git tag.
