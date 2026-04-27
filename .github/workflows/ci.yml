@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [master, main]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: read
 
@@ -27,15 +30,34 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
+          cache-dependency-path: |
+            pnpm-lock.yaml
+            pixu-dev-resume/pnpm-lock.yaml
+
+      - name: Resolve project directory
+        id: project
+        run: |
+          if [ -f pnpm-lock.yaml ] && [ -f package.json ]; then
+            echo "dir=." >> "$GITHUB_OUTPUT"
+          elif [ -f pixu-dev-resume/pnpm-lock.yaml ] && [ -f pixu-dev-resume/package.json ]; then
+            echo "dir=pixu-dev-resume" >> "$GITHUB_OUTPUT"
+          else
+            echo "Unable to locate project root containing package.json and pnpm-lock.yaml"
+            exit 1
+          fi
 
       - name: Install dependencies
+        working-directory: ${{ steps.project.outputs.dir }}
         run: pnpm install --frozen-lockfile
 
       - name: Build site
+        working-directory: ${{ steps.project.outputs.dir }}
         run: pnpm build
 
       - name: Install Playwright browsers
+        working-directory: ${{ steps.project.outputs.dir }}
         run: pnpm exec playwright install --with-deps
 
       - name: Run end-to-end tests
+        working-directory: ${{ steps.project.outputs.dir }}
         run: pnpm test

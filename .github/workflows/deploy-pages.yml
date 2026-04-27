@@ -1,9 +1,14 @@
 name: Deploy Pages
 
 on:
-  push:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
     branches: [master, main]
   workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 permissions:
   contents: read
@@ -16,11 +21,14 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' && (github.event.workflow_run.head_branch == 'main' || github.event.workflow_run.head_branch == 'master'))
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -35,26 +43,46 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
+          cache-dependency-path: |
+            pnpm-lock.yaml
+            pixu-dev-resume/pnpm-lock.yaml
+
+      - name: Resolve project directory
+        id: project
+        run: |
+          if [ -f pnpm-lock.yaml ] && [ -f package.json ]; then
+            echo "dir=." >> "$GITHUB_OUTPUT"
+          elif [ -f pixu-dev-resume/pnpm-lock.yaml ] && [ -f pixu-dev-resume/package.json ]; then
+            echo "dir=pixu-dev-resume" >> "$GITHUB_OUTPUT"
+          else
+            echo "Unable to locate project root containing package.json and pnpm-lock.yaml"
+            exit 1
+          fi
 
       - name: Install dependencies
+        working-directory: ${{ steps.project.outputs.dir }}
         run: pnpm install --frozen-lockfile
 
       - name: Build site
+        working-directory: ${{ steps.project.outputs.dir }}
         run: pnpm build
 
       - name: Install Playwright browsers
+        working-directory: ${{ steps.project.outputs.dir }}
         run: pnpm exec playwright install --with-deps
 
       - name: Run end-to-end tests
+        working-directory: ${{ steps.project.outputs.dir }}
         run: pnpm test
 
       - name: Disable Jekyll processing
+        working-directory: ${{ steps.project.outputs.dir }}
         run: touch dist/.nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: ${{ steps.project.outputs.dir }}/dist
 
   deploy:
     needs: build
