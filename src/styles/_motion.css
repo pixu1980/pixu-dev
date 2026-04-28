@@ -71,6 +71,23 @@
       transform: translateY(0);
       animation: none;
     }
+
+    html[data-reveal-ready="true"]
+      [data-section="talks-speaking"]
+      :where([data-speaker-panel], [data-talk]:first-child) {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+
+  html[data-reveal-ready="true"]
+    [data-section="talks-speaking"]
+    :where([data-speaker-panel], [data-talk]:first-child) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
   }
 
   [data-hero-copy] {

@@ -67,6 +67,7 @@
     --shell-max: calc(var(--max) + var(--rail-width) + var(--shell-gap));
     --gutter: 1rem;
     --header-height: 4.5rem;
+    --header-control-size: 3.25rem;
     --step-0: var(--type-0);
     --step-1: var(--type-1);
     --step-2: var(--type-2);

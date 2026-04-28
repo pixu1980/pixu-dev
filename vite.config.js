@@ -3,15 +3,21 @@ import { tmpdir } from "node:os";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
-import { DIST, buildSite } from "./scripts/build.js";
+import { DIST, buildSite, getCliBuildOptions } from "./scripts/build.js";
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const BUILD_OUTPUT = join(DIST, ".vite-build");
 const WATCHED_ROOTS = [join(ROOT, "content"), join(ROOT, "src"), join(ROOT, "static")];
 const shouldBuildSite = !process.argv.includes("preview");
+const cliBuildOptions = getCliBuildOptions();
+const isProductionBuild = process.argv.includes("build");
 
 if (shouldBuildSite) {
-  await buildSite({ outDir: DIST, publicDir: DIST });
+  await buildSite({
+    outDir: DIST,
+    publicDir: DIST,
+    interactions: isProductionBuild ? cliBuildOptions.interactions : { enabled: false },
+  });
 }
 
 async function copyIfExists(source, target) {
@@ -34,7 +40,7 @@ function resumeGenerator() {
   let rebuildTimer;
 
   async function rebuild(server) {
-    await buildSite({ outDir: DIST, publicDir: DIST });
+    await buildSite({ outDir: DIST, publicDir: DIST, interactions: { enabled: false } });
     server.ws.send({ type: "full-reload" });
   }
 

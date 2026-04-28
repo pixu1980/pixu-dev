@@ -1,9 +1,14 @@
 @layer components {
   color-scheme-selector {
+    --selector-item-size: calc(var(--header-control-size) - (var(--space-1) * 2) - 2px);
+
+    box-sizing: border-box;
     display: inline-flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: var(--space-1);
     align-items: center;
+    block-size: var(--header-control-size);
+    min-block-size: var(--header-control-size);
     padding: var(--space-1);
     border: 1px solid var(--line);
     border-radius: var(--radius-2);
@@ -18,8 +23,8 @@
       position: relative;
       display: grid;
       place-items: center;
-      inline-size: 2.4rem;
-      block-size: 2.4rem;
+      inline-size: var(--selector-item-size);
+      block-size: var(--selector-item-size);
       border-radius: var(--radius-1);
       color: var(--ink-muted);
       cursor: pointer;

@@ -2,7 +2,7 @@ import { tokenize } from "../github/_shared.js";
 import { isTalkRepo } from "../github/_stats.js";
 import { normalizeWhitespace, slugify, toArray } from "../_text.js";
 
-function normalizeTalkRepoMap(talkRepoMap) {
+export function normalizeTalkRepoMap(talkRepoMap) {
   return toArray(talkRepoMap)
     .map((item) => ({
       session: normalizeWhitespace(item?.session || item?.talk || item?.title),
@@ -15,11 +15,12 @@ function normalizeTalkRepoMap(talkRepoMap) {
     .filter((item) => item.repoName || item.repoUrl);
 }
 
-function getManualRelatedRepos(talk, repos, talkRepoMap) {
+export function findTalkRepoMapItem(talk, talkRepoMap) {
   const normalizedTitle = normalizeWhitespace(talk.title).toLowerCase();
   const normalizedId = normalizeWhitespace(talk.id).toLowerCase();
   const normalizedUrl = normalizeWhitespace(talk.url).toLowerCase();
-  const mapItem = normalizeTalkRepoMap(talkRepoMap).find((item) => {
+
+  return normalizeTalkRepoMap(talkRepoMap).find((item) => {
     const session = item.session.toLowerCase();
     const sessionId = item.sessionId.toLowerCase();
     const sessionUrl = item.sessionUrl.toLowerCase();
@@ -29,6 +30,10 @@ function getManualRelatedRepos(talk, repos, talkRepoMap) {
       (sessionUrl && normalizedUrl?.includes(sessionUrl))
     );
   });
+}
+
+export function getManualRelatedRepos(talk, repos, talkRepoMap) {
+  const mapItem = findTalkRepoMapItem(talk, talkRepoMap);
   if (!mapItem) return null;
 
   const repo = repos.find(
@@ -67,54 +72,56 @@ function getManualRelatedRepos(talk, repos, talkRepoMap) {
   return null;
 }
 
-export function linkTalksToRepos(talks, repos, talkRepoMap = []) {
+export function rankTalkRepoCandidates(talk, repos) {
   const indexedRepos = repos.map((repo) => ({
     repo,
     tokens: new Set(tokenize([repo.name, repo.description, repo.language, ...repo.tags].join(" "))),
   }));
+  const talkTokens = new Set(tokenize([talk.title, talk.abstract, talk.technicalLevel].join(" ")));
+  const talkSlug = slugify(talk.title);
 
+  return indexedRepos
+    .map(({ repo, tokens }) => {
+      let score = 0;
+      const repoSlug = slugify(repo.name.replace(/^talk-/i, ""));
+      if (repoSlug === talkSlug) score += 80;
+      if (repoSlug && talkSlug.includes(repoSlug)) score += 48;
+      if (talkSlug && repoSlug.includes(talkSlug)) score += 48;
+      talkTokens.forEach((token) => {
+        if (tokens.has(token)) score += token === repo.name.toLowerCase() ? 6 : 2;
+        if (repo.name.toLowerCase().includes(token)) score += 3;
+      });
+      if (isTalkRepo(repo)) score += 8;
+      if (/css/i.test(talk.title) && /scss|css/i.test(repo.name + repo.description)) score += 4;
+      if (
+        /reactive|signals|custom|vanilla/i.test(talk.title) &&
+        /js|javascript|web/i.test(repo.language)
+      )
+        score += 3;
+      if (
+        /access|wcag|a11y/i.test(talk.title + talk.abstract) &&
+        /wcag|a11y|access/i.test(repo.name + repo.description + repo.tags.join(" "))
+      )
+        score += 5;
+      return { repo, score };
+    })
+    .filter((entry) => entry.score > 2)
+    .sort(
+      (left, right) =>
+        Number(isTalkRepo(right.repo)) - Number(isTalkRepo(left.repo)) ||
+        right.score - left.score ||
+        right.repo.stars - left.repo.stars,
+    );
+}
+
+export function linkTalksToRepos(talks, repos, talkRepoMap = []) {
   return talks.map((talk) => {
     const manualRelatedRepos = getManualRelatedRepos(talk, repos, talkRepoMap);
     if (manualRelatedRepos?.length) {
       return { ...talk, relatedRepos: manualRelatedRepos };
     }
 
-    const talkTokens = new Set(
-      tokenize([talk.title, talk.abstract, talk.technicalLevel].join(" ")),
-    );
-    const talkSlug = slugify(talk.title);
-    const relatedRepos = indexedRepos
-      .map(({ repo, tokens }) => {
-        let score = 0;
-        const repoSlug = slugify(repo.name.replace(/^talk-/i, ""));
-        if (repoSlug === talkSlug) score += 80;
-        if (repoSlug && talkSlug.includes(repoSlug)) score += 48;
-        if (talkSlug && repoSlug.includes(talkSlug)) score += 48;
-        talkTokens.forEach((token) => {
-          if (tokens.has(token)) score += token === repo.name.toLowerCase() ? 6 : 2;
-          if (repo.name.toLowerCase().includes(token)) score += 3;
-        });
-        if (isTalkRepo(repo)) score += 8;
-        if (/css/i.test(talk.title) && /scss|css/i.test(repo.name + repo.description)) score += 4;
-        if (
-          /reactive|signals|custom|vanilla/i.test(talk.title) &&
-          /js|javascript|web/i.test(repo.language)
-        )
-          score += 3;
-        if (
-          /access|wcag|a11y/i.test(talk.title + talk.abstract) &&
-          /wcag|a11y|access/i.test(repo.name + repo.description + repo.tags.join(" "))
-        )
-          score += 5;
-        return { repo, score };
-      })
-      .filter((entry) => entry.score > 2)
-      .sort(
-        (left, right) =>
-          Number(isTalkRepo(right.repo)) - Number(isTalkRepo(left.repo)) ||
-          right.score - left.score ||
-          right.repo.stars - left.repo.stars,
-      )
+    const relatedRepos = rankTalkRepoCandidates(talk, repos)
       .slice(0, 3)
       .map((entry) => ({
         name: entry.repo.name,

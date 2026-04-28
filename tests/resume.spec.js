@@ -187,6 +187,16 @@ test.describe("resume page", () => {
     await expect(page.locator("html")).toHaveAttribute("data-color-scheme", "dark");
   });
 
+  test("desktop header controls share one visual height", async ({ page, isMobile }) => {
+    test.skip(!!isMobile, "desktop contract");
+
+    const heights = await page
+      .locator("[data-header-tools] > *")
+      .evaluateAll((items) => items.map((item) => Math.round(item.getBoundingClientRect().height)));
+
+    expect(new Set(heights).size).toBe(1);
+  });
+
   test("Contact link in header scrolls to contact panel", async ({ page, isMobile }) => {
     test.skip(!!isMobile, "desktop contract - scroll behavior differs on mobile");
 
@@ -215,6 +225,31 @@ test.describe("resume page", () => {
     await speakingSection.scrollIntoViewIfNeeded();
     await expect(speakingSection).toHaveAttribute("data-visible", "true");
     await expect(speakingSection.locator("[data-event-strip]")).toHaveAttribute("data-reveal", "");
+  });
+
+  test("public speaking lead content is readable at section entry", async ({ page, isMobile }) => {
+    test.skip(!!isMobile, "desktop contract");
+
+    await page.locator('[data-nav-link][href="#talks-speaking"]').click();
+    await expect(page.locator('[data-nav-link][href="#talks-speaking"]')).toHaveAttribute(
+      "aria-current",
+      "",
+    );
+
+    const speakerOpacity = Number(
+      await page
+        .locator('[data-section="talks-speaking"] [data-speaker-panel]')
+        .evaluate((node) => getComputedStyle(node).opacity),
+    );
+    const firstTalkOpacity = Number(
+      await page
+        .locator('[data-section="talks-speaking"] [data-talk]')
+        .first()
+        .evaluate((node) => getComputedStyle(node).opacity),
+    );
+
+    expect(speakerOpacity).toBeGreaterThanOrEqual(0.97);
+    expect(firstTalkOpacity).toBeGreaterThanOrEqual(0.99);
   });
 
   test("desktop layout stays inside viewport and active nav follows scroll", async ({

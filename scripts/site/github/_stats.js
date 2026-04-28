@@ -1,11 +1,22 @@
-import { toArray, toNumber } from "../_text.js";
+import { normalizeWhitespace, toArray, toNumber } from "../_text.js";
 
 export function isTalkRepo(repo) {
   return /^talk-/i.test(repo?.name || "");
 }
 
-export function getPortfolioRepos(repos) {
-  return toArray(repos).filter((repo) => !isTalkRepo(repo));
+function getPublishedRepoNames(publishedRepos) {
+  return toArray(publishedRepos)
+    .map((name) => normalizeWhitespace(name).toLowerCase())
+    .filter(Boolean);
+}
+
+export function getPortfolioRepos(repos, publishedRepos) {
+  const portfolioRepos = toArray(repos).filter((repo) => !isTalkRepo(repo));
+
+  if (!Array.isArray(publishedRepos)) return portfolioRepos;
+
+  const selectedNames = new Set(getPublishedRepoNames(publishedRepos));
+  return portfolioRepos.filter((repo) => selectedNames.has(repo.name.toLowerCase()));
 }
 
 export function getTalkRepos(repos) {
@@ -56,8 +67,8 @@ export function buildGitHubStats(repos, profilePublicRepos = repos.length) {
   };
 }
 
-export function buildGitHubCollections(repos) {
-  const portfolioRepos = getPortfolioRepos(repos);
+export function buildGitHubCollections(repos, config = {}) {
+  const portfolioRepos = getPortfolioRepos(repos, config.publishedRepos);
   const talkRepos = getTalkRepos(repos);
 
   return {

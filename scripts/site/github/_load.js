@@ -75,7 +75,7 @@ export async function loadGitHubData(config, fallback) {
     languages: buildLanguageStats(fallbackRepos),
     topics: buildTopicStats(fallbackRepos),
     repos: fallbackRepos,
-    ...buildGitHubCollections(fallbackRepos),
+    ...buildGitHubCollections(fallbackRepos, config),
   };
 
   if (!username) {
@@ -107,7 +107,7 @@ export async function loadGitHubData(config, fallback) {
       languages: buildLanguageStats(repos),
       topics: buildTopicStats(repos),
       repos,
-      ...buildGitHubCollections(repos),
+      ...buildGitHubCollections(repos, config),
     };
   } catch (error) {
     console.warn(`GitHub sync fallback: ${error?.message || "unknown error"}`);

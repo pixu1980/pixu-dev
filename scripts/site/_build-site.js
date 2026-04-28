@@ -27,24 +27,49 @@ import { copyAssets, localizeProfileImage, ensureDir } from "./output/index.js";
 
 import { CONTENT, DIST, SRC } from "./_constants.js";
 import { getPreferredProfileImage } from "./_profile-image.js";
+import { runBuildInteractions } from "./build-interactions.js";
+import { closePrompt } from "./_prompt.js";
 
 export async function buildSite(options = {}) {
   const startedAt = performance.now();
+  const interactionOptions = options.interactions || {};
   const outputRoot = options.outDir || DIST;
   const publicRoot = options.publicDir || outputRoot;
-  const markdown = await readFile(join(CONTENT, "resume.md"), "utf8");
-  const { data: frontmatter, content } = matter(markdown);
+  const resumePath = join(CONTENT, "resume.md");
+  const markdown = await readFile(resumePath, "utf8");
+  let { data: frontmatter, content } = matter(markdown);
   const parsedSections = buildSections(content);
   const derivedFallbacks = buildMarkdownDerivedFallbacks(parsedSections);
   const sections = mergeSectionsForRender(parsedSections);
   const githubUsername = getGitHubUsername(frontmatter.sourceConfig?.github);
   const linkedinFallback = buildLinkedInFallback(frontmatter, githubUsername, derivedFallbacks);
 
-  const [github, sessionizeRaw, linkedin] = await Promise.all([
+  let [github, sessionizeRaw] = await Promise.all([
     loadGitHubData(frontmatter.sourceConfig?.github, frontmatter.fallbacks?.github),
     loadSessionizeData(frontmatter.sourceConfig?.sessionize, frontmatter.fallbacks?.sessionize),
-    loadLinkedInData(frontmatter.sourceConfig?.linkedin, linkedinFallback),
   ]);
+
+  const linkedin = await loadLinkedInData(frontmatter.sourceConfig?.linkedin, linkedinFallback, {
+    browser: interactionOptions.linkedinBrowser,
+  });
+
+  try {
+    const interactionResult = await runBuildInteractions({
+      frontmatter,
+      content,
+      github,
+      sessionizeRaw,
+      path: resumePath,
+      options: interactionOptions,
+    });
+
+    frontmatter = interactionResult.frontmatter;
+    github = interactionResult.github;
+  } finally {
+    if (interactionOptions.enabled) {
+      closePrompt();
+    }
+  }
 
   const sessionize = {
     ...sessionizeRaw,

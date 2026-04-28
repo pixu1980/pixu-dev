@@ -1,5 +1,7 @@
 import { fetchText } from "../_fetch.js";
+import { canPrompt, promptYesNo } from "../_prompt.js";
 import { toArray, uniqueBy } from "../_text.js";
+import { fetchLinkedInProfileHtmlWithBrowser } from "./_browser.js";
 import { isPlaceholderProfileImage, parseLinkedInProfile } from "./_parse.js";
 
 async function fetchLinkedInProfileHtml(config) {
@@ -23,7 +25,27 @@ async function fetchLinkedInProfileHtml(config) {
   throw lastError;
 }
 
-export async function loadLinkedInData(config, fallback) {
+async function fetchLinkedInProfileHtmlWithOptionalBrowser(config, options = {}) {
+  if (options.browser?.enabled || options.browser?.confirm) {
+    const shouldUseBrowser =
+      options.browser.enabled ||
+      (canPrompt(options.browser) &&
+        (await promptYesNo(
+          "Open LinkedIn in Playwright before scraping?",
+          false,
+          options.browser,
+        )));
+
+    if (shouldUseBrowser) {
+      const html = await fetchLinkedInProfileHtmlWithBrowser(config, options.browser);
+      if (html) return html;
+    }
+  }
+
+  return fetchLinkedInProfileHtml(config);
+}
+
+export async function loadLinkedInData(config, fallback, options = {}) {
   const base = {
     label: "LinkedIn",
     status: "fallback",
@@ -44,7 +66,7 @@ export async function loadLinkedInData(config, fallback) {
   if (!config?.enabled || !config?.profile) return base;
 
   try {
-    const response = await fetchLinkedInProfileHtml(config);
+    const response = await fetchLinkedInProfileHtmlWithOptionalBrowser(config, options);
     const parsed = parseLinkedInProfile(response, fallback);
 
     return {
