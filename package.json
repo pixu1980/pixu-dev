@@ -1,6 +1,6 @@
 {
   "name": "pixu-dev-resume",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Static resume for Emiliano Pisu, built from Markdown and live public profile data.",
   "type": "module",
   "license": "MIT",
