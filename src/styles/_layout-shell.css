@@ -48,13 +48,13 @@
   }
 
   :where(
-      [data-nav-toggle],
-      [data-header-action],
-      [data-action],
-      [data-link],
-      [data-chip],
-      [data-related-repo]
-    ) {
+    [data-nav-toggle],
+    [data-header-action],
+    [data-action],
+    [data-link],
+    [data-chip],
+    [data-related-repo]
+  ) {
     display: inline-flex;
     align-items: center;
     justify-content: center;

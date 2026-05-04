@@ -42,12 +42,12 @@
   }
 
   :where(
-      [data-about-panels],
-      [data-skill-grid],
-      [data-repo-grid],
-      [data-talk-grid],
-      [data-timeline]
-    ) {
+    [data-about-panels],
+    [data-skill-grid],
+    [data-repo-grid],
+    [data-talk-grid],
+    [data-timeline]
+  ) {
     display: grid;
     gap: 0.85rem;
   }
@@ -90,13 +90,13 @@
   }
 
   :where(
-      [data-timeline-item] h3,
-      [data-timeline-item] p,
-      [data-repo] h3,
-      [data-repo] p,
-      [data-talk] h3,
-      [data-talk] p
-    ) {
+    [data-timeline-item] h3,
+    [data-timeline-item] p,
+    [data-repo] h3,
+    [data-repo] p,
+    [data-talk] h3,
+    [data-talk] p
+  ) {
     margin-block: 0 0.55rem;
   }
 }

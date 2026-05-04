@@ -1,11 +1,11 @@
 @layer motion {
   :where(
-      [data-action],
-      [data-link],
-      [data-related-repo],
-      [data-nav-toggle],
-      [data-header-action]
-    ):where(:hover, :focus-visible) {
+    [data-action],
+    [data-link],
+    [data-related-repo],
+    [data-nav-toggle],
+    [data-header-action]
+  ):where(:hover, :focus-visible) {
     transform: translateY(-2px);
     border-color: var(--accent);
     background: color-mix(in srgb, var(--accent) 14%, transparent);

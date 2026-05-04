@@ -1,36 +1,117 @@
 ---
 name: Emiliano Pisu
-title: Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor
-location: Rome, Italy
+title: "Senior Frontend Engineer ✨ AI Product Engineer \U0001F3A8 Design Engineer ♿️ Accessibility WCAG Advocate \U0001F3A4 Speaker \U0001F468\U0001F3FB‍\U0001F3EB Mentor"
+location: 'Rome, Italy'
 email: pisuemiliano.1980 @ gmail.com
-phone: "+39 366 258 0888"
+phone: +39 366 258 0888
 motto: Make learning a habit.
-summary: Design engineer, frontend lead, mentor, and speaker translating visual ambition into resilient interfaces, scalable systems, and accessible product experiences.
+summary: >-
+  Design engineer, frontend lead, mentor, and speaker translating visual
+  ambition into resilient interfaces, scalable systems, and accessible product
+  experiences.
 sourceConfig:
   github:
-    profile: https://github.com/pixu1980
-    api: https://api.github.com/users/pixu1980/repos?sort=updated&per_page=100&type=owner
+    profile: 'https://github.com/pixu1980'
+    api: >-
+      https://api.github.com/users/pixu1980/repos?sort=updated&per_page=100&type=owner
     featured:
       - dout-dev
       - detector-js
       - flavor-js
       - flavor-scss
+    publishedRepos:
+      - dout-dev
+      - detector-js
+      - reactive-apps-without-frameworks-demo
+      - pkg-2-readme
+      - pix-galaxy
+      - pixu-dev
   sessionize:
-    profile: https://sessionize.com/pixu1980/
+    profile: 'https://sessionize.com/pixu1980/'
     preferredLanguage: en
     talkRepoMap:
       - session: Reactive Apps without Frameworks
         repoName: flavor-js
       - session: Back to CSS
-        repoUrl: https://github.com/pixu1980/flavor-scss
+        repoUrl: 'https://github.com/pixu1980/flavor-scss'
+      - session: (class)less is more
+        sessionId: '110137'
+        sessionUrl: 'https://sessionize.com/s/pixu1980/classless-is-more/110137'
+        repoName: talk-classless-is-more
+      - session: 'Accessible Web: combining WCAG, WAI-ARIA, and Semantics'
+        sessionId: '128446'
+        sessionUrl: >-
+          https://sessionize.com/s/pixu1980/accessible-web-combining-wcag-wai-aria-and-semanti/128446
+        repoName: talk-accessible-design-systems-with-css-apis
+      - session: AIDD from Spec to App
+        sessionId: '164020'
+        sessionUrl: 'https://sessionize.com/s/pixu1980/aidd-from-spec-to-app/164020'
+        repoName: talk-accessible-design-systems-with-css-apis
+      - session: 'Baseline Rhapsody: A tale of Style & Motion'
+        sessionId: '131786'
+        sessionUrl: >-
+          https://sessionize.com/s/pixu1980/baseline-rhapsody-a-tale-of-style-motion/131786
+        repoName: talk-baseline-rhapsody
+      - session: Building an Accessible Design System with the CSS APIs Approach
+        sessionId: '131772'
+        sessionUrl: >-
+          https://sessionize.com/s/pixu1980/building-an-accessible-design-system-with-the-css-/131772
+        repoName: talk-accessible-design-systems-with-css-apis
+      - session: CSS Superpowers with Layers
+        sessionId: '107833'
+        sessionUrl: 'https://sessionize.com/s/pixu1980/css-superpowers-with-layers/107833'
+        repoName: talk-css-superpowers
+      - session: >-
+          customElements & beyond: a lean way to build reactive apps in
+          vanillaJS
+        sessionId: '149730'
+        sessionUrl: >-
+          https://sessionize.com/s/pixu1980/customelements-beyond-a-lean-way-to-build-reactive/149730
+        repoName: talk-custom-elements-and-beyond
+      - session: dout.dev - how to build a vanilla CMS
+        sessionId: '170941'
+        sessionUrl: >-
+          https://sessionize.com/s/pixu1980/dout.dev-how-to-build-a-vanilla-cms/170941
+        repoName: talk-accessible-design-systems-with-css-apis
+      - session: 'Kinetic CSS, a deep dive into modern Motion APIs'
+        sessionId: '151714'
+        sessionUrl: >-
+          https://sessionize.com/s/pixu1980/kinetic-css-a-deep-dive-into-modern-motion-apis/151714
+        repoName: talk-kinetic-css
+      - session: >-
+          Modern CSS Architecture (Accessible Design Systems combining Semantic
+          HTML, @layer and --*)
+        sessionId: '136460'
+        sessionUrl: >-
+          https://sessionize.com/s/pixu1980/modern-css-architecture-accessible-design-systems-/136460
+        repoName: talk-modern-css-architecture
+      - session: The Lean Web Manifesto
+        sessionId: '130631'
+        sessionUrl: 'https://sessionize.com/s/pixu1980/the-lean-web-manifesto/130631'
+        repoName: talk-lean-web-manifesto
+      - session: >-
+          wcagUI - one year after (accessible components, real bugs and
+          maintainer life)
+        sessionId: '159197'
+        sessionUrl: >-
+          https://sessionize.com/s/pixu1980/wcagui-one-year-after-accessible-components-real-b/159197
+        repoName: talk-introducing-wcag-ui
+      - session: 'wcagUI, an accessible UI kit based on WCAG patterns'
+        sessionId: '110136'
+        sessionUrl: >-
+          https://sessionize.com/s/pixu1980/wcagui-an-accessible-ui-kit-based-on-wcag-patterns/110136
+        repoName: talk-introducing-wcag-ui
   linkedin:
-    profile: https://linkedin.com/in/pixu1980/
+    profile: 'https://linkedin.com/in/pixu1980/'
     enabled: true
     cookieEnv: LINKEDIN_COOKIE_LI_AT
 fallbacks:
   linkedin:
-    headline: Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor
-    summary: Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction.
+    headline: "Senior Frontend Engineer ✨ AI Product Engineer \U0001F3A8 Design Engineer ♿️ Accessibility WCAG Advocate \U0001F3A4 Speaker \U0001F468\U0001F3FB‍\U0001F3EB Mentor"
+    summary: >-
+      Design engineer, mentor, and conference speaker focused on accessible
+      interfaces, native web architectures, and teaching teams how to ship with
+      less friction.
     focus:
       - Design engineering
       - Accessibility systems
@@ -39,40 +120,50 @@ fallbacks:
   github:
     repos:
       - name: dout-dev
-        description: Notes, experiments, and implementation reports about frontend craft, CSS systems, and resilient UI engineering.
-        url: https://github.com/pixu1980/dout-dev
-        homepage: https://dout.dev
+        description: >-
+          Notes, experiments, and implementation reports about frontend craft,
+          CSS systems, and resilient UI engineering.
+        url: 'https://github.com/pixu1980/dout-dev'
+        homepage: 'https://dout.dev'
         language: HTML
         tags:
           - frontend
           - writing
       - name: detector-js
-        description: Zero-dependency platform and environment detector written in modern JavaScript.
-        url: https://github.com/pixu1980/detector-js
-        homepage: https://detector.js.org
+        description: >-
+          Zero-dependency platform and environment detector written in modern
+          JavaScript.
+        url: 'https://github.com/pixu1980/detector-js'
+        homepage: 'https://detector.js.org'
         language: JavaScript
         tags:
           - zero-dependency
           - platform detection
       - name: flavor-js
-        description: Chainable native-extension helpers designed to stay small, explicit, and dependency-free.
-        url: https://github.com/pixu1980/flavor-js
-        homepage: https://flavor.js.org
+        description: >-
+          Chainable native-extension helpers designed to stay small, explicit,
+          and dependency-free.
+        url: 'https://github.com/pixu1980/flavor-js'
+        homepage: 'https://flavor.js.org'
         language: JavaScript
         tags:
           - utilities
           - native APIs
       - name: flavor-scss
-        description: Advanced Sass helpers and grid utilities with typing support and a design-system mindset.
-        url: https://github.com/pixu1980/flavor-scss
-        homepage: https://pixu1980.github.io/flavor-scss/
+        description: >-
+          Advanced Sass helpers and grid utilities with typing support and a
+          design-system mindset.
+        url: 'https://github.com/pixu1980/flavor-scss'
+        homepage: 'https://pixu1980.github.io/flavor-scss/'
         language: SCSS
         tags:
           - design systems
           - tooling
   sessionize:
-    speakerHeadline: Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate
-    summary: Public talks and workshops focused on accessible design systems, lean frontend architecture, and the native capabilities of the web platform.
+    speakerHeadline: "Senior Frontend Engineer ✨ AI Product Engineer \U0001F3A8 Design Engineer ♿️ Accessibility WCAG Advocate"
+    summary: >-
+      Public talks and workshops focused on accessible design systems, lean
+      frontend architecture, and the native capabilities of the web platform.
     topics:
       - Design systems
       - Accessibility
@@ -81,69 +172,83 @@ fallbacks:
       - Progressive enhancement
     talks:
       - title: Reactive Apps without Frameworks
-        abstract: Vanilla JS signals, DOM-first rendering, and template literals without framework lock-in.
+        abstract: >-
+          Vanilla JS signals, DOM-first rendering, and template literals without
+          framework lock-in.
         format: Talk
         languages:
           - EN
       - title: Back to CSS
-        abstract: CSS logic with typed attr(), if(), and native styling APIs as product tooling.
+        abstract: >-
+          CSS logic with typed attr(), if(), and native styling APIs as product
+          tooling.
         format: Talk
         languages:
           - EN
-      - title: "Baseline Rhapsody: A Tale of Style and Motion"
-        abstract: CSS, motion APIs, and Baseline-ready frontend delivery for teams that care about craft and durability.
+      - title: 'Baseline Rhapsody: A Tale of Style and Motion'
+        abstract: >-
+          CSS, motion APIs, and Baseline-ready frontend delivery for teams that
+          care about craft and durability.
         format: Talk
         languages:
           - EN
-      - title: "A11y Agency: Not All Heroes Wear Capes"
-        abstract: Accessibility as a product discipline rather than a compliance checkbox.
+      - title: 'A11y Agency: Not All Heroes Wear Capes'
+        abstract: >-
+          Accessibility as a product discipline rather than a compliance
+          checkbox.
         format: Talk
         languages:
           - EN
       - title: Building an Accessible Design System with the CSS APIs Approach
-        abstract: Design systems powered by CSS Custom Properties, layers, and progressive enhancement.
+        abstract: >-
+          Design systems powered by CSS Custom Properties, layers, and
+          progressive enhancement.
         format: Talk
         languages:
           - EN
       - title: The Lean Web Manifesto
-        abstract: Native browser capabilities over cargo-cult stacks and hidden operational costs.
+        abstract: >-
+          Native browser capabilities over cargo-cult stacks and hidden
+          operational costs.
         format: Talk
         languages:
           - EN
     events:
       - name: jsday 2026
         when: April 2026
-        where: Bologna, Italy
+        where: 'Bologna, Italy'
       - name: DevFest Bari 2025
         when: November 2025
-        where: Bari, Italy
+        where: 'Bari, Italy'
       - name: NGRome
         when: June 2025
-        where: Rome, Italy
+        where: 'Rome, Italy'
       - name: CSSDay 2025
         when: March 2025
-        where: Faenza, Italy
+        where: 'Faenza, Italy'
       - name: RomaJS Special Edition
         when: February 2025
-        where: Rome, Italy
+        where: 'Rome, Italy'
 availability:
-  headline: Available for design engineering leadership, speaking, and mentoring.
-  summary: If the work needs strong UI architecture, accessible interaction design, or a durable bridge between design and implementation, let's talk.
+  headline: 'Available for design engineering leadership, speaking, and mentoring.'
+  summary: >-
+    If the work needs strong UI architecture, accessible interaction design, or
+    a durable bridge between design and implementation, let's talk.
 links:
   - label: LinkedIn
-    url: https://linkedin.com/in/pixu1980/
+    url: 'https://linkedin.com/in/pixu1980/'
     icon: linkedin
   - label: GitHub
-    url: https://github.com/pixu1980
+    url: 'https://github.com/pixu1980'
     icon: github
   - label: Sessionize
-    url: https://sessionize.com/pixu1980/
+    url: 'https://sessionize.com/pixu1980/'
   - label: DevDojoIT
-    url: https://devdojo.it/
+    url: 'https://devdojo.it/'
   - label: Blog
-    url: https://dout.dev
+    url: 'https://dout.dev'
   - label: Mastodon
-    url: https://mastodon.uno/@pixu1980
+    url: 'https://mastodon.uno/@pixu1980'
 metrics:
   - value: 28+
     label: years shipping software
@@ -153,10 +258,10 @@ metrics:
     note: Sessionize catalog plus community events
   - value: 0 deps
     label: default architectural bias
-    note: Native web first, dependencies by exception
+    note: 'Native web first, dependencies by exception'
   - value: 3x
     label: core tracks
-    note: Design engineering, accessibility, mentoring
+    note: 'Design engineering, accessibility, mentoring'
 ---
 
 ## About

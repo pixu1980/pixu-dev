@@ -38,23 +38,23 @@
     "start": "pnpm dev",
     "test": "playwright test",
     "test:e2e": "playwright test",
-    "rel:major": "pnpm build && pnpm version major --message \"chore(release): v%s\" && git push && git push --tags",
-    "rel:minor": "pnpm build && pnpm version minor --message \"chore(release): v%s\" && git push && git push --tags",
-    "rel:patch": "pnpm build && pnpm version patch --message \"chore(release): v%s\" && git push && git push --tags"
+    "rel:major": "pnpm build:interactive && pnpm version major --message \"chore(release): v%s\" && git push && git push --tags",
+    "rel:minor": "pnpm build:interactive && pnpm version minor --message \"chore(release): v%s\" && git push && git push --tags",
+    "rel:patch": "pnpm build:interactive && pnpm version patch --message \"chore(release): v%s\" && git push && git push --tags"
   },
   "engines": {
     "node": ">=22.0.0",
-    "pnpm": ">=10.33.2"
+    "pnpm": ">=11.0.4"
   },
-  "packageManager": "pnpm@10.33.2",
+  "packageManager": "pnpm@11.0.4",
   "devDependencies": {
-    "@biomejs/biome": "2.4.13",
+    "@biomejs/biome": "2.4.14",
     "@playwright/test": "1.59.1",
     "cheerio": "1.2.0",
     "gray-matter": "4.0.3",
     "husky": "9.1.7",
-    "jsdom": "29.1.0",
-    "marked": "18.0.2",
+    "jsdom": "29.1.1",
+    "marked": "18.0.3",
     "sharp": "0.34.5",
     "vite": "8.0.10"
   }
