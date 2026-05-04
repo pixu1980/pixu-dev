@@ -38,9 +38,9 @@
     "start": "pnpm dev",
     "test": "playwright test",
     "test:e2e": "playwright test",
-    "rel:major": "pnpm build:interactive && pnpm version major --message \"chore(release): v%s\" && git push && git push --tags",
-    "rel:minor": "pnpm build:interactive && pnpm version minor --message \"chore(release): v%s\" && git push && git push --tags",
-    "rel:patch": "pnpm build:interactive && pnpm version patch --message \"chore(release): v%s\" && git push && git push --tags"
+    "rel:major": "pnpm build:interactive && git add . && git commit --amend --no-edit && git push -f && pnpm version major --message \"chore(release): v%s\" && git push && git push --tags",
+    "rel:minor": "pnpm build:interactive && git add . && git commit --amend --no-edit && git push -f && pnpm version minor --message \"chore(release): v%s\" && git push && git push --tags",
+    "rel:patch": "pnpm build:interactive && git add . && git commit --amend --no-edit && git push -f && pnpm version patch --message \"chore(release): v%s\" && git push && git push --tags"
   },
   "engines": {
     "node": ">=22.0.0",

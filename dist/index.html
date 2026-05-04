@@ -1,0 +1,1459 @@
+<!DOCTYPE html><html lang="en" data-nav-state="closed" data-color-scheme="system" data-resolved-scheme="light"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Emiliano Pisu | Hi Folks 👋 I'm Emiliano Pisu, your friendly neighborhood Senior Frontend...</title>
+    <meta name="description" content="Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction.">
+    <meta property="og:title" content="Emiliano Pisu - Hi Folks 👋 I'm Emiliano Pisu, your friendly neighborhood Senior Frontend...">
+    <meta property="og:description" content="Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/assets/profile-DfLdhCpm.jpg">
+
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon-DC5YO61l.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-BY6_l7N2.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32-Gj7sifYj.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16-8aDHy1kE.png">
+    <link rel="mask-icon" href="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3e%3cpath%20fill='%23000000'%20d='M137.9%20124.37h25.26v-12.63h12.63V62.22h-24.25v11.62h-13.65ZM100%20174.89h12.63V73.84H100V61.21h12.63V48.58h25.26v12.63h12.64V48.58h37.9v12.63h12.62v50.53h-12.63v12.63h-12.63V137h-37.9v37.9h-12.63v12.63H100Z'%20/%3e%3cpath%20fill='%23000000'%20d='M185%2037h30v30h-30ZM85%20144h30v30H85Zm50-50h30v30h-30Z'%20/%3e%3cpath%20fill='%23000000'%20d='M19.5%20215h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm-18%209h9v9h-9Zm0%209h9v9h-9Zm36-36h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm-9%209h9v9h-9Zm0%209h9v9h-9Zm0%209h9v9h-9Zm-9%209h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm18-36h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-9%209h9v9h-9Zm-9%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm18-36h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Z'%20/%3e%3cpath%20fill='%23000000'%20d='M163.5%20251h9v9h-9Z'%20/%3e%3cpath%20fill='%23000000'%20d='M181.5%20215h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm18-36h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm-18%209h9v9h-9Zm0%209h9v9h-9Zm9%200h9v9h-9Zm-9%209h9v9h-9Zm0%209h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm18-36h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-9%209h9v9h-9Z'%20/%3e%3c/svg%3e" color="#663399">
+    <link rel="manifest" href="/assets/site-Bgc2KmfU.webmanifest">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f3e7">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#080a0f">
+    <script>
+      (() => {
+        try {
+          const schemeOptions = ["light", "dark", "system"];
+          const accentOptions = [
+            "sea-glass",
+            "sage-blush",
+            "peach-fuzz",
+            "lavender-mint",
+            "butter-plum",
+          ];
+          const media = window.matchMedia("(prefers-color-scheme: dark)");
+          const resolveScheme = (value) =>
+            value === "system" ? (media.matches ? "dark" : "light") : value;
+          const scheme = localStorage.getItem("pixu:color-scheme") || "system";
+          if (schemeOptions.includes(scheme)) {
+            const resolvedScheme = resolveScheme(scheme);
+            document.documentElement.dataset.colorScheme = scheme;
+            document.documentElement.dataset.resolvedScheme = resolvedScheme;
+            document.documentElement.style.colorScheme = resolvedScheme;
+          }
+          const accent = localStorage.getItem("pixu:accent-pair") || "sea-glass";
+          if (accentOptions.includes(accent)) {
+            document.documentElement.dataset.accent = accent;
+          }
+        } catch {}
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-j3g0ybVm.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-g0D9_Wcl.css">
+  </head>
+  <body>
+    <skip-link href="#main"></skip-link>
+    <scroll-progress></scroll-progress>
+    <pointer-glow></pointer-glow>
+
+    <header data-site-header="">
+  <a data-mark="" href="#top" aria-label="Emiliano Pisu home">
+    <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='300'%20height='300'%20aria-labelledby='title%20desc'%20viewBox='0%200%20300%20300'%3e%3cpath%20fill='%2352e0c4'%20d='M137.9%20124.37h25.26v-12.63h12.63V62.22h-24.25v11.62h-13.65ZM100%20174.89h12.63V73.84H100V61.21h12.63V48.58h25.26v12.63h12.64V48.58h37.9v12.63h12.62v50.53h-12.63v12.63h-12.63V137h-37.9v37.9h-12.63v12.63H100Z'%20/%3e%3cpath%20fill='%23639'%20d='M185%2037h30v30h-30ZM85%20144h30v30H85Zm50-50h30v30h-30Z'%20/%3e%3cpath%20fill='%230f172a'%20d='M19.5%20215h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm-18%209h9v9h-9Zm0%209h9v9h-9Zm36-36h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm-9%209h9v9h-9Zm0%209h9v9h-9Zm0%209h9v9h-9Zm-9%209h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm18-36h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-9%209h9v9h-9Zm-9%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm18-36h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Z'%20/%3e%3cpath%20fill='%2352e0c4'%20d='M163.5%20251h9v9h-9Z'%20/%3e%3cpath%20fill='%23639'%20d='M181.5%20215h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm18-36h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm-18%209h9v9h-9Zm0%209h9v9h-9Zm9%200h9v9h-9Zm-9%209h9v9h-9Zm0%209h9v9h-9Zm9%200h9v9h-9Zm9%200h9v9h-9Zm18-36h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-18%209h9v9h-9Zm18%200h9v9h-9Zm-9%209h9v9h-9Z'%20/%3e%3c/svg%3e" width="300" height="300" alt="" decoding="async">
+  </a>
+
+  <button data-nav-toggle="" type="button" aria-controls="site-nav" aria-expanded="false">
+    Menu
+  </button>
+
+  <div data-header-tools="">
+    <accent-color-selector></accent-color-selector>
+    <color-scheme-selector></color-scheme-selector>
+    <a data-header-action="" href="#contact">Contact</a>
+  </div>
+</header>
+
+
+    <div data-layout-shell="">
+      <aside data-site-rail="">
+        <nav id="site-nav" data-nav="" aria-label="Section navigation">
+  <ul data-nav-list="">
+    
+      <li><a href="#about" data-nav-link="">About</a></li>
+    
+      <li><a href="#experience" data-nav-link="">Experience</a></li>
+    
+      <li><a href="#skills" data-nav-link="">Skills</a></li>
+    
+      <li><a href="#projects" data-nav-link="">Portfolio</a></li>
+    
+      <li><a href="#talks-speaking" data-nav-link="">Public Speaking</a></li>
+    
+      <li><a href="#education" data-nav-link="">Education</a></li>
+    
+      <li><a href="#interests" data-nav-link="">Interests</a></li>
+    
+  </ul>
+</nav>
+
+      </aside>
+
+      <main id="main">
+        <section id="top" data-hero="" aria-labelledby="hero-title">
+  <div data-hero-copy="" data-reveal="">
+    <p data-kicker="">Rome, Italy</p>
+    <h1 id="hero-title">Emiliano Pisu</h1>
+    <p data-role="">Hi Folks 👋 I'm Emiliano Pisu, your friendly neighborhood Senior Frontend...</p>
+    <p data-motto="">Make learning a habit.</p>
+    <p data-summary="">Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction.</p>
+
+    <ul data-hero-meta="">
+      
+        <li>Rome, Italy</li>
+      
+        <li>30 public repos</li>
+      
+        <li>15 talks</li>
+      
+        <li>79 stars</li>
+      
+    </ul>
+
+    <div data-actions="">
+      
+        
+    <a data-action="" href="https://linkedin.com/in/pixu1980/" target="_blank" rel="noopener noreferrer">
+      LinkedIn
+    </a>
+  
+
+      
+        
+    <a data-action="" href="https://github.com/pixu1980" target="_blank" rel="noopener noreferrer">
+      GitHub
+    </a>
+  
+
+      
+        
+    <a data-action="" href="https://sessionize.com/pixu1980/" target="_blank" rel="noopener noreferrer">
+      Sessionize
+    </a>
+  
+
+      
+        
+    <a data-action="" href="https://devdojo.it/" target="_blank" rel="noopener noreferrer">
+      DevDojoIT
+    </a>
+  
+
+      
+        
+    <a data-action="" href="https://dout.dev" target="_blank" rel="noopener noreferrer">
+      Blog
+    </a>
+  
+
+      
+        
+    <a data-action="" href="https://mastodon.uno/@pixu1980" target="_blank" rel="noopener noreferrer">
+      Mastodon
+    </a>
+  
+
+      
+    </div>
+  </div>
+
+  <figure data-portrait="" data-reveal="">
+    <img src="/assets/profile-DfLdhCpm.jpg" alt="Emiliano Pisu profile portrait" loading="eager" decoding="async">
+    <figcaption>
+      <span>Emiliano Pisu</span>
+      <strong>Hi Folks 👋 I'm Emiliano Pisu, your friendly neighborhood Senior Frontend...</strong>
+    </figcaption>
+  </figure>
+
+  <aside data-signal-panel="" data-surface="lifted" data-reveal="">
+    <p data-kicker="">Live Data</p>
+    <div data-stat-grid="hero">
+      
+        <article data-stat="" data-surface="">
+  <strong>30</strong>
+  <span>GitHub repositories</span>
+  
+    <small>79 stars, 7 forks</small>
+  
+</article>
+
+      
+        <article data-stat="" data-surface="">
+  <strong>15</strong>
+  <span>Sessionize talks</span>
+  
+    <small>18 event appearances</small>
+  
+</article>
+
+      
+        <article data-stat="" data-surface="">
+  <strong>500+</strong>
+  <span>LinkedIn network</span>
+  
+    <small>4 experience entries</small>
+  
+</article>
+
+      
+    </div>
+
+    <ul data-source-status="">
+      
+        <li data-source-state="live">
+          <span>GitHub</span>
+          <strong>Live</strong>
+        </li>
+      
+        <li data-source-state="live">
+          <span>Sessionize</span>
+          <strong>Live</strong>
+        </li>
+      
+        <li data-source-state="live">
+          <span>LinkedIn</span>
+          <strong>Live</strong>
+        </li>
+      
+    </ul>
+  </aside>
+</section>
+
+        
+          <section id="about" data-section="about" aria-labelledby="about-title" data-reveal="">
+  <header data-section-header="">
+    <p data-kicker="">01</p>
+    <h2 id="about-title">About</h2>
+  </header>
+
+  
+      <div data-about-layout="">
+  <div data-about-story="" data-surface="accent" data-reveal=""><p>My mantra is: "Make learning a habit!"</p>
+<p>I started writing code in 1997 and never left the keyboard. My computer childhood is one of the most common for Gen X: a Commodore 64 at home at the tender age of 3, I learned to write with the keyboard before the pen, typing those few lines necessary to run Buck Rogers and Ghostbusters from cassette tapes.</p>
+<p>My career spans Delphi, desktop software, and a long arc into modern frontend architecture, design systems, accessibility, and lean-web thinking. Along the way I experimented with a long list of languages, databases, IDEs, frameworks, patterns, and servers.</p>
+<p>I found my comfort zone in frontend development and more specifically in UI/UX engineering. Then I finally landed in teaching, planning, creating, and presenting courses on frontend and UI/UX engineering.</p>
+<p>Over the last few years my focus shifted from building digital products to giving back to the community: public talks, mentoring, open-source experiments, and accessible design systems that work in the real world.</p>
+<p>I bridge design and development without losing craft: semantics-first HTML, CSS on purpose, progressive enhancement, and maintainability above novelty.</p></div>
+  <div data-about-panels="">
+    <aside data-panel="linkedin" data-surface="lifted" data-hover-surface="" data-generated="linkedin-profile" data-reveal="">
+  <h3>Hi Folks 👋 I'm Emiliano Pisu, your friendly neighborhood Senior Frontend...</h3>
+  <p>
+    Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction.
+  </p>
+  
+  <ul aria-label="LinkedIn skills" data-tags="">
+    
+      <li>Design engineering</li>
+    
+      <li>Accessibility systems</li>
+    
+      <li>Frontend mentoring</li>
+    
+      <li>Native web thinking</li>
+    
+  </ul>
+
+
+</aside>
+
+    
+      <article data-panel="principle" data-surface="lifted" data-hover-surface="" data-reveal="">
+  <p data-kicker="">Principle</p>
+  <h3>Principles</h3>
+  
+  
+    <ul>
+      
+        <li>Bridge design and code - Turn visual language into production-grade systems without flattening the original intent</li>
+      
+        <li>Accessibility is product quality - Semantics, WCAG patterns, motion restraint, keyboard-first thinking are part of the build, not a retrofit</li>
+      
+        <li>Lean web over cargo cult complexity - Reach for the platform before reaching for weight</li>
+      
+        <li>Teach while shipping - Mentorship, talks, pairing are part of delivery</li>
+      
+    </ul>
+  
+</article>
+
+    
+      <article data-panel="principle" data-surface="lifted" data-hover-surface="" data-reveal="">
+  <p data-kicker="">Principle</p>
+  <h3>Languages</h3>
+  
+  
+    <ul>
+      
+        <li>Italian - Native or Bilingual</li>
+      
+        <li>English - Full Professional</li>
+      
+    </ul>
+  
+</article>
+
+    
+    <aside id="contact" data-panel="contact" data-surface="lifted" data-hover-surface="" data-reveal="">
+  <p data-kicker="">Contact</p>
+  <h3>Available for design engineering leadership, speaking, and mentoring.</h3>
+  <p>If the work needs strong UI architecture, accessible interaction design, or a durable bridge between design and implementation, let's talk.</p>
+  <div data-chip-list="">
+    
+      <span data-chip="">pisuemiliano.1980 @ gmail.com</span>
+    
+      <span data-chip="">+39 366 258 0888</span>
+    
+      <span data-chip="">Rome, Italy</span>
+    
+  </div>
+  <div data-link-list="">
+    
+      
+    <a data-link="" href="https://linkedin.com/in/pixu1980/" target="_blank" rel="noopener noreferrer">
+      LinkedIn
+    </a>
+  
+
+    
+      
+    <a data-link="" href="https://github.com/pixu1980" target="_blank" rel="noopener noreferrer">
+      GitHub
+    </a>
+  
+
+    
+      
+    <a data-link="" href="https://sessionize.com/pixu1980/" target="_blank" rel="noopener noreferrer">
+      Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" href="https://devdojo.it/" target="_blank" rel="noopener noreferrer">
+      DevDojoIT
+    </a>
+  
+
+    
+      
+    <a data-link="" href="https://dout.dev" target="_blank" rel="noopener noreferrer">
+      Blog
+    </a>
+  
+
+    
+  </div>
+</aside>
+
+  </div>
+</div>
+
+    
+</section>
+
+        
+          <section id="experience" data-section="experience" aria-labelledby="experience-title" data-reveal="">
+  <header data-section-header="">
+    <p data-kicker="">02</p>
+    <h2 id="experience-title">Experience</h2>
+  </header>
+
+  
+      <div>
+  <div data-markdown=""></div>
+  <div data-timeline="">
+    
+      <article data-timeline-item="" data-reveal="">
+  <div>
+    <time>Selected work</time>
+  </div>
+  <div>
+    <h3>Emiliano Pisu</h3>
+    
+      <p data-eyebrow="">****** ******** ********</p>
+    
+    
+    
+    
+
+  </div>
+</article>
+
+    
+      <article data-timeline-item="" data-reveal="">
+  <div>
+    <time>Selected work</time>
+  </div>
+  <div>
+    <h3>*** **** **</h3>
+    
+      <p data-eyebrow="">****** * *******</p>
+    
+    
+    
+    
+
+  </div>
+</article>
+
+    
+      <article data-timeline-item="" data-reveal="">
+  <div>
+    <time>Selected work</time>
+  </div>
+  <div>
+    <h3>**** ********</h3>
+    
+      <p data-eyebrow="">******** *********** **** * ******</p>
+    
+    
+    
+    
+
+  </div>
+</article>
+
+    
+      <article data-timeline-item="" data-reveal="">
+  <div>
+    <time>1995 - 2001</time>
+  </div>
+  <div>
+    <h3>******** ******** *********</h3>
+    
+      <p data-eyebrow="">****** ******* *********** ***** *********** *********** 68/100</p>
+    
+    
+    
+    
+
+  </div>
+</article>
+
+    
+  </div>
+</div>
+
+    
+</section>
+
+        
+          <section id="skills" data-section="skills" aria-labelledby="skills-title" data-reveal="">
+  <header data-section-header="">
+    <p data-kicker="">03</p>
+    <h2 id="skills-title">Skills</h2>
+  </header>
+
+  
+      <div>
+  <div data-markdown=""></div>
+  <div data-skill-grid="">
+    
+      <article data-panel="principle" data-surface="lifted" data-hover-surface="" data-reveal="">
+  <p data-kicker="">Principle</p>
+  <h3>Design Engineering</h3>
+  
+    <p>UI architecture, design systems, typography systems, motion systems, design analysis</p>
+  
+  
+</article>
+
+    
+      <article data-panel="principle" data-surface="lifted" data-hover-surface="" data-reveal="">
+  <p data-kicker="">Principle</p>
+  <h3>Frontend Core</h3>
+  
+    <p>HTML, CSS, JavaScript, TypeScript, responsive design, progressive enhancement</p>
+  
+  
+</article>
+
+    
+      <article data-panel="principle" data-surface="lifted" data-hover-surface="" data-reveal="">
+  <p data-kicker="">Principle</p>
+  <h3>Frameworks &amp; Tooling</h3>
+  
+    <p>React, Angular, Vue, Web Components, Node.js, Playwright</p>
+  
+  
+</article>
+
+    
+      <article data-panel="principle" data-surface="lifted" data-hover-surface="" data-reveal="">
+  <p data-kicker="">Principle</p>
+  <h3>Quality &amp; Delivery</h3>
+  
+    <p>Accessibility, cross-browser testing, performance, CI/CD, documentation, mentoring</p>
+  
+  
+</article>
+
+    
+  </div>
+</div>
+
+    
+</section>
+
+        
+          <section id="projects" data-section="projects" aria-labelledby="projects-title" data-reveal="">
+  <header data-section-header="">
+    <p data-kicker="">04</p>
+    <h2 id="projects-title">Portfolio</h2>
+  </header>
+
+  
+      <div data-portfolio="">
+  <div data-portfolio-summary="" data-reveal="">
+    <div data-markdown=""><p>Portfolio data syncs at build time from GitHub, including the public non-fork catalogue, stars, links, topics, and descriptions. Curated local fallback data keeps the page complete when an API or network path is unavailable.</p></div>
+    <div data-stat-grid="portfolio">
+      <article data-stat="" data-surface="">
+        <strong>6</strong>
+        <span>public repos</span>
+        <small>5 owned repos</small>
+      </article>
+      <article data-stat="" data-surface="">
+        <strong>40</strong>
+        <span>stars</span>
+        <small>7 forks</small>
+      </article>
+      <article data-stat="" data-surface="">
+        <strong>3</strong>
+        <span>languages</span>
+        <small>Detected from repo metadata</small>
+      </article>
+      <article data-stat="" data-surface="">
+        <strong>Apr 2026</strong>
+        <span>latest update</span>
+        <small>pixu1980</small>
+      </article>
+    </div>
+    
+  <div data-language-bars="" data-surface="">
+    
+      <div data-language-row="">
+        <span>JavaScript</span>
+        <span aria-hidden="true"><i style="--size: 67%"></i></span>
+        <strong>67%</strong>
+      </div>
+    
+      <div data-language-row="">
+        <span>HTML</span>
+        <span aria-hidden="true"><i style="--size: 17%"></i></span>
+        <strong>17%</strong>
+      </div>
+    
+      <div data-language-row="">
+        <span>TypeScript</span>
+        <span aria-hidden="true"><i style="--size: 17%"></i></span>
+        <strong>17%</strong>
+      </div>
+    
+  </div>
+
+
+    
+  <ul aria-label="GitHub topic badges" data-tags="">
+    
+      <li>javascript x2</li>
+    
+      <li>accessibility x1</li>
+    
+      <li>ai x1</li>
+    
+      <li>architecture x1</li>
+    
+      <li>backend x1</li>
+    
+      <li>blog x1</li>
+    
+      <li>browser-detection x1</li>
+    
+      <li>cpu-detection x1</li>
+    
+      <li>css x1</li>
+    
+      <li>detection x1</li>
+    
+      <li>detector x1</li>
+    
+      <li>detector-js x1</li>
+    
+  </ul>
+
+
+  </div>
+  <div data-repo-grid="">
+    
+      <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
+  <header>
+    <p data-kicker="">HTML</p>
+    <strong>1 stars</strong>
+  </header>
+  <h3>dout-dev</h3>
+  <p>The DoUtDev Blog, a place for sharing and caring from developers to developers: create your Pull Request adding a markdown file for you Article and we'll review it and publish it (according to our CoC)</p>
+  
+  <ul aria-label="" data-tags="">
+    
+      <li>accessibility</li>
+    
+      <li>ai</li>
+    
+      <li>architecture</li>
+    
+      <li>backend</li>
+    
+      <li>blog</li>
+    
+  </ul>
+
+
+  <footer>
+    <span>Updated Apr 2026</span>
+    
+    <a data-link="" href="https://github.com/pixu1980/dout-dev" target="_blank" rel="noopener noreferrer">
+      Repo
+    </a>
+  
+
+    
+      
+    <a data-link="" href="https://dout.dev/" target="_blank" rel="noopener noreferrer">
+      Site
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+    
+      <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
+  <header>
+    <p data-kicker="">TypeScript</p>
+    <strong>33 stars</strong>
+  </header>
+  <h3>detector-js</h3>
+  <p>DetectorJS, zero-dependency platform/environment detector written in ES6</p>
+  
+  <ul aria-label="" data-tags="">
+    
+      <li>browser-detection</li>
+    
+      <li>cpu-detection</li>
+    
+      <li>detection</li>
+    
+      <li>detector</li>
+    
+      <li>detector-js</li>
+    
+  </ul>
+
+
+  <footer>
+    <span>Updated Jan 2026</span>
+    
+    <a data-link="" href="https://github.com/pixu1980/detector-js" target="_blank" rel="noopener noreferrer">
+      Repo
+    </a>
+  
+
+    
+      
+    <a data-link="" href="http://detector.js.org" target="_blank" rel="noopener noreferrer">
+      Site
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+    
+      <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
+  <header>
+    <p data-kicker="">JavaScript</p>
+    <strong>5 stars</strong>
+  </header>
+  <h3>reactive-apps-without-frameworks-demo</h3>
+  <p>A demo for the Reactive Apps without Frameworks talk</p>
+  
+
+  <footer>
+    <span>Updated Apr 2026</span>
+    
+    <a data-link="" href="https://github.com/pixu1980/reactive-apps-without-frameworks-demo" target="_blank" rel="noopener noreferrer">
+      Repo
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+    
+      <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
+  <header>
+    <p data-kicker="">JavaScript</p>
+    <strong>1 stars</strong>
+  </header>
+  <h3>pkg-2-readme</h3>
+  <p>Generate README.md from package.json contents</p>
+  
+
+  <footer>
+    <span>Updated Mar 2021</span>
+    
+    <a data-link="" href="https://github.com/pixu1980/pkg-2-readme" target="_blank" rel="noopener noreferrer">
+      Repo
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+    
+      <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
+  <header>
+    <p data-kicker="">JavaScript</p>
+    <strong>0 stars</strong>
+  </header>
+  <h3>pixu-dev</h3>
+  <p>pixu.dev - Emiliano Pisu Resume</p>
+  
+
+  <footer>
+    <span>Updated May 2026</span>
+    
+    <a data-link="" href="https://github.com/pixu1980/pixu-dev" target="_blank" rel="noopener noreferrer">
+      Repo
+    </a>
+  
+
+    
+      
+    <a data-link="" href="https://pixu.dev" target="_blank" rel="noopener noreferrer">
+      Site
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+    
+      <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
+  <header>
+    <p data-kicker="">JavaScript</p>
+    <strong>0 stars</strong>
+  </header>
+  <h3>pix-galaxy</h3>
+  <p>Monorepo for the PixGalaxy ecosystem of components for web development, all vanilla, 0 deps</p>
+  
+
+  <footer>
+    <span>Updated May 2026</span>
+    
+    <a data-link="" href="https://github.com/pixu1980/pix-galaxy" target="_blank" rel="noopener noreferrer">
+      Repo
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+    
+  </div>
+</div>
+
+    
+</section>
+
+        
+          <section id="talks-speaking" data-section="talks-speaking" aria-labelledby="talks-speaking-title" data-reveal="">
+  <header data-section-header="">
+    <p data-kicker="">05</p>
+    <h2 id="talks-speaking-title">Public Speaking</h2>
+  </header>
+
+  
+      <div data-speaking="">
+  <aside data-speaker-panel="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-speaker" data-reveal="">
+    <p data-kicker="">Sessionize</p>
+    <h3>Senior Design Engineer, Sensei &amp; Co-Host @ DevDojoIT</h3>
+    <p>Public talks and workshops focused on accessible design systems, lean frontend architecture, and the native capabilities of the web platform.</p>
+    
+  <ul aria-label="" data-tags="">
+    
+      <li>Information &amp; Communications Technology</li>
+    
+      <li>Law &amp; Regulation</li>
+    
+      <li>Media &amp; Information</li>
+    
+      <li>CSS Architecture</li>
+    
+      <li>JavaScript &amp; TypeScript</li>
+    
+      <li>HTML</li>
+    
+      <li>Frontend Engineer</li>
+    
+      <li>Frontend Development</li>
+    
+      <li>Frontend Architecture</li>
+    
+      <li>Web Accessibility</li>
+    
+      <li>UI/UX</li>
+    
+      <li>Front-End Art</li>
+    
+      <li>Web Frontend</li>
+    
+      <li>Web Design</li>
+    
+      <li>A11y</li>
+    
+      <li>Accessibility</li>
+    
+      <li>Web Development</li>
+    
+      <li>Design systems</li>
+    
+      <li>Lean web</li>
+    
+      <li>Progressive enhancement</li>
+    
+  </ul>
+
+
+    <div data-link-list="">
+      
+    <a data-link="" href="https://sessionize.com/pixu1980/" target="_blank" rel="noopener noreferrer">
+      Sessionize profile
+    </a>
+  
+
+    </div>
+  </aside>
+  <div data-speaking-content="">
+    <div data-talk-grid="">
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>(class)less is more</h3>
+  <p>What if the browser already provided a foundation for a design system? Does the concept of CSS Reset still make sense in 2025?In this talk, we'll explore the fascinating world of minimalist CSS frameworks that turn the browser into a ready-made design system out of the box. Solutions like Pico.css, Almond.css, and Water.css can make your projects elegant...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/classless-is-more/110137" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-classless-is-more" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>Accessible Web: combining WCAG, WAI-ARIA, and Semantics</h3>
+  <p>To create truly accessible digital experiences, it is essential to understand when to rely on semantic HTML, when to integrate WAI-ARIA, and how to ensure compliance with WCAG. Let's explore a practical method to determine the most effective solution based on real-world use cases, helping to avoid common mistakes and optimize interface...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/accessible-web-combining-wcag-wai-aria-and-semanti/128446" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-accessible-design-systems-with-css-apis" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>AIDD from Spec to App</h3>
+  <p>Frameworkless frontend with AI agents, quality gates, and repeatable delivery, from web to ElectronHow do you bring AI into the development cycle without losing technical control, and without turning your codebase into a "slot machine"? In this talk I walk through a concrete workflow built on ai-coding-frontend-template: we go from specifications to...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/aidd-from-spec-to-app/164020" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-accessible-design-systems-with-css-apis" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>Back to CSS</h3>
+  <p>A time-bending tour of tomorrow's CSS where HTML is the state and CSS is the logic. Wiring typed attr() to read real, unit-safe values straight from HTML attributes, branch styles with native if(), and compose reusable logic with @function. Expect zero-JS UI toggles, attribute-driven themes, and component props that cascade through styles like data. Showing...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/back-to-css/153351" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/flavor-scss" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>Baseline Rhapsody: A tale of Style &amp; Motion</h3>
+  <p>In recent years, CSS has undergone an extraordinary evolution. We once relied on float and clear to manage layouts, used tables to structure pages, and resorted to sprites to implement simple hover effects on buttons. Today, however, we have access to advanced tools such as mathematical and trigonometric functions, container queries, filters, masks, custom...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/baseline-rhapsody-a-tale-of-style-motion/131786" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-baseline-rhapsody" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>Building an Accessible Design System with the CSS APIs Approach</h3>
+  <p>A design system is fundamental to ensuring consistency, scalability, and accessibility in digital products. But how do you build one from scratch while ensuring flexibility and maintainability? CSS Custom Properties and CSS Layers offer a powerful combination to define a structured and manageable foundation, exposing clear CSS APIs for external overrides....</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/building-an-accessible-design-system-with-the-css-/131772" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-accessible-design-systems-with-css-apis" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>CSS Superpowers with Layers</h3>
+  <p>Structuring our CSS codebases is an ever-evolving art!Standards and best practices have been established, which over time have also conflicted with each other.The new @layer at-rule, combined with CSS Custom Properties, allows us to set up the codebase in revolutionary ways.We will discover how to structure a feature-rich design system in an innovative and...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/css-superpowers-with-layers/107833" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-css-superpowers" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>customElements &amp; beyond: a lean way to build reactive apps in vanillaJS</h3>
+  <p>You know when people tell you that without a framework you can't build a "real" app? Well… spoiler alert: that's a lie.Custom Elements are no longer a toy for old-school HTML addicted, they're the gateway to a whole new way of building apps: lightweight, accessible, and blazing fast.And the best part? No endless npm install marathons required.In this talk...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/customelements-beyond-a-lean-way-to-build-reactive/149730" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-custom-elements-and-beyond" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>dout.dev - how to build a vanilla CMS</h3>
+  <p>From Markdown to Publishing Platform: Building dout.dev's Custom CMS Without a Frameworkdout.dev is a vanilla-first static site with zero runtime dependencies, but the interesting part is not only the frontend. Behind the site there is a small custom CMS that turns Markdown into a complete publishing workflow. Instead of adapting a general-purpose CMS to a...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/dout.dev-how-to-build-a-vanilla-cms/170941" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-accessible-design-systems-with-css-apis" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>Kinetic CSS, a deep dive into modern Motion APIs</h3>
+  <p>What if, in the future of web motion, JavaScript were no longer needed? Spoiler: that future is today.Over the last few years, CSS has received a legendary power-up. It can now animate, react, and choreograph entire scenes without touching a single script. In this talk, we'll explore how to bend reality using only HTML and CSS, no frameworks, no npm...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/kinetic-css-a-deep-dive-into-modern-motion-apis/151714" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-kinetic-css" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>Modern CSS Architecture (Accessible Design Systems combining Semantic HTML, @layer and --*)</h3>
+  <p>The future of UI is already in the browser, if you know how to unlock it!This talk explores how to combine semantic HTML, the @layer CSS at-rule, and CSS Custom Properties to organize code into a scalable hierarchy designed to expose intuitive CSS APIs. It showcases how to build accessible, token-first design systems that translate brand values into atomic...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/modern-css-architecture-accessible-design-systems-/136460" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-modern-css-architecture" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>Reactive Apps without Frameworks</h3>
+  <p>Meet a framework-free, zero-deps app stack powered by the near-future web: a tiny signal-based store, DOM-first rendering, and tagged template literals for expressive, safe views.Sketching an observable state core aligned with the TC39 Signals proposal, with a look to the future to bind it to the DOM using emerging "DOM Parts" ideas for precise updates,...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/reactive-apps-without-frameworks/153354" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-reactive-apps-without-frameworks" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>The Lean Web Manifesto</h3>
+  <p>In the world of modern web development, complexity has become the norm: heavy frameworks, endless dependencies, and bloated code seem indispensable. But is that really the case?This talk explores the concept of Lean Web, an approach aimed at reducing waste, optimizing resources, and creating lighter, faster, and more sustainable applications. We will...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/the-lean-web-manifesto/130631" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-lean-web-manifesto" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>wcagUI - one year after (accessible components, real bugs and maintainer life)</h3>
+  <p>wcagUI started with a simple goal, turn accessibility from a last minute checklist into default behavior, packaged as a component library.One year later, it is no longer about just Buttons and Dialogs, it is about patterns, consistent APIs, focus management, keyboard support, screen reader announcements, tokens, motion, and preventing regressions as the...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/wcagui-one-year-after-accessible-components-real-b/159197" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-introducing-wcag-ui" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+        <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <h3>wcagUI, an accessible UI kit based on WCAG patterns</h3>
+  <p>Building an accessible web experience shouldn't be overwhelming. In this talk, we'll introduce wcagUI, an open-source UI kit that simplifies building accessible interfaces by automatically handling WAI-ARIA attributes and other key accessibility features. Built on the principles of the Web Content Accessibility Guidelines (WCAG), wcagUI helps developers and...</p>
+  <footer>
+    
+    <a data-link="" href="https://sessionize.com/s/pixu1980/wcagui-an-accessible-ui-kit-based-on-wcag-patterns/110136" target="_blank" rel="noopener noreferrer">
+      See on Sessionize
+    </a>
+  
+
+    
+      
+    <a data-link="" data-related-repo="" href="https://github.com/pixu1980/talk-introducing-wcag-ui" target="_blank" rel="noopener noreferrer">
+      See on GitHub
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+      
+    </div>
+    
+      <section data-event-strip="" data-surface="lifted" data-reveal="" aria-label="Sessionize events">
+        <p data-kicker="">Events</p>
+        <ol>
+          
+            <li data-generated="sessionize-event">
+  <strong>CSS Day 2026</strong>
+  <span>June 2026 / Bologna, Italy / Back to CSS</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>Weblica 2026</strong>
+  <span>May 2026 / Sveti Martin na Muri, Croatia</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>Open Source Day 2026</strong>
+  <span>April 2026 / Florence, Italy</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>DevFest Pisa 2026</strong>
+  <span>April 2026 / Pisa, Italy</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>jsday 2026</strong>
+  <span>April 2026 / Bologna, Italy</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>Web Day 2026</strong>
+  <span>March 2026 / Milan, Italy</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>DevFest Bari 2025</strong>
+  <span>November 2025 / Bari, Italy</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>Codemotion Milan 2025</strong>
+  <span>October 2025 / Milan, Italy</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>DevFest Modena 2025</strong>
+  <span>October 2025 / Modena, Italy</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>NGRome</strong>
+  <span>June 2025 / Rome, Italy / Introducing wcagUI</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>WMF 2025 (We Make Future)</strong>
+  <span>May 2025 / Bologna, Italy / Architettura CSS moderna (implementare Design Systems accessibili combinando HTML semantico + CSS @layer e custom properties)</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>Codemotion Rome 2025</strong>
+  <span>April 2025 / Rome, Italy</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>Green Software Italia - Meetup</strong>
+  <span>March 2025 / Milan, Italy</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>Web Day 2025</strong>
+  <span>March 2025 / Milan, Italy</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>Open Source Day 2025</strong>
+  <span>March 2025 / Florence, Italy</span>
+</li>
+
+          
+            <li data-generated="sessionize-event">
+  <strong>CSSDay 2025</strong>
+  <span>March 2025 / Faenza, Italy / Building an Accessible Design System with the CSS APIs Approach</span>
+</li>
+
+          
+        </ol>
+      </section>
+    
+  </div>
+</div>
+
+    
+</section>
+
+        
+          <section id="education" data-section="education" aria-labelledby="education-title" data-reveal="">
+  <header data-section-header="">
+    <p data-kicker="">06</p>
+    <h2 id="education-title">Education</h2>
+  </header>
+
+  
+      <div>
+  <div data-markdown=""></div>
+  <div data-timeline="">
+    
+      <article data-timeline-item="" data-reveal="">
+  <div>
+    <time>Selected work</time>
+  </div>
+  <div>
+    <h3>Emiliano Pisu</h3>
+    
+      <p data-eyebrow="">****** ******** ********</p>
+    
+    
+    
+    
+
+  </div>
+</article>
+
+    
+      <article data-timeline-item="" data-reveal="">
+  <div>
+    <time>Selected work</time>
+  </div>
+  <div>
+    <h3>*** **** **</h3>
+    
+      <p data-eyebrow="">****** * *******</p>
+    
+    
+    
+    
+
+  </div>
+</article>
+
+    
+      <article data-timeline-item="" data-reveal="">
+  <div>
+    <time>Selected work</time>
+  </div>
+  <div>
+    <h3>**** ********</h3>
+    
+      <p data-eyebrow="">******** *********** **** * ******</p>
+    
+    
+    
+    
+
+  </div>
+</article>
+
+    
+      <article data-timeline-item="" data-reveal="">
+  <div>
+    <time>1995 - 2001</time>
+  </div>
+  <div>
+    <h3>******** ******** *********</h3>
+    
+      <p data-eyebrow="">****** ******* *********** ***** *********** *********** 68/100</p>
+    
+    
+    
+    
+
+  </div>
+</article>
+
+    
+  </div>
+</div>
+
+    
+</section>
+
+        
+          <section id="interests" data-section="interests" aria-labelledby="interests-title" data-reveal="">
+  <header data-section-header="">
+    <p data-kicker="">07</p>
+    <h2 id="interests-title">Interests</h2>
+  </header>
+
+  
+      <div data-markdown=""><p>Apart from being a teacher and developer, I enjoy most of my free time being outdoors with my family, trying to learn how to grow vegetables and reconnect with nature whenever possible.</p>
+<p>I'm a Dungeons &amp; Dragons and Magic: The Gathering enthusiast.</p>
+<p>I can't stop creating web-based software for fun and profit. I enjoy creating and contributing to open-source projects, experimenting with the latest technologies and tools to improve myself and stay up to date.</p>
+</div>
+
+    
+</section>
+
+        
+      </main>
+    </div>
+
+    <footer data-site-footer="">
+  <div>
+    <p data-kicker="">Now</p>
+    <h2>Design systems, frontend architecture, public speaking.</h2>
+    <p>Pixu turns frontend craft into accessible systems, open tools, and clear talks.</p>
+  </div>
+  <div data-footer-meta="">
+    <p>Build 2026-05-04</p>
+    <p>© 2026 Emiliano Pisu</p>
+    <div data-link-list="">
+      
+        
+    <a data-link="" href="https://linkedin.com/in/pixu1980/" target="_blank" rel="noopener noreferrer">
+      LinkedIn
+    </a>
+  
+
+      
+        
+    <a data-link="" href="https://github.com/pixu1980" target="_blank" rel="noopener noreferrer">
+      GitHub
+    </a>
+  
+
+      
+        
+    <a data-link="" href="https://sessionize.com/pixu1980/" target="_blank" rel="noopener noreferrer">
+      Sessionize
+    </a>
+  
+
+      
+        
+    <a data-link="" href="https://devdojo.it/" target="_blank" rel="noopener noreferrer">
+      DevDojoIT
+    </a>
+  
+
+      
+        
+    <a data-link="" href="https://dout.dev" target="_blank" rel="noopener noreferrer">
+      Blog
+    </a>
+  
+
+      
+        
+    <a data-link="" href="https://mastodon.uno/@pixu1980" target="_blank" rel="noopener noreferrer">
+      Mastodon
+    </a>
+  
+
+      
+    </div>
+  </div>
+</footer>
+
+
+    <p data-live-region="" aria-live="polite"></p>
+  
+
+</body></html>

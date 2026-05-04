@@ -9,7 +9,6 @@ src/.temp
 .env.*
 
 node_modules
-dist
 
 .vscode
 

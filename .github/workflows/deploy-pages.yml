@@ -15,8 +15,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
@@ -36,12 +39,6 @@ jobs:
           node-version: 24
           package-manager-cache: false
 
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Build site
-        run: pnpm build
-
       - name: Disable Jekyll processing
         run: touch dist/.nojekyll
 
@@ -50,14 +47,6 @@ jobs:
         with:
           path: dist
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
