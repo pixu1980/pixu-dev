@@ -1,7 +1,75 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" aria-labelledby="title desc" viewBox="0 0 300 300">
-  <path fill="#52e0c4" d="M137.9 124.37h25.26v-12.63h12.63V62.22h-24.25v11.62h-13.65ZM100 174.89h12.63V73.84H100V61.21h12.63V48.58h25.26v12.63h12.64V48.58h37.9v12.63h12.62v50.53h-12.63v12.63h-12.63V137h-37.9v37.9h-12.63v12.63H100Z" />
-  <path fill="#639" d="M185 37h30v30h-30ZM85 144h30v30H85Zm50-50h30v30h-30Z" />
-  <path fill="#0f172a" d="M19.5 215h9v9h-9Zm9 0h9v9h-9Zm9 0h9v9h-9Zm-18 9h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm9 0h9v9h-9Zm9 0h9v9h-9Zm-18 9h9v9h-9Zm0 9h9v9h-9Zm36-36h9v9h-9Zm9 0h9v9h-9Zm9 0h9v9h-9Zm-9 9h9v9h-9Zm0 9h9v9h-9Zm0 9h9v9h-9Zm-9 9h9v9h-9Zm9 0h9v9h-9Zm9 0h9v9h-9Zm18-36h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm18 0h9v9h-9Zm-9 9h9v9h-9Zm-9 9h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm18 0h9v9h-9Zm18-36h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm9 0h9v9h-9Zm9 0h9v9h-9Z" />
-  <path fill="#52e0c4" d="M163.5 251h9v9h-9Z" />
-  <path fill="#639" d="M181.5 215h9v9h-9Zm9 0h9v9h-9Zm9 0h9v9h-9Zm-18 9h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm9 0h9v9h-9Zm9 0h9v9h-9Zm18-36h9v9h-9Zm9 0h9v9h-9Zm9 0h9v9h-9Zm-18 9h9v9h-9Zm0 9h9v9h-9Zm9 0h9v9h-9Zm-9 9h9v9h-9Zm0 9h9v9h-9Zm9 0h9v9h-9Zm9 0h9v9h-9Zm18-36h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm18 0h9v9h-9Zm-18 9h9v9h-9Zm18 0h9v9h-9Zm-9 9h9v9h-9Z" />
+<svg viewBox="0 0 256 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .px-navy { fill: #001847; }
+      .px-cyan { fill: #00BFFF; }
+      .px-blue { fill: #0052FF; }
+      .px-violet { fill: #7B4FFF; }
+    </style>
+  </defs>
+
+  <!-- P Letter - Pixelart Voxel 3D -->
+  <!-- Navy background/shadow -->
+  <g class="px-navy">
+    <rect x="64" y="32" width="32" height="32" />
+    <rect x="96" y="32" width="64" height="32" />
+    <rect x="160" y="32" width="32" height="32" />
+    <rect x="64" y="64" width="32" height="32" />
+    <rect x="96" y="64" width="96" height="32" />
+    <rect x="192" y="64" width="32" height="32" />
+    <rect x="64" y="96" width="32" height="32" />
+    <rect x="96" y="96" width="96" height="32" />
+    <rect x="192" y="96" width="32" height="32" />
+    <rect x="64" y="128" width="32" height="32" />
+    <rect x="96" y="128" width="64" height="32" />
+    <rect x="192" y="128" width="32" height="32" />
+    <rect x="64" y="160" width="32" height="32" />
+    <rect x="96" y="160" width="32" height="32" />
+    <rect x="192" y="160" width="32" height="32" />
+    <rect x="64" y="192" width="32" height="32" />
+    <rect x="96" y="192" width="32" height="32" />
+    <rect x="160" y="192" width="32" height="32" />
+    <rect x="192" y="192" width="32" height="32" />
+    <rect x="64" y="224" width="32" height="32" />
+    <rect x="96" y="224" width="96" height="32" />
+    <rect x="192" y="224" width="32" height="32" />
+  </g>
+
+  <!-- Cyan - Left edge highlight -->
+  <g class="px-cyan">
+    <rect x="32" y="64" width="32" height="32" />
+    <rect x="32" y="96" width="32" height="32" />
+    <rect x="32" y="128" width="32" height="32" />
+    <rect x="32" y="160" width="32" height="32" />
+    <rect x="32" y="192" width="32" height="32" />
+    <rect x="64" y="32" width="32" height="32" />
+    <rect x="96" y="224" width="32" height="32" />
+    <rect x="96" y="256" width="32" height="32" />
+    <rect x="64" y="256" width="32" height="32" />
+  </g>
+
+  <!-- Blue - Center interior -->
+  <g class="px-blue">
+    <rect x="96" y="32" width="32" height="32" />
+    <rect x="96" y="64" width="32" height="32" />
+    <rect x="96" y="160" width="32" height="32" />
+    <rect x="128" y="160" width="32" height="32" />
+    <rect x="128" y="192" width="32" height="32" />
+    <rect x="128" y="256" width="32" height="32" />
+    <rect x="160" y="256" width="32" height="32" />
+  </g>
+
+  <!-- Violet - Right gradient -->
+  <g class="px-violet">
+    <rect x="192" y="32" width="32" height="32" />
+    <rect x="224" y="64" width="32" height="32" />
+    <rect x="224" y="96" width="32" height="32" />
+    <rect x="224" y="128" width="32" height="32" />
+    <rect x="192" y="160" width="32" height="32" />
+    <rect x="224" y="160" width="32" height="32" />
+    <rect x="224" y="192" width="32" height="32" />
+    <rect x="192" y="224" width="32" height="32" />
+    <rect x="224" y="224" width="32" height="32" />
+    <rect x="192" y="256" width="32" height="32" />
+  </g>
 </svg>
