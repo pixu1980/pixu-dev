@@ -203,7 +203,11 @@ export function parseLinkedInProfile(html, fallback) {
   const nodes = parseJsonLdBlocks(html).flatMap((block) => collectJsonLdNodes(block));
 
   const people = nodes.filter((node) =>
-    /Person|ProfilePage/i.test(toArray(node?.["@type"]).join(" ")),
+    /Person|ProfilePage/i.test(
+      (Array.isArray(node?.["@type"]) ? node["@type"] : [node?.["@type"]])
+        .filter(Boolean)
+        .join(" "),
+    ),
   );
 
   const profile = people[0]?.mainEntity || people[0] || {};

@@ -220,7 +220,7 @@
     );
     filter: blur(4rem);
     will-change: top, left;
-    opacity: 0.5;
+    opacity: 0.35;
     z-index: 1;
   }
 }

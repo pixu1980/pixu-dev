@@ -34,9 +34,9 @@ After `pnpm install`, Husky configures a pre-push hook that runs the same local 
 Release commands run a full build, bump `package.json`, and create a matching git tag.
 
 ```sh
-pnpm rel:patch
-pnpm rel:minor
-pnpm rel:major
+pnpm rel -- patch
+pnpm rel -- minor
+pnpm rel -- major
 ```
 
 Tags use the `vX.Y.Z` format.

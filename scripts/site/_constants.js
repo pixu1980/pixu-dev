@@ -20,8 +20,8 @@ export const MONTH_YEAR_RE =
   /\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4}\b/i;
 
 export const SECTION_LABELS = new Map([
-  ["projects", "Portfolio"],
-  ["talks-speaking", "Public Speaking"],
+  ["portfolio", "Portfolio"],
+  ["speaking", "Public Speaking"],
 ]);
 
 export const STOP_WORDS = new Set([

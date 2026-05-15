@@ -27,7 +27,7 @@ import { copyAssets, localizeProfileImage, ensureDir } from "./output/index.js";
 
 import { CONTENT, DIST, SRC } from "./_constants.js";
 import { getPreferredProfileImage } from "./_profile-image.js";
-import { runBuildInteractions } from "./build-interactions.js";
+import { runBuildInteractions } from "./_build-interactions.js";
 import { closePrompt } from "./_prompt.js";
 
 export async function buildSite(options = {}) {

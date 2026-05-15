@@ -22,10 +22,12 @@ sourceConfig:
     publishedRepos:
       - dout-dev
       - detector-js
+      - flavor-scss
       - reactive-apps-without-frameworks-demo
       - pkg-2-readme
       - pix-galaxy
       - pixu-dev
+      - talks-libraries
   sessionize:
     profile: 'https://sessionize.com/pixu1980/'
     preferredLanguage: en
@@ -42,7 +44,9 @@ sourceConfig:
         sessionId: '128446'
         sessionUrl: >-
           https://sessionize.com/s/pixu1980/accessible-web-combining-wcag-wai-aria-and-semanti/128446
-        repoName: talk-accessible-design-systems-with-css-apis
+        repoName: talk-semantic-accessible-web
+        repoUrl: 'https://github.com/pixu1980/talk-semantic-accessible-web'
+        slidesUrl: 'https://pixu1980.github.io/talk-semantic-accessible-web/'
       - session: AIDD from Spec to App
         sessionId: '164020'
         sessionUrl: 'https://sessionize.com/s/pixu1980/aidd-from-spec-to-app/164020'
@@ -230,7 +234,9 @@ fallbacks:
         when: February 2025
         where: 'Rome, Italy'
 availability:
-  headline: 'Available for design engineering leadership, speaking, and mentoring.'
+  headline: >-
+    Available for AI engineering, frontend engineering, design engineering,
+    leadership, speaking, and mentoring.
   summary: >-
     If the work needs strong UI architecture, accessible interaction design, or
     a durable bridge between design and implementation, let's talk.
@@ -250,18 +256,18 @@ links:
   - label: Mastodon
     url: 'https://mastodon.uno/@pixu1980'
 metrics:
-  - value: 28+
-    label: years shipping software
-    note: Professional work started in 1997
-  - value: 10+
-    label: public talks & workshops
-    note: Sessionize catalog plus community events
+  - value: 29+ years
+    label: shipping software
+    note: Professional work started in late 1997
   - value: 0 deps
-    label: default architectural bias
+    label: architectural choice
     note: 'Native web first, dependencies by exception'
-  - value: 3x
+  - value: 6x
     label: core tracks
-    note: 'Design engineering, accessibility, mentoring'
+    note: 'AI, Frontend, Design, A11y, Mentoring, Speaking'
+  - value: 3 d&d
+    label: active campaigns
+    note: as a player or DM
 ---
 
 ## About
@@ -409,7 +415,7 @@ React, Angular, Vue, Web Components, Node.js, Playwright
 
 Accessibility, cross-browser testing, performance, CI/CD, documentation, mentoring
 
-## Projects
+## Portfolio
 
 Portfolio data syncs at build time from GitHub, including the public non-fork catalogue, stars, links, topics, and descriptions. Curated local fallback data keeps the page complete when an API or network path is unavailable.
 
@@ -424,7 +430,7 @@ Portfolio data syncs at build time from GitHub, including the public non-fork ca
 They show the through-line in my work: architecture that remains readable after the excitement fades, tooling that earns its place, and interfaces that stay maintainable as teams and products grow.
 
 
-## Talks & Speaking
+## Speaking
 
 Public speaking data syncs at build time from Sessionize, keeping English talks, event appearances, and local fallback content available when the source is unreachable.
 
@@ -439,31 +445,13 @@ Public speaking data syncs at build time from Sessionize, keeping English talks,
 
 I am comfortable with conference talks, hands-on workshops, mentoring sessions, and internal enablement programs for teams that need a clearer design-to-code workflow.
 
-## Education
-
-### I.T.I.S. G. Armellini - Rome
-
-**1995 – 2001** - Perito Tecnico Industriale, specialization in Informatics. Italian equivalent of a Computer Science high-school diploma.
-
-### Microsoft Certified Professional - #070-229
-
-**October 2004** - Designing and Implementing Databases with Microsoft SQL Server 2000 Enterprise Edition.
-
-### Microsoft Certified Professional - #070-315
-
-**June 2004** - Developing and Implementing Web Applications with Microsoft Visual C# .NET.
-
-### Microsoft Certified Professional - #070-316
-
-**June 2004** - Developing and Implementing Windows-based Applications with Microsoft Visual C# .NET.
-
 ## Interests
 
 Apart from being a teacher and developer, I enjoy most of my free time being outdoors with my family, trying to learn how to grow vegetables and reconnect with nature whenever possible.
 
 I'm a Dungeons & Dragons and Magic: The Gathering enthusiast.
 
-I can't stop creating web-based software for fun and profit. I enjoy creating and contributing to open-source projects, experimenting with the latest technologies and tools to improve myself and stay up to date.
+I can't stop creating web-based software for fun and profit. I enjoy creating and contributing to open-source portfolio, experimenting with the latest technologies and tools to improve myself and stay up to date.
 
 ## Contact
 

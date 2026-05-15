@@ -6,5 +6,8 @@
     <if condition="talk.githubLink">
       <include src="./_link.html" data='{"link": {{ talk.githubLink | json | raw }}}'></include>
     </if>
+    <if condition="talk.slidesLink">
+      <include src="./_link.html" data='{"link": {{ talk.slidesLink | json | raw }}}'></include>
+    </if>
   </footer>
 </article>

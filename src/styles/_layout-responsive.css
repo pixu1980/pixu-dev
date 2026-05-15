@@ -106,7 +106,7 @@
     }
     [data-portfolio-summary],
     [data-about-story],
-    [data-speaker-panel] {
+    [data-speaking-recap] {
       position: sticky;
       top: calc(var(--header-height) + 2rem);
       align-self: start;

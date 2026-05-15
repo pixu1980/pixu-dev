@@ -77,7 +77,6 @@
     color: var(--accent-2);
     font-size: 0.8rem;
     font-weight: 850;
-    text-transform: uppercase;
   }
 
   :where([data-note], [data-eyebrow]) {

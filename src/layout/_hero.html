@@ -6,11 +6,11 @@
     <p data-motto>{{ site.motto }}</p>
     <p data-summary>{{ site.summary }}</p>
 
-    <ul data-hero-meta>
+    <!-- <ul data-hero-meta>
       <for each="item in site.heroMeta">
         <li>{{ item }}</li>
       </for>
-    </ul>
+    </ul> -->
 
     <div data-actions>
       <for each="link in site.headerLinks">
@@ -31,7 +31,7 @@
   </figure>
 
   <aside data-signal-panel data-surface="lifted" data-reveal>
-    <p data-kicker>Live Data</p>
+    <p data-kicker>Some stats</p>
     <div data-stat-grid="hero">
       <for each="metric in site.heroMetrics">
         <include
@@ -40,14 +40,13 @@
         ></include>
       </for>
     </div>
-
-    <ul data-source-status>
+    <!-- <ul data-source-status>
       <for each="source in site.sourceStatus">
         <li data-source-state="{{ source.status }}">
           <span>{{ source.label }}</span>
           <strong>{{ source.statusLabel }}</strong>
         </li>
       </for>
-    </ul>
+    </ul> -->
   </aside>
 </section>

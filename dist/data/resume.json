@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-04T13:32:41.830Z",
+  "generatedAt": "2026-05-15T16:22:22.571Z",
   "metadata": {
-    "title": "Hi Folks 👋 I'm Emiliano Pisu, your friendly neighborhood Senior Frontend...",
+    "title": "Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor",
     "description": "Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction."
   },
   "profile": {
     "name": "Emiliano Pisu",
-    "headline": "Hi Folks 👋 I'm Emiliano Pisu, your friendly neighborhood Senior Frontend...",
+    "headline": "Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor",
     "description": "Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction.",
     "summary": "Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction.",
     "image": "assets/profile.jpg",
@@ -41,7 +41,7 @@
     "sourceStatus": {
       "github": "live",
       "sessionize": "live",
-      "linkedin": "live"
+      "linkedin": "fallback"
     }
   },
   "github": {
@@ -54,7 +54,7 @@
       "bio": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/75838944?v=4",
       "followers": 58,
-      "following": 134,
+      "following": 135,
       "publicRepos": 30,
       "createdAt": "2020-12-11T11:15:50Z"
     },
@@ -64,9 +64,9 @@
       "sourceRepos": 30,
       "ownRepos": 25,
       "forks": 5,
-      "totalStars": 79,
+      "totalStars": 80,
       "totalForks": 7,
-      "totalOpenIssues": 4,
+      "totalOpenIssues": 5,
       "lastUpdatedAt": "2026-04-28T19:49:35Z"
     },
     "languages": [
@@ -258,6 +258,24 @@
         "slug": "flavor-scss"
       },
       {
+        "name": "talk-kinetic-css-osdsay-2026",
+        "description": "Slides for the Kinetic CSS talk (Open Source Day 2026 edition)",
+        "url": "https://github.com/pixu1980/talk-kinetic-css-osdsay-2026",
+        "homepage": "",
+        "language": "HTML",
+        "stars": 6,
+        "watchers": 6,
+        "forksCount": 0,
+        "openIssues": 0,
+        "archived": false,
+        "fork": false,
+        "private": false,
+        "tags": [],
+        "updatedAt": "2026-05-06T13:20:39Z",
+        "createdAt": "2026-04-23T17:43:34Z",
+        "slug": "talk-kinetic-css-osdsay-2026"
+      },
+      {
         "name": "reactive-apps-without-frameworks-demo",
         "description": "A demo for the Reactive Apps without Frameworks talk",
         "url": "https://github.com/pixu1980/reactive-apps-without-frameworks-demo",
@@ -274,24 +292,6 @@
         "updatedAt": "2026-04-25T10:01:35Z",
         "createdAt": "2026-03-29T17:29:04Z",
         "slug": "reactive-apps-without-frameworks-demo"
-      },
-      {
-        "name": "talk-kinetic-css-osdsay-2026",
-        "description": "Slides for the Kinetic CSS talk (Open Source Day 2026 edition)",
-        "url": "https://github.com/pixu1980/talk-kinetic-css-osdsay-2026",
-        "homepage": "",
-        "language": "HTML",
-        "stars": 5,
-        "watchers": 5,
-        "forksCount": 0,
-        "openIssues": 0,
-        "archived": false,
-        "fork": false,
-        "private": false,
-        "tags": [],
-        "updatedAt": "2026-04-25T09:59:13Z",
-        "createdAt": "2026-04-23T17:43:34Z",
-        "slug": "talk-kinetic-css-osdsay-2026"
       },
       {
         "name": "talk-css-superpowers",
@@ -578,6 +578,24 @@
         "slug": "pkg-2-readme"
       },
       {
+        "name": "pix-galaxy",
+        "description": "Monorepo for the PixGalaxy ecosystem of components for web development, all vanilla, 0 deps",
+        "url": "https://github.com/pixu1980/pix-galaxy",
+        "homepage": "",
+        "language": "JavaScript",
+        "stars": 0,
+        "watchers": 0,
+        "forksCount": 0,
+        "openIssues": 1,
+        "archived": false,
+        "fork": false,
+        "private": false,
+        "tags": [],
+        "updatedAt": "2026-05-05T09:29:36Z",
+        "createdAt": "2026-04-29T21:11:30Z",
+        "slug": "pix-galaxy"
+      },
+      {
         "name": "pixu-dev",
         "description": "pixu.dev - Emiliano Pisu Resume",
         "url": "https://github.com/pixu1980/pixu-dev",
@@ -591,27 +609,9 @@
         "fork": false,
         "private": false,
         "tags": [],
-        "updatedAt": "2026-05-04T13:31:29Z",
+        "updatedAt": "2026-05-04T13:33:09Z",
         "createdAt": "2020-12-03T11:38:38Z",
         "slug": "pixu-dev"
-      },
-      {
-        "name": "pix-galaxy",
-        "description": "Monorepo for the PixGalaxy ecosystem of components for web development, all vanilla, 0 deps",
-        "url": "https://github.com/pixu1980/pix-galaxy",
-        "homepage": "",
-        "language": "JavaScript",
-        "stars": 0,
-        "watchers": 0,
-        "forksCount": 0,
-        "openIssues": 0,
-        "archived": false,
-        "fork": false,
-        "private": false,
-        "tags": [],
-        "updatedAt": "2026-05-04T13:02:24Z",
-        "createdAt": "2026-04-29T21:11:30Z",
-        "slug": "pix-galaxy"
       },
       {
         "name": "talk-semantic-accessible-web",
@@ -833,6 +833,43 @@
         "slug": "detector-js"
       },
       {
+        "name": "flavor-scss",
+        "description": "Flavor SCSS - Advanced type checking Sass/SCSS Framework with Mixins & Helpers and a fully customizable Grid System",
+        "url": "https://github.com/pixu1980/flavor-scss",
+        "homepage": "https://pixu1980.github.io/flavor-scss/index.html",
+        "language": "CSS",
+        "stars": 6,
+        "watchers": 6,
+        "forksCount": 0,
+        "openIssues": 0,
+        "archived": false,
+        "fork": false,
+        "private": false,
+        "tags": [
+          "flavor-scss",
+          "grid-system",
+          "mixins",
+          "sass",
+          "sass-framework",
+          "sass-functions",
+          "sass-helpers",
+          "sass-library",
+          "sass-mixins",
+          "sass-module",
+          "sassdoc",
+          "scss",
+          "scss-framework",
+          "scss-functions",
+          "scss-helpers",
+          "scss-library",
+          "scss-mixins",
+          "scss-module"
+        ],
+        "updatedAt": "2026-01-15T20:19:12Z",
+        "createdAt": "2017-11-28T16:46:18Z",
+        "slug": "flavor-scss"
+      },
+      {
         "name": "reactive-apps-without-frameworks-demo",
         "description": "A demo for the Reactive Apps without Frameworks talk",
         "url": "https://github.com/pixu1980/reactive-apps-without-frameworks-demo",
@@ -869,6 +906,24 @@
         "slug": "pkg-2-readme"
       },
       {
+        "name": "pix-galaxy",
+        "description": "Monorepo for the PixGalaxy ecosystem of components for web development, all vanilla, 0 deps",
+        "url": "https://github.com/pixu1980/pix-galaxy",
+        "homepage": "",
+        "language": "JavaScript",
+        "stars": 0,
+        "watchers": 0,
+        "forksCount": 0,
+        "openIssues": 1,
+        "archived": false,
+        "fork": false,
+        "private": false,
+        "tags": [],
+        "updatedAt": "2026-05-05T09:29:36Z",
+        "createdAt": "2026-04-29T21:11:30Z",
+        "slug": "pix-galaxy"
+      },
+      {
         "name": "pixu-dev",
         "description": "pixu.dev - Emiliano Pisu Resume",
         "url": "https://github.com/pixu1980/pixu-dev",
@@ -882,16 +937,16 @@
         "fork": false,
         "private": false,
         "tags": [],
-        "updatedAt": "2026-05-04T13:31:29Z",
+        "updatedAt": "2026-05-04T13:33:09Z",
         "createdAt": "2020-12-03T11:38:38Z",
         "slug": "pixu-dev"
       },
       {
-        "name": "pix-galaxy",
-        "description": "Monorepo for the PixGalaxy ecosystem of components for web development, all vanilla, 0 deps",
-        "url": "https://github.com/pixu1980/pix-galaxy",
+        "name": "talks-libraries",
+        "description": "",
+        "url": "https://github.com/pixu1980/talks-libraries",
         "homepage": "",
-        "language": "JavaScript",
+        "language": "CSS",
         "stars": 0,
         "watchers": 0,
         "forksCount": 0,
@@ -900,9 +955,9 @@
         "fork": false,
         "private": false,
         "tags": [],
-        "updatedAt": "2026-05-04T13:02:24Z",
-        "createdAt": "2026-04-29T21:11:30Z",
-        "slug": "pix-galaxy"
+        "updatedAt": "2026-04-23T17:41:01Z",
+        "createdAt": "2025-04-03T09:13:37Z",
+        "slug": "talks-libraries"
       }
     ],
     "talkRepos": [
@@ -912,15 +967,15 @@
         "url": "https://github.com/pixu1980/talk-kinetic-css-osdsay-2026",
         "homepage": "",
         "language": "HTML",
-        "stars": 5,
-        "watchers": 5,
+        "stars": 6,
+        "watchers": 6,
         "forksCount": 0,
         "openIssues": 0,
         "archived": false,
         "fork": false,
         "private": false,
         "tags": [],
-        "updatedAt": "2026-04-25T09:59:13Z",
+        "updatedAt": "2026-05-06T13:20:39Z",
         "createdAt": "2026-04-23T17:43:34Z",
         "slug": "talk-kinetic-css-osdsay-2026"
       },
@@ -1214,31 +1269,36 @@
       }
     ],
     "portfolioStats": {
-      "importedRepos": 6,
-      "publicRepos": 6,
-      "sourceRepos": 6,
-      "ownRepos": 5,
+      "importedRepos": 8,
+      "publicRepos": 8,
+      "sourceRepos": 8,
+      "ownRepos": 7,
       "forks": 1,
-      "totalStars": 40,
+      "totalStars": 46,
       "totalForks": 7,
-      "totalOpenIssues": 2,
+      "totalOpenIssues": 3,
       "lastUpdatedAt": "2026-04-28T19:49:35Z"
     },
     "portfolioLanguages": [
       {
         "name": "JavaScript",
         "count": 4,
-        "percent": 67
+        "percent": 50
+      },
+      {
+        "name": "CSS",
+        "count": 2,
+        "percent": 25
       },
       {
         "name": "HTML",
         "count": 1,
-        "percent": 17
+        "percent": 13
       },
       {
         "name": "TypeScript",
         "count": 1,
-        "percent": 17
+        "percent": 13
       }
     ],
     "portfolioTopics": [
@@ -1298,9 +1358,9 @@
     "profileUrl": "https://sessionize.com/pixu1980/",
     "speaker": {
       "name": "Emiliano Pisu",
-      "headline": "Senior Design Engineer, Sensei & Co-Host @ DevDojoIT",
+      "headline": "Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor",
       "image": "https://sessionize.com/image/6fab-400o400o2-sBNH39EcgEDbD4nyjs7jwV.png",
-      "summary": "Public talks and workshops focused on accessible design systems, lean frontend architecture, and the native capabilities of the web platform.",
+      "summary": "Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor Hi 👋 Folks!I'm Emiliano Pisu, your friendly neighborhood Design Engineer.Throughout my career, driven by my coding addiction, I've always stayed up to date with software development and related trends, focusing on UI, UX, Accessibility, Responsiveness, Compatibility, Scalability, and...",
       "topics": [
         "Information & Communications Technology",
         "Law & Regulation",
@@ -1344,7 +1404,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/classless-is-more/110137",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-classless-is-more",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-classless-is-more/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "128446",
@@ -1359,13 +1439,33 @@
         "languageScore": 1,
         "relatedRepos": [
           {
-            "name": "talk-accessible-design-systems-with-css-apis",
-            "url": "https://github.com/pixu1980/talk-accessible-design-systems-with-css-apis",
+            "name": "talk-semantic-accessible-web",
+            "url": "https://github.com/pixu1980/talk-semantic-accessible-web",
             "language": "HTML",
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/accessible-web-combining-wcag-wai-aria-and-semanti/128446",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-semantic-accessible-web",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-semantic-accessible-web/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "164020",
@@ -1386,7 +1486,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/aidd-from-spec-to-app/164020",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-accessible-design-systems-with-css-apis",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-accessible-design-systems-with-css-apis/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "153351",
@@ -1407,7 +1527,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/back-to-css/153351",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/flavor-scss",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/flavor-scss/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "131786",
@@ -1428,7 +1568,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/baseline-rhapsody-a-tale-of-style-motion/131786",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-baseline-rhapsody",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-baseline-rhapsody/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "131772",
@@ -1449,7 +1609,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/building-an-accessible-design-system-with-the-css-/131772",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-accessible-design-systems-with-css-apis",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-accessible-design-systems-with-css-apis/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "107833",
@@ -1470,7 +1650,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/css-superpowers-with-layers/107833",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-css-superpowers",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-css-superpowers/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "149730",
@@ -1491,7 +1691,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/customelements-beyond-a-lean-way-to-build-reactive/149730",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-custom-elements-and-beyond",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-custom-elements-and-beyond/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "170941",
@@ -1512,7 +1732,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/dout.dev-how-to-build-a-vanilla-cms/170941",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-accessible-design-systems-with-css-apis",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-accessible-design-systems-with-css-apis/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "151714",
@@ -1533,7 +1773,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/kinetic-css-a-deep-dive-into-modern-motion-apis/151714",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-kinetic-css",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-kinetic-css/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "136460",
@@ -1554,7 +1814,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/modern-css-architecture-accessible-design-systems-/136460",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-modern-css-architecture",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-modern-css-architecture/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "153354",
@@ -1586,7 +1866,27 @@
             "language": "HTML",
             "isExternal": true
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/reactive-apps-without-frameworks/153354",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-reactive-apps-without-frameworks",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-reactive-apps-without-frameworks/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "130631",
@@ -1607,7 +1907,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/the-lean-web-manifesto/130631",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-lean-web-manifesto",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-lean-web-manifesto/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "159197",
@@ -1628,7 +1948,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/wcagui-one-year-after-accessible-components-real-b/159197",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-introducing-wcag-ui",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-introducing-wcag-ui/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       },
       {
         "id": "110136",
@@ -1649,7 +1989,27 @@
             "isExternal": true,
             "label": "GitHub"
           }
-        ]
+        ],
+        "talkLinks": {
+          "sessionize": {
+            "href": "https://sessionize.com/s/pixu1980/wcagui-an-accessible-ui-kit-based-on-wcag-patterns/110136",
+            "label": "Sessionize",
+            "kind": "link",
+            "isExternal": true
+          },
+          "github": {
+            "href": "https://github.com/pixu1980/talk-introducing-wcag-ui",
+            "label": "GitHub",
+            "kind": "related-repo",
+            "isExternal": true
+          },
+          "slides": {
+            "href": "https://pixu1980.github.io/talk-introducing-wcag-ui/",
+            "label": "Slides",
+            "kind": "slides",
+            "isExternal": true
+          }
+        }
       }
     ],
     "events": [
@@ -1659,13 +2019,6 @@
         "when": "June 2026",
         "where": "Bologna, Italy",
         "note": "Back to CSS"
-      },
-      {
-        "name": "Weblica 2026",
-        "url": "https://weblica.hr/",
-        "when": "May 2026",
-        "where": "Sveti Martin na Muri, Croatia",
-        "note": ""
       },
       {
         "name": "Open Source Day 2026",
@@ -1783,10 +2136,10 @@
   },
   "linkedin": {
     "label": "LinkedIn",
-    "status": "live",
+    "status": "fallback",
     "profileUrl": "https://linkedin.com/in/pixu1980/",
     "name": "Emiliano Pisu",
-    "headline": "Hi Folks 👋 I'm Emiliano Pisu, your friendly neighborhood Senior Frontend...",
+    "headline": "Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor",
     "summary": "Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction.",
     "profileImage": "https://github.com/pixu1980.png?size=512",
     "skills": [
@@ -1801,74 +2154,130 @@
       "Frontend mentoring",
       "Native web thinking"
     ],
-    "connections": "500+",
+    "connections": "",
     "experience": [
       {
-        "title": "Emiliano Pisu",
-        "organization": "****** ******** ********",
-        "dateRange": "",
-        "location": "",
+        "title": "Sensei & Co-Host",
+        "organization": "DevDojo IT",
+        "dateRange": "Dec 2024 – Present",
+        "summary": "Teaching, mentoring, and open-source contributions focused on frontend engineering craft. Live coding sessions, webinars, and public talks. Stack: Vanilla JS, HTML, CSS, Accessibility, Mentoring, Open Source",
+        "highlights": [],
+        "skills": []
+      },
+      {
+        "title": "Frontend Development Lead & Mentor",
+        "organization": "MONK Software s.r.l.",
+        "dateRange": "Sept 2022 – Feb 2025",
+        "summary": "Tech Lead for the internal frontend framework (vanilla, no external dependencies). Tech Lead for the MonkUI design system (WCAG 2.2 AA compliant). Organized and presented courses on frontend and UI/UX engineering: Stack: HTML5, CSS3, SCSS, JavaScript, TypeScript, Mentoring",
+        "highlights": [
+          "Typography (Typeface, Fonts, Font Stacks, Variable Fonts)",
+          "Layout & Responsive (Mobile First, Gridless Design, Asymmetric Design)",
+          "HTML with CSS superpowers (Grid & Flex, Container Queries, Scroll Snap, CSS Layers)",
+          "Color Theory (Color Wheel, HSL, Palettes, Shadows)",
+          "Accessibility (A11y)",
+          "Best Practices, Performance & Tooling",
+          "Design Analysis",
+          "Forms (Custom UI Controls, Validation)",
+          "Web Components (Custom Elements)"
+        ],
+        "skills": []
+      },
+      {
+        "title": "Senior UI/UX Engineer & Mentor",
+        "organization": "Assist Digital S.p.A.",
+        "dateRange": "April 2019 – Sept 2022",
+        "summary": "Stack: Angular, React, AngularJS, Semantic UI, GraphQL",
+        "highlights": [
+          "MySupport (TeamSystem): UI/UX Lead, Angular",
+          "After Sales (Gucci): UI/UX & Frontend Dev, React with Semantic UI and GraphQL",
+          "GeoWeb (Munich RE): UI/UX & Frontend Dev, Angular",
+          "MyBusiness (Vodafone): Frontend Dev, AngularJS"
+        ],
+        "skills": []
+      },
+      {
+        "title": "Senior UI/UX Engineer",
+        "organization": "Freelance",
+        "dateRange": "April 2013 – April 2019",
+        "summary": "Stack: ASP.NET MVC, WCF, jQuery, SQL, HTML5, CSS3",
+        "highlights": [
+          "Ticket System (Thera): Full-stack, ASP.NET MVC, WCF, jQuery, SQL",
+          "Alitalia Online Booking: Web developer for the national airline's flight search and booking portal"
+        ],
+        "skills": []
+      },
+      {
+        "title": "Senior Frontend Engineer",
+        "organization": "RealVirtual s.r.l.",
+        "dateRange": "Sept 2012 – April 2013",
+        "summary": "RealVirtualCMS: Web Solution Architect, Designer, Developer. Stack: ASP.NET Razor, HTML5, CSS3, jQuery, Kendo UI, JSON",
+        "highlights": [],
+        "skills": []
+      },
+      {
+        "title": "Senior Solution Architect",
+        "organization": "Timesys S.r.l.",
+        "dateRange": "May 2012 – Aug 2012",
+        "summary": "Stack: Windows Forms, LINQ, RegEx, XML, SQLite, C#",
+        "highlights": [
+          "Milletrix: Posture and foot analysis with 2D/3D visualization",
+          "ReBioDes: Intelligent medical report generation"
+        ],
+        "skills": []
+      },
+      {
+        "title": "Senior Full-stack Developer",
+        "organization": "Thera s.r.l.",
+        "dateRange": "2007 – March 2012",
+        "summary": "Stack: ASP.NET, C#, Web Services, SQL, jQuery, Adobe Flash",
+        "highlights": [
+          "Accident at Work Management (Autostrade): Flash-based graphing, ASP.NET, HTML, CSS, JavaScript, SQL",
+          "INPS (Elsag-Datamat): Citizen services portal, ASP.NET, Web Services, jQuery, SQL",
+          "GEA (Baicr): Document archiving management, Visual C#, ASP.NET, Web Services, jQuery, SQL"
+        ],
+        "skills": []
+      },
+      {
+        "title": "Mid Frontend Developer",
+        "organization": "Zucchetti Software s.r.l.",
+        "dateRange": "2005 – 2007",
+        "summary": "SitePainter and corporate portal projects.",
+        "highlights": [],
+        "skills": []
+      },
+      {
+        "title": "Mid Frontend Developer",
+        "organization": "Sistemi 2000 s.r.l.",
+        "dateRange": "2005",
         "summary": "",
         "highlights": [],
         "skills": []
       },
       {
-        "title": "*** **** **",
-        "organization": "****** * *******",
-        "dateRange": "",
-        "location": "",
+        "title": "Junior Full-stack Developer",
+        "organization": "Thera s.r.l.",
+        "dateRange": "2002 – 2005",
         "summary": "",
         "highlights": [],
         "skills": []
       },
       {
-        "title": "**** ********",
-        "organization": "******** *********** **** * ******",
-        "dateRange": "",
-        "location": "",
-        "summary": "",
+        "title": "Junior Full-stack Developer",
+        "organization": "S.I.S.I. Informatica 2000 s.r.l.",
+        "dateRange": "2001 – 2002",
+        "summary": "Windows applications for the Italian tobacco retailers federation.",
         "highlights": [],
         "skills": []
       },
       {
-        "title": "******** ******** *********",
-        "organization": "****** ******* *********** ***** *********** *********** 68/100",
-        "dateRange": "1995 - 2001",
-        "location": "",
-        "summary": "",
+        "title": "Junior Developer",
+        "organization": "Alpha Logic S.p.A.",
+        "dateRange": "2001",
+        "summary": "Entry-level Windows application development.",
         "highlights": [],
         "skills": []
       }
     ],
-    "education": [
-      {
-        "title": "Emiliano Pisu",
-        "subtitle": "****** ******** ********",
-        "dateRange": "",
-        "summary": "",
-        "highlights": []
-      },
-      {
-        "title": "*** **** **",
-        "subtitle": "****** * *******",
-        "dateRange": "",
-        "summary": "",
-        "highlights": []
-      },
-      {
-        "title": "**** ********",
-        "subtitle": "******** *********** **** * ******",
-        "dateRange": "",
-        "summary": "",
-        "highlights": []
-      },
-      {
-        "title": "******** ******** *********",
-        "subtitle": "****** ******* *********** ***** *********** *********** 68/100",
-        "dateRange": "1995 - 2001",
-        "summary": "",
-        "highlights": []
-      }
-    ]
+    "education": []
   }
 }

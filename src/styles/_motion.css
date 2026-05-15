@@ -72,9 +72,15 @@
       animation: none;
     }
 
+    html[data-reveal-ready="true"] main > [data-section][data-reveal] {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+
     html[data-reveal-ready="true"]
-      [data-section="talks-speaking"]
-      :where([data-speaker-panel], [data-talk]:first-child) {
+      [data-section="speaking"]
+      :where([data-speaking-recap], [data-talk]:first-child) {
       opacity: 1;
       transform: none;
       animation: none;
@@ -82,8 +88,8 @@
   }
 
   html[data-reveal-ready="true"]
-    [data-section="talks-speaking"]
-    :where([data-speaker-panel], [data-talk]:first-child) {
+    [data-section="speaking"]
+    :where([data-speaking-recap], [data-talk]:first-child) {
     opacity: 1;
     transform: none;
     transition: none;

@@ -13,15 +13,15 @@ export function getGitHubUsername(config = {}) {
   const candidates = [config.profile, config.api].filter(Boolean);
 
   for (const candidate of candidates) {
-    const profileMatch = String(candidate).match(/github\.com\/([^/?#]+)/i);
     const apiMatch = String(candidate).match(/api\.github\.com\/users\/([^/?#]+)/i);
-
-    if (profileMatch?.[1]) {
-      return profileMatch[1];
-    }
+    const profileMatch = String(candidate).match(/github\.com\/([^/?#]+)/i);
 
     if (apiMatch?.[1]) {
       return apiMatch[1];
+    }
+
+    if (profileMatch?.[1]) {
+      return profileMatch[1];
     }
   }
 

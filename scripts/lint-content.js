@@ -47,13 +47,13 @@ const nonEnglishParserLabels = [
   ["Durata", " preferita"].join(""),
 ];
 
-function getExtension(pathname) {
+export function getExtension(pathname) {
   const name = pathname.split("/").pop() || "";
   const dot = name.lastIndexOf(".");
   return dot >= 0 ? name.slice(dot) : "";
 }
 
-async function collectFiles(pathname, files = []) {
+export async function collectFiles(pathname, files = []) {
   const info = await stat(pathname);
 
   if (info.isDirectory()) {
@@ -76,7 +76,7 @@ function getLine(text, index) {
   return text.slice(0, index).split("\n").length;
 }
 
-function checkForbiddenTypography(pathname, text, errors) {
+export function checkForbiddenTypography(pathname, text, errors) {
   for (const [character, label] of forbiddenCharacters) {
     const index = text.indexOf(character);
     if (index >= 0) {
@@ -85,7 +85,7 @@ function checkForbiddenTypography(pathname, text, errors) {
   }
 }
 
-function checkEnglishOnly(pathname, text, errors) {
+export function checkEnglishOnly(pathname, text, errors) {
   if (pathname.endsWith("content/resume.md") && /^\s*-\s+IT\s*$/m.test(text)) {
     errors.push(`${pathname} contains non-English talk language fallback`);
   }
@@ -98,27 +98,64 @@ function checkEnglishOnly(pathname, text, errors) {
   }
 }
 
-const files = (
-  await Promise.all(
-    roots.map((root) =>
-      collectFiles(root).catch((error) => {
-        if (error.code === "ENOENT") return [];
-        throw error;
-      }),
-    ),
-  )
-).flat();
-const errors = [];
+export async function lintContent(targetRoots = roots) {
+  const files = (
+    await Promise.all(
+      targetRoots.map((root) =>
+        collectFiles(root).catch((error) => {
+          if (error.code === "ENOENT") return [];
+          throw error;
+        }),
+      ),
+    )
+  ).flat();
+  const errors = [];
 
-for (const file of files) {
-  const text = await readFile(file, "utf8");
-  checkForbiddenTypography(file, text, errors);
-  checkEnglishOnly(file, text, errors);
+  for (const file of files) {
+    const text = await readFile(file, "utf8");
+    checkForbiddenTypography(file, text, errors);
+    checkEnglishOnly(file, text, errors);
+  }
+
+  return errors;
 }
 
-if (errors.length) {
-  console.error(errors.join("\n"));
-  process.exit(1);
+export async function runContentLint(targetRoots = roots) {
+  const errors = await lintContent(targetRoots);
+
+  if (errors.length) {
+    console.error(errors.join("\n"));
+    process.exit(1);
+  }
+
+  console.log(`Content lint passed for ${targetRoots.length ? "configured" : 0} roots.`);
 }
 
-console.log(`Content lint passed for ${files.length} files.`);
+const isMain = process.argv[1] && import.meta.url.endsWith(process.argv[1].replaceAll("\\", "/"));
+
+if (isMain) {
+  const files = (
+    await Promise.all(
+      roots.map((root) =>
+        collectFiles(root).catch((error) => {
+          if (error.code === "ENOENT") return [];
+          throw error;
+        }),
+      ),
+    )
+  ).flat();
+  const errors = [];
+
+  for (const file of files) {
+    const text = await readFile(file, "utf8");
+    checkForbiddenTypography(file, text, errors);
+    checkEnglishOnly(file, text, errors);
+  }
+
+  if (errors.length) {
+    console.error(errors.join("\n"));
+    process.exit(1);
+  }
+
+  console.log(`Content lint passed for ${files.length} files.`);
+}

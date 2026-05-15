@@ -12,8 +12,13 @@ export function normalizeLinks(links, kind = "link") {
     }));
 }
 
-export function buildHeroMetrics(data) {
+export function buildHeroMetrics(frontmatter, data) {
   return [
+    ...toArray(frontmatter.metrics).map((metric) => ({
+      label: metric.label,
+      value: metric.value,
+      note: metric.note,
+    })),
     {
       label: "GitHub repositories",
       value: formatNumber(data.github.stats.publicRepos || data.github.stats.importedRepos),
@@ -23,13 +28,6 @@ export function buildHeroMetrics(data) {
       label: "Sessionize talks",
       value: formatNumber(data.sessionize.talks.length),
       note: `${formatNumber(data.sessionize.events.length)} event appearances`,
-    },
-    {
-      label: "LinkedIn network",
-      value: data.linkedin.connections || formatNumber(data.linkedin.experience.length),
-      note: data.linkedin.connections
-        ? `${formatNumber(data.linkedin.experience.length)} experience entries`
-        : `${formatNumber(data.linkedin.education.length)} education entries`,
     },
   ];
 }
@@ -74,21 +72,33 @@ export function buildRepoView(repo) {
 }
 
 export function buildTalkView(talk) {
+  const sessionizeLink = talk.talkLinks?.sessionize || {
+    href: talk.url,
+    label: "Sessionize",
+    kind: "link",
+    isExternal: true,
+  };
+  const githubLink =
+    talk.talkLinks?.github ||
+    (talk.relatedRepos?.[0]
+      ? {
+          href: talk.relatedRepos[0].url,
+          label: "GitHub",
+          kind: "related-repo",
+          isExternal: true,
+        }
+      : null);
+  const slidesLink = talk.talkLinks?.slides || null;
+
   return {
     ...talk,
     abstractText: truncateText(
       talk.abstract || "Talk abstract imported from Sessionize or local fallback data.",
       360,
     ),
-    sessionizeLink: { href: talk.url, label: "See on Sessionize", kind: "link", isExternal: true },
-    githubLink: talk.relatedRepos?.[0]
-      ? {
-          href: talk.relatedRepos[0].url,
-          label: "See on GitHub",
-          kind: "related-repo",
-          isExternal: true,
-        }
-      : null,
+    sessionizeLink,
+    githubLink,
+    slidesLink,
   };
 }
 

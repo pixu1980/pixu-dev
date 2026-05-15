@@ -71,7 +71,7 @@ function getSafariPinnedSvg(body) {
 `;
 }
 
-async function writePng(source, name, size) {
+export async function writePng(source, name, size) {
   await sharp(Buffer.from(source))
     .resize(size, size, {
       fit: "contain",
@@ -81,7 +81,7 @@ async function writePng(source, name, size) {
     .toFile(join(STATIC, name));
 }
 
-async function main() {
+export async function generateFavicons() {
   await mkdir(STATIC, { recursive: true });
   const source = await readFile(LOGO_SVG, "utf8");
   const body = getLogoBody(source);
@@ -148,4 +148,17 @@ async function main() {
   );
 }
 
-await main();
+const isMain = process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1];
+
+if (isMain) {
+  await generateFavicons();
+}
+
+export {
+  getAdaptiveSvg,
+  getFlatLogo,
+  getLogoBody,
+  getPngSourceSvg,
+  getSafariPinnedSvg,
+  getThemedLogo,
+};

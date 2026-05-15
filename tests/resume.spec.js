@@ -8,20 +8,41 @@ async function getBuildData(page) {
 }
 
 async function getTopLevelSections(page) {
-  return page.evaluate(() =>
-    Array.from(document.querySelectorAll("main > section[data-section]")).map((section) => ({
-      id: section.id,
-      heading: section.querySelector("h2")?.textContent?.trim() || "",
-    })),
-  );
+  await page.waitForLoadState("domcontentloaded");
+
+  const sections = page.locator("main > section[data-section]");
+  await expect(sections.first()).toBeAttached();
+
+  const count = await sections.count();
+  const items = [];
+
+  for (let index = 0; index < count; index += 1) {
+    const section = sections.nth(index);
+    items.push({
+      id: (await section.getAttribute("id")) || "",
+      heading: ((await section.locator("h2").textContent()) || "").trim(),
+    });
+  }
+
+  return items;
 }
 
 async function getNavTargets(page) {
-  return page.evaluate(() =>
-    Array.from(document.querySelectorAll("[data-nav-link]"))
-      .map((link) => link.getAttribute("href")?.slice(1) || "")
-      .filter(Boolean),
-  );
+  await page.waitForLoadState("domcontentloaded");
+
+  const links = page.locator("[data-nav-link]");
+  await expect(links.first()).toBeAttached();
+
+  const count = await links.count();
+  const targets = [];
+
+  for (let index = 0; index < count; index += 1) {
+    const href = await links.nth(index).getAttribute("href");
+    const target = href?.slice(1) || "";
+    if (target) targets.push(target);
+  }
+
+  return targets;
 }
 
 async function getLayoutDiagnostics(page) {
@@ -61,6 +82,66 @@ async function getLayoutDiagnostics(page) {
   });
 }
 
+async function getStickyRevealOpacity(page) {
+  return page.evaluate(async () => {
+    document.documentElement.style.scrollBehavior = "auto";
+
+    const waitForFrame = () =>
+      new Promise((resolve) => {
+        requestAnimationFrame(() => requestAnimationFrame(resolve));
+      });
+
+    const targets = {
+      about: '[data-section="about"] [data-about-story]',
+      portfolio: '[data-section="portfolio"] [data-portfolio-summary]',
+      speaking: '[data-section="speaking"] [data-speaking-recap]',
+    };
+    const opacityBySection = {};
+
+    for (const [name, selector] of Object.entries(targets)) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+      await waitForFrame();
+
+      const target = document.querySelector(selector);
+      if (!target) {
+        opacityBySection[name] = 0;
+        continue;
+      }
+
+      const stickyTop = Number.parseFloat(getComputedStyle(target).top) || 0;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - stickyTop;
+      window.scrollTo({ top: Math.max(0, targetTop), behavior: "instant" });
+
+      const getEffectiveOpacity = () => {
+        let effectiveOpacity = 1;
+        for (
+          let current = target;
+          current && current.nodeType === Node.ELEMENT_NODE;
+          current = current.parentElement
+        ) {
+          effectiveOpacity *= Number(getComputedStyle(current).opacity);
+        }
+
+        return effectiveOpacity;
+      };
+
+      for (let frame = 0; frame < 30; frame += 1) {
+        await waitForFrame();
+        if (
+          Math.abs(target.getBoundingClientRect().top - stickyTop) <= 2 &&
+          getEffectiveOpacity() >= 0.97
+        ) {
+          break;
+        }
+      }
+
+      opacityBySection[name] = getEffectiveOpacity();
+    }
+
+    return opacityBySection;
+  });
+}
+
 test.describe("resume page", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
@@ -84,6 +165,8 @@ test.describe("resume page", () => {
 
     expect(sections.length).toBeGreaterThan(4);
     expect(navTargets).toEqual(sections.map((section) => section.id));
+    expect(sections.map((section) => section.id)).not.toContain("education");
+    expect(navTargets).not.toContain("education");
     expect(sections.map((section) => section.heading)).toContain("Portfolio");
     expect(sections.map((section) => section.heading)).toContain("Public Speaking");
   });
@@ -99,7 +182,7 @@ test.describe("resume page", () => {
     await expect(page.locator("main > section#about [data-chip]")).toHaveCount(3);
 
     expect(data.linkedin.experience.length).toBeGreaterThan(5);
-    expect(data.linkedin.education.length).toBeGreaterThanOrEqual(3);
+    expect(data.linkedin.education.length).toBe(0);
     expect(data.linkedin.skills.length).toBeGreaterThanOrEqual(4);
   });
 
@@ -119,7 +202,7 @@ test.describe("resume page", () => {
     const data = await getBuildData(page);
     const expectedMinimum = data.github.status === "fallback" ? 4 : 10;
 
-    await expect(page.locator('[data-section="projects"] [data-stat]')).toHaveCount(4);
+    await expect(page.locator('[data-section="portfolio"] [data-stat]')).toHaveCount(4);
     expect(await page.locator('[data-generated="github-repo"]').count()).toBe(
       data.github.portfolioRepos.length,
     );
@@ -135,6 +218,7 @@ test.describe("resume page", () => {
   test("public speaking renders Sessionize talks, events, and related repos", async ({ page }) => {
     const data = await getBuildData(page);
     const expectedMinimum = data.sessionize.status === "fallback" ? 4 : 10;
+    const firstTalk = page.locator('[data-generated="sessionize-talk"]').first();
 
     expect(await page.locator('[data-generated="sessionize-talk"]').count()).toBe(
       data.sessionize.talks.length,
@@ -142,12 +226,19 @@ test.describe("resume page", () => {
     expect(data.sessionize.talks.length).toBeGreaterThanOrEqual(expectedMinimum);
     expect(await page.locator('[data-generated="sessionize-event"]').count()).toBeGreaterThan(0);
     expect(await page.locator("[data-related-repo]").count()).toBeGreaterThan(0);
-    await expect(page.locator('[data-generated="sessionize-talk"]').first()).toContainText(
-      "See on Sessionize",
-    );
-    await expect(page.locator('[data-generated="sessionize-talk"]').first()).toContainText(
-      "See on GitHub",
-    );
+    await expect(page.locator('[data-section="speaking"] [data-speaking-recap]')).toBeVisible();
+    await expect(firstTalk.locator("footer [data-link]")).toHaveText([
+      "Sessionize",
+      "GitHub",
+      "Slides",
+    ]);
+
+    const hrefs = await firstTalk
+      .locator("footer [data-link]")
+      .evaluateAll((links) => links.map((link) => link.getAttribute("href") || ""));
+    expect(hrefs[0]).toMatch(/^https:\/\/sessionize\.com\//);
+    expect(hrefs[1]).toMatch(/^https:\/\/github\.com\/pixu1980\/talk-/);
+    expect(hrefs[2]).toMatch(/^https:\/\/pixu1980\.github\.io\/talk-.*\/$/);
   });
 
   test("external links are safe and no theme vendor UI remains", async ({ page }) => {
@@ -187,6 +278,34 @@ test.describe("resume page", () => {
     await expect(page.locator("html")).toHaveAttribute("data-color-scheme", "dark");
   });
 
+  test("custom elements handle skip, pointer, and scroll progress behavior", async ({
+    page,
+    isMobile,
+  }) => {
+    test.skip(!!isMobile, "desktop pointer contract");
+
+    const skipLink = page.locator("skip-link");
+    const pointerGlow = page.locator("pointer-glow");
+    const scrollProgress = page.locator("scroll-progress");
+
+    await expect(skipLink).toHaveAttribute("role", "link");
+    await skipLink.focus();
+    await page.keyboard.press("Enter");
+    await expect(page.locator("main")).toBeFocused();
+
+    await page.mouse.move(120, 140);
+    await expect(pointerGlow).toHaveAttribute("data-ready", "true");
+    await expect(pointerGlow).toHaveCSS("--x", "120px");
+    await expect(pointerGlow).toHaveCSS("--y", "140px");
+
+    await page.evaluate(() => window.scrollTo({ top: 800, behavior: "instant" }));
+    await expect(scrollProgress).toHaveAttribute("aria-hidden", "true");
+    const progress = await scrollProgress.evaluate((node) =>
+      getComputedStyle(node).getPropertyValue("--progress"),
+    );
+    expect(progress).toMatch(/%$/);
+  });
+
   test("desktop header controls share one visual height", async ({ page, isMobile }) => {
     test.skip(!!isMobile, "desktop contract");
 
@@ -215,12 +334,12 @@ test.describe("resume page", () => {
   });
 
   test("long live-data sections reveal while scrolling", async ({ page }) => {
-    const projectsSection = page.locator('[data-section="projects"]').first();
-    await expect(projectsSection).toBeAttached();
-    await projectsSection.scrollIntoViewIfNeeded();
-    await expect(projectsSection).toHaveAttribute("data-visible", "true");
+    const portfolioSection = page.locator('[data-section="portfolio"]').first();
+    await expect(portfolioSection).toBeAttached();
+    await portfolioSection.scrollIntoViewIfNeeded();
+    await expect(portfolioSection).toHaveAttribute("data-visible", "true");
 
-    const speakingSection = page.locator('[data-section="talks-speaking"]').first();
+    const speakingSection = page.locator('[data-section="speaking"]').first();
     await expect(speakingSection).toBeAttached();
     await speakingSection.scrollIntoViewIfNeeded();
     await expect(speakingSection).toHaveAttribute("data-visible", "true");
@@ -230,26 +349,36 @@ test.describe("resume page", () => {
   test("public speaking lead content is readable at section entry", async ({ page, isMobile }) => {
     test.skip(!!isMobile, "desktop contract");
 
-    await page.locator('[data-nav-link][href="#talks-speaking"]').click();
-    await expect(page.locator('[data-nav-link][href="#talks-speaking"]')).toHaveAttribute(
+    await page.locator('[data-nav-link][href="#speaking"]').click();
+    await expect(page.locator('[data-nav-link][href="#speaking"]')).toHaveAttribute(
       "aria-current",
       "",
     );
 
     const speakerOpacity = Number(
       await page
-        .locator('[data-section="talks-speaking"] [data-speaker-panel]')
+        .locator('[data-section="speaking"] [data-speaking-recap]')
         .evaluate((node) => getComputedStyle(node).opacity),
     );
     const firstTalkOpacity = Number(
       await page
-        .locator('[data-section="talks-speaking"] [data-talk]')
+        .locator('[data-section="speaking"] [data-talk]')
         .first()
         .evaluate((node) => getComputedStyle(node).opacity),
     );
 
     expect(speakerOpacity).toBeGreaterThanOrEqual(0.97);
     expect(firstTalkOpacity).toBeGreaterThanOrEqual(0.99);
+  });
+
+  test("sticky reveal panels are fully readable when they pin", async ({ page, isMobile }) => {
+    test.skip(!!isMobile, "desktop contract");
+
+    const opacity = await getStickyRevealOpacity(page);
+
+    expect(opacity.about).toBeGreaterThanOrEqual(0.97);
+    expect(opacity.portfolio).toBeGreaterThanOrEqual(0.97);
+    expect(opacity.speaking).toBeGreaterThanOrEqual(0.97);
   });
 
   test("desktop layout stays inside viewport and active nav follows scroll", async ({
@@ -263,8 +392,8 @@ test.describe("resume page", () => {
     expect(diagnostics.emptyHeadings).toBe(0);
     expect(diagnostics.outOfBounds).toEqual([]);
 
-    await page.locator('[data-nav-link][href="#projects"]').click();
-    await expect(page.locator('[data-nav-link][href="#projects"]')).toHaveAttribute(
+    await page.locator('[data-nav-link][href="#portfolio"]').click();
+    await expect(page.locator('[data-nav-link][href="#portfolio"]')).toHaveAttribute(
       "aria-current",
       "",
     );

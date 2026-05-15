@@ -23,21 +23,16 @@
   ],
   "scripts": {
     "assets:favicons": "node scripts/generate-favicons.js",
-    "build": "pnpm assets:favicons && pnpm format && pnpm lint && vite build",
-    "build:interactive": "pnpm assets:favicons && node scripts/build.js --interactive && pnpm format && pnpm lint && vite build",
+    "build": "pnpm assets:favicons && node scripts/build.js --interactive && pnpm format && pnpm lint && vite build",
     "dev": "vite dev",
     "format": "biome format --write .",
     "format:check": "biome format --reporter=summary --diagnostic-level=error .",
-    "generate": "node scripts/build.js --out dist --public dist",
-    "generate:interactive": "node scripts/build.js --out dist --public dist --interactive",
     "lint": "biome lint . && pnpm lint:content",
     "lint:content": "node scripts/lint-content.js",
     "prepare": "node .husky/install.mjs",
     "prepush:check": "pnpm build && pnpm exec playwright install && pnpm test",
     "preview": "vite preview . --outDir dist",
-    "start": "pnpm dev",
-    "test": "playwright test",
-    "test:e2e": "playwright test",
+    "test": "node --test $(find scripts src/scripts -name '*.test.js' -print) && playwright test",
     "rel": "node scripts/release.js"
   },
   "engines": {

@@ -10,9 +10,47 @@ export function normalizeTalkRepoMap(talkRepoMap) {
       sessionUrl: normalizeWhitespace(item?.sessionUrl || item?.url),
       repoName: normalizeWhitespace(item?.repoName || item?.repo),
       repoUrl: normalizeWhitespace(item?.repoUrl || item?.github || item?.repository),
+      slidesUrl: normalizeWhitespace(item?.slidesUrl || item?.slides),
       label: normalizeWhitespace(item?.label || ""),
     }))
     .filter((item) => item.repoName || item.repoUrl);
+}
+
+function buildSlidesUrl(repoUrl) {
+  const match = normalizeWhitespace(repoUrl).match(/^https:\/\/github\.com\/([^/]+)\/([^/]+)\/?$/i);
+  if (!match) return "";
+
+  const [, owner, repo] = match;
+  return `https://${owner}.github.io/${repo}/`;
+}
+
+function buildTalkLinks(talk, relatedRepos, mapItem) {
+  const repo = relatedRepos[0];
+  const slidesUrl = mapItem?.slidesUrl || buildSlidesUrl(repo?.url);
+
+  return {
+    sessionize: { href: talk.url, label: "Sessionize", kind: "link", isExternal: true },
+    ...(repo
+      ? {
+          github: {
+            href: repo.url,
+            label: "GitHub",
+            kind: "related-repo",
+            isExternal: true,
+          },
+        }
+      : {}),
+    ...(slidesUrl
+      ? {
+          slides: {
+            href: slidesUrl,
+            label: "Slides",
+            kind: "slides",
+            isExternal: true,
+          },
+        }
+      : {}),
+  };
 }
 
 export function findTalkRepoMapItem(talk, talkRepoMap) {
@@ -116,9 +154,14 @@ export function rankTalkRepoCandidates(talk, repos) {
 
 export function linkTalksToRepos(talks, repos, talkRepoMap = []) {
   return talks.map((talk) => {
+    const mapItem = findTalkRepoMapItem(talk, talkRepoMap);
     const manualRelatedRepos = getManualRelatedRepos(talk, repos, talkRepoMap);
     if (manualRelatedRepos?.length) {
-      return { ...talk, relatedRepos: manualRelatedRepos };
+      return {
+        ...talk,
+        relatedRepos: manualRelatedRepos,
+        talkLinks: buildTalkLinks(talk, manualRelatedRepos, mapItem),
+      };
     }
 
     const relatedRepos = rankTalkRepoCandidates(talk, repos)
@@ -130,6 +173,6 @@ export function linkTalksToRepos(talks, repos, talkRepoMap = []) {
         isExternal: true,
       }));
 
-    return { ...talk, relatedRepos };
+    return { ...talk, relatedRepos, talkLinks: buildTalkLinks(talk, relatedRepos, mapItem) };
   });
 }
