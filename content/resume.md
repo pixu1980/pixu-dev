@@ -241,20 +241,22 @@ availability:
     If the work needs strong UI architecture, accessible interaction design, or
     a durable bridge between design and implementation, let's talk.
 links:
-  - label: LinkedIn
-    url: 'https://linkedin.com/in/pixu1980/'
-    icon: linkedin
+  - label: Dout.dev Blog
+    url: 'https://dout.dev'
+  - label: Dev Dojo IT
+    url: 'https://devdojo.it/'
   - label: GitHub
     url: 'https://github.com/pixu1980'
     icon: github
   - label: Sessionize
     url: 'https://sessionize.com/pixu1980/'
-  - label: DevDojoIT
-    url: 'https://devdojo.it/'
-  - label: Blog
-    url: 'https://dout.dev'
-  - label: Mastodon
-    url: 'https://mastodon.uno/@pixu1980'
+  - label: LinkedIn
+    url: 'https://linkedin.com/in/pixu1980/'
+    icon: linkedin
+#  - label: Twitter (x)
+#    url: 'https://x.com/pixudev1980'
+#  - label: Mastodon
+#    url: 'https://mastodon.uno/@pixu1980'
 metrics:
   - value: 29+ years
     label: shipping software
@@ -284,17 +286,41 @@ Over the last few years my focus shifted from building digital products to givin
 
 I bridge design and development without losing craft: semantics-first HTML, CSS on purpose, progressive enhancement, and maintainability above novelty.
 
-### Principles
+### Bridge design and code
 
-- **Bridge design and code** - Turn visual language into production-grade systems without flattening the original intent
-- **Accessibility is product quality** - Semantics, WCAG patterns, motion restraint, keyboard-first thinking are part of the build, not a retrofit
-- **Native web thinking** - Prioritize platform capabilities and browser APIs over abstractions and cargo cult patterns
-- **Durable delivery** - Architect for maintainability, readability, and resilience to team and product changes over time
-- **Mentorship as delivery** - Share knowledge, tools, and approaches that teams can reuse immediately, not just in the current project but in future work as well
-- **Lean web over cargo cult complexity** - Reach for the platform before reaching for weight
-- **Teach while shipping** - Mentorship, talks, pairing are part of delivery
-- **Make learning a habit** - Stay curious, experiment, share what you learn, and keep growing
-- **Have fun** - Enjoy the process, celebrate small wins, and find joy in the craft of building things that people use and love
+Turn visual language into production-grade systems without flattening the original intent.
+
+### Accessibility is product quality
+
+Semantics, WCAG patterns, motion restraint, keyboard-first thinking are part of the build, not a retrofit.
+
+### Native web thinking
+
+Prioritize platform capabilities and browser APIs over abstractions and cargo cult patterns.
+
+### Durable delivery
+
+Architect for maintainability, readability, and resilience to team and product changes over time.
+
+### Mentorship as delivery
+
+Share knowledge, tools, and approaches that teams can reuse immediately, not just in the current project but in future work as well.
+
+### Lean web over cargo cult complexity
+
+Reach for the platform before reaching for weight.
+
+### Teach while shipping
+
+Mentorship, talks, pairing are part of delivery.
+
+### Make learning a habit
+
+Stay curious, experiment, share what you learn, and keep growing.
+
+### Have fun
+
+Enjoy the process, celebrate small wins, and find joy in the craft of building things that people use and love.
 
 ### Languages
 
