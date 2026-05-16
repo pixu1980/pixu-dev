@@ -42,6 +42,7 @@ const coverage = {
   "scripts/site/sessionize/_load.js": ["scripts/site/_io-loaders.test.js"],
   "scripts/site/sessionize/_parse-api.js": ["scripts/site/sessionize/_sessionize.test.js"],
   "scripts/site/sessionize/_parse-html.js": ["scripts/site/sessionize/_sessionize.test.js"],
+  "scripts/site/sessionize/_speaker-summary.js": ["scripts/site/sessionize/_sessionize.test.js"],
   "scripts/template-engine/_expression-parser.js": [
     "scripts/template-engine/_expression-parser.test.js",
   ],

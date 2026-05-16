@@ -6,27 +6,21 @@
     <meta property="og:title" content="Emiliano Pisu - Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor">
     <meta property="og:description" content="Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="/assets/profile-DxuS2LiJ.jpg">
+    <meta property="og:image" content="assets/images/profile.png">
 
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon-BDH0HqYp.svg">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-DSN1Km1D.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32-Cewcnkxi.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16-Bh4_YBGb.png">
-    <link rel="mask-icon" href="/assets/safari-pinned-tab-Ij2vCN-v.svg" color="#663399">
-    <link rel="manifest" href="/assets/site-Bgc2KmfU.webmanifest">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#663399">
+    <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f3e7">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#080a0f">
     <script>
       (() => {
         try {
           const schemeOptions = ["light", "dark", "system"];
-          const accentOptions = [
-            "sea-glass",
-            "sage-blush",
-            "peach-fuzz",
-            "lavender-mint",
-            "butter-plum",
-          ];
+          const accentOptions = ["blue", "green", "orange", "purple", "rose"];
           const media = window.matchMedia("(prefers-color-scheme: dark)");
           const resolveScheme = (value) =>
             value === "system" ? (media.matches ? "dark" : "light") : value;
@@ -37,34 +31,36 @@
             document.documentElement.dataset.resolvedScheme = resolvedScheme;
             document.documentElement.style.colorScheme = resolvedScheme;
           }
-          const accent = localStorage.getItem("pixu:accent-pair") || "sea-glass";
+          const accent = localStorage.getItem("pixu:accent-color") || "blue";
           if (accentOptions.includes(accent)) {
             document.documentElement.dataset.accent = accent;
           }
         } catch {}
       })();
     </script>
-    <script type="module" crossorigin src="/assets/index-BX5XQ1fc.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D5XwbMF1.css">
+    <link rel="stylesheet" href="styles/index.css">
   </head>
   <body>
     <skip-link href="#main"></skip-link>
     <scroll-progress></scroll-progress>
     <pointer-glow></pointer-glow>
 
-    <header data-site-header="">
+    <header data-header="">
   <a data-mark="" href="#top" aria-label="Emiliano Pisu home">
-    <img src="/assets/logo-D7mhD1Td.svg" width="300" height="300" alt="" decoding="async">
+    <img src="assets/images/logo.svg" width="300" height="300" alt="" decoding="async">
   </a>
-
-  <button data-nav-toggle="" type="button" aria-controls="site-nav" aria-expanded="false">
-    Menu
-  </button>
 
   <div data-header-tools="">
     <accent-color-selector></accent-color-selector>
     <color-scheme-selector></color-scheme-selector>
     <a data-header-action="" href="#contact">Contact</a>
+    <button data-nav-toggle="" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Menu">
+      <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="5" width="16" height="1.5" rx="0.75" fill="currentColor"></rect>
+        <rect x="2" y="9.25" width="16" height="1.5" rx="0.75" fill="currentColor"></rect>
+        <rect x="2" y="13.5" width="16" height="1.5" rx="0.75" fill="currentColor"></rect>
+      </svg>
+    </button>
   </div>
 </header>
 
@@ -73,6 +69,7 @@
       <aside data-site-rail="">
         <nav id="site-nav" data-nav="" aria-label="Section navigation">
   <ul data-nav-list="">
+    <li><a href="#top" data-nav-link="">Home</a></li>
     
       <li><a href="#about" data-nav-link="">About</a></li>
     
@@ -154,7 +151,7 @@
   </div>
 
   <figure data-portrait="" data-reveal="">
-    <img src="/assets/profile-DxuS2LiJ.jpg" alt="Emiliano Pisu profile portrait" loading="eager" decoding="async">
+    <img src="assets/images/profile.png" alt="Emiliano Pisu profile portrait" loading="eager" decoding="async">
     <figcaption>
       <span>Emiliano Pisu</span>
       <strong>Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor</strong>
@@ -280,9 +277,19 @@
       
         <li>Accessibility is product quality - Semantics, WCAG patterns, motion restraint, keyboard-first thinking are part of the build, not a retrofit</li>
       
+        <li>Native web thinking - Prioritize platform capabilities and browser APIs over abstractions and cargo cult patterns</li>
+      
+        <li>Durable delivery - Architect for maintainability, readability, and resilience to team and product changes over time</li>
+      
+        <li>Mentorship as delivery - Share knowledge, tools, and approaches that teams can reuse immediately, not just in the current project but in future work as well</li>
+      
         <li>Lean web over cargo cult complexity - Reach for the platform before reaching for weight</li>
       
         <li>Teach while shipping - Mentorship, talks, pairing are part of delivery</li>
+      
+        <li>Make learning a habit - Stay curious, experiment, share what you learn, and keep growing</li>
+      
+        <li>Have fun - Enjoy the process, celebrate small wins, and find joy in the craft of building things that people use and love</li>
       
     </ul>
   
@@ -752,7 +759,7 @@
         <small>Detected from repo metadata</small>
       </article>
       <article data-stat="" data-surface="">
-        <strong>Apr 2026</strong>
+        <strong>Nov 7</strong>
         <span>latest update</span>
         <small>pixu1980</small>
       </article>
@@ -792,27 +799,27 @@
     
       <li>javascript x2</li>
     
-      <li>accessibility x1</li>
-    
-      <li>ai x1</li>
-    
-      <li>architecture x1</li>
-    
-      <li>backend x1</li>
-    
       <li>blog x1</li>
-    
-      <li>browser-detection x1</li>
-    
-      <li>cpu-detection x1</li>
     
       <li>css x1</li>
     
-      <li>detection x1</li>
+      <li>documentation x1</li>
     
-      <li>detector x1</li>
+      <li>es6 x1</li>
     
-      <li>detector-js x1</li>
+      <li>feature-detection x1</li>
+    
+      <li>grid-system x1</li>
+    
+      <li>html x1</li>
+    
+      <li>library x1</li>
+    
+      <li>mixins x1</li>
+    
+      <li>module x1</li>
+    
+      <li>npm x1</li>
     
   </ul>
 
@@ -822,39 +829,32 @@
     
       <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
   <header>
-    <p data-kicker="">HTML</p>
-    <strong>1 stars</strong>
+    <p data-kicker="">CSS</p>
+    <strong>6 stars</strong>
   </header>
-  <h3>dout-dev</h3>
-  <p>The DoUtDev Blog, a place for sharing and caring from developers to developers: create your Pull Request adding a markdown file for you Article and we'll review it and publish it (according to our CoC)</p>
+  <h3>flavor-scss</h3>
+  <p>Flavor SCSS - Advanced type checking Sass/SCSS Framework with Mixins &amp; Helpers and a fully customizable Grid System</p>
   
   <ul aria-label="" data-tags="">
     
-      <li>accessibility</li>
+      <li>sass</li>
     
-      <li>ai</li>
+      <li>mixins</li>
     
-      <li>architecture</li>
+      <li>scss</li>
     
-      <li>backend</li>
+      <li>scss-mixins</li>
     
-      <li>blog</li>
+      <li>sass-framework</li>
     
   </ul>
 
 
   <footer>
-    <span>Updated Apr 2026</span>
+    <span>Updated Nov 7</span>
     
-    <a data-link="" href="https://github.com/pixu1980/dout-dev" target="_blank" rel="noopener noreferrer">
+    <a data-link="" href="https://github.com/pixu1980/flavor-scss" target="_blank" rel="noopener noreferrer">
       Repo
-    </a>
-  
-
-    
-      
-    <a data-link="" href="https://dout.dev/" target="_blank" rel="noopener noreferrer">
-      Site
     </a>
   
 
@@ -873,21 +873,21 @@
   
   <ul aria-label="" data-tags="">
     
-      <li>browser-detection</li>
+      <li>javascript</li>
     
-      <li>cpu-detection</li>
+      <li>npm</li>
     
-      <li>detection</li>
+      <li>library</li>
     
-      <li>detector</li>
+      <li>yarn</li>
     
-      <li>detector-js</li>
+      <li>module</li>
     
   </ul>
 
 
   <footer>
-    <span>Updated Jan 2026</span>
+    <span>Updated May 29</span>
     
     <a data-link="" href="https://github.com/pixu1980/detector-js" target="_blank" rel="noopener noreferrer">
       Repo
@@ -895,9 +895,24 @@
   
 
     
-      
-    <a data-link="" href="http://detector.js.org" target="_blank" rel="noopener noreferrer">
-      Site
+  </footer>
+</article>
+
+    
+      <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
+  <header>
+    <p data-kicker="">JavaScript</p>
+    <strong>0 stars</strong>
+  </header>
+  <h3>pixu-dev</h3>
+  <p>pixu.dev - Emiliano Pisu Resume</p>
+  
+
+  <footer>
+    <span>Updated May 15</span>
+    
+    <a data-link="" href="https://github.com/pixu1980/pixu-dev" target="_blank" rel="noopener noreferrer">
+      Repo
     </a>
   
 
@@ -909,38 +924,75 @@
       <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
   <header>
     <p data-kicker="">CSS</p>
-    <strong>6 stars</strong>
+    <strong>0 stars</strong>
   </header>
-  <h3>flavor-scss</h3>
-  <p>Flavor SCSS - Advanced type checking Sass/SCSS Framework with Mixins &amp; Helpers and a fully customizable Grid System</p>
+  <h3>talks-libraries</h3>
+  <p>Public repository imported from GitHub during build.</p>
   
-  <ul aria-label="" data-tags="">
-    
-      <li>flavor-scss</li>
-    
-      <li>grid-system</li>
-    
-      <li>mixins</li>
-    
-      <li>sass</li>
-    
-      <li>sass-framework</li>
-    
-  </ul>
-
 
   <footer>
-    <span>Updated Jan 2026</span>
+    <span>Updated May 15</span>
     
-    <a data-link="" href="https://github.com/pixu1980/flavor-scss" target="_blank" rel="noopener noreferrer">
+    <a data-link="" href="https://github.com/pixu1980/talks-libraries" target="_blank" rel="noopener noreferrer">
       Repo
     </a>
   
 
     
-      
-    <a data-link="" href="https://pixu1980.github.io/flavor-scss/index.html" target="_blank" rel="noopener noreferrer">
-      Site
+  </footer>
+</article>
+
+    
+      <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
+  <header>
+    <p data-kicker="">JavaScript</p>
+    <strong>0 stars</strong>
+  </header>
+  <h3>pix-galaxy</h3>
+  <p>Monorepo for the PixGalaxy ecosystem of components for web development, all vanilla, 0 deps</p>
+  
+
+  <footer>
+    <span>Updated May 5</span>
+    
+    <a data-link="" href="https://github.com/pixu1980/pix-galaxy" target="_blank" rel="noopener noreferrer">
+      Repo
+    </a>
+  
+
+    
+  </footer>
+</article>
+
+    
+      <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
+  <header>
+    <p data-kicker="">HTML</p>
+    <strong>1 stars</strong>
+  </header>
+  <h3>dout-dev</h3>
+  <p>The DoUtDev Blog, a place for sharing and caring from developers to developers: create your Pull Request adding a markdown file for you Article and we'll review it and publish it (according to our …</p>
+  
+  <ul aria-label="" data-tags="">
+    
+      <li>javascript</li>
+    
+      <li>css</li>
+    
+      <li>blog</li>
+    
+      <li>html</li>
+    
+      <li>documentation</li>
+    
+  </ul>
+
+
+  <footer>
+    <span>Updated Apr 28</span>
+    
+    <a data-link="" href="https://github.com/pixu1980/dout-dev" target="_blank" rel="noopener noreferrer">
+      Repo
     </a>
   
 
@@ -959,7 +1011,7 @@
   
 
   <footer>
-    <span>Updated Apr 2026</span>
+    <span>Updated Apr 25</span>
     
     <a data-link="" href="https://github.com/pixu1980/reactive-apps-without-frameworks-demo" target="_blank" rel="noopener noreferrer">
       Repo
@@ -981,82 +1033,9 @@
   
 
   <footer>
-    <span>Updated Mar 2021</span>
+    <span>Updated Jan 26</span>
     
     <a data-link="" href="https://github.com/pixu1980/pkg-2-readme" target="_blank" rel="noopener noreferrer">
-      Repo
-    </a>
-  
-
-    
-  </footer>
-</article>
-
-    
-      <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
-  <header>
-    <p data-kicker="">JavaScript</p>
-    <strong>0 stars</strong>
-  </header>
-  <h3>pix-galaxy</h3>
-  <p>Monorepo for the PixGalaxy ecosystem of components for web development, all vanilla, 0 deps</p>
-  
-
-  <footer>
-    <span>Updated May 2026</span>
-    
-    <a data-link="" href="https://github.com/pixu1980/pix-galaxy" target="_blank" rel="noopener noreferrer">
-      Repo
-    </a>
-  
-
-    
-  </footer>
-</article>
-
-    
-      <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
-  <header>
-    <p data-kicker="">JavaScript</p>
-    <strong>0 stars</strong>
-  </header>
-  <h3>pixu-dev</h3>
-  <p>pixu.dev - Emiliano Pisu Resume</p>
-  
-
-  <footer>
-    <span>Updated May 2026</span>
-    
-    <a data-link="" href="https://github.com/pixu1980/pixu-dev" target="_blank" rel="noopener noreferrer">
-      Repo
-    </a>
-  
-
-    
-      
-    <a data-link="" href="https://pixu.dev" target="_blank" rel="noopener noreferrer">
-      Site
-    </a>
-  
-
-    
-  </footer>
-</article>
-
-    
-      <article data-repo="" data-surface="lifted" data-hover-surface="" data-generated="github-repo" data-reveal="">
-  <header>
-    <p data-kicker="">CSS</p>
-    <strong>0 stars</strong>
-  </header>
-  <h3>talks-libraries</h3>
-  <p>Public repository imported from GitHub during build.</p>
-  
-
-  <footer>
-    <span>Updated Apr 2026</span>
-    
-    <a data-link="" href="https://github.com/pixu1980/talks-libraries" target="_blank" rel="noopener noreferrer">
       Repo
     </a>
   
@@ -1082,9 +1061,9 @@
   
       <div data-speaking="">
   <aside data-speaking-recap="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-speaker">
-    <p data-kicker="">Sessionize</p>
+    <p data-kicker="">Sessionize profile</p>
     <h3>Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor</h3>
-    <p>Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor Hi 👋 Folks!I'm Emiliano Pisu, your friendly neighborhood Design Engineer.Throughout my career, driven by my coding addiction, I've always stayed up to date with software development and related trends, focusing on UI, UX, Accessibility, Responsiveness, Compatibility, Scalability, and...</p>
+    <p>Public talks and workshops focused on accessible design systems, lean frontend architecture, and the native capabilities of the web platform.</p>
     
   <ul aria-label="" data-tags="">
     
@@ -1131,19 +1110,20 @@
   </ul>
 
 
-    <div data-link-list="">
+    <section data-link-list="">
       
     <a data-link="" href="https://sessionize.com/pixu1980/" target="_blank" rel="noopener noreferrer">
       Sessionize profile
     </a>
   
 
-    </div>
+    </section>
   </aside>
-  <div data-speaking-content="">
-    <div data-talk-grid="">
+  <section data-speaking-content="">
+    <section data-talk-grid="">
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>(class)less is more</h3>
   <p>What if the browser already provided a foundation for a design system? Does the concept of CSS Reset still make sense in 2025?In this talk, we'll explore the fascinating world of minimalist CSS frameworks that turn the browser into a ready-made design system out of the box. Solutions like Pico.css, Almond.css, and Water.css can make your projects elegant...</p>
   <footer>
@@ -1174,6 +1154,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>Accessible Web: combining WCAG, WAI-ARIA, and Semantics</h3>
   <p>To create truly accessible digital experiences, it is essential to understand when to rely on semantic HTML, when to integrate WAI-ARIA, and how to ensure compliance with WCAG. Let's explore a practical method to determine the most effective solution based on real-world use cases, helping to avoid common mistakes and optimize interface...</p>
   <footer>
@@ -1204,6 +1185,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>AIDD from Spec to App</h3>
   <p>Frameworkless frontend with AI agents, quality gates, and repeatable delivery, from web to ElectronHow do you bring AI into the development cycle without losing technical control, and without turning your codebase into a "slot machine"? In this talk I walk through a concrete workflow built on ai-coding-frontend-template: we go from specifications to...</p>
   <footer>
@@ -1234,6 +1216,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>Back to CSS</h3>
   <p>A time-bending tour of tomorrow's CSS where HTML is the state and CSS is the logic. Wiring typed attr() to read real, unit-safe values straight from HTML attributes, branch styles with native if(), and compose reusable logic with @function. Expect zero-JS UI toggles, attribute-driven themes, and component props that cascade through styles like data. Showing...</p>
   <footer>
@@ -1264,6 +1247,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>Baseline Rhapsody: A tale of Style &amp; Motion</h3>
   <p>In recent years, CSS has undergone an extraordinary evolution. We once relied on float and clear to manage layouts, used tables to structure pages, and resorted to sprites to implement simple hover effects on buttons. Today, however, we have access to advanced tools such as mathematical and trigonometric functions, container queries, filters, masks, custom...</p>
   <footer>
@@ -1294,6 +1278,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>Building an Accessible Design System with the CSS APIs Approach</h3>
   <p>A design system is fundamental to ensuring consistency, scalability, and accessibility in digital products. But how do you build one from scratch while ensuring flexibility and maintainability? CSS Custom Properties and CSS Layers offer a powerful combination to define a structured and manageable foundation, exposing clear CSS APIs for external overrides....</p>
   <footer>
@@ -1324,6 +1309,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>CSS Superpowers with Layers</h3>
   <p>Structuring our CSS codebases is an ever-evolving art!Standards and best practices have been established, which over time have also conflicted with each other.The new @layer at-rule, combined with CSS Custom Properties, allows us to set up the codebase in revolutionary ways.We will discover how to structure a feature-rich design system in an innovative and...</p>
   <footer>
@@ -1354,6 +1340,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>customElements &amp; beyond: a lean way to build reactive apps in vanillaJS</h3>
   <p>You know when people tell you that without a framework you can't build a "real" app? Well… spoiler alert: that's a lie.Custom Elements are no longer a toy for old-school HTML addicted, they're the gateway to a whole new way of building apps: lightweight, accessible, and blazing fast.And the best part? No endless npm install marathons required.In this talk...</p>
   <footer>
@@ -1384,6 +1371,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>dout.dev - how to build a vanilla CMS</h3>
   <p>From Markdown to Publishing Platform: Building dout.dev's Custom CMS Without a Frameworkdout.dev is a vanilla-first static site with zero runtime dependencies, but the interesting part is not only the frontend. Behind the site there is a small custom CMS that turns Markdown into a complete publishing workflow. Instead of adapting a general-purpose CMS to a...</p>
   <footer>
@@ -1414,6 +1402,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>Kinetic CSS, a deep dive into modern Motion APIs</h3>
   <p>What if, in the future of web motion, JavaScript were no longer needed? Spoiler: that future is today.Over the last few years, CSS has received a legendary power-up. It can now animate, react, and choreograph entire scenes without touching a single script. In this talk, we'll explore how to bend reality using only HTML and CSS, no frameworks, no npm...</p>
   <footer>
@@ -1444,6 +1433,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>Modern CSS Architecture (Accessible Design Systems combining Semantic HTML, @layer and --*)</h3>
   <p>The future of UI is already in the browser, if you know how to unlock it!This talk explores how to combine semantic HTML, the @layer CSS at-rule, and CSS Custom Properties to organize code into a scalable hierarchy designed to expose intuitive CSS APIs. It showcases how to build accessible, token-first design systems that translate brand values into atomic...</p>
   <footer>
@@ -1474,6 +1464,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>Reactive Apps without Frameworks</h3>
   <p>Meet a framework-free, zero-deps app stack powered by the near-future web: a tiny signal-based store, DOM-first rendering, and tagged template literals for expressive, safe views.Sketching an observable state core aligned with the TC39 Signals proposal, with a look to the future to bind it to the DOM using emerging "DOM Parts" ideas for precise updates,...</p>
   <footer>
@@ -1504,6 +1495,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>The Lean Web Manifesto</h3>
   <p>In the world of modern web development, complexity has become the norm: heavy frameworks, endless dependencies, and bloated code seem indispensable. But is that really the case?This talk explores the concept of Lean Web, an approach aimed at reducing waste, optimizing resources, and creating lighter, faster, and more sustainable applications. We will...</p>
   <footer>
@@ -1534,6 +1526,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>wcagUI - one year after (accessible components, real bugs and maintainer life)</h3>
   <p>wcagUI started with a simple goal, turn accessibility from a last minute checklist into default behavior, packaged as a component library.One year later, it is no longer about just Buttons and Dialogs, it is about patterns, consistent APIs, focus management, keyboard support, screen reader announcements, tokens, motion, and preventing regressions as the...</p>
   <footer>
@@ -1564,6 +1557,7 @@
 
       
         <article data-talk="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-talk" data-reveal="">
+  <p data-kicker="">Talk</p>
   <h3>wcagUI, an accessible UI kit based on WCAG patterns</h3>
   <p>Building an accessible web experience shouldn't be overwhelming. In this talk, we'll introduce wcagUI, an open-source UI kit that simplifies building accessible interfaces by automatically handling WAI-ARIA attributes and other key accessibility features. Built on the principles of the Web Content Accessibility Guidelines (WCAG), wcagUI helps developers and...</p>
   <footer>
@@ -1593,7 +1587,7 @@
 </article>
 
       
-    </div>
+    </section>
     
       <section data-event-strip="" data-surface="lifted" data-hover-surface="" data-reveal="" aria-label="Sessionize events">
         <p data-kicker="">Events</p>
@@ -1698,7 +1692,7 @@
         </ol>
       </section>
     
-  </div>
+  </section>
 </div>
 
     
@@ -1724,19 +1718,19 @@
       </main>
     </div>
 
-    <footer data-site-footer="">
-  <div>
+    <footer data-footer="">
+  <section data-footer-recap="">
     <p data-kicker="">.finally()</p>
     <h2>Design systems, frontend architecture, public speaking.</h2>
     <p>
       I turn design into handcrafted frontend and accessible experiences, possibly sharing clear
       talks in the meantime. I actually enjoy bridging the gap between design and code.
     </p>
-  </div>
-  <div data-footer-meta="">
-    <p>Build 2026-05-15</p>
+  </section>
+  <section data-footer-meta="">
+    <p>Build 2026-05-16</p>
     <p>© 2026 Emiliano Pisu</p>
-    <div data-link-list="">
+    <section data-link-list="">
       
         
     <a data-link="" href="https://linkedin.com/in/pixu1980/" target="_blank" rel="noopener noreferrer">
@@ -1780,12 +1774,13 @@
   
 
       
-    </div>
-  </div>
+    </section>
+  </section>
 </footer>
 
 
     <p data-live-region="" aria-live="polite"></p>
+    <script type="module" src="scripts/app.js"></script>
   
 
 </body></html>

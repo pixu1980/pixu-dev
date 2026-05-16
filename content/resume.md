@@ -288,8 +288,13 @@ I bridge design and development without losing craft: semantics-first HTML, CSS 
 
 - **Bridge design and code** - Turn visual language into production-grade systems without flattening the original intent
 - **Accessibility is product quality** - Semantics, WCAG patterns, motion restraint, keyboard-first thinking are part of the build, not a retrofit
+- **Native web thinking** - Prioritize platform capabilities and browser APIs over abstractions and cargo cult patterns
+- **Durable delivery** - Architect for maintainability, readability, and resilience to team and product changes over time
+- **Mentorship as delivery** - Share knowledge, tools, and approaches that teams can reuse immediately, not just in the current project but in future work as well
 - **Lean web over cargo cult complexity** - Reach for the platform before reaching for weight
 - **Teach while shipping** - Mentorship, talks, pairing are part of delivery
+- **Make learning a habit** - Stay curious, experiment, share what you learn, and keep growing
+- **Have fun** - Enjoy the process, celebrate small wins, and find joy in the craft of building things that people use and love
 
 ### Languages
 
@@ -437,13 +442,18 @@ Public speaking data syncs at build time from Sessionize, keeping English talks,
 ### Recurring talk tracks
 
 - **Native-first frontend systems** - CSS APIs, HTML semantics, and browser capabilities as the default stack
+- **Lean web** - avoiding cargo cult complexity and hidden operational costs in favor of durability and maintainability
 - **Accessibility as product quality** - patterns that survive delivery pressure and real usage
+- **Progressive enhancement** - building for the baseline and layering on enhancements without losing the core experience
 - **Design engineering** - translating visual intent into scalable, maintainable UI systems
 - **Teaching while shipping** - sharing tools, approaches, and heuristics teams can reuse immediately
 
 ### Teaching format
 
 I am comfortable with conference talks, hands-on workshops, mentoring sessions, and internal enablement programs for teams that need a clearer design-to-code workflow.
+I focus on actionable takeaways, real-world examples, and practical tools that attendees can apply right away in their projects.
+I enjoy engaging with the audience, answering questions, and fostering discussions that deepen understanding and inspire new ideas.
+I am open to customizing content to fit the specific needs and interests of the event and its attendees, ensuring that my talks are relevant and impactful.
 
 ## Interests
 

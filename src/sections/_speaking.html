@@ -5,26 +5,26 @@
     data-hover-surface
     data-generated="sessionize-speaker"
   >
-    <p data-kicker>Sessionize</p>
+    <p data-kicker>Sessionize profile</p>
     <h3>{{ section.speaker.headline || 'Public speaking' }}</h3>
     <p>{{ section.speaker.summary }}</p>
     <include
       src="../shared/_tag-list.html"
       data='{"items": {{ section.speaker.topics | json | raw }}, "ariaLabel": ""}'
     ></include>
-    <div data-link-list>
+    <section data-link-list>
       <include
         src="../shared/_link.html"
         data='{"link": {{ section.profileLink | json | raw }}}'
       ></include>
-    </div>
+    </section>
   </aside>
-  <div data-speaking-content>
-    <div data-talk-grid>
+  <section data-speaking-content>
+    <section data-talk-grid>
       <for each="talk in section.talks">
         <include src="../shared/_talk-card.html" data='{"talk": {{ talk | json | raw }}}'></include>
       </for>
-    </div>
+    </section>
     <if condition="section.events.length > 0">
       <section
         data-event-strip
@@ -44,5 +44,5 @@
         </ol>
       </section>
     </if>
-  </div>
+  </section>
 </div>

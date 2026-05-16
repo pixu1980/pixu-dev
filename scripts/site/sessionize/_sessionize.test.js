@@ -71,3 +71,16 @@ test("Sessionize HTML parser extracts speaker, talks, and events", () => {
   );
   assert.equal(parseSessionizeEvents(html, "https://sessionize.com/pixu1980/")[0].name, "Roma JS");
 });
+
+test("Sessionize speaker summary drops repeated headline prefixes", () => {
+  const headline =
+    "Senior Frontend Engineer AI Product Engineer Design Engineer Accessibility Advocate Speaker Mentor";
+  const bio =
+    "Hi Folks! I'm Emiliano Pisu, your friendly neighborhood Design Engineer. I build accessible web systems and teach frontend teams.";
+  const html = `<h1>Emiliano Pisu</h1><p>${headline}</p><p>${headline} ${headline} ${bio}</p>`;
+
+  const speaker = parseSessionizeSpeaker(html, { speakerHeadline: headline });
+
+  assert.equal(speaker.summary.startsWith("Hi Folks! I'm Emiliano Pisu"), true);
+  assert.equal(speaker.summary.includes(`${headline} ${headline}`), false);
+});

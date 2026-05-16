@@ -1,15 +1,18 @@
-<header data-site-header>
+<header data-header>
   <a data-mark href="#top" aria-label="{{ site.name }} home">
     <img src="assets/images/logo.svg" width="300" height="300" alt="" decoding="async" />
   </a>
-
-  <button data-nav-toggle type="button" aria-controls="site-nav" aria-expanded="false">
-    Menu
-  </button>
 
   <div data-header-tools>
     <accent-color-selector></accent-color-selector>
     <color-scheme-selector></color-scheme-selector>
     <a data-header-action href="#contact">Contact</a>
+    <button data-nav-toggle type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Menu">
+      <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="5" width="16" height="1.5" rx="0.75" fill="currentColor" />
+        <rect x="2" y="9.25" width="16" height="1.5" rx="0.75" fill="currentColor" />
+        <rect x="2" y="13.5" width="16" height="1.5" rx="0.75" fill="currentColor" />
+      </svg>
+    </button>
   </div>
 </header>

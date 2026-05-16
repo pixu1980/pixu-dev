@@ -121,7 +121,7 @@ test("profile, public data, and section builders compose render context", () => 
   const profile = buildEffectiveProfile(frontmatter, data);
   const publicData = buildPublicData(frontmatter, data, "/profile.jpg", profile);
 
-  assert.equal(fallback.profileImage, "https://github.com/pixu1980.png?size=512");
+  assert.equal(fallback.profileImage, "assets/images/profile.png");
   assert.equal(profile.name, "Pixu");
   assert.equal(publicData.profile.sourceStatus.github, "live");
 

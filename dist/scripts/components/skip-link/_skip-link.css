@@ -1,0 +1,24 @@
+@layer components {
+  @layer skip-link {
+    skip-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      padding: var(--space-2);
+      background: var(--accent);
+      color: var(--accent-ink);
+      text-decoration: none;
+      font-weight: 600;
+      z-index: 10000;
+      transform: translateY(-100%);
+      transition: transform var(--duration-2) var(--ease-standard);
+
+      &:focus {
+        transform: translateY(0);
+        outline: var(--focus-outline);
+        outline-offset: var(--focus-offset);
+      }
+    }
+  }
+}

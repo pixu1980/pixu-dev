@@ -29,6 +29,22 @@ async function copyIfExists(source, target) {
   }
 }
 
+async function copyProfileAssets() {
+  await Promise.all(
+    [".jpg", ".png", ".webp", ".avif", ".svg"].map((extension) =>
+      copyIfExists(
+        join(DIST, "assets", `profile${extension}`),
+        join(BUILD_OUTPUT, "assets", `profile${extension}`),
+      ),
+    ),
+  );
+
+  await copyIfExists(
+    join(DIST, "assets", "images", "profile.png"),
+    join(BUILD_OUTPUT, "assets", "images", "profile.png"),
+  );
+}
+
 function isWatchedFile(pathname = "") {
   return WATCHED_ROOTS.some((root) => {
     const rel = relative(root, pathname);
@@ -72,10 +88,7 @@ function finalizeDistBuild() {
     apply: "build",
     async closeBundle() {
       await copyIfExists(join(DIST, "data"), join(BUILD_OUTPUT, "data"));
-      await copyIfExists(
-        join(DIST, "assets", "profile.jpg"),
-        join(BUILD_OUTPUT, "assets", "profile.jpg"),
-      );
+      await copyProfileAssets();
       const tempRoot = await mkdtemp(join(tmpdir(), "pixu-dist-"));
       const tempOutput = join(tempRoot, "site");
       await cp(BUILD_OUTPUT, tempOutput, { recursive: true });

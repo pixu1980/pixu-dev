@@ -65,11 +65,13 @@ export function sortGitHubRepos(repos, preferredNames) {
   return [...repos].sort((left, right) => {
     const leftPreferred = preferredOrder.get(left.name.toLowerCase()) ?? Number.POSITIVE_INFINITY;
     const rightPreferred = preferredOrder.get(right.name.toLowerCase()) ?? Number.POSITIVE_INFINITY;
+    const leftUpdated = Date.parse(left.updatedAt) || 0;
+    const rightUpdated = Date.parse(right.updatedAt) || 0;
 
     return (
+      rightUpdated - leftUpdated ||
       leftPreferred - rightPreferred ||
       right.stars - left.stars ||
-      (Date.parse(right.updatedAt) || 0) - (Date.parse(left.updatedAt) || 0) ||
       left.name.localeCompare(right.name)
     );
   });

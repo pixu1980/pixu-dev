@@ -54,7 +54,41 @@ test("GitHub shared helpers normalize repos and tokens", () => {
   const normalized = normalizeGitHubRepos([...repos, { name: "private", private: true }]);
   assert.equal(normalized.length, 2);
   assert.equal(normalized[0].slug, "dout-dev");
-  assert.equal(sortGitHubRepos(normalized, ["talk-css"])[0].name, "talk-css");
+  assert.equal(sortGitHubRepos(normalized, ["talk-css"])[0].name, "dout-dev");
+});
+
+test("GitHub repos sort by latest update before stars or featured order", () => {
+  const normalized = normalizeGitHubRepos([
+    {
+      name: "featured-old",
+      html_url: "https://github.com/pixu1980/featured-old",
+      description: "Featured old repository",
+      stargazers_count: 20,
+      updated_at: "2026-01-01T00:00:00Z",
+    },
+    {
+      name: "fresh-low-star",
+      html_url: "https://github.com/pixu1980/fresh-low-star",
+      description: "Fresh repository",
+      stargazers_count: 1,
+      updated_at: "2026-05-15T00:00:00Z",
+    },
+    {
+      name: "middle",
+      html_url: "https://github.com/pixu1980/middle",
+      description: "Middle repository",
+      stargazers_count: 5,
+      updated_at: "2026-03-01T00:00:00Z",
+    },
+  ]);
+
+  const sorted = sortGitHubRepos(normalized, ["featured-old"]);
+
+  assert.deepEqual(
+    sorted.map((repo) => repo.name),
+    ["fresh-low-star", "middle", "featured-old"],
+  );
+  assert.equal(buildGitHubStats(sorted).lastUpdatedAt, "2026-05-15T00:00:00Z");
 });
 
 test("GitHub stats split portfolio and talk repos", () => {

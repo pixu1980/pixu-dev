@@ -54,6 +54,13 @@ export function buildTopicStats(repos) {
 }
 
 export function buildGitHubStats(repos, profilePublicRepos = repos.length) {
+  const lastUpdatedAt = repos.reduce((latest, repo) => {
+    const latestTime = Date.parse(latest) || 0;
+    const repoTime = Date.parse(repo.updatedAt) || 0;
+
+    return repoTime > latestTime ? repo.updatedAt : latest;
+  }, "");
+
   return {
     importedRepos: repos.length,
     publicRepos: toNumber(profilePublicRepos, repos.length),
@@ -63,7 +70,7 @@ export function buildGitHubStats(repos, profilePublicRepos = repos.length) {
     totalStars: repos.reduce((sum, repo) => sum + repo.stars, 0),
     totalForks: repos.reduce((sum, repo) => sum + repo.forksCount, 0),
     totalOpenIssues: repos.reduce((sum, repo) => sum + repo.openIssues, 0),
-    lastUpdatedAt: repos[0]?.updatedAt || "",
+    lastUpdatedAt,
   };
 }
 

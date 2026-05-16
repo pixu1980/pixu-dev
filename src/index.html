@@ -22,13 +22,7 @@
       (() => {
         try {
           const schemeOptions = ["light", "dark", "system"];
-          const accentOptions = [
-            "sea-glass",
-            "sage-blush",
-            "peach-fuzz",
-            "lavender-mint",
-            "butter-plum",
-          ];
+          const accentOptions = ["blue", "green", "orange", "purple", "rose"];
           const media = window.matchMedia("(prefers-color-scheme: dark)");
           const resolveScheme = (value) =>
             value === "system" ? (media.matches ? "dark" : "light") : value;
@@ -39,7 +33,7 @@
             document.documentElement.dataset.resolvedScheme = resolvedScheme;
             document.documentElement.style.colorScheme = resolvedScheme;
           }
-          const accent = localStorage.getItem("pixu:accent-pair") || "sea-glass";
+          const accent = localStorage.getItem("pixu:accent-color") || "blue";
           if (accentOptions.includes(accent)) {
             document.documentElement.dataset.accent = accent;
           }

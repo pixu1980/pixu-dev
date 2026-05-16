@@ -1,5 +1,6 @@
 import { englishText, normalizeWhitespace, toArray, truncateText, uniqueBy } from "../_text.js";
 import { getSessionizeApiCollection, getSessionizeApiLanguages } from "./_language.js";
+import { cleanSessionizeSpeakerSummary } from "./_speaker-summary.js";
 
 function isEnglishSession(session) {
   return /[a-z]/i.test(
@@ -47,13 +48,22 @@ export function parseSessionizeApiData(payload, profileUrl, fallback, preferredL
     })
     .filter(Boolean);
 
+  const headline = englishText(
+    speaker?.tagLine || speaker?.headline || fallback?.speakerHeadline,
+    "",
+  );
+
   return {
     speaker: {
       name: normalizeWhitespace(speaker?.fullName || speaker?.name || ""),
-      headline: englishText(speaker?.tagLine || speaker?.headline || fallback?.speakerHeadline, ""),
+      headline,
       image: speaker?.profilePicture || speaker?.image || "",
       summary: truncateText(
-        englishText(speaker?.bio || speaker?.summary || fallback?.summary, ""),
+        cleanSessionizeSpeakerSummary(
+          englishText(speaker?.bio || speaker?.summary || fallback?.summary, ""),
+          headline,
+          fallback?.summary || "",
+        ),
         540,
       ),
       topics: uniqueBy(

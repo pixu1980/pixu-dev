@@ -9,6 +9,7 @@ import {
   uniqueBy,
 } from "../_text.js";
 import { buildLanguagesFromText, getLanguageScore, getSessionLanguageInfo } from "./_language.js";
+import { cleanSessionizeSpeakerSummary } from "./_speaker-summary.js";
 
 export function parseSessionizeSpeaker(html, fallback) {
   const $ = load(html);
@@ -33,6 +34,7 @@ export function parseSessionizeSpeaker(html, fallback) {
     .filter(
       (text) =>
         text.length > 80 &&
+        text !== normalizeWhitespace(headline) &&
         !MONTH_YEAR_RE.test(text) &&
         !/^Technical requirements:/i.test(text) &&
         !/^Preferred session duration:/i.test(text),
@@ -54,7 +56,11 @@ export function parseSessionizeSpeaker(html, fallback) {
     headline,
     image,
     summary: truncateText(
-      englishText(summaryParagraphs.slice(0, 3).join(" "), fallback?.summary || ""),
+      cleanSessionizeSpeakerSummary(
+        englishText(summaryParagraphs.slice(0, 3).join(" "), fallback?.summary || ""),
+        headline,
+        fallback?.summary || "",
+      ),
       540,
     ),
     topics: uniqueBy(

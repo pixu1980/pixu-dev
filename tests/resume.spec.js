@@ -49,10 +49,10 @@ async function getLayoutDiagnostics(page) {
   return page.evaluate(() => {
     const root = document.documentElement;
     const blocks = [
-      document.querySelector("[data-site-header]"),
+      document.querySelector("[data-header]"),
       document.querySelector("[data-hero]"),
       ...Array.from(document.querySelectorAll("main > section[data-section]")).slice(0, 4),
-      document.querySelector("[data-site-footer]"),
+      document.querySelector("[data-footer]"),
     ].filter(Boolean);
 
     return {
@@ -60,6 +60,14 @@ async function getLayoutDiagnostics(page) {
       emptyHeadings: Array.from(document.querySelectorAll("h1, h2, h3")).filter(
         (heading) => !heading.textContent?.trim(),
       ).length,
+      headingsWithMargins: Array.from(document.querySelectorAll("h1, h2, h3, h4, h5, h6"))
+        .filter((heading) => {
+          const style = getComputedStyle(heading);
+          return (
+            Number.parseFloat(style.marginBlockStart) || Number.parseFloat(style.marginBlockEnd)
+          );
+        })
+        .map((heading) => heading.textContent?.trim() || heading.tagName.toLowerCase()),
       outOfBounds: blocks
         .map((block) => {
           const rect = block.getBoundingClientRect();
@@ -155,7 +163,7 @@ test.describe("resume page", () => {
     );
     await expect(page.locator("[data-site-rail] nav")).toBeAttached();
     await expect(page.locator("main")).toBeAttached();
-    await expect(page.locator("footer[data-site-footer]")).toBeAttached();
+    await expect(page.locator("footer[data-footer]")).toBeAttached();
     await expect(page.locator("h1")).toHaveCount(1);
   });
 
@@ -164,7 +172,7 @@ test.describe("resume page", () => {
     const navTargets = await getNavTargets(page);
 
     expect(sections.length).toBeGreaterThan(4);
-    expect(navTargets).toEqual(sections.map((section) => section.id));
+    expect(navTargets).toEqual(["top", ...sections.map((section) => section.id)]);
     expect(sections.map((section) => section.id)).not.toContain("education");
     expect(navTargets).not.toContain("education");
     expect(sections.map((section) => section.heading)).toContain("Portfolio");
@@ -191,6 +199,7 @@ test.describe("resume page", () => {
 
     expect(data.profile.name).toBeTruthy();
     expect(data.profile.image).toBeTruthy();
+    expect((await page.request.get(data.profile.image)).ok()).toBe(true);
     expect(data.github.repos.length).toBeGreaterThan(0);
     expect(data.sessionize.talks.length).toBeGreaterThan(0);
     expect(["live", "fallback"]).toContain(data.profile.sourceStatus.github);
@@ -257,18 +266,18 @@ test.describe("resume page", () => {
     }
   });
 
-  test("accent color selector updates the document accent pair", async ({ page }) => {
+  test("accent color selector updates the document accent color", async ({ page }) => {
     const selector = page.locator("accent-color-selector");
     await expect(selector.locator('input[type="radio"]')).toHaveCount(5);
-    await selector.locator('[data-option="lavender-mint"]').click();
-    await expect(page.locator("html")).toHaveAttribute("data-accent", "lavender-mint");
-    await expect(selector.locator('[data-option="lavender-mint"] [data-swatch]')).toHaveCSS(
-      "filter",
-      /saturate/,
+    await selector.locator('[data-option="purple"]').click();
+    await expect(page.locator("html")).toHaveAttribute("data-accent", "purple");
+    await expect(selector.locator('[data-option="purple"] [data-swatch]')).toHaveCSS(
+      "background-image",
+      "none",
     );
 
-    await selector.locator('[data-option="sea-glass"]').click();
-    await expect(page.locator("html")).toHaveAttribute("data-accent", "sea-glass");
+    await selector.locator('[data-option="blue"]').click();
+    await expect(page.locator("html")).toHaveAttribute("data-accent", "blue");
   });
 
   test("color scheme selector updates the document scheme", async ({ page }) => {
@@ -300,6 +309,13 @@ test.describe("resume page", () => {
 
     await page.evaluate(() => window.scrollTo({ top: 800, behavior: "instant" }));
     await expect(scrollProgress).toHaveAttribute("aria-hidden", "true");
+    await expect(scrollProgress).toHaveCSS("width", `${page.viewportSize()?.width}px`);
+    expect(
+      await scrollProgress.evaluate((node) => Math.round(node.getBoundingClientRect().width)),
+    ).toBe(page.viewportSize()?.width);
+    expect(
+      await scrollProgress.evaluate((node) => Math.round(node.getBoundingClientRect().height)),
+    ).toBeGreaterThanOrEqual(4);
     const progress = await scrollProgress.evaluate((node) =>
       getComputedStyle(node).getPropertyValue("--progress"),
     );
@@ -309,9 +325,16 @@ test.describe("resume page", () => {
   test("desktop header controls share one visual height", async ({ page, isMobile }) => {
     test.skip(!!isMobile, "desktop contract");
 
+    await page.waitForLoadState("networkidle");
+    await expect(page.locator("[data-header-tools] > *").first()).toBeAttached();
+
     const heights = await page
       .locator("[data-header-tools] > *")
-      .evaluateAll((items) => items.map((item) => Math.round(item.getBoundingClientRect().height)));
+      .evaluateAll((items) =>
+        items
+          .filter((item) => getComputedStyle(item).display !== "none")
+          .map((item) => Math.round(item.getBoundingClientRect().height)),
+      );
 
     expect(new Set(heights).size).toBe(1);
   });
@@ -390,6 +413,7 @@ test.describe("resume page", () => {
     const diagnostics = await getLayoutDiagnostics(page);
     expect(diagnostics.overflow).toBeLessThanOrEqual(1);
     expect(diagnostics.emptyHeadings).toBe(0);
+    expect(diagnostics.headingsWithMargins).toEqual([]);
     expect(diagnostics.outOfBounds).toEqual([]);
 
     await page.locator('[data-nav-link][href="#portfolio"]').click();
@@ -410,6 +434,8 @@ test.describe("resume page", () => {
     await toggle.click();
     await expect(nav).toBeVisible();
     await expect(toggle).toHaveAttribute("aria-expanded", "true");
+    await expect(nav.locator('[data-nav-link][href="#top"]')).toHaveText("Home");
+    await expect(nav.locator("[data-nav-link]").first()).toHaveAttribute("href", "#top");
 
     await page.keyboard.press("Escape");
     await expect(nav).not.toBeVisible();
@@ -418,5 +444,13 @@ test.describe("resume page", () => {
     const diagnostics = await getLayoutDiagnostics(page);
     expect(diagnostics.overflow).toBeLessThanOrEqual(1);
     expect(diagnostics.outOfBounds).toEqual([]);
+  });
+
+  test("hero signal panel uses layout gap instead of heading margins", async ({ page }) => {
+    const signalPanel = page.locator("[data-signal-panel]");
+    await expect(signalPanel).toBeAttached();
+
+    const gap = await signalPanel.evaluate((node) => getComputedStyle(node).gap);
+    expect(Number.parseFloat(gap)).toBeGreaterThan(0);
   });
 });

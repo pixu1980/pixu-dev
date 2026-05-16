@@ -52,7 +52,7 @@ These rules apply to any Figma-driven implementation in this project.
 
 - Tokens are CSS custom properties in `src/styles/main.css` under `@layer tokens`.
 - New visual work must reuse existing tokens before adding new ones.
-- Prefer data attributes for component targeting, for example `[data-site-header]`.
+- Prefer data attributes for component targeting, for example `[data-header]`.
 - Keep cards only for repeated items, panels, and framed interactive surfaces.
 - Text must fit on mobile and desktop without overlap.
 - Support `prefers-reduced-motion` for motion changes.
