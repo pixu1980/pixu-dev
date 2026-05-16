@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-16T14:49:53.477Z",
+  "generatedAt": "2026-05-16T14:51:20.972Z",
   "metadata": {
     "title": "Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor",
     "description": "Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction."
@@ -254,6 +254,24 @@
         "slug": "detector-js"
       },
       {
+        "name": "pixu-dev",
+        "description": "pixu.dev - Emiliano Pisu Resume",
+        "url": "https://github.com/pixu1980/pixu-dev",
+        "homepage": "",
+        "language": "JavaScript",
+        "stars": 0,
+        "watchers": 0,
+        "forksCount": 0,
+        "openIssues": 0,
+        "archived": false,
+        "fork": false,
+        "private": false,
+        "tags": [],
+        "updatedAt": "Updated May 16",
+        "createdAt": "",
+        "slug": "pixu-dev"
+      },
+      {
         "name": "talk-kinetic-css-osdsay-2026",
         "description": "Slides for the Kinetic CSS talk (Open Source Day 2026 edition)",
         "url": "https://github.com/pixu1980/talk-kinetic-css-osdsay-2026",
@@ -468,24 +486,6 @@
         "updatedAt": "Updated May 15",
         "createdAt": "",
         "slug": "talk-modern-css-architecture"
-      },
-      {
-        "name": "pixu-dev",
-        "description": "pixu.dev - Emiliano Pisu Resume",
-        "url": "https://github.com/pixu1980/pixu-dev",
-        "homepage": "",
-        "language": "JavaScript",
-        "stars": 0,
-        "watchers": 0,
-        "forksCount": 0,
-        "openIssues": 0,
-        "archived": false,
-        "fork": false,
-        "private": false,
-        "tags": [],
-        "updatedAt": "Updated May 15",
-        "createdAt": "",
-        "slug": "pixu-dev"
       },
       {
         "name": "talk-introducing-wcag-ui",
@@ -787,7 +787,7 @@
         "fork": false,
         "private": false,
         "tags": [],
-        "updatedAt": "Updated May 15",
+        "updatedAt": "Updated May 16",
         "createdAt": "",
         "slug": "pixu-dev"
       },
