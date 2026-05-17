@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. Commit messages follow Conventional Commits.
 
+### [0.2.8](https://github.com/pixu1980/pixu-dev-resume/compare/v0.2.6...v0.2.8) (2026-05-18)
+
+### Features
+
+* **general:** optimize CMS, scripts and content ([aeb1a14](https://github.com/pixu1980/pixu-dev-resume/commit/aeb1a14))
+* **ui:** major UI and layout improvements ([a32c109](https://github.com/pixu1980/pixu-dev-resume/commit/a32c109))
+* **speaking:** improved Public Speaking visual behavior and data mapping, update logo, minor UI fixes ([4ec7a8c](https://github.com/pixu1980/pixu-dev-resume/commit/4ec7a8c))
+* **logo:** replace with new pixelart pixu.dev design ([f0f9482](https://github.com/pixu1980/pixu-dev-resume/commit/f0f9482))
+
 ### [0.2.7](https://github.com/pixu1980/pixu-dev-resume/compare/v0.2.6...v0.2.7) (2026-05-17)
 
 ### Features
