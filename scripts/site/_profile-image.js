@@ -1,4 +1,4 @@
-import { isPlaceholderProfileImage } from "./linkedin/_parse.js";
+import { isPlaceholderProfileImage } from "./linkedin/_pdf.js";
 
 export const DEFAULT_PROFILE_IMAGE = "assets/images/profile.png";
 

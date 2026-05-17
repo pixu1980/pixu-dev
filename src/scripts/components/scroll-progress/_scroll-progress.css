@@ -1,8 +1,16 @@
+@property --scroll-progress-value {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
 @layer components {
   scroll-progress {
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
+    overflow: hidden;
     width: 100vw;
     height: 4px;
     background: color-mix(in srgb, var(--accent) 22%, transparent);
@@ -11,13 +19,15 @@
   }
 
   scroll-progress::before {
-    display: block;
-    width: 100vw;
-    height: 100%;
     content: "";
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
     background: var(--accent);
-    transform-origin: left;
-    transform: scaleX(calc(var(--progress, 0) / 100));
-    transition: transform 50ms linear;
+    transform-origin: left center;
+    transform: scaleX(var(--scroll-progress-value));
+    will-change: transform;
   }
 }

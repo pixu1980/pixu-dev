@@ -30,37 +30,126 @@ export function parseInlineList(value = "") {
     .filter(Boolean);
 }
 
-export function buildSections(markdown) {
+function getTokenRaw(token) {
+  return token?.raw || "";
+}
+
+function buildParagraphs(tokens = []) {
+  return tokens
+    .filter((token) => token.type === "paragraph")
+    .map((token) => normalizeWhitespace(token.text))
+    .filter(Boolean);
+}
+
+function collectListItems(items = []) {
+  return items.flatMap((item) => {
+    const values = [];
+
+    normalizeWhitespace(item?.text) && values.push(normalizeWhitespace(item.text));
+
+    if (Array.isArray(item?.items) && item.items.length) {
+      values.push(...collectListItems(item.items));
+    }
+
+    return values;
+  });
+}
+
+function buildListItems(tokens = []) {
+  return tokens.flatMap((token) => {
+    if (token.type !== "list") return [];
+    return collectListItems(token.items || []);
+  });
+}
+
+function buildStructuredBlocks(bodyMarkdown = "") {
+  const tokens = marked.lexer(normalizeTypography(bodyMarkdown));
+  const blocks = [];
+  const leadTokens = [];
+  let currentBlock = null;
+
+  for (const token of tokens) {
+    if (token.type === "heading" && token.depth === 3) {
+      currentBlock && blocks.push(currentBlock);
+      currentBlock = {
+        heading: normalizeWhitespace(token.text),
+        tokens: [],
+      };
+      continue;
+    }
+
+    if (currentBlock) {
+      currentBlock.tokens.push(token);
+      continue;
+    }
+
+    leadTokens.push(token);
+  }
+
+  currentBlock && blocks.push(currentBlock);
+
+  return {
+    leadMarkdown: leadTokens.map(getTokenRaw).join("").trim(),
+    blocks: blocks.map((block) => {
+      const body = block.tokens.map(getTokenRaw).join("").trim();
+
+      return {
+        heading: block.heading,
+        bodyMarkdown: body,
+        bodyHtml: body ? marked.parse(body) : "",
+        paragraphs: buildParagraphs(block.tokens),
+        listItems: buildListItems(block.tokens),
+      };
+    }),
+  };
+}
+
+export function splitMarkdownSections(markdown = "") {
   const tokens = marked.lexer(normalizeTypography(markdown));
   const sections = [];
+  let prefaceMarkdown = "";
   let currentSection = null;
 
   for (const token of tokens) {
     if (token.type === "heading" && token.depth === 2) {
       currentSection && sections.push(currentSection);
-
       currentSection = {
         slug: slugify(token.text),
         text: normalizeWhitespace(token.text),
-        bodyHtml: "",
+        bodyMarkdown: "",
       };
-
       continue;
     }
 
-    if (!currentSection) continue;
+    const raw = getTokenRaw(token);
 
-    if (token.type === "heading" && token.depth === 3) {
-      currentSection.bodyHtml += `<h3 id="${slugify(token.text)}">${marked.parseInline(normalizeTypography(token.text))}</h3>\n`;
+    if (!currentSection) {
+      prefaceMarkdown += raw;
       continue;
     }
 
-    currentSection.bodyHtml += normalizeTypography(marked.parser([token]));
+    currentSection.bodyMarkdown += raw;
   }
 
   currentSection && sections.push(currentSection);
 
-  return sections;
+  return { prefaceMarkdown, sections };
+}
+
+export function buildSections(markdown = "") {
+  return splitMarkdownSections(markdown).sections.map((section) => {
+    const bodyMarkdown = String(section.bodyMarkdown || "").trim();
+    const structured = buildStructuredBlocks(bodyMarkdown);
+
+    return {
+      ...section,
+      bodyMarkdown,
+      bodyHtml: bodyMarkdown ? marked.parse(bodyMarkdown) : "",
+      leadMarkdown: structured.leadMarkdown,
+      leadHtml: structured.leadMarkdown ? marked.parse(structured.leadMarkdown) : "",
+      blocks: structured.blocks,
+    };
+  });
 }
 
 export function withSectionMeta(sections) {

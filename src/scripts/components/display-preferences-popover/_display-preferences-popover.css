@@ -1,0 +1,366 @@
+@layer components {
+  display-preferences-popover {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--header-control-size);
+  }
+
+  display-preferences-popover .preferences-shell {
+    position: relative;
+    display: inline-flex;
+  }
+
+  display-preferences-popover [data-toggle] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: var(--header-control-size);
+    block-size: var(--header-control-size);
+    min-block-size: var(--header-control-size);
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-2);
+    background: color-mix(in srgb, var(--surface-2) 92%, transparent);
+    color: var(--ink-strong);
+    cursor: pointer;
+    transition:
+      border-color var(--duration-2) var(--ease-standard),
+      background-color var(--duration-2) var(--ease-standard),
+      color var(--duration-2) var(--ease-standard),
+      transform var(--duration-2) var(--ease-standard);
+  }
+
+  display-preferences-popover [data-toggle]:hover {
+    border-color: color-mix(in srgb, var(--accent) 36%, var(--line));
+    background: color-mix(in srgb, var(--accent) 10%, var(--surface-2));
+    transform: translateY(-1px);
+  }
+
+  display-preferences-popover [data-toggle]:focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-offset);
+  }
+
+  display-preferences-popover[data-open="true"] [data-toggle] {
+    border-color: color-mix(in srgb, var(--accent) 44%, var(--line));
+    background: color-mix(in srgb, var(--accent) 14%, var(--surface-2));
+    color: var(--accent);
+  }
+
+  display-preferences-popover svg {
+    inline-size: 1rem;
+    block-size: 1rem;
+    transition: transform var(--duration-2) var(--ease-standard);
+  }
+
+  display-preferences-popover[data-open="true"] svg {
+    transform: rotate(180deg);
+  }
+
+  display-preferences-popover [data-panel] {
+    position: absolute;
+    top: calc(100% + var(--space-2));
+    right: 0;
+    z-index: 24;
+    display: none;
+    gap: 0.85rem;
+    inline-size: min(30rem, calc(100vw - (var(--gutter) * 2)));
+    max-block-size: min(78vh, 44rem);
+    margin: 0;
+    padding: 1rem;
+    overflow: auto;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-3);
+    background: color-mix(in srgb, var(--surface-2) 94%, transparent);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(18px);
+    opacity: 0;
+    transform: translateY(-0.35rem);
+    transition:
+      opacity var(--duration-2) var(--ease-standard),
+      transform var(--duration-2) var(--ease-standard);
+  }
+
+  display-preferences-popover [data-panel][hidden] {
+    display: none !important;
+  }
+
+  display-preferences-popover [data-panel][data-open="true"] {
+    display: grid;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  display-preferences-popover [data-panel-header] {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  display-preferences-popover .preferences-panel__eyebrow {
+    color: var(--accent-2);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  display-preferences-popover :where(h2, h3, legend, p) {
+    margin: 0;
+  }
+
+  display-preferences-popover h2 {
+    font-size: clamp(1.1rem, 1rem + 0.4vw, 1.35rem);
+  }
+
+  display-preferences-popover .preferences-panel__lede,
+  display-preferences-popover .preferences-group__title p,
+  display-preferences-popover .preferences-checkbox__hint,
+  display-preferences-popover .preferences-choice__hint {
+    color: var(--ink-muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  display-preferences-popover .preferences-group,
+  display-preferences-popover .preferences-group--fieldset {
+    display: grid;
+    gap: 0.85rem;
+    padding: 0.95rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-2);
+    background: color-mix(in srgb, var(--surface-2) 88%, transparent);
+  }
+
+  display-preferences-popover .preferences-group__title {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  display-preferences-popover .preferences-group__title h3,
+  display-preferences-popover .preferences-group--fieldset legend {
+    font-size: 1rem;
+    color: var(--ink-strong);
+  }
+
+  display-preferences-popover .preferences-group--fieldset {
+    min-width: 0;
+    margin: 0;
+    padding-top: 0.8rem;
+  }
+
+  display-preferences-popover .preferences-group--fieldset legend {
+    padding: 0 0.25rem;
+  }
+
+  display-preferences-popover .preferences-checklist {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  display-preferences-popover .preferences-choice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  display-preferences-popover .preferences-choice {
+    position: relative;
+    display: grid;
+    gap: 0.65rem;
+    align-content: start;
+    padding: 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-2);
+    background: color-mix(in srgb, var(--surface-3) 72%, transparent);
+    color: var(--ink-strong);
+    cursor: pointer;
+    transition:
+      border-color var(--duration-2) var(--ease-standard),
+      background-color var(--duration-2) var(--ease-standard),
+      box-shadow var(--duration-2) var(--ease-standard),
+      transform var(--duration-2) var(--ease-standard);
+  }
+
+  display-preferences-popover .preferences-choice:hover {
+    border-color: color-mix(in srgb, var(--accent) 26%, var(--line));
+    transform: translateY(-1px);
+  }
+
+  display-preferences-popover .preferences-choice[data-selected="true"],
+  display-preferences-popover .preferences-choice:has(input:checked) {
+    border-color: color-mix(in srgb, var(--accent) 44%, var(--line));
+    background: color-mix(in srgb, var(--accent) 12%, var(--surface-3));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+
+  display-preferences-popover .preferences-choice input[type="radio"] {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  display-preferences-popover .preferences-choice__preview {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+  }
+
+  display-preferences-popover .preferences-choice__preview span {
+    display: block;
+    min-block-size: 2.4rem;
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--surface-3) 74%, var(--accent) 18%);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--surface-2) 85%, transparent);
+  }
+
+  display-preferences-popover .preferences-choice__preview span:last-child {
+    min-block-size: 1.6rem;
+    align-self: end;
+  }
+
+  display-preferences-popover [data-radius-preview="square"] span {
+    border-radius: 0;
+  }
+
+  display-preferences-popover [data-radius-preview="rounded"] span {
+    border-radius: 4px;
+  }
+
+  display-preferences-popover [data-radius-preview="squircle"] span {
+    border-radius: 1rem;
+  }
+
+  display-preferences-popover .preferences-choice__copy {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  display-preferences-popover .preferences-choice__label,
+  display-preferences-popover .preferences-checkbox__label {
+    font-weight: 700;
+  }
+
+  display-preferences-popover .preferences-checkbox {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.75rem;
+    padding: 0.25rem 0;
+  }
+
+  display-preferences-popover .preferences-checkbox input {
+    inline-size: 1.05rem;
+    block-size: 1.05rem;
+    margin-block-start: 0.2rem;
+  }
+
+  display-preferences-popover .preferences-checkbox__copy {
+    display: grid;
+    gap: 0.12rem;
+    cursor: pointer;
+  }
+
+  display-preferences-popover .preferences-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  display-preferences-popover .preferences-field {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  display-preferences-popover .preferences-field label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink-strong);
+  }
+
+  display-preferences-popover .preferences-field select {
+    min-block-size: 2.9rem;
+    padding-inline: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-2);
+    background: color-mix(in srgb, var(--surface-3) 76%, transparent);
+    color: var(--ink-strong);
+    font: inherit;
+  }
+
+  display-preferences-popover accent-color-selector {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: var(--space-1);
+    align-items: center;
+    justify-self: start;
+    position: relative;
+    z-index: 1;
+  }
+
+  :root[data-radius-preset="square"] {
+    --radius: 0;
+    --radius-1: 0;
+    --radius-2: 0;
+    --radius-3: 0;
+  }
+
+  :root[data-radius-preset="rounded"] {
+    --radius: 8px;
+    --radius-1: 4px;
+    --radius-2: 8px;
+    --radius-3: 12px;
+  }
+
+  :root[data-radius-preset="squircle"] {
+    --radius: 14px;
+    --radius-1: 10px;
+    --radius-2: 14px;
+    --radius-3: 20px;
+  }
+
+  :root[data-increase-contrast="true"] {
+    --ink-muted: #e7dfcd;
+    --ink-soft: #cfc6b0;
+    --line: rgb(247 243 231 / 0.28);
+    --line-strong: rgb(247 243 231 / 0.46);
+    --surface-hover: rgb(255 255 255 / 0.12);
+  }
+
+  :root[data-reduce-transparency="true"]
+    :where([data-header], [data-portrait] figcaption, display-preferences-popover [data-panel]) {
+    backdrop-filter: none !important;
+    background: color-mix(in srgb, var(--surface-2) 98%, transparent);
+  }
+
+  :root[data-reduce-motion="true"]
+    display-preferences-popover
+    :where(
+      .preferences-toggle,
+      .preferences-toggle svg,
+      .preferences-panel,
+      .preferences-choice:hover
+    ) {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  @media (max-width: 42rem) {
+    display-preferences-popover [data-panel] {
+      right: auto;
+      left: min(0px, calc((100vw - 100%) * -1));
+      inline-size: min(26rem, calc(100vw - var(--gutter)));
+    }
+
+    display-preferences-popover .preferences-choice-grid,
+    display-preferences-popover .preferences-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

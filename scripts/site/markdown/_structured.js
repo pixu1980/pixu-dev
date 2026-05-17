@@ -2,7 +2,7 @@ import { load } from "cheerio";
 import { normalizeWhitespace } from "../_text.js";
 import { parseInlineList, looksLikeDateRange, splitTitleAndSubtitle } from "./_sections.js";
 
-export function collectStructuredSectionBlocks(sectionHtml = "") {
+function collectStructuredSectionBlocksFromHtml(sectionHtml = "") {
   const $ = load(`<div data-root>${sectionHtml}</div>`);
   const entries = [];
   let current = null;
@@ -40,7 +40,7 @@ export function collectStructuredSectionBlocks(sectionHtml = "") {
   return entries;
 }
 
-export function getLeadingSectionHtml(sectionHtml = "") {
+function getLeadingSectionHtmlFromHtml(sectionHtml = "") {
   const $ = load(`<div data-root>${sectionHtml}</div>`);
   const nodes = [];
 
@@ -55,6 +55,30 @@ export function getLeadingSectionHtml(sectionHtml = "") {
     });
 
   return nodes.join("\n");
+}
+
+export function collectStructuredSectionBlocks(sectionHtml = "") {
+  if (sectionHtml && typeof sectionHtml === "object" && Array.isArray(sectionHtml.blocks)) {
+    return sectionHtml.blocks;
+  }
+
+  if (sectionHtml && typeof sectionHtml === "object" && typeof sectionHtml.bodyHtml === "string") {
+    return collectStructuredSectionBlocksFromHtml(sectionHtml.bodyHtml);
+  }
+
+  return collectStructuredSectionBlocksFromHtml(sectionHtml);
+}
+
+export function getLeadingSectionHtml(sectionHtml = "") {
+  if (sectionHtml && typeof sectionHtml === "object" && typeof sectionHtml.leadHtml === "string") {
+    return sectionHtml.leadHtml;
+  }
+
+  if (sectionHtml && typeof sectionHtml === "object" && typeof sectionHtml.bodyHtml === "string") {
+    return getLeadingSectionHtmlFromHtml(sectionHtml.bodyHtml);
+  }
+
+  return getLeadingSectionHtmlFromHtml(sectionHtml);
 }
 
 export function parseExperienceEntriesFromHtml(sectionHtml = "") {
@@ -99,7 +123,7 @@ export function parseEducationEntriesFromHtml(sectionHtml = "") {
 }
 
 export function buildMarkdownDerivedFallbacks(sections) {
-  const bySlug = new Map(sections.map((section) => [section.slug, section.bodyHtml]));
+  const bySlug = new Map(sections.map((section) => [section.slug, section]));
 
   return {
     linkedin: {

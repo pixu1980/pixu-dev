@@ -9,6 +9,8 @@ pnpm install
 pnpm dev
 ```
 
+Local dev and preview servers run at `http://localhost:4317`.
+
 The site is generated from `content/resume.md`, public profile data, and files in `src`.
 
 ## Checks
@@ -18,9 +20,19 @@ Run these before opening a pull request:
 ```sh
 pnpm build
 pnpm test
+pnpm verify
 ```
 
-`pnpm build` regenerates favicon assets, formats code, runs lint checks, builds with Vite, and writes `dist`.
+`pnpm build` regenerates favicon assets, renders markdown snapshots, builds with Vite, and writes `dist`. `pnpm verify` runs lint, format check, unit tests, and Playwright tests. Run `pnpm setup:browsers` once after install if Playwright browsers are missing.
+
+## Changelog
+
+```sh
+pnpm changelog:update
+pnpm changelog:regen
+```
+
+Use `pnpm changelog:update` for the current package version. Use `pnpm changelog:regen` when tag history or release notes need a clean rebuild.
 
 ## Content Rules
 

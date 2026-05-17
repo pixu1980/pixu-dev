@@ -1,11 +1,11 @@
-import matter from "gray-matter";
-import { writeFile } from "node:fs/promises";
-
 import { buildGitHubCollections, getPortfolioRepos } from "./github/index.js";
+import { getLinkedInImportSections } from "./_resume-document.js";
 import { isEnglishTalk } from "./sessionize/_language.js";
 import { findTalkRepoMapItem, rankTalkRepoCandidates } from "./sessionize/_link-talks.js";
 import { canPrompt, promptLine } from "./_prompt.js";
 import { normalizeWhitespace, toArray } from "./_text.js";
+
+const PDF_IMPORT_SECTIONS = ["headline", "summary", "skills", "experience", "education"];
 
 function sameList(left, right) {
   const leftValues = toArray(left).map((value) => String(value));
@@ -20,9 +20,45 @@ function sameList(left, right) {
 function ensureSourceConfig(frontmatter) {
   frontmatter.sourceConfig ??= {};
   frontmatter.sourceConfig.github ??= {};
+  frontmatter.sourceConfig.linkedin ??= {};
   frontmatter.sourceConfig.sessionize ??= {};
   frontmatter.sourceConfig.sessionize.talkRepoMap ??= [];
   return frontmatter.sourceConfig;
+}
+
+function parseNamedSelection(answer, options) {
+  const normalized = answer.trim().toLowerCase();
+
+  if (normalized === "all") return [...options];
+  if (["none", "empty", "0"].includes(normalized)) return [];
+
+  const selected = new Set();
+  const byName = new Map(options.map((value) => [value.toLowerCase(), value]));
+
+  for (const part of normalized.split(/[\s,]+/).filter(Boolean)) {
+    const rangeMatch = part.match(/^(\d+)-(\d+)$/);
+
+    if (rangeMatch) {
+      const start = Number(rangeMatch[1]);
+      const end = Number(rangeMatch[2]);
+      for (let index = Math.min(start, end); index <= Math.max(start, end); index += 1) {
+        if (options[index - 1]) selected.add(options[index - 1]);
+      }
+      continue;
+    }
+
+    const numericIndex = Number(part);
+    if (Number.isInteger(numericIndex) && options[numericIndex - 1]) {
+      selected.add(options[numericIndex - 1]);
+      continue;
+    }
+
+    if (byName.has(part)) {
+      selected.add(byName.get(part));
+    }
+  }
+
+  return Array.from(selected);
 }
 
 function parseRepoSelection(answer, repos) {
@@ -166,14 +202,37 @@ async function promptTalkRepoMap(frontmatter, github, sessionizeRaw, options) {
   return changed;
 }
 
-export async function runBuildInteractions({
-  frontmatter,
-  content,
-  github,
-  sessionizeRaw,
-  path,
-  options,
-}) {
+async function promptLinkedInPdfSections(frontmatter, options) {
+  if (!options.selectPdfSections) return false;
+
+  const sourceConfig = ensureSourceConfig(frontmatter);
+  const current = getLinkedInImportSections(frontmatter);
+  const currentSet = new Set(current.map((value) => value.toLowerCase()));
+
+  console.log("\nLinkedIn PDF sections");
+  PDF_IMPORT_SECTIONS.forEach((section, index) => {
+    const marker = currentSet.has(section.toLowerCase()) ? "[x]" : "[ ]";
+    console.log(`${marker} ${index + 1}. ${section}`);
+  });
+  console.log("Type numbers, ranges, names, all, none, or skip.");
+
+  const answer = await promptLine("PDF sections to import [keep current]: ", options.prompt);
+  if (!answer || answer.toLowerCase() === "skip") return false;
+
+  const selected = parseNamedSelection(answer, PDF_IMPORT_SECTIONS);
+
+  if (!selected.length && answer.toLowerCase() !== "none") {
+    console.warn("PDF section selection ignored: no matching section names.");
+    return false;
+  }
+
+  if (sameList(current, selected)) return false;
+
+  sourceConfig.linkedin.importSections = selected;
+  return true;
+}
+
+export async function runBuildInteractions({ frontmatter, github, sessionizeRaw, options }) {
   if (!options?.enabled) return { frontmatter, github };
 
   const promptOptions = { force: options.forcePrompt };
@@ -184,6 +243,7 @@ export async function runBuildInteractions({
 
   const nextFrontmatter = structuredClone(frontmatter);
   const interactionOptions = { ...options, prompt: promptOptions };
+  const changedPdfSections = await promptLinkedInPdfSections(nextFrontmatter, interactionOptions);
   const changedRepos = await promptPortfolioRepos(nextFrontmatter, github, interactionOptions);
   const changedTalks = await promptTalkRepoMap(
     nextFrontmatter,
@@ -192,11 +252,9 @@ export async function runBuildInteractions({
     interactionOptions,
   );
 
-  if (!changedRepos && !changedTalks) {
+  if (!changedPdfSections && !changedRepos && !changedTalks) {
     return { frontmatter, github };
   }
-
-  await writeFile(path, matter.stringify(content, nextFrontmatter), "utf8");
 
   return {
     frontmatter: nextFrontmatter,

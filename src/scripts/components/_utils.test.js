@@ -24,3 +24,32 @@ test("component utilities register styles and custom elements once", async () =>
   assert.equal(document.head.querySelectorAll("style[data-component='demo-element']").length, 1);
   assert.equal(customElements.get("demo-element"), DemoElement);
 });
+
+test("component utilities fallback to style tag when replaceSync throws", async () => {
+  const dom = new JSDOM("<!doctype html><head></head><body></body>", {
+    url: "https://pixu.dev/",
+  });
+  globalThis.document = dom.window.document;
+  globalThis.customElements = dom.window.customElements;
+
+  class BrokenSheet {
+    replaceSync() {
+      throw new Error("replaceSync failed");
+    }
+  }
+
+  Object.defineProperty(document, "adoptedStyleSheets", {
+    configurable: true,
+    value: [],
+    writable: true,
+  });
+
+  globalThis.CSSStyleSheet = BrokenSheet;
+
+  const { registerStyles } = await import(`./_utils.js?fallback=${Date.now()}`);
+
+  registerStyles("broken-element", "@property --x {} broken-element { color: red; }");
+
+  assert.equal(document.head.querySelectorAll("style[data-component='broken-element']").length, 1);
+  assert.equal(document.adoptedStyleSheets.length, 0);
+});

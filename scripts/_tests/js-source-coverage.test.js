@@ -7,9 +7,12 @@ import { test } from "node:test";
 
 const coverage = {
   "scripts/build.js": ["scripts/build.test.js"],
+  "scripts/changelog.js": ["scripts/changelog.test.js"],
+  "scripts/cms.js": ["scripts/cms.test.js"],
   "scripts/generate-favicons.js": ["scripts/generate-favicons.test.js"],
   "scripts/lint-content.js": ["scripts/lint-content.test.js"],
   "scripts/release.js": ["scripts/release.test.js"],
+  "scripts/run-node-tests.js": ["scripts/run-node-tests.test.js"],
   "scripts/site/_build-interactions.js": ["scripts/site/_io-loaders.test.js"],
   "scripts/site/_build-site.js": ["scripts/site/_io-loaders.test.js"],
   "scripts/site/_constants.js": ["scripts/site/_text-format.test.js"],
@@ -17,6 +20,8 @@ const coverage = {
   "scripts/site/_format.js": ["scripts/site/_text-format.test.js"],
   "scripts/site/_profile-image.js": ["scripts/site/_io-loaders.test.js"],
   "scripts/site/_prompt.js": ["scripts/site/_io-loaders.test.js"],
+  "scripts/site/_resume-document.js": ["scripts/site/_resume-document.test.js"],
+  "scripts/site/_sync-resume.js": ["scripts/site/_build-site.test.js"],
   "scripts/site/_text.js": ["scripts/site/_text-format.test.js"],
   "scripts/site/context/_helpers.js": ["scripts/site/context/_context.test.js"],
   "scripts/site/context/_profile.js": ["scripts/site/context/_context.test.js"],
@@ -29,9 +34,9 @@ const coverage = {
   "scripts/site/github/_parse-html.js": ["scripts/site/github/_github.test.js"],
   "scripts/site/github/_shared.js": ["scripts/site/github/_github.test.js"],
   "scripts/site/github/_stats.js": ["scripts/site/github/_github.test.js"],
-  "scripts/site/linkedin/_browser.js": ["scripts/site/linkedin/_browser.test.js"],
   "scripts/site/linkedin/_load.js": ["scripts/site/linkedin/_linkedin.test.js"],
-  "scripts/site/linkedin/_parse.js": ["scripts/site/linkedin/_linkedin.test.js"],
+  "scripts/site/linkedin/_pdf.js": ["scripts/site/linkedin/_pdf.test.js"],
+  "scripts/site/linkedin/_sync.js": ["scripts/site/linkedin/_sync.test.js"],
   "scripts/site/markdown/_merge-sections.js": ["scripts/site/markdown/_markdown.test.js"],
   "scripts/site/markdown/_sections.js": ["scripts/site/markdown/_markdown.test.js"],
   "scripts/site/markdown/_structured.js": ["scripts/site/markdown/_markdown.test.js"],
@@ -72,6 +77,9 @@ const coverage = {
     "tests/resume.spec.js",
   ],
   "src/scripts/components/color-scheme-selector/_color-scheme-selector.js": [
+    "tests/resume.spec.js",
+  ],
+  "src/scripts/components/display-preferences-popover/_display-preferences-popover.js": [
     "tests/resume.spec.js",
   ],
   "src/scripts/components/pointer-glow/_pointer-glow.js": ["tests/resume.spec.js"],

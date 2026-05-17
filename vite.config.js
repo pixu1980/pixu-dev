@@ -8,6 +8,7 @@ import { DIST, buildSite, getCliBuildOptions } from "./scripts/build.js";
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const BUILD_OUTPUT = join(DIST, ".vite-build");
 const WATCHED_ROOTS = [join(ROOT, "content"), join(ROOT, "src"), join(ROOT, "static")];
+const LOCAL_HOST = "127.0.0.1";
 const shouldBuildSite = !process.argv.includes("preview");
 const cliBuildOptions = getCliBuildOptions();
 const isProductionBuild = process.argv.includes("build");
@@ -16,6 +17,8 @@ if (shouldBuildSite) {
   await buildSite({
     outDir: DIST,
     publicDir: DIST,
+    sourcePath: cliBuildOptions.sourcePath,
+    useFrontmatterFallbacksOnly: cliBuildOptions.useFrontmatterFallbacksOnly,
     interactions: isProductionBuild ? cliBuildOptions.interactions : { enabled: false },
   });
 }
@@ -87,7 +90,6 @@ function finalizeDistBuild() {
     name: "pixu-finalize-dist-build",
     apply: "build",
     async closeBundle() {
-      await copyIfExists(join(DIST, "data"), join(BUILD_OUTPUT, "data"));
       await copyProfileAssets();
       const tempRoot = await mkdtemp(join(tmpdir(), "pixu-dist-"));
       const tempOutput = join(tempRoot, "site");
@@ -104,15 +106,25 @@ export default defineConfig({
   publicDir: false,
   plugins: [resumeGenerator(), finalizeDistBuild()],
   server: {
-    host: "0.0.0.0",
+    host: LOCAL_HOST,
     port: 4317,
   },
   preview: {
-    host: "0.0.0.0",
+    host: LOCAL_HOST,
     port: 4317,
   },
   build: {
     emptyOutDir: true,
     outDir: resolve(ROOT, "dist/.vite-build"),
+    codeSplitting: false,
+    cssCodeSplit: false,
+    rollupOptions: {
+      output: {
+        entryFileNames: "assets/app.js",
+        assetFileNames(assetInfo) {
+          return assetInfo.name?.endsWith(".css") ? "assets/app.css" : "assets/[name][extname]";
+        },
+      },
+    },
   },
 });

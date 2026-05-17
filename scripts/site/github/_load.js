@@ -51,6 +51,38 @@ async function fetchGitHubProfileData(username, headers) {
   }
 }
 
+export function loadStoredGitHubData(config, stored = {}) {
+  const username = stored?.profile?.username || getGitHubUsername(config);
+  const repos = sortGitHubRepos(normalizeGitHubRepos(stored?.repos), config?.featured);
+  const publicRepos = Number(
+    stored?.profile?.publicRepos || stored?.stats?.publicRepos || repos.length,
+  );
+
+  return {
+    label: "GitHub",
+    status: stored?.status || "fallback",
+    profileUrl:
+      stored?.profileUrl || config?.profile || (username ? `https://github.com/${username}` : ""),
+    profile: {
+      username,
+      name: stored?.profile?.name || "",
+      bio: stored?.profile?.bio || "",
+      avatarUrl:
+        stored?.profile?.avatarUrl ||
+        (username ? `https://github.com/${username}.png?size=512` : ""),
+      followers: Number(stored?.profile?.followers || 0),
+      following: Number(stored?.profile?.following || 0),
+      publicRepos,
+      createdAt: stored?.profile?.createdAt || "",
+    },
+    stats: buildGitHubStats(repos, publicRepos),
+    languages: stored?.languages?.length ? stored.languages : buildLanguageStats(repos),
+    topics: stored?.topics?.length ? stored.topics : buildTopicStats(repos),
+    repos,
+    ...buildGitHubCollections(repos, config),
+  };
+}
+
 export async function loadGitHubData(config, fallback) {
   const username = getGitHubUsername(config);
   const fallbackRepos = sortGitHubRepos(normalizeGitHubRepos(fallback?.repos), config?.featured);

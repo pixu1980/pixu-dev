@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
@@ -9,20 +9,71 @@ const STATIC = join(ROOT, "static");
 const LOGO_SVG = join(ROOT, "src", "assets", "images", "logo.svg");
 const LOGO_PNG = join(ROOT, "src", "assets", "images", "logo.png");
 
+const GENERATED_FAVICON_FILES = Object.freeze([
+  "android-chrome-192x192.png",
+  "android-chrome-512x512.png",
+  "apple-touch-icon.png",
+  "favicon-16x16.png",
+  "favicon-32x32.png",
+  "favicon.svg",
+  "safari-pinned-tab.svg",
+  "site.webmanifest",
+]);
+
+const LEGACY_FAVICON_FILES = Object.freeze([
+  "android-chrome-192x192.png",
+  "android-chrome-256x256.png",
+  "android-chrome-512x512.png",
+  "apple-touch-icon-114x114-precomposed.png",
+  "apple-touch-icon-114x114.png",
+  "apple-touch-icon-120x120-precomposed.png",
+  "apple-touch-icon-120x120.png",
+  "apple-touch-icon-144x144-precomposed.png",
+  "apple-touch-icon-144x144.png",
+  "apple-touch-icon-152x152-precomposed.png",
+  "apple-touch-icon-152x152.png",
+  "apple-touch-icon-180x180-precomposed.png",
+  "apple-touch-icon-180x180.png",
+  "apple-touch-icon-57x57-precomposed.png",
+  "apple-touch-icon-57x57.png",
+  "apple-touch-icon-60x60-precomposed.png",
+  "apple-touch-icon-60x60.png",
+  "apple-touch-icon-72x72-precomposed.png",
+  "apple-touch-icon-72x72.png",
+  "apple-touch-icon-76x76-precomposed.png",
+  "apple-touch-icon-76x76.png",
+  "apple-touch-icon-precomposed.png",
+  "apple-touch-icon.png",
+  "browserconfig.xml",
+  "favicon-16x16.png",
+  "favicon-32x32.png",
+  "favicon-48x48.png",
+  "favicon.ico",
+  "favicon.svg",
+  "mstile-150x150.png",
+  "safari-pinned-tab.svg",
+  "site.webmanifest",
+]);
+
+const OBSOLETE_FAVICON_FILES = Object.freeze(
+  LEGACY_FAVICON_FILES.filter((name) => !GENERATED_FAVICON_FILES.includes(name)),
+);
+
 const pngIcons = [
   ["favicon-16x16.png", 16],
   ["favicon-32x32.png", 32],
-  ["favicon-48x48.png", 48],
   ["apple-touch-icon.png", 180],
-  ["apple-touch-icon-180x180.png", 180],
   ["android-chrome-192x192.png", 192],
-  ["android-chrome-256x256.png", 256],
   ["android-chrome-512x512.png", 512],
-  ["mstile-150x150.png", 150],
 ];
 
 function getLogoBody(svg) {
   return svg.replace(/^[\s\S]*?<svg[^>]*>/i, "").replace(/<\/svg>\s*$/i, "");
+}
+
+function getLogoViewBox(svg) {
+  const match = svg.match(/viewBox\s*=\s*"([^"]+)"/i);
+  return match?.[1] || "0 0 300 300";
 }
 
 function getThemedLogo(body) {
@@ -36,37 +87,23 @@ function getFlatLogo(body, fill = "#000000") {
   return body.replaceAll(/fill="[^"]+"/g, `fill="${fill}"`);
 }
 
-function getAdaptiveSvg(body) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
-  <style>
-    .icon-bg { fill: #f7f3e7; }
-    .logo-teal { fill: #248f84; }
-    .logo-purple { fill: #663399; }
-    .logo-ink { fill: #0f172a; }
-    @media (prefers-color-scheme: dark) {
-      .icon-bg { fill: #080a0f; }
-      .logo-teal { fill: #52e0c4; }
-      .logo-purple { fill: #b9a7ff; }
-      .logo-ink { fill: #f7f3e7; }
-    }
-  </style>
-  <rect class="icon-bg" width="300" height="300" rx="54" />
-  ${getThemedLogo(body)}
-</svg>
-`;
-}
-
-function getPngSourceSvg(body) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
-  <rect width="300" height="300" rx="54" fill="#f7f3e7" />
+function getAdaptiveSvg(body, viewBox = "0 0 300 300") {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}">
   ${body}
 </svg>
 `;
 }
 
-function getSafariPinnedSvg(body) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-  ${getFlatLogo(body)}
+function getPngSourceSvg(body, viewBox = "0 0 300 300") {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}">
+  ${body}
+</svg>
+`;
+}
+
+function getSafariPinnedSvg(body, viewBox = "0 0 300 300") {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}">
+  ${body}
 </svg>
 `;
 }
@@ -81,12 +118,18 @@ export async function writePng(source, name, size) {
     .toFile(join(STATIC, name));
 }
 
+export async function removeObsoleteFavicons() {
+  await Promise.all(OBSOLETE_FAVICON_FILES.map((name) => rm(join(STATIC, name), { force: true })));
+}
+
 export async function generateFavicons() {
   await mkdir(STATIC, { recursive: true });
+  await removeObsoleteFavicons();
   const source = await readFile(LOGO_SVG, "utf8");
   const body = getLogoBody(source);
-  const adaptiveSvg = getAdaptiveSvg(body);
-  const pngSourceSvg = getPngSourceSvg(body);
+  const viewBox = getLogoViewBox(source);
+  const adaptiveSvg = getAdaptiveSvg(body, viewBox);
+  const pngSourceSvg = getPngSourceSvg(body, viewBox);
 
   await sharp(LOGO_SVG)
     .resize(300, 300, {
@@ -97,24 +140,9 @@ export async function generateFavicons() {
     .toFile(LOGO_PNG);
 
   await writeFile(join(STATIC, "favicon.svg"), adaptiveSvg, "utf8");
-  await writeFile(join(STATIC, "safari-pinned-tab.svg"), getSafariPinnedSvg(body), "utf8");
+  await writeFile(join(STATIC, "safari-pinned-tab.svg"), getSafariPinnedSvg(body, viewBox), "utf8");
 
   await Promise.all(pngIcons.map(([name, size]) => writePng(pngSourceSvg, name, size)));
-
-  await writeFile(
-    join(STATIC, "browserconfig.xml"),
-    `<?xml version="1.0" encoding="utf-8"?>
-<browserconfig>
-  <msapplication>
-    <tile>
-      <square150x150logo src="/mstile-150x150.png" />
-      <TileColor>#080a0f</TileColor>
-    </tile>
-  </msapplication>
-</browserconfig>
-`,
-    "utf8",
-  );
 
   await writeFile(
     join(STATIC, "site.webmanifest"),
@@ -155,9 +183,12 @@ if (isMain) {
 }
 
 export {
+  GENERATED_FAVICON_FILES,
+  OBSOLETE_FAVICON_FILES,
   getAdaptiveSvg,
   getFlatLogo,
   getLogoBody,
+  getLogoViewBox,
   getPngSourceSvg,
   getSafariPinnedSvg,
   getThemedLogo,

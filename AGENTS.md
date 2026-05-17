@@ -43,14 +43,14 @@ These rules apply to any Figma-driven implementation in this project.
 - Source content lives in `content/resume.md`.
 - HTML template entry lives in `src/index.html`.
 - Runtime JavaScript lives in `src/scripts/app.js`.
-- CSS lives in `src/styles/main.css`.
+- CSS entry lives in `src/styles/index.css`.
 - Source assets live in `src/assets`.
 - Static public assets live in `static`.
 - Generated Vite input and production output live in `dist`.
 
 ### Styling Rules
 
-- Tokens are CSS custom properties in `src/styles/main.css` under `@layer tokens`.
+- Tokens are CSS custom properties in `src/styles/_tokens-core.css` and `src/styles/_tokens-theme.css` under `@layer tokens`.
 - New visual work must reuse existing tokens before adding new ones.
 - Prefer data attributes for component targeting, for example `[data-header]`.
 - Keep cards only for repeated items, panels, and framed interactive surfaces.

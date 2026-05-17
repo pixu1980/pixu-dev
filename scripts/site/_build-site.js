@@ -1,4 +1,3 @@
-import matter from "gray-matter";
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
@@ -7,69 +6,45 @@ import TemplateEngine from "../template-engine/index.js";
 import {
   buildEffectiveProfile,
   buildLinkedInFallback,
-  buildPublicData,
   buildTemplateContext,
 } from "./context/index.js";
 
-import { loadLinkedInData } from "./linkedin/index.js";
+import { loadStoredLinkedInData } from "./linkedin/index.js";
 
-import { getGitHubUsername, loadGitHubData } from "./github/index.js";
+import { getGitHubUsername, loadStoredGitHubData } from "./github/index.js";
 
-import { isEnglishTalk, linkTalksToRepos, loadSessionizeData } from "./sessionize/index.js";
+import { isEnglishTalk, linkTalksToRepos, loadStoredSessionizeData } from "./sessionize/index.js";
 
-import {
-  mergeSectionsForRender,
-  buildSections,
-  buildMarkdownDerivedFallbacks,
-} from "./markdown/index.js";
+import { mergeSectionsForRender, buildMarkdownDerivedFallbacks } from "./markdown/index.js";
 
 import { copyAssets, localizeProfileImage, ensureDir } from "./output/index.js";
 
 import { CONTENT, DIST, SRC } from "./_constants.js";
 import { getPreferredProfileImage } from "./_profile-image.js";
-import { runBuildInteractions } from "./_build-interactions.js";
-import { closePrompt } from "./_prompt.js";
+import { getGeneratedSources, parseResumeDocument } from "./_resume-document.js";
 
 export async function buildSite(options = {}) {
   const startedAt = performance.now();
-  const interactionOptions = options.interactions || {};
   const outputRoot = options.outDir || DIST;
   const publicRoot = options.publicDir || outputRoot;
-  const resumePath = join(CONTENT, "resume.md");
+  const resumePath = options.sourcePath || join(CONTENT, "resume.md");
   const markdown = await readFile(resumePath, "utf8");
-  let { data: frontmatter, content } = matter(markdown);
-  const parsedSections = buildSections(content);
+  const { frontmatter, sections: parsedSections } = parseResumeDocument(markdown);
   const derivedFallbacks = buildMarkdownDerivedFallbacks(parsedSections);
   const sections = mergeSectionsForRender(parsedSections);
   const githubUsername = getGitHubUsername(frontmatter.sourceConfig?.github);
   const linkedinFallback = buildLinkedInFallback(frontmatter, githubUsername, derivedFallbacks);
-
-  let [github, sessionizeRaw] = await Promise.all([
-    loadGitHubData(frontmatter.sourceConfig?.github, frontmatter.fallbacks?.github),
-    loadSessionizeData(frontmatter.sourceConfig?.sessionize, frontmatter.fallbacks?.sessionize),
-  ]);
-
-  const linkedin = await loadLinkedInData(frontmatter.sourceConfig?.linkedin, linkedinFallback, {
-    browser: interactionOptions.linkedinBrowser,
-  });
-
-  try {
-    const interactionResult = await runBuildInteractions({
-      frontmatter,
-      content,
-      github,
-      sessionizeRaw,
-      path: resumePath,
-      options: interactionOptions,
-    });
-
-    frontmatter = interactionResult.frontmatter;
-    github = interactionResult.github;
-  } finally {
-    if (interactionOptions.enabled) {
-      closePrompt();
-    }
-  }
+  const generatedSources = getGeneratedSources(frontmatter);
+  const github = loadStoredGitHubData(frontmatter.sourceConfig?.github, generatedSources.github);
+  const sessionizeRaw = loadStoredSessionizeData(
+    frontmatter.sourceConfig?.sessionize,
+    generatedSources.sessionize,
+  );
+  const linkedin = loadStoredLinkedInData(
+    frontmatter.sourceConfig?.linkedin,
+    generatedSources.linkedin,
+    linkedinFallback,
+  );
 
   const sessionize = {
     ...sessionizeRaw,
@@ -87,18 +62,15 @@ export async function buildSite(options = {}) {
   await ensureDir(publicRoot);
 
   const profileImage = await localizeProfileImage(getPreferredProfileImage(data), publicRoot);
-  const publicData = buildPublicData(frontmatter, data, profileImage, profile);
-  const context = buildTemplateContext({ frontmatter, data, profileImage, sections, profile });
+  const context = buildTemplateContext({
+    frontmatter,
+    data,
+    profileImage,
+    sections,
+    profile,
+  });
   const engine = new TemplateEngine({ rootDir: SRC });
   const html = engine.render("index.html", context);
-
-  await ensureDir(join(publicRoot, "data"));
-
-  await writeFile(
-    join(publicRoot, "data", "resume.json"),
-    JSON.stringify(publicData, null, 2),
-    "utf8",
-  );
 
   await writeFile(join(outputRoot, "index.html"), html, "utf8");
 

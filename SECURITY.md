@@ -12,4 +12,4 @@ Do not include secrets, session cookies, private profile exports, or proprietary
 
 ## Secrets
 
-`GITHUB_TOKEN` and `LINKEDIN_COOKIE_LI_AT` are optional local build inputs. Never commit them. Use `.env` or CI secrets.
+`GITHUB_TOKEN` is an optional local build input. Never commit it. Use `.env` or CI secrets.

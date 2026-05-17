@@ -33,25 +33,25 @@ function buildDefaultSection(section, leadHtml) {
 function buildExperienceSection(section, data, leadHtml) {
   const entries = toArray(data.linkedin.experience).length
     ? data.linkedin.experience
-    : parseExperienceEntriesFromHtml(section.bodyHtml);
+    : parseExperienceEntriesFromHtml(section);
 
   return { ...section, leadHtml, entries: entries.map(normalizeEntry) };
 }
 
 function buildSkillsSection(section, leadHtml) {
-  return { ...section, leadHtml, blocks: collectStructuredSectionBlocks(section.bodyHtml) };
+  return { ...section, leadHtml, blocks: collectStructuredSectionBlocks(section) };
 }
 
 function buildEducationSection(section, data, leadHtml) {
   const entries = toArray(data.linkedin.education).length
     ? data.linkedin.education
-    : parseEducationEntriesFromHtml(section.bodyHtml);
+    : parseEducationEntriesFromHtml(section);
 
   return { ...section, leadHtml, entries: entries.map(normalizeEntry) };
 }
 
 function buildSectionView(section, frontmatter, data) {
-  const leadHtml = getLeadingSectionHtml(section.bodyHtml);
+  const leadHtml = getLeadingSectionHtml(section);
   const builder = SECTION_BUILDERS[section.slug];
 
   if (builder) {

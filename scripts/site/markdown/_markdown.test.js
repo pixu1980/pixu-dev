@@ -23,7 +23,8 @@ test("Markdown section parser builds slugs, meta, paragraphs, and inline lists",
   const sections = buildSections("## Portfolio\n\nLead.\n\n### Item - Org\n\nStack: HTML, CSS");
 
   assert.equal(sections[0].slug, "portfolio");
-  assert.equal(sections[0].bodyHtml.includes('id="item-org"'), true);
+  assert.equal(sections[0].blocks[0].heading, "Item - Org");
+  assert.equal(sections[0].leadHtml.trim(), "<p>Lead.</p>");
   assert.equal(withSectionMeta(sections)[0].indexLabel, "01");
   assert.deepEqual(getParagraphsFromHtml(sections[0].bodyHtml), ["Lead.", "Stack: HTML, CSS"]);
   assert.deepEqual(parseInlineList("Stack: HTML, CSS"), ["HTML", "CSS"]);

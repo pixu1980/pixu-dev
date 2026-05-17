@@ -51,6 +51,10 @@
     color: var(--ink-muted);
   }
 
+  :where(code, pre, kbd, samp) {
+    font-family: var(--font-mono);
+  }
+
   strong {
     color: var(--ink-strong);
   }

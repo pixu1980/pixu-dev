@@ -6,14 +6,14 @@
     <meta property="og:title" content="Emiliano Pisu - Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor">
     <meta property="og:description" content="Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/images/profile.png">
+    <meta property="og:image" content="/assets/profile.png">
 
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#663399">
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="mask-icon" href="/assets/favicon.svg" color="#663399">
+    <link rel="manifest" href="/assets/site.webmanifest">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f3e7">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#080a0f">
     <script>
@@ -38,7 +38,8 @@
         } catch {}
       })();
     </script>
-    <link rel="stylesheet" href="styles/index.css">
+    <script type="module" crossorigin src="/assets/app.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/app.css">
   </head>
   <body>
     <skip-link href="#main"></skip-link>
@@ -47,12 +48,12 @@
 
     <header data-header="">
   <a data-mark="" href="#top" aria-label="Emiliano Pisu home">
-    <img src="assets/images/logo.svg" width="300" height="300" alt="" decoding="async">
+    <img src="/assets/logo.svg" width="300" height="300" alt="" decoding="async">
   </a>
 
   <div data-header-tools="">
-    <accent-color-selector></accent-color-selector>
     <color-scheme-selector></color-scheme-selector>
+    <display-preferences-popover></display-preferences-popover>
     <a data-header-action="" href="#contact">Contact</a>
     <button data-nav-toggle="" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Menu">
       <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +94,7 @@
   <div data-hero-copy="" data-reveal="">
     <p data-kicker="">Rome, Italy</p>
     <h1 id="hero-title">Emiliano Pisu</h1>
-    <!-- <p data-role>{{ site.title }}</p> -->
+    <p data-role="">Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor</p>
     <p data-motto="">Make learning a habit.</p>
     <p data-summary="">Design engineer, mentor, and conference speaker focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction.</p>
 
@@ -144,7 +145,7 @@
   </div>
 
   <figure data-portrait="" data-reveal="">
-    <img src="assets/images/profile.png" alt="Emiliano Pisu profile portrait" loading="eager" decoding="async">
+    <img src="/assets/profile.png" alt="Emiliano Pisu profile portrait" loading="eager" decoding="async">
     <figcaption>
       <span>Emiliano Pisu</span>
       <strong>Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor</strong>
@@ -195,7 +196,7 @@
   <strong>30</strong>
   <span>GitHub repositories</span>
   
-    <small>80 stars, 7 forks</small>
+    <small>80 stars, 0 forks</small>
   
 </article>
 
@@ -235,7 +236,8 @@
 <p>My career spans Delphi, desktop software, and a long arc into modern frontend architecture, design systems, accessibility, and lean-web thinking. Along the way I experimented with a long list of languages, databases, IDEs, frameworks, patterns, and servers.</p>
 <p>I found my comfort zone in frontend development and more specifically in UI/UX engineering. Then I finally landed in teaching, planning, creating, and presenting courses on frontend and UI/UX engineering.</p>
 <p>Over the last few years my focus shifted from building digital products to giving back to the community: public talks, mentoring, open-source experiments, and accessible design systems that work in the real world.</p>
-<p>I bridge design and development without losing craft: semantics-first HTML, CSS on purpose, progressive enhancement, and maintainability above novelty.</p></div>
+<p>I bridge design and development without losing craft: semantics-first HTML, CSS on purpose, progressive enhancement, and maintainability above novelty.</p>
+</div>
   <div data-about-panels="">
     <aside data-panel="linkedin" data-surface="lifted" data-hover-surface="" data-generated="linkedin-profile" data-reveal="">
   <h3>Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor</h3>
@@ -244,6 +246,12 @@
   </p>
   
   <ul aria-label="LinkedIn skills" data-tags="">
+    
+      <li>Solution architecture</li>
+    
+      <li>Web development</li>
+    
+      <li>Classroom training</li>
     
       <li>Design engineering</li>
     
@@ -356,9 +364,9 @@
   
     <ul>
       
-        <li>Italian - Native or Bilingual</li>
+        <li>**Italian** - Native or Bilingual</li>
       
-        <li>English - Full Professional</li>
+        <li>**English** - Full Professional</li>
       
     </ul>
   
@@ -438,15 +446,15 @@
     
       <article data-timeline-item="" data-reveal="">
   <div>
-    <time>Dec 2024 – Present</time>
+    <time>April 2019 - Present (7 years 1 month)</time>
   </div>
   <div>
-    <h3>Sensei &amp; Co-Host</h3>
+    <h3>Senior Frontend Engineer</h3>
     
-      <p data-eyebrow="">DevDojo IT</p>
+      <p data-eyebrow="">Emiliano Pisu</p>
     
     
-      <p>Teaching, mentoring, and open-source contributions focused on frontend engineering craft. Live coding sessions, webinars, and public talks. Stack: Vanilla JS, HTML, CSS, Accessibility, Mentoring, Open Source</p>
+      <p>Freelance Consultant focused on Senior Frontend Engineering, Design Engineering and AI Product Engineering. With 27+ years in the industry, I help teams and companies design, build and improve modern, accessible, high-performance and sustainable digital products. My work sits at the intersection of design, development, AI and product. I translate business needs, visual systems and technical requirements into solid, scalable and maintainable frontend solutions. As a Senior Frontend Engineer and Design Engineer, I work on UI engineering, design systems, component libraries, frontend architectures, semantic HTML, modern CSS, JavaScript, accessibility, performance and maintainability. I have deep experience with React and mainstream frontend frameworks, but my approach remains grounded in clarity, reliability and long-term technical sustainability. I am equally comfortable working with vanilla JavaScript, Custom Elements, progressive enhancement and zero-dependency architectures built on the native web platform. As an AI Product Engineer, I support teams in integrating AI into real-world workflows, tools and applications, with a strong focus on practical value, repeatable processes, product thinking and engineering quality. I often help companies with accessibility and WCAG audits, frontend quality reviews, component design, design-system maturity, performance improvements, architectural decisions and more effective development workflows. As a mentor and technical partner, I also support developers and cross- functional teams through hands-on knowledge sharing, technical guidance and collaboration between design, development and product. I bring value both as a senior individual contributor and as a consultant who can connect vision, execution and technical culture. My goal is simple: build thoughtful products, improve DevX, help teams grow and make the web better, one component at a time.</p>
     
     
     
@@ -457,38 +465,35 @@
     
       <article data-timeline-item="" data-reveal="">
   <div>
-    <time>Sept 2022 – Feb 2025</time>
+    <time>December 2024 - Present (1 year 5 months)</time>
+  </div>
+  <div>
+    <h3>Sensei &amp; Co-host</h3>
+    
+      <p data-eyebrow="">Dev Dojo IT</p>
+    
+    
+      <p>Mentor, Sensei and Co-Host @ DevDojoIT, focused on frontend education, knowledge sharing and community growth. After 27+ years in the industry, I am in a phase where mentoring has become one of the most meaningful parts of my work. The web community has given me knowledge, opportunities, inspiration and a professional path. Today, I try to give part of that value back by helping developers grow with clarity, confidence and practical guidance. At DevDojoIT, my role is centered on education, mentorship and community building. I support developers who want to improve their frontend skills, understand the web platform more deeply and build interfaces that are accessible, scalable, maintainable and respectful of users. As a mentor, I help people navigate the constantly evolving frontend landscape, from semantic HTML, modern CSS and JavaScript to accessibility, UI architecture, design systems, performance and AI-assisted development workflows. My approach is practical, honest and hands-on. I believe that good mentoring is not about giving shortcuts, but about helping people develop better mental models, stronger technical judgment and a more sustainable way to learn. Through DevDojoIT, I contribute to a culture of sharing by creating learning resources, hosting live coding sessions, supporting workshops, encouraging technical discussions and helping developers connect theory with real-world practice. I care deeply about making knowledge more accessible. This means explaining complex topics in a clear way, giving constructive feedback, encouraging experimentation and helping newcomers and experienced developers find common ground. My mission as a mentor is simple: help people become more confident, more aware and more independent as developers. The web gave me a career, a community and a craft. Through mentoring, teaching and community work, I try to pay it forward.</p>
+    
+    
+    
+
+  </div>
+</article>
+
+    
+      <article data-timeline-item="" data-reveal="">
+  <div>
+    <time>September 2022 - February 2025 (2 years 6 months)</time>
   </div>
   <div>
     <h3>Frontend Development Lead &amp; Mentor</h3>
     
-      <p data-eyebrow="">MONK Software s.r.l.</p>
+      <p data-eyebrow="">MONK Software</p>
     
     
-      <p>Tech Lead for the internal frontend framework (vanilla, no external dependencies). Tech Lead for the MonkUI design system (WCAG 2.2 AA compliant). Organized and presented courses on frontend and UI/UX engineering: Stack: HTML5, CSS3, SCSS, JavaScript, TypeScript, Mentoring</p>
+      <p>Technical Leadership and Team Management: Assumed responsibility for leading a team of frontend developers, managing task distribution, providing technical support, and ensuring projects are completed according to specifications and timelines. Code Review and Mentorship: Conducted regular code reviews, providing constructive feedback and promoting best practices. Acted as a mentor to junior team members, facilitating their professional growth. Project Management: Participated in project planning and management, contributing to requirements definition, time estimates, and resource management to ensure project success. Training and Documentation: Developed detailed technical documentation and conducted internal training sessions to ensure the team was up-to-date with the frontend technologies and methodologies used. Continuous Support and Maintenance: Managed post-release support and maintenance of applications, swiftly resolving issues and implementing continuous improvements. Project: Section Framework - Client: internal - Role: Tech Lead - Software Type: Frontend Framework - Technologies: HTML5, CSS3, SCSS, Javascript, Typescript - Description: Frontend Framework for Web Applications (MPA, SPA, SSR, SSG), designed and implemented from scratch using exclusively vanilla technologies (HTML, CSS, pure JavaScript), eliminating dependencies on external frameworks to ensure maximum performance and minimal footprint Project: MonkUI - Client: internal - Role: Tech Lead - Software Type: UI Kit &amp; Design System - Technologies: HTML5, CSS3, SCSS, Javascript, Typescript - Description: Frontend UI Kit &amp; Design System, use-case agnostic, WCAG 2.2 AA compliance, responsive design, and UI/UX principles, ensuring that the developed applications are user-friendly, accessible to all users, and adaptable to various devices and screen sizes</p>
     
-    
-      <ul>
-        
-          <li>Typography (Typeface, Fonts, Font Stacks, Variable Fonts)</li>
-        
-          <li>Layout &amp; Responsive (Mobile First, Gridless Design, Asymmetric Design)</li>
-        
-          <li>HTML with CSS superpowers (Grid &amp; Flex, Container Queries, Scroll Snap, CSS Layers)</li>
-        
-          <li>Color Theory (Color Wheel, HSL, Palettes, Shadows)</li>
-        
-          <li>Accessibility (A11y)</li>
-        
-          <li>Best Practices, Performance &amp; Tooling</li>
-        
-          <li>Design Analysis</li>
-        
-          <li>Forms (Custom UI Controls, Validation)</li>
-        
-          <li>Web Components (Custom Elements)</li>
-        
-      </ul>
     
     
 
@@ -498,28 +503,16 @@
     
       <article data-timeline-item="" data-reveal="">
   <div>
-    <time>April 2019 – Sept 2022</time>
+    <time>April 2019 - September 2022 (3 years 6 months)</time>
   </div>
   <div>
     <h3>Senior UI/UX Engineer &amp; Mentor</h3>
     
-      <p data-eyebrow="">Assist Digital S.p.A.</p>
+      <p data-eyebrow="">Assist Digital</p>
     
     
-      <p>Stack: Angular, React, AngularJS, Semantic UI, GraphQL</p>
+      <p>as a Developer: Many different projects for the major Italian and international customers of Assist Digital, just a few examples Project: MySupport - Client: Team System S.p. A. - Role: UI/UX Development Lead - Software type: Web Application - Technologies used: Angular + HTML5 + CSS3 - Description: Customer and Administration Areas for a Ticket Management System and Online Courses Project: After sales - Client: Gucci S.p. A. - Role: UI/UX &amp; Frontend Developer - Software type: Web Application - Technologies used: React + HTML5 + CSS3 + Semantic UI + graphQL - Description: Customer After Sales Ticket Management System, progress tracking, managing and delivery Project: GeoWeb (formerly Mind) - Client: Munich RE - Role: UI/UX &amp; Frontend Developer - Software type: Web Application - Technologies used: Angular + HTML5 + CSS3 + custom UI Kit - Description: Re-insurance Risk Assessment and Management, with the aim to preview and manage business and rescue services in case of Climatic Events Project: MyBusiness - Client: Vodafone S.p. A. - Role: Frontend Developer - Software type: Hybrid Mobile Application - Technologies used: AngularJS + HTML5 + CSS3 - Description: Business Customer App as a Mentor: Organization and presentation of a course concerning Frontend in general and more specifically in UI/UX Engineering Lessons: - Typography (Typeface, Fonts, Font Stacks, Variable Fonts) - Layout &amp; Responsive (Mobile First, Gridless Design, Asymmetric Design) - HTML with CSS superpowers (Grid &amp; Flex, Container Queries, Scrollsnap, CSS Layers) - Color Theory (Color Wheel, HSL, Palettes, Shadows) - A11y (Accessibility) - Best Practices, Performances &amp; Tooling - Design Analysis (Discussions about analyzing and implementing a design) - Forms (Managing &amp; Customizing User Input, Custom UI Form controls, Validation) - Web Components (Designing and Implementing Custom Elements)</p>
     
-    
-      <ul>
-        
-          <li>MySupport (TeamSystem): UI/UX Lead, Angular</li>
-        
-          <li>After Sales (Gucci): UI/UX &amp; Frontend Dev, React with Semantic UI and GraphQL</li>
-        
-          <li>GeoWeb (Munich RE): UI/UX &amp; Frontend Dev, Angular</li>
-        
-          <li>MyBusiness (Vodafone): Frontend Dev, AngularJS</li>
-        
-      </ul>
     
     
 
@@ -529,7 +522,7 @@
     
       <article data-timeline-item="" data-reveal="">
   <div>
-    <time>April 2013 – April 2019</time>
+    <time>April 2013 - April 2019 (6 years 1 month)</time>
   </div>
   <div>
     <h3>Senior UI/UX Engineer</h3>
@@ -537,16 +530,8 @@
       <p data-eyebrow="">Freelance</p>
     
     
-      <p>Stack: ASP.NET MVC, WCF, jQuery, SQL, HTML5, CSS3</p>
+      <p>Many different projects and corporate websites, just a couple of examples: Project: Ticket System - Client: Thera s.r.l. - Role: Full-stack Developer - Software type: Web Application - Technologies used: ASP. NET MVC + WCF + HTML5 + CSS3 + jQuery + SQL - Description: Customer Ticket Management System, tracking progress, managing and assigning tasks to the development team Project: Alitalia Online Booking - Client: Engineering S.p. A. through Thera s.r.l. - Role: Web Developer - Software type: Web Portal - Technologies used: ASP. NET MVC + WCF + HTML + CSS2 + jQuery + SQL - Description: Alitalia portal for searching, booking, and ticketing of flights for the national airline</p>
     
-    
-      <ul>
-        
-          <li>Ticket System (Thera): Full-stack, ASP.NET MVC, WCF, jQuery, SQL</li>
-        
-          <li>Alitalia Online Booking: Web developer for the national airline's flight search and booking portal</li>
-        
-      </ul>
     
     
 
@@ -556,7 +541,7 @@
     
       <article data-timeline-item="" data-reveal="">
   <div>
-    <time>Sept 2012 – April 2013</time>
+    <time>September 2012 - April 2013 (8 months)</time>
   </div>
   <div>
     <h3>Senior Frontend Engineer</h3>
@@ -564,7 +549,7 @@
       <p data-eyebrow="">RealVirtual s.r.l.</p>
     
     
-      <p>RealVirtualCMS: Web Solution Architect, Designer, Developer. Stack: ASP.NET Razor, HTML5, CSS3, jQuery, Kendo UI, JSON</p>
+      <p>Project: RealVirtualCMS ⁃ Client: Internal ⁃ Role: Web Solution Architect / Web Designer / Web Developer - Solution type: CMS ⁃ Technologies used: ASP. NET Razor + HTML5 + CSS3 + Javascript + jQuery + JSON + Kendo UI ⁃ Description: CMS for internal use based on RazorC.net Creation and maintenance of various websites.</p>
     
     
     
@@ -575,24 +560,16 @@
     
       <article data-timeline-item="" data-reveal="">
   <div>
-    <time>May 2012 – Aug 2012</time>
+    <time>May 2012 - August 2012 (4 months)</time>
   </div>
   <div>
     <h3>Senior Solution Architect</h3>
     
-      <p data-eyebrow="">Timesys S.r.l.</p>
+      <p data-eyebrow="">Timesys S.r.l</p>
     
     
-      <p>Stack: Windows Forms, LINQ, RegEx, XML, SQLite, C#</p>
+      <p>Project: Milletrix - Client: Internal - Role: Solution Architect / WinForms Developer - Solution Type: Windows Application - Technologies used: Windows Forms + LINQ + RegEx + XML + SQLite - Description: The application is designed to cooperate with a series of baropodometric platforms of different types in order to acquire data on posture, position of the feet and back, with two-dimensional and three-dimensional views of the acquired data. All data is encoded and reprocessed and then sent to the ReBioDes data analysis software Project: ReBioDes - Client: Internal - Role: Solution Architect / WinForms Developer - Solution type: Windows Application - Technologies used: Windows Forms + LINQ + RegEx + XML + SQLite - Description: The application was created to manage and analyze the data produced by the Milletrix software, in order to create an intelligent medical report that helps orthopedic doctors to prescribe insoles and / or specific analyzes or therapies for the various possible pathologies of patients.</p>
     
-    
-      <ul>
-        
-          <li>Milletrix: Posture and foot analysis with 2D/3D visualization</li>
-        
-          <li>ReBioDes: Intelligent medical report generation</li>
-        
-      </ul>
     
     
 
@@ -602,7 +579,7 @@
     
       <article data-timeline-item="" data-reveal="">
   <div>
-    <time>2007 – March 2012</time>
+    <time>2007 - March 2012 (5 years)</time>
   </div>
   <div>
     <h3>Senior Full-stack Developer</h3>
@@ -610,18 +587,8 @@
       <p data-eyebrow="">Thera s.r.l.</p>
     
     
-      <p>Stack: ASP.NET, C#, Web Services, SQL, jQuery, Adobe Flash</p>
+      <p>Project: Accident at work Management - Client: Autostrade S.p. A. - Role: Full-stack Developer - Software type: Web Application - Technologies used: ASP. NET + HTML + CSS2 + Javascript + Adobe Flash + SQL - Description: Create and manage an accident at work archive, the system provides a flash application to create a graph in order to better understand the event. Project: INPS - Client: Elsag-Datamat S.p. A. - Role: Developer Analyst - Software type: Components for web portal - Technologies used: ASP. NET + Web Services + HTML + CSS2 + jQuery + SQL - Description: Management system and menu profiling of services to the citizen Project: GEA - Client: Baicr S. C. A. R. L. - Role: Developer - Software type: Windows Forms Management Application + Web Portal - Used technologies: Visual C# + ASP. NET + Web Services + HTML + CSS2 + jQuery + SQL - Description: Application aimed at managing the document archiving of the Company's Historical Archives.</p>
     
-    
-      <ul>
-        
-          <li>Accident at Work Management (Autostrade): Flash-based graphing, ASP.NET, HTML, CSS, JavaScript, SQL</li>
-        
-          <li>INPS (Elsag-Datamat): Citizen services portal, ASP.NET, Web Services, jQuery, SQL</li>
-        
-          <li>GEA (Baicr): Document archiving management, Visual C#, ASP.NET, Web Services, jQuery, SQL</li>
-        
-      </ul>
     
     
 
@@ -631,7 +598,7 @@
     
       <article data-timeline-item="" data-reveal="">
   <div>
-    <time>2005 – 2007</time>
+    <time>2005 - 2007 (2 years)</time>
   </div>
   <div>
     <h3>Mid Frontend Developer</h3>
@@ -639,8 +606,6 @@
       <p data-eyebrow="">Zucchetti Software s.r.l.</p>
     
     
-      <p>SitePainter and corporate portal projects.</p>
-    
     
     
 
@@ -650,7 +615,7 @@
     
       <article data-timeline-item="" data-reveal="">
   <div>
-    <time>2005</time>
+    <time>2005 - 2005 (less than a year)</time>
   </div>
   <div>
     <h3>Mid Frontend Developer</h3>
@@ -667,7 +632,7 @@
     
       <article data-timeline-item="" data-reveal="">
   <div>
-    <time>2002 – 2005</time>
+    <time>2002 - 2005 (3 years)</time>
   </div>
   <div>
     <h3>Junior Full-stack Developer</h3>
@@ -675,6 +640,8 @@
       <p data-eyebrow="">Thera s.r.l.</p>
     
     
+      <p>Various projects creation and maintenance</p>
+    
     
     
 
@@ -684,15 +651,13 @@
     
       <article data-timeline-item="" data-reveal="">
   <div>
-    <time>2001 – 2002</time>
+    <time>2001 - 2002 (1 year)</time>
   </div>
   <div>
     <h3>Junior Full-stack Developer</h3>
     
-      <p data-eyebrow="">S.I.S.I. Informatica 2000 s.r.l.</p>
+      <p data-eyebrow="">S.I.S.I. Informatica 2000 s.r.l. - Gruppo FIT (Federazione Italiana Tabaccai)</p>
     
-    
-      <p>Windows applications for the Italian tobacco retailers federation.</p>
     
     
     
@@ -703,15 +668,13 @@
     
       <article data-timeline-item="" data-reveal="">
   <div>
-    <time>2001</time>
+    <time>2001 - 2001 (less than a year)</time>
   </div>
   <div>
     <h3>Junior Developer</h3>
     
       <p data-eyebrow="">Alpha Logic S.p.A.</p>
     
-    
-      <p>Entry-level Windows application development.</p>
     
     
     
@@ -804,7 +767,7 @@
       <article data-stat="" data-surface="">
         <strong>46</strong>
         <span>stars</span>
-        <small>7 forks</small>
+        <small>0 forks</small>
       </article>
       <article data-stat="" data-surface="">
         <strong>4</strong>
@@ -1144,7 +1107,7 @@
   <aside data-speaking-recap="" data-surface="lifted" data-hover-surface="" data-generated="sessionize-speaker">
     <p data-kicker="">Sessionize profile</p>
     <h3>Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor</h3>
-    <p>Public talks and workshops focused on accessible design systems, lean frontend architecture, and the native capabilities of the web platform.</p>
+    <p></p>
     
   <ul aria-label="" data-tags="">
     
@@ -1181,12 +1144,6 @@
       <li>Accessibility</li>
     
       <li>Web Development</li>
-    
-      <li>Design systems</li>
-    
-      <li>Lean web</li>
-    
-      <li>Progressive enhancement</li>
     
   </ul>
 
@@ -1854,7 +1811,6 @@
 
 
     <p data-live-region="" aria-live="polite"></p>
-    <script type="module" src="scripts/app.js"></script>
   
 
 </body></html>

@@ -1,10 +1,25 @@
 import { existsSync } from "node:fs";
 import { cp, readFile, rm, writeFile } from "node:fs/promises";
-import { extname, join } from "node:path";
+import { extname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fetchResponse } from "../_fetch.js";
 import { isExternalUrl } from "../_text.js";
 import { ROOT, SRC } from "../_constants.js";
 import { ensureDir } from "./_ensure-dir.js";
+
+export function assertSafeOutputRoot(outputRoot) {
+  const resolvedRoot = resolve(outputRoot);
+  const projectRoot = resolve(ROOT);
+  const relativeToProject = relative(projectRoot, resolvedRoot);
+  const isInsideProject =
+    relativeToProject && !relativeToProject.startsWith("..") && !isAbsolute(relativeToProject);
+  const isDistPath = relativeToProject === "dist" || relativeToProject.startsWith(`dist${sep}`);
+
+  if (resolvedRoot === projectRoot || (isInsideProject && !isDistPath)) {
+    throw new Error(`Refusing to clear unsafe output root: ${resolvedRoot}`);
+  }
+
+  return resolvedRoot;
+}
 
 export async function localizeProfileImage(sourceUrl, publicRoot) {
   if (!sourceUrl || !isExternalUrl(sourceUrl)) return sourceUrl || "";
@@ -34,11 +49,13 @@ export async function localizeProfileImage(sourceUrl, publicRoot) {
 }
 
 export async function copyAssets(outputRoot, publicRoot) {
-  await rm(outputRoot, { recursive: true, force: true });
-  await ensureDir(join(outputRoot, "styles"));
-  await ensureDir(join(outputRoot, "scripts"));
-  await cp(join(SRC, "styles"), join(outputRoot, "styles"), { recursive: true });
-  await cp(join(SRC, "scripts"), join(outputRoot, "scripts"), { recursive: true });
+  const safeOutputRoot = assertSafeOutputRoot(outputRoot);
+
+  await rm(safeOutputRoot, { recursive: true, force: true });
+  await ensureDir(join(safeOutputRoot, "styles"));
+  await ensureDir(join(safeOutputRoot, "scripts"));
+  await cp(join(SRC, "styles"), join(safeOutputRoot, "styles"), { recursive: true });
+  await cp(join(SRC, "scripts"), join(safeOutputRoot, "scripts"), { recursive: true });
   if (existsSync(join(SRC, "assets")))
     await cp(join(SRC, "assets"), join(publicRoot, "assets"), { recursive: true });
   if (existsSync(join(ROOT, "static")))

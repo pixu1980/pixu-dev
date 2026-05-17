@@ -1,15 +1,17 @@
 import { DEFAULT_PROFILE_IMAGE } from "../_profile-image.js";
 
 export function buildLinkedInFallback(frontmatter, _githubUsername, derivedFallbacks) {
+  const storedLinkedIn = frontmatter.generated?.linkedin || frontmatter.fallbacks?.linkedin || {};
+
   return {
-    ...frontmatter.fallbacks?.linkedin,
+    ...storedLinkedIn,
     name: frontmatter.name,
-    profileImage: frontmatter.fallbacks?.linkedin?.profileImage || DEFAULT_PROFILE_IMAGE,
-    experience: frontmatter.fallbacks?.linkedin?.experience?.length
-      ? frontmatter.fallbacks.linkedin.experience
+    profileImage: storedLinkedIn.profileImage || DEFAULT_PROFILE_IMAGE,
+    experience: storedLinkedIn.experience?.length
+      ? storedLinkedIn.experience
       : derivedFallbacks.linkedin.experience,
-    education: frontmatter.fallbacks?.linkedin?.education?.length
-      ? frontmatter.fallbacks.linkedin.education
+    education: storedLinkedIn.education?.length
+      ? storedLinkedIn.education
       : derivedFallbacks.linkedin.education,
   };
 }

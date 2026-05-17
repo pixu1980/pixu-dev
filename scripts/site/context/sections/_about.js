@@ -6,7 +6,7 @@ function buildAboutSection(section, frontmatter, data, leadHtml) {
   return {
     ...section,
     leadHtml,
-    insightBlocks: collectStructuredSectionBlocks(section.bodyHtml),
+    insightBlocks: collectStructuredSectionBlocks(section),
     linkedin: {
       ...data.linkedin,
       displaySkills: data.linkedin.skills?.length ? data.linkedin.skills : data.linkedin.focus,

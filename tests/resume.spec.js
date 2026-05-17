@@ -1,12 +1,6 @@
 // @ts-check
 import { test, expect } from "@playwright/test";
 
-async function getBuildData(page) {
-  const response = await page.request.get("/data/resume.json");
-  expect(response.ok()).toBe(true);
-  return response.json();
-}
-
 async function getTopLevelSections(page) {
   await page.waitForLoadState("domcontentloaded");
 
@@ -180,59 +174,50 @@ test.describe("resume page", () => {
   });
 
   test("about absorbs contact and LinkedIn snapshot data", async ({ page }) => {
-    const data = await getBuildData(page);
-
     await expect(
       page.locator('main > section#about [data-generated="linkedin-profile"]'),
     ).toBeVisible();
     await expect(page.locator("main > section#contact")).toHaveCount(0);
     await expect(page.locator('main > section#about [data-panel="contact"]')).toBeVisible();
     await expect(page.locator("main > section#about [data-chip]")).toHaveCount(3);
-
-    expect(data.linkedin.experience.length).toBeGreaterThan(5);
-    expect(data.linkedin.education.length).toBe(0);
-    expect(data.linkedin.skills.length).toBeGreaterThanOrEqual(4);
+    expect(
+      await page.locator("main > section#experience [data-timeline-item]").count(),
+    ).toBeGreaterThan(5);
   });
 
-  test("build-time data file includes source payloads", async ({ page }) => {
-    const data = await getBuildData(page);
+  test("build no longer exposes runtime resume json", async ({ page }) => {
+    const requests = [];
+    page.on("request", (request) => {
+      requests.push(new URL(request.url()).pathname);
+    });
 
-    expect(data.profile.name).toBeTruthy();
-    expect(data.profile.image).toBeTruthy();
-    expect((await page.request.get(data.profile.image)).ok()).toBe(true);
-    expect(data.github.repos.length).toBeGreaterThan(0);
-    expect(data.sessionize.talks.length).toBeGreaterThan(0);
-    expect(["live", "fallback"]).toContain(data.profile.sourceStatus.github);
-    expect(["live", "fallback"]).toContain(data.profile.sourceStatus.sessionize);
-    expect(["live", "fallback"]).toContain(data.profile.sourceStatus.linkedin);
+    await page.reload();
+    expect(requests.includes("/data/resume.json")).toBe(false);
+
+    const portrait = page.locator("[data-portrait] img");
+    const src = await portrait.getAttribute("src");
+    expect(src).toBeTruthy();
+    expect((await page.request.get(src || "")).ok()).toBe(true);
   });
 
   test("portfolio renders GitHub public repositories and visual stats", async ({ page }) => {
-    const data = await getBuildData(page);
-    const expectedMinimum = data.github.status === "fallback" ? 4 : 10;
-
     await expect(page.locator('[data-section="portfolio"] [data-stat]')).toHaveCount(4);
-    expect(await page.locator('[data-generated="github-repo"]').count()).toBe(
-      data.github.portfolioRepos.length,
-    );
-    expect(data.github.portfolioRepos.every((repo) => !repo.name.startsWith("talk-"))).toBe(true);
+    expect(await page.locator('[data-generated="github-repo"]').count()).toBeGreaterThanOrEqual(6);
     const renderedRepoNames = await page
       .locator('[data-generated="github-repo"] h3')
       .allTextContents();
     expect(renderedRepoNames.every((name) => !name.startsWith("talk-"))).toBe(true);
-    expect(data.github.repos.length).toBeGreaterThanOrEqual(expectedMinimum);
-    expect(data.github.languages.length).toBeGreaterThan(0);
+    expect(
+      await page.locator('[data-section="portfolio"] [data-language-row]').count(),
+    ).toBeGreaterThan(0);
   });
 
   test("public speaking renders Sessionize talks, events, and related repos", async ({ page }) => {
-    const data = await getBuildData(page);
-    const expectedMinimum = data.sessionize.status === "fallback" ? 4 : 10;
     const firstTalk = page.locator('[data-generated="sessionize-talk"]').first();
 
-    expect(await page.locator('[data-generated="sessionize-talk"]').count()).toBe(
-      data.sessionize.talks.length,
+    expect(await page.locator('[data-generated="sessionize-talk"]').count()).toBeGreaterThanOrEqual(
+      8,
     );
-    expect(data.sessionize.talks.length).toBeGreaterThanOrEqual(expectedMinimum);
     expect(await page.locator('[data-generated="sessionize-event"]').count()).toBeGreaterThan(0);
     expect(await page.locator("[data-related-repo]").count()).toBeGreaterThan(0);
     await expect(page.locator('[data-section="speaking"] [data-speaking-recap]')).toBeVisible();
@@ -254,7 +239,8 @@ test.describe("resume page", () => {
     await expect(page.locator("[data-theme-select], #theme-select")).toHaveCount(0);
     await expect(page.locator("[data-theme-stylesheet]")).toHaveCount(0);
     await expect(page.locator("color-scheme-selector")).toHaveAttribute("role", "radiogroup");
-    await expect(page.locator("accent-color-selector")).toHaveAttribute("role", "radiogroup");
+    await expect(page.locator("[data-header-tools] > accent-color-selector")).toHaveCount(0);
+    await expect(page.locator("[data-header-tools] > display-preferences-popover")).toHaveCount(1);
 
     const externalLinks = page.locator('a[target="_blank"]');
     const count = await externalLinks.count();
@@ -266,8 +252,28 @@ test.describe("resume page", () => {
     }
   });
 
-  test("accent color selector updates the document accent color", async ({ page }) => {
-    const selector = page.locator("accent-color-selector");
+  test("display preferences popover updates the document accent color", async ({ page }) => {
+    const popover = page.locator("[data-header-tools] > display-preferences-popover");
+    const toggle = popover.locator("button");
+    const panel = popover.locator('[role="dialog"]');
+
+    await expect(popover).toBeVisible();
+    await expect(toggle).toBeVisible();
+    await expect(panel).toBeHidden();
+
+    await toggle.click();
+    await expect(panel).toBeVisible();
+    await expect(popover.locator('input[name="radiusPreset"]')).toHaveCount(3);
+    await expect(popover.locator('input[name="reduceMotion"]')).toHaveCount(1);
+    await expect(popover.locator('input[name="reduceAnimations"]')).toHaveCount(1);
+    await expect(popover.locator('input[name="reduceTransparency"]')).toHaveCount(1);
+    await expect(popover.locator('input[name="increaseContrast"]')).toHaveCount(1);
+    await expect(popover.locator('select[name="fontScale"]')).toHaveCount(1);
+    await expect(popover.locator('select[name="headingFont"]')).toHaveCount(1);
+    await expect(popover.locator('select[name="bodyFont"]')).toHaveCount(1);
+    await expect(popover.locator('select[name="codeFont"]')).toHaveCount(1);
+
+    const selector = popover.locator("accent-color-selector");
     await expect(selector.locator('input[type="radio"]')).toHaveCount(5);
     await selector.locator('[data-option="purple"]').click();
     await expect(page.locator("html")).toHaveAttribute("data-accent", "purple");
@@ -278,6 +284,24 @@ test.describe("resume page", () => {
 
     await selector.locator('[data-option="blue"]').click();
     await expect(page.locator("html")).toHaveAttribute("data-accent", "blue");
+
+    await popover.locator('input[name="reduceMotion"]').check();
+    await expect(page.locator("html")).toHaveAttribute("data-reduce-motion", "true");
+
+    await popover.locator('label[for$="radius-square"]').click();
+    await expect(page.locator("html")).toHaveAttribute("data-radius-preset", "square");
+
+    await popover.locator('select[name="fontScale"]').selectOption("110%");
+    expect(await page.locator("html").evaluate((node) => node.style.fontSize)).toBe("110%");
+
+    await page.locator("[data-mark]").click({ force: true });
+    await expect(panel).toBeHidden();
+
+    await toggle.click();
+    await expect(panel).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(panel).toBeHidden();
+    await expect(toggle).toBeFocused();
   });
 
   test("color scheme selector updates the document scheme", async ({ page }) => {
@@ -316,10 +340,22 @@ test.describe("resume page", () => {
     expect(
       await scrollProgress.evaluate((node) => Math.round(node.getBoundingClientRect().height)),
     ).toBeGreaterThanOrEqual(4);
-    const progress = await scrollProgress.evaluate((node) =>
-      getComputedStyle(node).getPropertyValue("--progress"),
-    );
-    expect(progress).toMatch(/%$/);
+    const metrics = await scrollProgress.evaluate((node) => ({
+      beforeHeight: Math.round(parseFloat(getComputedStyle(node, "::before").height || "0")),
+      beforeWidth: Math.round(parseFloat(getComputedStyle(node, "::before").width || "0")),
+      beforeTransform: getComputedStyle(node, "::before").transform,
+      progressValue: Number(
+        getComputedStyle(node).getPropertyValue("--scroll-progress-value") || 0,
+      ),
+    }));
+    expect(metrics.beforeWidth).toBe(page.viewportSize()?.width);
+    expect(metrics.beforeHeight).toBeGreaterThanOrEqual(4);
+    const scaleX =
+      Number.parseFloat(metrics.beforeTransform.match(/matrix\(([^,]+)/)?.[1] || "0") || 0;
+    expect(scaleX).toBeGreaterThan(0);
+    expect(scaleX).toBeLessThanOrEqual(1);
+    expect(metrics.progressValue).toBeGreaterThan(0);
+    expect(metrics.progressValue).toBeLessThanOrEqual(1);
   });
 
   test("desktop header controls share one visual height", async ({ page, isMobile }) => {

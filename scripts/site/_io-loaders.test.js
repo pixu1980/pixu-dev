@@ -12,7 +12,12 @@ import { canPrompt, promptYesNo } from "./_prompt.js";
 import { loadGitHubData } from "./github/_load.js";
 import { loadLinkedInData } from "./linkedin/_load.js";
 import { loadSessionizeData } from "./sessionize/_load.js";
-import { copyAssets, localizeProfileImage, readTemplate } from "./output/_assets.js";
+import {
+  assertSafeOutputRoot,
+  copyAssets,
+  localizeProfileImage,
+  readTemplate,
+} from "./output/_assets.js";
 import { ensureDir } from "./output/_ensure-dir.js";
 
 test("fetch helpers add defaults, parse JSON/text, and throw on HTTP errors", async (t) => {
@@ -88,6 +93,11 @@ test("profile image and output helpers choose, localize, copy, and read assets",
   } finally {
     await rm(temp, { recursive: true, force: true });
   }
+});
+
+test("output helpers reject unsafe output roots before removing files", () => {
+  assert.throws(() => assertSafeOutputRoot(process.cwd()), /Refusing to clear unsafe output root/);
+  assert.doesNotThrow(() => assertSafeOutputRoot(join(tmpdir(), "pixu-output-safe")));
 });
 
 test("prompt and build interaction helpers stay inert without enabled options", async () => {

@@ -9,6 +9,7 @@
     background: var(--paper-soft);
     box-shadow: var(--shadow);
     isolation: isolate;
+    place-self: stretch;
   }
 
   [data-portrait]::before {
@@ -26,10 +27,6 @@
   }
 
   [data-portrait] {
-    figure {
-      place-self: stretch;
-    }
-
     figcaption {
       position: absolute;
       inset-inline: 1rem;

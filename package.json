@@ -22,24 +22,28 @@
     "accessibility"
   ],
   "scripts": {
-    "assets:favicons": "node scripts/generate-favicons.js",
-    "build": "pnpm assets:favicons && node scripts/build.js --interactive && pnpm format && pnpm lint && vite build",
-    "dev": "vite dev",
+    "prepare": "node .husky/install.mjs",
+    "setup:browsers": "playwright install",
+    "prepush:check": "pnpm verify",
+    "verify": "pnpm lint && pnpm format:check && pnpm test",
+    "test": "node scripts/run-node-tests.js && playwright test",
     "format": "biome format --write .",
     "format:check": "biome format --reporter=summary --diagnostic-level=error .",
     "lint": "biome lint . && pnpm lint:content",
     "lint:content": "node scripts/lint-content.js",
-    "prepare": "node .husky/install.mjs",
-    "prepush:check": "pnpm build && pnpm exec playwright install && pnpm test",
-    "preview": "vite preview . --outDir dist",
-    "test": "node --test $(find scripts src/scripts -name '*.test.js' -print) && playwright test",
+    "assets:favicons": "node scripts/generate-favicons.js",
+    "cms": "node scripts/cms.js --interactive && pnpm format && pnpm lint:content",
+    "build": "pnpm assets:favicons && PIXU_BUILD_MARKDOWN_ONLY=1 PIXU_BUILD_SOURCE=content/resume.md vite build",
+    "preview": "pnpm build && vite preview . --outDir dist",
+    "dev": "vite dev",
+    "changelog:update": "node scripts/changelog.js",
+    "changelog:regen": "node scripts/changelog.js --all",
     "rel": "node scripts/release.js"
   },
   "engines": {
     "node": ">=22.0.0",
     "pnpm": ">=11.0.5"
   },
-  "packageManager": "pnpm@11.1.2",
   "devDependencies": {
     "@biomejs/biome": "2.4.15",
     "@playwright/test": "1.60.0",
@@ -48,8 +52,8 @@
     "husky": "9.1.7",
     "jsdom": "29.1.1",
     "marked": "18.0.3",
+    "pdf-parse": "^2.4.5",
     "sharp": "0.34.5",
-    "standard-version": "^9.5.0",
     "vite": "8.0.13"
   }
 }

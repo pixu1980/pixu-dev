@@ -18,26 +18,32 @@ function hasEnvFlag(name, env = process.env) {
 function getCliBuildOptions(argv = process.argv, env = process.env) {
   const outDir = getCliOption("--out", getCliOption("--out-dir", DIST, argv), argv);
   const publicDir = getCliOption("--public", getCliOption("--public-dir", outDir, argv), argv);
+  const sourcePath = getCliOption(
+    "--source",
+    getCliOption("--from", env.PIXU_BUILD_SOURCE || "", argv),
+    argv,
+  );
   const interactive =
     hasCliFlag("--interactive", argv) || hasEnvFlag("PIXU_BUILD_INTERACTIVE", env);
+  const markdownOnly =
+    hasCliFlag("--markdown-only", argv) || hasEnvFlag("PIXU_BUILD_MARKDOWN_ONLY", env);
   const selectRepos =
     interactive || hasCliFlag("--select-repos", argv) || hasEnvFlag("PIXU_BUILD_SELECT_REPOS", env);
   const mapTalks =
     interactive || hasCliFlag("--map-talks", argv) || hasEnvFlag("PIXU_BUILD_MAP_TALKS", env);
-  const linkedinBrowserEnabled =
-    hasCliFlag("--linkedin-browser", argv) || hasEnvFlag("PIXU_BUILD_LINKEDIN_BROWSER", env);
-  const linkedinBrowserConfirm = interactive && !linkedinBrowserEnabled;
   const interactions = {
-    enabled: interactive || selectRepos || mapTalks || linkedinBrowserEnabled,
-    selectRepos,
-    mapTalks,
-    linkedinBrowser: {
-      enabled: linkedinBrowserEnabled,
-      confirm: linkedinBrowserConfirm,
-    },
+    enabled: !markdownOnly && (interactive || selectRepos || mapTalks),
+    selectRepos: !markdownOnly && selectRepos,
+    mapTalks: !markdownOnly && mapTalks,
   };
 
-  return { outDir: resolve(outDir), publicDir: resolve(publicDir), interactions };
+  return {
+    outDir: resolve(outDir),
+    publicDir: resolve(publicDir),
+    sourcePath: sourcePath ? resolve(sourcePath) : undefined,
+    useFrontmatterFallbacksOnly: markdownOnly,
+    interactions,
+  };
 }
 
 const isMain = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);

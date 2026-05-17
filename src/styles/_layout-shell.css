@@ -105,22 +105,22 @@
 
   [data-header-tools]
     > :where(
-      accent-color-selector,
       color-scheme-selector,
+      display-preferences-popover,
       [data-header-action],
       [data-nav-toggle]
     ) {
     min-block-size: var(--header-control-size);
   }
 
-  [data-header-tools] > accent-color-selector {
-    grid-area: accent;
+  [data-header-tools] > color-scheme-selector {
+    grid-area: scheme;
     justify-self: end;
     order: 3;
   }
 
-  [data-header-tools] > color-scheme-selector {
-    grid-area: scheme;
+  [data-header-tools] > display-preferences-popover {
+    grid-area: preferences;
     justify-self: end;
     order: 4;
   }
@@ -131,7 +131,7 @@
 
   @media (min-width: 42rem) {
     [data-header] {
-      grid-template-areas: "mark spacer accent scheme contact menu";
+      grid-template-areas: "mark spacer scheme preferences contact menu";
       grid-template-columns: auto minmax(0, 1fr) auto auto auto auto;
     }
   }

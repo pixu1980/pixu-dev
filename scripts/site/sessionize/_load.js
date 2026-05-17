@@ -8,17 +8,37 @@ import {
   parseSessionizeTalks,
 } from "./_parse-html.js";
 
+export function loadStoredSessionizeData(config, stored = {}) {
+  return {
+    label: "Sessionize",
+    status: stored?.status || "fallback",
+    profileUrl: stored?.profileUrl || config?.profile || "",
+    speaker: {
+      name: stored?.speaker?.name || "",
+      headline: stored?.speaker?.headline || "",
+      image: stored?.speaker?.image || "",
+      summary: stored?.speaker?.summary || "",
+      topics: toArray(stored?.speaker?.topics),
+    },
+    talks: toArray(stored?.talks)
+      .filter(isEnglishTalk)
+      .map((talk) => ({ ...talk, relatedRepos: toArray(talk.relatedRepos) })),
+    events: toArray(stored?.events),
+  };
+}
+
 export async function loadSessionizeData(config, fallback) {
+  const fallbackSpeaker = fallback?.speaker || {};
   const base = {
     label: "Sessionize",
     status: "fallback",
     profileUrl: config?.profile || "",
     speaker: {
       name: "",
-      headline: fallback?.speakerHeadline || "",
+      headline: fallback?.speakerHeadline || fallbackSpeaker.headline || "",
       image: "",
-      summary: fallback?.summary || "",
-      topics: toArray(fallback?.topics),
+      summary: fallback?.summary || fallbackSpeaker.summary || "",
+      topics: toArray(fallback?.topics || fallbackSpeaker.topics),
     },
     talks: toArray(fallback?.talks)
       .filter(isEnglishTalk)
