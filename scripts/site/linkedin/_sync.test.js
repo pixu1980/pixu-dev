@@ -49,3 +49,33 @@ test("LinkedIn sync only refreshes configured PDF sections and rewrites experien
   assert.match(result.content, /## Experience\n\n### Senior Frontend Engineer - Pixu Dev/);
   assert.match(result.content, /Building resilient interfaces\./);
 });
+
+test("LinkedIn sync preserves multiline summary as markdown paragraphs", () => {
+  const result = applyLinkedInSync({
+    frontmatter: {
+      sourceConfig: {
+        linkedin: {
+          importSections: ["experience"],
+        },
+      },
+      generated: {
+        linkedin: {},
+      },
+    },
+    content: `## Experience\n\nLegacy block.\n`,
+    parsed: {
+      experience: [
+        {
+          title: "Senior Frontend Engineer",
+          organization: "Pixu Dev",
+          dateRange: "April 2024 - Present",
+          summary: "Project: Section Framework\nClient: Internal\nRole: Tech Lead",
+          highlights: [],
+          skills: [],
+        },
+      ],
+    },
+  });
+
+  assert.match(result.content, /Project: Section Framework\n\nClient: Internal\n\nRole: Tech Lead/);
+});

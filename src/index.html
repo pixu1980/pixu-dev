@@ -49,21 +49,19 @@
 
     <include src="./layout/_header.html"></include>
 
-    <div data-layout-shell>
-      <aside data-site-rail>
-        <include src="./layout/_nav.html"></include>
-      </aside>
+    <aside data-site-rail>
+      <include src="./layout/_nav.html"></include>
+    </aside>
 
-      <main id="main">
-        <include src="./layout/_hero.html"></include>
-        <for each="section in sections">
-          <include
-            src="./sections/_section.html"
-            data='{"section": {{ section | json | raw }}}'
-          ></include>
-        </for>
-      </main>
-    </div>
+    <main id="main">
+      <include src="./layout/_hero.html"></include>
+      <for each="section in sections">
+        <include
+          src="./sections/_section.html"
+          data='{"section": {{ section | json | raw }}}'
+        ></include>
+      </for>
+    </main>
 
     <include src="./layout/_footer.html"></include>
 

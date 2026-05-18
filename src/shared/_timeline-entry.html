@@ -1,6 +1,11 @@
 <article data-timeline-item data-reveal>
   <div>
-    <time>{{ entry.dateRange || 'Selected work' }}</time>
+    <time>
+      {{ entry.dateRangeLabel || entry.dateRange || 'Selected work' }}
+      <if condition="entry.dateRangeDuration">
+        <br />({{ entry.dateRangeDuration }})
+      </if>
+    </time>
   </div>
   <div>
     <h3>{{ entry.title }}</h3>
@@ -8,7 +13,7 @@
       <p data-eyebrow>{{ entry.organization || entry.subtitle }}</p>
     </if>
     <if condition="entry.summary">
-      <p>{{ entry.summary }}</p>
+      {{ entry.summary | markdown | raw }}
     </if>
     <if condition="entry.highlights.length > 0">
       <ul>

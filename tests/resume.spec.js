@@ -153,7 +153,7 @@ test.describe("resume page", () => {
     await expect(page).toHaveTitle(/Emiliano Pisu/);
     await expect(page.locator("h1")).toHaveText(/Emiliano Pisu/);
     await expect(page.locator("[data-role]")).toContainText(
-      /Emiliano Pisu|Senior (Design|Frontend) Engineer/,
+      /Emiliano Pisu|Senior (Design|Frontend) Engineer|Frontend Engineer|Design Engineer/,
     );
     await expect(page.locator("[data-site-rail] nav")).toBeAttached();
     await expect(page.locator("main")).toBeAttached();

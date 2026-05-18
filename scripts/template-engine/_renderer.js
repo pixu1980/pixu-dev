@@ -105,6 +105,7 @@ export class TemplateRenderer {
       this.cleanup(document.documentElement);
 
       let out = dom.serialize();
+      out = out.replace(/ (data-[\w-]+)=""/g, " $1");
       out = out.replace(/&lt;\//g, "&lt;&#x2F;");
       this._currentDir = previousDir;
       return out;
@@ -113,6 +114,7 @@ export class TemplateRenderer {
     this.processNode(document.body, data);
     this.cleanup(document.body);
     let out = document.body.innerHTML;
+    out = out.replace(/ (data-[\w-]+)=""/g, " $1");
     out = out.replace(/&lt;\//g, "&lt;&#x2F;");
     this._currentDir = previousDir;
     return out;

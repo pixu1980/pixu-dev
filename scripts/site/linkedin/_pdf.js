@@ -76,6 +76,42 @@ function joinPdfText(lines = []) {
   );
 }
 
+function isHardSummaryBreak(line = "") {
+  return (
+    /^[-•⁃]/.test(line) ||
+    /^(Project|Client|Role|Software|Solution|Technologies|Used technologies|Description|Lessons?|Stack|Highlights?)\s*:/i.test(
+      line,
+    )
+  );
+}
+
+function looksLikeSummaryContinuation(previousLine = "", currentLine = "") {
+  if (!previousLine || !currentLine) return false;
+
+  return (
+    !isHardSummaryBreak(currentLine) &&
+    (!/[.!?)]$/.test(previousLine) || /[,;:-]$/.test(previousLine))
+  );
+}
+
+function joinPdfSummary(lines = []) {
+  const normalized = lines.map(normalizeWhitespace).filter(Boolean);
+  const paragraphs = [];
+
+  for (const line of normalized) {
+    const previous = paragraphs.at(-1) || "";
+
+    if (looksLikeSummaryContinuation(previous, line)) {
+      paragraphs[paragraphs.length - 1] = `${previous} ${line}`;
+      continue;
+    }
+
+    paragraphs.push(line);
+  }
+
+  return paragraphs.join("\n\n").trim();
+}
+
 function getSectionLines(lines, startLabel, stopLabels = []) {
   const startIndex = lines.indexOf(startLabel);
 
@@ -283,7 +319,9 @@ function looksLikeExperienceHeaderLine(value = "") {
     !looksLikeExperienceDate(normalized) &&
     (!/[.!?]$/.test(normalized) || hasCorporateSuffix) &&
     !/^[-•⁃]/.test(normalized) &&
-    !/^(Project|Technologies|Description|Lessons?):/i.test(normalized)
+    !/^(Project|Client|Role|Software|Solution|Technologies|Used technologies|Description|Lessons?|Stack|Highlights?):/i.test(
+      normalized,
+    )
   );
 }
 
@@ -333,9 +371,11 @@ function extractExperience(lines, fallback) {
       }
 
       const nextHeaderStart =
-        nextDateIndex - getExperienceHeaderLines(sectionLines, nextDateIndex).length;
+        nextDateIndex < sectionLines.length
+          ? nextDateIndex - getExperienceHeaderLines(sectionLines, nextDateIndex).length
+          : nextDateIndex;
       const summaryEnd = Math.max(summaryStart, nextHeaderStart);
-      const summary = joinPdfText(sectionLines.slice(summaryStart, summaryEnd));
+      const summary = joinPdfSummary(sectionLines.slice(summaryStart, summaryEnd));
 
       return {
         dateRange: sectionLines[dateIndex],

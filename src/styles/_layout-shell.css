@@ -136,10 +136,6 @@
     }
   }
 
-  [data-layout-shell] {
-    position: relative;
-  }
-
   [data-site-rail] {
     position: fixed;
     inset: var(--header-height) var(--gutter) auto var(--gutter);

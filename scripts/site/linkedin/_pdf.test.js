@@ -180,3 +180,36 @@ School
   assert.equal(parsed.experience[0]?.title, "Mid Frontend Developer");
   assert.equal(parsed.experience[0]?.organization, "Sistemi 2000 s.r.l.");
 });
+
+test("LinkedIn PDF parser preserves multiline experience summary paragraphs", () => {
+  const parsed = parseLinkedInPdfText(
+    `Experience
+Senior Frontend Engineer
+Pixu Dev
+May 2024 - Present
+Rome
+Project: Section Framework
+Client: Internal
+Role: Tech Lead
+Built from scratch
+with vanilla technologies.
+Description: Maintained delivery quality.
+Education
+School
+2001 - 2005`,
+    {},
+  );
+
+  assert.match(
+    parsed.experience[0]?.summary || "",
+    /Project: Section Framework\n\nClient: Internal/,
+  );
+  assert.match(
+    parsed.experience[0]?.summary || "",
+    /Built from scratch with vanilla technologies\./,
+  );
+  assert.match(
+    parsed.experience[0]?.summary || "",
+    /\n\nDescription: Maintained delivery quality\./,
+  );
+});

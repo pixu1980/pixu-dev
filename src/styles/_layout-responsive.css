@@ -6,12 +6,43 @@
       grid-template-columns: auto minmax(0, 1fr) auto auto auto;
     }
 
-    [data-layout-shell] {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--shell-gap);
-      width: min(100% - (var(--gutter) * 2), var(--shell-max));
-      margin-inline: auto;
+    body {
+      display: grid;
+      grid-template-columns:
+        [full-start] minmax(var(--gutter), 1fr)
+        [rail-start] var(--rail-width) [rail-end]
+        var(--shell-gap)
+        [main-start] minmax(0, var(--max)) [main-end]
+        minmax(var(--gutter), 1fr) [full-end];
+      align-items: start;
+    }
+
+    [data-header] {
+      grid-row: 1;
+      grid-column: full-start / full-end;
+      /* Reset full-bleed trick: body grid is already full-width */
+      inline-size: auto;
+      max-inline-size: none;
+      margin-inline: 0;
+    }
+
+    [data-site-rail] {
+      grid-row: 2;
+      grid-column: rail-start / rail-end;
+    }
+
+    main {
+      grid-row: 2;
+      grid-column: main-start / main-end;
+    }
+
+    [data-footer] {
+      grid-row: 3;
+      grid-column: full-start / full-end;
+      /* Reset full-bleed trick */
+      inline-size: auto;
+      max-inline-size: none;
+      margin-inline: 0;
     }
 
     :where([data-header], [data-footer]) {
@@ -38,10 +69,9 @@
     [data-site-rail] {
       position: sticky;
       inset: auto;
+      align-self: start;
       display: block;
       top: calc(var(--header-height) + var(--space-4));
-      flex: 0 0 var(--rail-width);
-      width: var(--rail-width);
       padding: 0;
       background: transparent;
       border: 0;
@@ -70,7 +100,7 @@
     }
 
     main {
-      flex: 1 1 auto;
+      min-width: 0;
     }
 
     [data-footer] {

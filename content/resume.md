@@ -1,6 +1,8 @@
 ---
 name: Emiliano Pisu
-title: "Senior Frontend Engineer ✨ AI Product Engineer \U0001F3A8 Design Engineer ♿️ Accessibility WCAG Advocate \U0001F3A4 Speaker \U0001F468\U0001F3FB‍\U0001F3EB Mentor"
+title: >-
+  Frontend Engineer | Design Engineer | AI Product Engineer | Accessibility WCAG
+  Advocate | Speaker | Mentor
 location: 'Rome, Italy'
 email: pisuemiliano.1980 @ gmail.com
 phone: +39 366 258 0888
@@ -9,6 +11,15 @@ summary: >-
   Design engineer, frontend lead, mentor, and speaker translating visual
   ambition into resilient interfaces, scalable systems, and accessible product
   experiences.
+sectionsConfig:
+  order:
+    - about
+    - skills
+    - portfolio
+    - speaking
+    - interests
+    - experience
+    - contact
 sourceConfig:
   github:
     profile: 'https://github.com/pixu1980'
@@ -148,15 +159,20 @@ metrics:
     note: as a player or DM
 generated:
   linkedin:
-    headline: "Senior Frontend Engineer ✨ AI Product Engineer \U0001F3A8 Design Engineer ♿️ Accessibility WCAG Advocate \U0001F3A4 Speaker \U0001F468\U0001F3FB‍\U0001F3EB Mentor"
+    headline: >-
+      Frontend Engineer | Design Engineer | AI Product Engineer | Accessibility
+      WCAG Advocate | Speaker | Mentor
     summary: >-
-      Design engineer, mentor, and conference speaker focused on accessible
-      interfaces, native web architectures, and teaching teams how to ship with
-      less friction.
+      AI Product Engineer, Frontend Engineer, Design Engineer, Mentor and
+      Speaker focused on accessible interfaces, native web architectures, and
+      teaching teams how to ship with less friction, less dependencies and more
+      sustainable solutions.
     focus:
+      - AI product engineering
+      - Frontend engineering
       - Design engineering
-      - Accessibility systems
-      - Frontend mentoring
+      - Accessibility
+      - Mentoring
       - Native web thinking
     label: LinkedIn
     status: live
@@ -173,6 +189,10 @@ generated:
       - Accessibility systems
       - Frontend mentoring
       - Native web thinking
+      - AI product engineering
+      - Frontend engineering
+      - Accessibility
+      - Mentoring
     experience:
       - dateRange: April 2019 - Present (7 years 1 month)
         highlights: []
@@ -181,33 +201,54 @@ generated:
         skills: []
         summary: >-
           Freelance Consultant focused on Senior Frontend Engineering, Design
-          Engineering and AI Product Engineering. With 27+ years in the
-          industry, I help teams and companies design, build and improve modern,
-          accessible, high-performance and sustainable digital products. My work
-          sits at the intersection of design, development, AI and product. I
-          translate business needs, visual systems and technical requirements
-          into solid, scalable and maintainable frontend solutions. As a Senior
-          Frontend Engineer and Design Engineer, I work on UI engineering,
-          design systems, component libraries, frontend architectures, semantic
-          HTML, modern CSS, JavaScript, accessibility, performance and
-          maintainability. I have deep experience with React and mainstream
-          frontend frameworks, but my approach remains grounded in clarity,
-          reliability and long-term technical sustainability. I am equally
-          comfortable working with vanilla JavaScript, Custom Elements,
-          progressive enhancement and zero-dependency architectures built on the
-          native web platform. As an AI Product Engineer, I support teams in
-          integrating AI into real-world workflows, tools and applications, with
-          a strong focus on practical value, repeatable processes, product
-          thinking and engineering quality. I often help companies with
-          accessibility and WCAG audits, frontend quality reviews, component
-          design, design-system maturity, performance improvements,
-          architectural decisions and more effective development workflows. As a
-          mentor and technical partner, I also support developers and cross-
-          functional teams through hands-on knowledge sharing, technical
-          guidance and collaboration between design, development and product. I
-          bring value both as a senior individual contributor and as a
-          consultant who can connect vision, execution and technical culture. My
-          goal is simple: build thoughtful products, improve DevX, help teams
+          Engineering and AI Product Engineering.
+
+
+          With 27+ years in the industry, I help teams and companies design,
+          build and improve modern, accessible, high-performance and sustainable
+          digital products.
+
+
+          My work sits at the intersection of design, development, AI and
+          product. I translate business needs, visual systems and technical
+          requirements into solid, scalable and maintainable frontend solutions.
+
+
+          As a Senior Frontend Engineer and Design Engineer, I work on UI
+          engineering, design systems, component libraries, frontend
+          architectures, semantic HTML, modern CSS, JavaScript, accessibility,
+          performance and maintainability.
+
+
+          I have deep experience with React and mainstream frontend frameworks,
+          but my approach remains grounded in clarity, reliability and long-term
+          technical sustainability. I am equally comfortable working with
+          vanilla JavaScript, Custom Elements, progressive enhancement and
+          zero-dependency architectures built on the native web platform.
+
+
+          As an AI Product Engineer, I support teams in integrating AI into
+          real-world workflows, tools and applications, with a strong focus on
+          practical value, repeatable processes, product thinking and
+          engineering quality.
+
+
+          I often help companies with accessibility and WCAG audits, frontend
+          quality reviews, component design, design-system maturity, performance
+          improvements, architectural decisions and more effective development
+          workflows.
+
+
+          As a mentor and technical partner, I also support developers and
+          cross- functional teams through hands-on knowledge sharing, technical
+          guidance and collaboration between design, development and product.
+
+
+          I bring value both as a senior individual contributor and as a
+          consultant who can connect vision, execution and technical culture.
+
+
+          My goal is simple: build thoughtful products, improve DevX, help teams
           grow and make the web better, one component at a time.
         title: Senior Frontend Engineer
       - dateRange: December 2024 - Present (1 year 5 months)
@@ -217,33 +258,53 @@ generated:
         skills: []
         summary: >-
           Mentor, Sensei and Co-Host @ DevDojoIT, focused on frontend education,
-          knowledge sharing and community growth. After 27+ years in the
-          industry, I am in a phase where mentoring has become one of the most
-          meaningful parts of my work. The web community has given me knowledge,
-          opportunities, inspiration and a professional path. Today, I try to
-          give part of that value back by helping developers grow with clarity,
-          confidence and practical guidance. At DevDojoIT, my role is centered
-          on education, mentorship and community building. I support developers
-          who want to improve their frontend skills, understand the web platform
-          more deeply and build interfaces that are accessible, scalable,
-          maintainable and respectful of users. As a mentor, I help people
-          navigate the constantly evolving frontend landscape, from semantic
-          HTML, modern CSS and JavaScript to accessibility, UI architecture,
-          design systems, performance and AI-assisted development workflows. My
-          approach is practical, honest and hands-on. I believe that good
+          knowledge sharing and community growth.
+
+
+          After 27+ years in the industry, I am in a phase where mentoring has
+          become one of the most meaningful parts of my work. The web community
+          has given me knowledge, opportunities, inspiration and a professional
+          path. Today, I try to give part of that value back by helping
+          developers grow with clarity, confidence and practical guidance.
+
+
+          At DevDojoIT, my role is centered on education, mentorship and
+          community building. I support developers who want to improve their
+          frontend skills, understand the web platform more deeply and build
+          interfaces that are accessible, scalable, maintainable and respectful
+          of users.
+
+
+          As a mentor, I help people navigate the constantly evolving frontend
+          landscape, from semantic HTML, modern CSS and JavaScript to
+          accessibility, UI architecture, design systems, performance and
+          AI-assisted development workflows.
+
+
+          My approach is practical, honest and hands-on. I believe that good
           mentoring is not about giving shortcuts, but about helping people
           develop better mental models, stronger technical judgment and a more
-          sustainable way to learn. Through DevDojoIT, I contribute to a culture
-          of sharing by creating learning resources, hosting live coding
-          sessions, supporting workshops, encouraging technical discussions and
-          helping developers connect theory with real-world practice. I care
-          deeply about making knowledge more accessible. This means explaining
-          complex topics in a clear way, giving constructive feedback,
-          encouraging experimentation and helping newcomers and experienced
-          developers find common ground. My mission as a mentor is simple: help
-          people become more confident, more aware and more independent as
-          developers. The web gave me a career, a community and a craft. Through
-          mentoring, teaching and community work, I try to pay it forward.
+          sustainable way to learn.
+
+
+          Through DevDojoIT, I contribute to a culture of sharing by creating
+          learning resources, hosting live coding sessions, supporting
+          workshops, encouraging technical discussions and helping developers
+          connect theory with real-world practice.
+
+
+          I care deeply about making knowledge more accessible. This means
+          explaining complex topics in a clear way, giving constructive
+          feedback, encouraging experimentation and helping newcomers and
+          experienced developers find common ground.
+
+
+          My mission as a mentor is simple: help people become more confident,
+          more aware and more independent as developers.
+
+
+          The web gave me a career, a community and a craft. Through mentoring,
+          teaching and community work, I try to pay it forward.
         title: Sensei & Co-host
       - dateRange: September 2022 - February 2025 (2 years 6 months)
         highlights: []
@@ -254,31 +315,70 @@ generated:
           Technical Leadership and Team Management: Assumed responsibility for
           leading a team of frontend developers, managing task distribution,
           providing technical support, and ensuring projects are completed
-          according to specifications and timelines. Code Review and Mentorship:
-          Conducted regular code reviews, providing constructive feedback and
-          promoting best practices. Acted as a mentor to junior team members,
-          facilitating their professional growth. Project Management:
-          Participated in project planning and management, contributing to
-          requirements definition, time estimates, and resource management to
-          ensure project success. Training and Documentation: Developed detailed
-          technical documentation and conducted internal training sessions to
-          ensure the team was up-to-date with the frontend technologies and
-          methodologies used. Continuous Support and Maintenance: Managed
-          post-release support and maintenance of applications, swiftly
-          resolving issues and implementing continuous improvements. Project:
-          Section Framework - Client: internal - Role: Tech Lead - Software
-          Type: Frontend Framework - Technologies: HTML5, CSS3, SCSS,
-          Javascript, Typescript - Description: Frontend Framework for Web
-          Applications (MPA, SPA, SSR, SSG), designed and implemented from
-          scratch using exclusively vanilla technologies (HTML, CSS, pure
-          JavaScript), eliminating dependencies on external frameworks to ensure
-          maximum performance and minimal footprint Project: MonkUI - Client:
-          internal - Role: Tech Lead - Software Type: UI Kit & Design System -
-          Technologies: HTML5, CSS3, SCSS, Javascript, Typescript - Description:
-          Frontend UI Kit & Design System, use-case agnostic, WCAG 2.2 AA
-          compliance, responsive design, and UI/UX principles, ensuring that the
-          developed applications are user-friendly, accessible to all users, and
-          adaptable to various devices and screen sizes
+          according to specifications and timelines.
+
+
+          Code Review and Mentorship: Conducted regular code reviews, providing
+          constructive feedback and promoting best practices. Acted as a mentor
+          to junior team members, facilitating their professional growth.
+
+
+          Project Management: Participated in project planning and management,
+          contributing to requirements definition, time estimates, and resource
+          management to ensure project success.
+
+
+          Training and Documentation: Developed detailed technical documentation
+          and conducted internal training sessions to ensure the team was
+          up-to-date with the frontend technologies and methodologies used.
+
+
+          Continuous Support and Maintenance: Managed post-release support and
+          maintenance of applications, swiftly resolving issues and implementing
+          continuous improvements.
+
+
+          Project: Section Framework
+
+
+          - Client: internal
+
+
+          - Role: Tech Lead
+
+
+          - Software Type: Frontend Framework
+
+
+          - Technologies: HTML5, CSS3, SCSS, Javascript, Typescript
+
+
+          - Description: Frontend Framework for Web Applications (MPA, SPA, SSR,
+          SSG), designed and implemented from scratch using exclusively vanilla
+          technologies (HTML, CSS, pure JavaScript), eliminating dependencies on
+          external frameworks to ensure maximum performance and minimal
+          footprint
+
+
+          Project: MonkUI
+
+
+          - Client: internal
+
+
+          - Role: Tech Lead
+
+
+          - Software Type: UI Kit & Design System
+
+
+          - Technologies: HTML5, CSS3, SCSS, Javascript, Typescript
+
+
+          - Description: Frontend UI Kit & Design System, use-case agnostic,
+          WCAG 2.2 AA compliance, responsive design, and UI/UX principles,
+          ensuring that the developed applications are user-friendly, accessible
+          to all users, and adaptable to various devices and screen sizes
         title: Frontend Development Lead & Mentor
       - dateRange: April 2019 - September 2022 (3 years 6 months)
         highlights: []
@@ -288,33 +388,118 @@ generated:
         summary: >-
           as a Developer: Many different projects for the major Italian and
           international customers of Assist Digital, just a few examples
-          Project: MySupport - Client: Team System S.p. A. - Role: UI/UX
-          Development Lead - Software type: Web Application - Technologies used:
-          Angular + HTML5 + CSS3 - Description: Customer and Administration
-          Areas for a Ticket Management System and Online Courses Project: After
-          sales - Client: Gucci S.p. A. - Role: UI/UX & Frontend Developer -
-          Software type: Web Application - Technologies used: React + HTML5 +
-          CSS3 + Semantic UI + graphQL - Description: Customer After Sales
-          Ticket Management System, progress tracking, managing and delivery
-          Project: GeoWeb (formerly Mind) - Client: Munich RE - Role: UI/UX &
-          Frontend Developer - Software type: Web Application - Technologies
-          used: Angular + HTML5 + CSS3 + custom UI Kit - Description:
-          Re-insurance Risk Assessment and Management, with the aim to preview
-          and manage business and rescue services in case of Climatic Events
-          Project: MyBusiness - Client: Vodafone S.p. A. - Role: Frontend
-          Developer - Software type: Hybrid Mobile Application - Technologies
-          used: AngularJS + HTML5 + CSS3 - Description: Business Customer App as
-          a Mentor: Organization and presentation of a course concerning
-          Frontend in general and more specifically in UI/UX Engineering
-          Lessons: - Typography (Typeface, Fonts, Font Stacks, Variable Fonts) -
-          Layout & Responsive (Mobile First, Gridless Design, Asymmetric Design)
+
+
+          Project: MySupport
+
+
+          - Client: Team System S.p.A.
+
+
+          - Role: UI/UX Development Lead
+
+
+          - Software type: Web Application
+
+
+          - Technologies used: Angular + HTML5 + CSS3
+
+
+          - Description: Customer and Administration Areas for a Ticket
+          Management System and Online Courses
+
+
+          Project: After sales
+
+
+          - Client: Gucci S.p.A.
+
+
+          - Role: UI/UX & Frontend Developer
+
+
+          - Software type: Web Application
+
+
+          - Technologies used: React + HTML5 + CSS3 + Semantic UI + graphQL
+
+
+          - Description: Customer After Sales Ticket Management System, progress
+          tracking, managing and delivery
+
+
+          Project: GeoWeb (formerly Mind)
+
+
+          - Client: Munich RE
+
+
+          - Role: UI/UX & Frontend Developer
+
+
+          - Software type: Web Application
+
+
+          - Technologies used: Angular + HTML5 + CSS3 + custom UI Kit
+
+
+          - Description: Re-insurance Risk Assessment and Management, with the
+          aim to preview and manage business and rescue services in case of
+          Climatic Events
+
+
+          Project: MyBusiness
+
+
+          - Client: Vodafone S.p.A.
+
+
+          - Role: Frontend Developer
+
+
+          - Software type: Hybrid Mobile Application
+
+
+          - Technologies used: AngularJS + HTML5 + CSS3
+
+
+          - Description: Business Customer App as a Mentor: Organization and
+          presentation of a course concerning Frontend in general and more
+          specifically in UI/UX Engineering
+
+
+          Lessons:
+
+
+          - Typography (Typeface, Fonts, Font Stacks, Variable Fonts)
+
+
+          - Layout & Responsive (Mobile First, Gridless Design, Asymmetric
+          Design)
+
+
           - HTML with CSS superpowers (Grid & Flex, Container Queries,
-          Scrollsnap, CSS Layers) - Color Theory (Color Wheel, HSL, Palettes,
-          Shadows) - A11y (Accessibility) - Best Practices, Performances &
-          Tooling - Design Analysis (Discussions about analyzing and
-          implementing a design) - Forms (Managing & Customizing User Input,
-          Custom UI Form controls, Validation) - Web Components (Designing and
-          Implementing Custom Elements)
+          Scrollsnap, CSS Layers)
+
+
+          - Color Theory (Color Wheel, HSL, Palettes, Shadows)
+
+
+          - A11y (Accessibility)
+
+
+          - Best Practices, Performances & Tooling
+
+
+          - Design Analysis (Discussions about analyzing and implementing a
+          design)
+
+
+          - Forms (Managing & Customizing User Input, Custom UI Form controls,
+          Validation)
+
+
+          - Web Components (Designing and Implementing Custom Elements)
         title: Senior UI/UX Engineer & Mentor
       - dateRange: April 2013 - April 2019 (6 years 1 month)
         highlights: []
@@ -323,16 +508,45 @@ generated:
         skills: []
         summary: >-
           Many different projects and corporate websites, just a couple of
-          examples: Project: Ticket System - Client: Thera s.r.l. - Role:
-          Full-stack Developer - Software type: Web Application - Technologies
-          used: ASP. NET MVC + WCF + HTML5 + CSS3 + jQuery + SQL - Description:
-          Customer Ticket Management System, tracking progress, managing and
-          assigning tasks to the development team Project: Alitalia Online
-          Booking - Client: Engineering S.p. A. through Thera s.r.l. - Role: Web
-          Developer - Software type: Web Portal - Technologies used: ASP. NET
-          MVC + WCF + HTML + CSS2 + jQuery + SQL - Description: Alitalia portal
-          for searching, booking, and ticketing of flights for the national
-          airline
+          examples:
+
+
+          Project: Ticket System
+
+
+          - Client: Thera s.r.l.
+
+
+          - Role: Full-stack Developer
+
+
+          - Software type: Web Application
+
+
+          - Technologies used: ASP.NET MVC + WCF + HTML5 + CSS3 + jQuery + SQL
+
+
+          - Description: Customer Ticket Management System, tracking progress,
+          managing and assigning tasks to the development team
+
+
+          Project: Alitalia Online Booking
+
+
+          - Client: Engineering S.p.A. through Thera s.r.l.
+
+
+          - Role: Web Developer
+
+
+          - Software type: Web Portal
+
+
+          - Technologies used: ASP.NET MVC + WCF + HTML + CSS2 + jQuery + SQL
+
+
+          - Description: Alitalia portal for searching, booking, and ticketing
+          of flights for the national airline
         title: Senior UI/UX Engineer
       - dateRange: September 2012 - April 2013 (8 months)
         highlights: []
@@ -340,11 +554,24 @@ generated:
         organization: RealVirtual s.r.l.
         skills: []
         summary: >-
-          Project: RealVirtualCMS ⁃ Client: Internal ⁃ Role: Web Solution
-          Architect / Web Designer / Web Developer - Solution type: CMS ⁃
-          Technologies used: ASP. NET Razor + HTML5 + CSS3 + Javascript + jQuery
-          + JSON + Kendo UI ⁃ Description: CMS for internal use based on
-          RazorC.net Creation and maintenance of various websites.
+          Project: RealVirtualCMS
+
+
+          ⁃ Client: Internal
+
+
+          ⁃ Role: Web Solution Architect / Web Designer / Web Developer
+
+
+          - Solution type: CMS
+
+
+          ⁃ Technologies used: ASP.NET Razor + HTML5 + CSS3 + Javascript +
+          jQuery + JSON + Kendo UI
+
+
+          ⁃ Description: CMS for internal use based on RazorC.net Creation and
+          maintenance of various websites.
         title: Senior Frontend Engineer
       - dateRange: May 2012 - August 2012 (4 months)
         highlights: []
@@ -352,22 +579,48 @@ generated:
         organization: Timesys S.r.l
         skills: []
         summary: >-
-          Project: Milletrix - Client: Internal - Role: Solution Architect /
-          WinForms Developer - Solution Type: Windows Application - Technologies
-          used: Windows Forms + LINQ + RegEx + XML + SQLite - Description: The
-          application is designed to cooperate with a series of baropodometric
-          platforms of different types in order to acquire data on posture,
-          position of the feet and back, with two-dimensional and
-          three-dimensional views of the acquired data. All data is encoded and
-          reprocessed and then sent to the ReBioDes data analysis software
-          Project: ReBioDes - Client: Internal - Role: Solution Architect /
-          WinForms Developer - Solution type: Windows Application - Technologies
-          used: Windows Forms + LINQ + RegEx + XML + SQLite - Description: The
-          application was created to manage and analyze the data produced by the
-          Milletrix software, in order to create an intelligent medical report
-          that helps orthopedic doctors to prescribe insoles and / or specific
-          analyzes or therapies for the various possible pathologies of
-          patients.
+          Project: Milletrix
+
+
+          - Client: Internal
+
+
+          - Role: Solution Architect / WinForms Developer
+
+
+          - Solution Type: Windows Application
+
+
+          - Technologies used: Windows Forms + LINQ + RegEx + XML + SQLite
+
+
+          - Description: The application is designed to cooperate with a series
+          of baropodometric platforms of different types in order to acquire
+          data on posture, position of the feet and back, with two-dimensional
+          and three-dimensional views of the acquired data. All data is encoded
+          and reprocessed and then sent to the ReBioDes data analysis software
+
+
+          Project: ReBioDes
+
+
+          - Client: Internal
+
+
+          - Role: Solution Architect / WinForms Developer
+
+
+          - Solution type: Windows Application
+
+
+          - Technologies used: Windows Forms + LINQ + RegEx + XML + SQLite
+
+
+          - Description: The application was created to manage and analyze the
+          data produced by the Milletrix software, in order to create an
+          intelligent medical report that helps orthopedic doctors to prescribe
+          insoles and / or specific analyzes or therapies for the various
+          possible pathologies of patients.
         title: Senior Solution Architect
       - dateRange: 2007 - March 2012 (5 years)
         highlights: []
@@ -375,20 +628,65 @@ generated:
         organization: Thera s.r.l.
         skills: []
         summary: >-
-          Project: Accident at work Management - Client: Autostrade S.p. A. -
-          Role: Full-stack Developer - Software type: Web Application -
-          Technologies used: ASP. NET + HTML + CSS2 + Javascript + Adobe Flash +
-          SQL - Description: Create and manage an accident at work archive, the
+          Project: Accident at work Management
+
+
+          - Client: Autostrade S.p.A.
+
+
+          - Role: Full-stack Developer
+
+
+          - Software type: Web Application
+
+
+          - Technologies used: ASP.NET + HTML + CSS2 + Javascript + Adobe Flash
+          + SQL
+
+
+          - Description: Create and manage an accident at work archive, the
           system provides a flash application to create a graph in order to
-          better understand the event. Project: INPS - Client: Elsag-Datamat
-          S.p. A. - Role: Developer Analyst - Software type: Components for web
-          portal - Technologies used: ASP. NET + Web Services + HTML + CSS2 +
-          jQuery + SQL - Description: Management system and menu profiling of
-          services to the citizen Project: GEA - Client: Baicr S. C. A. R. L. -
-          Role: Developer - Software type: Windows Forms Management Application
-          + Web Portal - Used technologies: Visual C# + ASP. NET + Web Services
-          + HTML + CSS2 + jQuery + SQL - Description: Application aimed at
-          managing the document archiving of the Company's Historical Archives.
+          better understand the event.
+
+
+          Project: INPS
+
+
+          - Client: Elsag-Datamat S.p.A.
+
+
+          - Role: Developer Analyst
+
+
+          - Software type: Components for web portal
+
+
+          - Technologies used: ASP.NET + Web Services + HTML + CSS2 + jQuery +
+          SQL
+
+
+          - Description: Management system and menu profiling of services to the
+          citizen
+
+
+          Project: GEA
+
+
+          - Client: Baicr S.C.A.R.L.
+
+
+          - Role: Developer
+
+
+          - Software type: Windows Forms Management Application + Web Portal
+
+
+          - Used technologies: Visual C# + ASP.NET + Web Services + HTML + CSS2
+          + jQuery + SQL
+
+
+          - Description: Application aimed at managing the document archiving of
+          the Company's Historical Archives.
         title: Senior Full-stack Developer
       - dateRange: 2005 - 2007 (2 years)
         highlights: []
@@ -425,7 +723,7 @@ generated:
         location: Rome
         organization: Alpha Logic S.p.A.
         skills: []
-        summary: ''
+        summary: Windows-based application developer
         title: Junior Developer
     education: []
   github:
@@ -450,7 +748,7 @@ generated:
       totalStars: 80
       totalForks: 7
       totalOpenIssues: 6
-      lastUpdatedAt: '2026-05-17T09:32:52Z'
+      lastUpdatedAt: '2026-05-17T22:22:20Z'
     languages:
       - name: HTML
         count: 17
@@ -507,7 +805,7 @@ generated:
         fork: false
         private: false
         tags: []
-        updatedAt: '2026-05-17T09:32:52Z'
+        updatedAt: '2026-05-17T22:22:20Z'
         createdAt: '2020-12-03T11:38:38Z'
         slug: pixu-dev
       - &ref_1
@@ -1117,7 +1415,7 @@ generated:
       totalStars: 46
       totalForks: 7
       totalOpenIssues: 4
-      lastUpdatedAt: '2026-05-17T09:32:52Z'
+      lastUpdatedAt: '2026-05-17T22:22:20Z'
     portfolioLanguages:
       - name: JavaScript
         count: 4
@@ -1657,17 +1955,21 @@ generated:
 ---
 ## About
 
-My mantra is: "Make learning a habit!"
+My mantra is: "*Make learning a habit!*" and I started writing code in **1994** and never left the keyboard.
 
-I started writing code in 1997 and never left the keyboard. My computer childhood is one of the most common for Gen X: a Commodore 64 at home at the tender age of 3, I learned to write with the keyboard before the pen, typing those few lines necessary to run Buck Rogers and Ghostbusters from cassette tapes.
+I **bridge design and development** without losing craft: *semantics-first HTML*, *CSS on purpose*, *progressive enhancement with JS* and *long-term maintainability*.
 
-My career spans Delphi, desktop software, and a long arc into modern frontend architecture, design systems, accessibility, and lean-web thinking. Along the way I experimented with a long list of languages, databases, IDEs, frameworks, patterns, and servers.
+My *IT childhood* was a classic Gen X story: a **Commodore 64** at home when I was just **3 years old**, learning to type before learning to write with a pen.
 
-I found my comfort zone in frontend development and more specifically in UI/UX engineering. Then I finally landed in teaching, planning, creating, and presenting courses on frontend and UI/UX engineering.
+Those first lines of code were the ones needed to run **Buck Rogers** and **Ghostbusters** from cassette tapes.
 
-Over the last few years my focus shifted from building digital products to giving back to the community: public talks, mentoring, open-source experiments, and accessible design systems that work in the real world.
+My **professional career began in 2001** with Delphi and VB 6.0, then evolved through C#.NET, building *Client/Server applications*, *database architectures* and *database-driven software*.
 
-I bridge design and development without losing craft: semantics-first HTML, CSS on purpose, progressive enhancement, and maintainability above novelty.
+From there, I **moved into the web in 2003** experimenting over the years with a long list of *languages*, *databases*, *IDEs*, *frameworks*, *patterns* and *servers*.
+
+Today I focus on **frontend architecture**, **design systems**, **accessibility** and **lean-web thinking**.
+
+Lately I have also focused on giving back to the community through **public talks**, **mentoring**, **open-source experiments** and **accessible design systems that work in the real world**.
 
 ### Bridge design and code
 
@@ -1707,8 +2009,8 @@ Enjoy the process, celebrate small wins, and find joy in the craft of building t
 
 ### Languages
 
-- **Italian** - Native or Bilingual
-- **English** - Full Professional
+- Italian - Native
+- English - Full Professional
 
 ## Experience
 
@@ -1716,49 +2018,273 @@ Enjoy the process, celebrate small wins, and find joy in the craft of building t
 
 April 2019 - Present (7 years 1 month)
 
-Freelance Consultant focused on Senior Frontend Engineering, Design Engineering and AI Product Engineering. With 27+ years in the industry, I help teams and companies design, build and improve modern, accessible, high-performance and sustainable digital products. My work sits at the intersection of design, development, AI and product. I translate business needs, visual systems and technical requirements into solid, scalable and maintainable frontend solutions. As a Senior Frontend Engineer and Design Engineer, I work on UI engineering, design systems, component libraries, frontend architectures, semantic HTML, modern CSS, JavaScript, accessibility, performance and maintainability. I have deep experience with React and mainstream frontend frameworks, but my approach remains grounded in clarity, reliability and long-term technical sustainability. I am equally comfortable working with vanilla JavaScript, Custom Elements, progressive enhancement and zero-dependency architectures built on the native web platform. As an AI Product Engineer, I support teams in integrating AI into real-world workflows, tools and applications, with a strong focus on practical value, repeatable processes, product thinking and engineering quality. I often help companies with accessibility and WCAG audits, frontend quality reviews, component design, design-system maturity, performance improvements, architectural decisions and more effective development workflows. As a mentor and technical partner, I also support developers and cross- functional teams through hands-on knowledge sharing, technical guidance and collaboration between design, development and product. I bring value both as a senior individual contributor and as a consultant who can connect vision, execution and technical culture. My goal is simple: build thoughtful products, improve DevX, help teams grow and make the web better, one component at a time.
+Freelance Consultant focused on Senior Frontend Engineering, Design Engineering and AI Product Engineering.
+
+With 27+ years in the industry, I help teams and companies design, build and improve modern, accessible, high-performance and sustainable digital products.
+
+My work sits at the intersection of design, development, AI and product. I translate business needs, visual systems and technical requirements into solid, scalable and maintainable frontend solutions.
+
+As a Senior Frontend Engineer and Design Engineer, I work on UI engineering, design systems, component libraries, frontend architectures, semantic HTML, modern CSS, JavaScript, accessibility, performance and maintainability.
+
+I have deep experience with React and mainstream frontend frameworks, but my approach remains grounded in clarity, reliability and long-term technical sustainability. I am equally comfortable working with vanilla JavaScript, Custom Elements, progressive enhancement and zero-dependency architectures built on the native web platform.
+
+As an AI Product Engineer, I support teams in integrating AI into real-world workflows, tools and applications, with a strong focus on practical value, repeatable processes, product thinking and engineering quality.
+
+I often help companies with accessibility and WCAG audits, frontend quality reviews, component design, design-system maturity, performance improvements, architectural decisions and more effective development workflows.
+
+As a mentor and technical partner, I also support developers and cross- functional teams through hands-on knowledge sharing, technical guidance and collaboration between design, development and product.
+
+I bring value both as a senior individual contributor and as a consultant who can connect vision, execution and technical culture.
+
+My goal is simple: build thoughtful products, improve DevX, help teams grow and make the web better, one component at a time.
 
 ### Sensei & Co-host - Dev Dojo IT
 
 December 2024 - Present (1 year 5 months)
 
-Mentor, Sensei and Co-Host @ DevDojoIT, focused on frontend education, knowledge sharing and community growth. After 27+ years in the industry, I am in a phase where mentoring has become one of the most meaningful parts of my work. The web community has given me knowledge, opportunities, inspiration and a professional path. Today, I try to give part of that value back by helping developers grow with clarity, confidence and practical guidance. At DevDojoIT, my role is centered on education, mentorship and community building. I support developers who want to improve their frontend skills, understand the web platform more deeply and build interfaces that are accessible, scalable, maintainable and respectful of users. As a mentor, I help people navigate the constantly evolving frontend landscape, from semantic HTML, modern CSS and JavaScript to accessibility, UI architecture, design systems, performance and AI-assisted development workflows. My approach is practical, honest and hands-on. I believe that good mentoring is not about giving shortcuts, but about helping people develop better mental models, stronger technical judgment and a more sustainable way to learn. Through DevDojoIT, I contribute to a culture of sharing by creating learning resources, hosting live coding sessions, supporting workshops, encouraging technical discussions and helping developers connect theory with real-world practice. I care deeply about making knowledge more accessible. This means explaining complex topics in a clear way, giving constructive feedback, encouraging experimentation and helping newcomers and experienced developers find common ground. My mission as a mentor is simple: help people become more confident, more aware and more independent as developers. The web gave me a career, a community and a craft. Through mentoring, teaching and community work, I try to pay it forward.
+Mentor, Sensei and Co-Host @ DevDojoIT, focused on frontend education, knowledge sharing and community growth.
+
+After 27+ years in the industry, I am in a phase where mentoring has become one of the most meaningful parts of my work. The web community has given me knowledge, opportunities, inspiration and a professional path. Today, I try to give part of that value back by helping developers grow with clarity, confidence and practical guidance.
+
+At DevDojoIT, my role is centered on education, mentorship and community building. I support developers who want to improve their frontend skills, understand the web platform more deeply and build interfaces that are accessible, scalable, maintainable and respectful of users.
+
+As a mentor, I help people navigate the constantly evolving frontend landscape, from semantic HTML, modern CSS and JavaScript to accessibility, UI architecture, design systems, performance and AI-assisted development workflows.
+
+My approach is practical, honest and hands-on. I believe that good mentoring is not about giving shortcuts, but about helping people develop better mental models, stronger technical judgment and a more sustainable way to learn.
+
+Through DevDojoIT, I contribute to a culture of sharing by creating learning resources, hosting live coding sessions, supporting workshops, encouraging technical discussions and helping developers connect theory with real-world practice.
+
+I care deeply about making knowledge more accessible. This means explaining complex topics in a clear way, giving constructive feedback, encouraging experimentation and helping newcomers and experienced developers find common ground.
+
+My mission as a mentor is simple: help people become more confident, more aware and more independent as developers.
+
+The web gave me a career, a community and a craft. Through mentoring, teaching and community work, I try to pay it forward.
 
 ### Frontend Development Lead & Mentor - MONK Software
 
 September 2022 - February 2025 (2 years 6 months)
 
-Technical Leadership and Team Management: Assumed responsibility for leading a team of frontend developers, managing task distribution, providing technical support, and ensuring projects are completed according to specifications and timelines. Code Review and Mentorship: Conducted regular code reviews, providing constructive feedback and promoting best practices. Acted as a mentor to junior team members, facilitating their professional growth. Project Management: Participated in project planning and management, contributing to requirements definition, time estimates, and resource management to ensure project success. Training and Documentation: Developed detailed technical documentation and conducted internal training sessions to ensure the team was up-to-date with the frontend technologies and methodologies used. Continuous Support and Maintenance: Managed post-release support and maintenance of applications, swiftly resolving issues and implementing continuous improvements. Project: Section Framework - Client: internal - Role: Tech Lead - Software Type: Frontend Framework - Technologies: HTML5, CSS3, SCSS, Javascript, Typescript - Description: Frontend Framework for Web Applications (MPA, SPA, SSR, SSG), designed and implemented from scratch using exclusively vanilla technologies (HTML, CSS, pure JavaScript), eliminating dependencies on external frameworks to ensure maximum performance and minimal footprint Project: MonkUI - Client: internal - Role: Tech Lead - Software Type: UI Kit & Design System - Technologies: HTML5, CSS3, SCSS, Javascript, Typescript - Description: Frontend UI Kit & Design System, use-case agnostic, WCAG 2.2 AA compliance, responsive design, and UI/UX principles, ensuring that the developed applications are user-friendly, accessible to all users, and adaptable to various devices and screen sizes
+Technical Leadership and Team Management: Assumed responsibility for leading a team of frontend developers, managing task distribution, providing technical support, and ensuring projects are completed according to specifications and timelines.
+
+Code Review and Mentorship: Conducted regular code reviews, providing constructive feedback and promoting best practices. Acted as a mentor to junior team members, facilitating their professional growth.
+
+Project Management: Participated in project planning and management, contributing to requirements definition, time estimates, and resource management to ensure project success.
+
+Training and Documentation: Developed detailed technical documentation and conducted internal training sessions to ensure the team was up-to-date with the frontend technologies and methodologies used.
+
+Continuous Support and Maintenance: Managed post-release support and maintenance of applications, swiftly resolving issues and implementing continuous improvements.
+
+Project: Section Framework
+
+- Client: internal
+
+- Role: Tech Lead
+
+- Software Type: Frontend Framework
+
+- Technologies: HTML5, CSS3, SCSS, Javascript, Typescript
+
+- Description: Frontend Framework for Web Applications (MPA, SPA, SSR, SSG), designed and implemented from scratch using exclusively vanilla technologies (HTML, CSS, pure JavaScript), eliminating dependencies on external frameworks to ensure maximum performance and minimal footprint
+
+Project: MonkUI
+
+- Client: internal
+
+- Role: Tech Lead
+
+- Software Type: UI Kit & Design System
+
+- Technologies: HTML5, CSS3, SCSS, Javascript, Typescript
+
+- Description: Frontend UI Kit & Design System, use-case agnostic, WCAG 2.2 AA compliance, responsive design, and UI/UX principles, ensuring that the developed applications are user-friendly, accessible to all users, and adaptable to various devices and screen sizes
 
 ### Senior UI/UX Engineer & Mentor - Assist Digital
 
 April 2019 - September 2022 (3 years 6 months)
 
-as a Developer: Many different projects for the major Italian and international customers of Assist Digital, just a few examples Project: MySupport - Client: Team System S.p. A. - Role: UI/UX Development Lead - Software type: Web Application - Technologies used: Angular + HTML5 + CSS3 - Description: Customer and Administration Areas for a Ticket Management System and Online Courses Project: After sales - Client: Gucci S.p. A. - Role: UI/UX & Frontend Developer - Software type: Web Application - Technologies used: React + HTML5 + CSS3 + Semantic UI + graphQL - Description: Customer After Sales Ticket Management System, progress tracking, managing and delivery Project: GeoWeb (formerly Mind) - Client: Munich RE - Role: UI/UX & Frontend Developer - Software type: Web Application - Technologies used: Angular + HTML5 + CSS3 + custom UI Kit - Description: Re-insurance Risk Assessment and Management, with the aim to preview and manage business and rescue services in case of Climatic Events Project: MyBusiness - Client: Vodafone S.p. A. - Role: Frontend Developer - Software type: Hybrid Mobile Application - Technologies used: AngularJS + HTML5 + CSS3 - Description: Business Customer App as a Mentor: Organization and presentation of a course concerning Frontend in general and more specifically in UI/UX Engineering Lessons: - Typography (Typeface, Fonts, Font Stacks, Variable Fonts) - Layout & Responsive (Mobile First, Gridless Design, Asymmetric Design) - HTML with CSS superpowers (Grid & Flex, Container Queries, Scrollsnap, CSS Layers) - Color Theory (Color Wheel, HSL, Palettes, Shadows) - A11y (Accessibility) - Best Practices, Performances & Tooling - Design Analysis (Discussions about analyzing and implementing a design) - Forms (Managing & Customizing User Input, Custom UI Form controls, Validation) - Web Components (Designing and Implementing Custom Elements)
+as a Developer: Many different projects for the major Italian and international customers of Assist Digital, just a few examples
+
+Project: MySupport
+
+- Client: Team System S.p.A.
+
+- Role: UI/UX Development Lead
+
+- Software type: Web Application
+
+- Technologies used: Angular + HTML5 + CSS3
+
+- Description: Customer and Administration Areas for a Ticket Management System and Online Courses
+
+Project: After sales
+
+- Client: Gucci S.p.A.
+
+- Role: UI/UX & Frontend Developer
+
+- Software type: Web Application
+
+- Technologies used: React + HTML5 + CSS3 + Semantic UI + graphQL
+
+- Description: Customer After Sales Ticket Management System, progress tracking, managing and delivery
+
+Project: GeoWeb (formerly Mind)
+
+- Client: Munich RE
+
+- Role: UI/UX & Frontend Developer
+
+- Software type: Web Application
+
+- Technologies used: Angular + HTML5 + CSS3 + custom UI Kit
+
+- Description: Re-insurance Risk Assessment and Management, with the aim to preview and manage business and rescue services in case of Climatic Events
+
+Project: MyBusiness
+
+- Client: Vodafone S.p.A.
+
+- Role: Frontend Developer
+
+- Software type: Hybrid Mobile Application
+
+- Technologies used: AngularJS + HTML5 + CSS3
+
+- Description: Business Customer App as a Mentor: Organization and presentation of a course concerning Frontend in general and more specifically in UI/UX Engineering
+
+Lessons:
+
+- Typography (Typeface, Fonts, Font Stacks, Variable Fonts)
+
+- Layout & Responsive (Mobile First, Gridless Design, Asymmetric Design)
+
+- HTML with CSS superpowers (Grid & Flex, Container Queries, Scrollsnap, CSS Layers)
+
+- Color Theory (Color Wheel, HSL, Palettes, Shadows)
+
+- A11y (Accessibility)
+
+- Best Practices, Performances & Tooling
+
+- Design Analysis (Discussions about analyzing and implementing a design)
+
+- Forms (Managing & Customizing User Input, Custom UI Form controls, Validation)
+
+- Web Components (Designing and Implementing Custom Elements)
 
 ### Senior UI/UX Engineer - Freelance
 
 April 2013 - April 2019 (6 years 1 month)
 
-Many different projects and corporate websites, just a couple of examples: Project: Ticket System - Client: Thera s.r.l. - Role: Full-stack Developer - Software type: Web Application - Technologies used: ASP. NET MVC + WCF + HTML5 + CSS3 + jQuery + SQL - Description: Customer Ticket Management System, tracking progress, managing and assigning tasks to the development team Project: Alitalia Online Booking - Client: Engineering S.p. A. through Thera s.r.l. - Role: Web Developer - Software type: Web Portal - Technologies used: ASP. NET MVC + WCF + HTML + CSS2 + jQuery + SQL - Description: Alitalia portal for searching, booking, and ticketing of flights for the national airline
+Many different projects and corporate websites, just a couple of examples:
+
+Project: Ticket System
+
+- Client: Thera s.r.l.
+
+- Role: Full-stack Developer
+
+- Software type: Web Application
+
+- Technologies used: ASP.NET MVC + WCF + HTML5 + CSS3 + jQuery + SQL
+
+- Description: Customer Ticket Management System, tracking progress, managing and assigning tasks to the development team
+
+Project: Alitalia Online Booking
+
+- Client: Engineering S.p.A. through Thera s.r.l.
+
+- Role: Web Developer
+
+- Software type: Web Portal
+
+- Technologies used: ASP.NET MVC + WCF + HTML + CSS2 + jQuery + SQL
+
+- Description: Alitalia portal for searching, booking, and ticketing of flights for the national airline
 
 ### Senior Frontend Engineer - RealVirtual s.r.l.
 
 September 2012 - April 2013 (8 months)
 
-Project: RealVirtualCMS ⁃ Client: Internal ⁃ Role: Web Solution Architect / Web Designer / Web Developer - Solution type: CMS ⁃ Technologies used: ASP. NET Razor + HTML5 + CSS3 + Javascript + jQuery + JSON + Kendo UI ⁃ Description: CMS for internal use based on RazorC.net Creation and maintenance of various websites.
+Project: RealVirtualCMS
+
+⁃ Client: Internal
+
+⁃ Role: Web Solution Architect / Web Designer / Web Developer
+
+- Solution type: CMS
+
+⁃ Technologies used: ASP.NET Razor + HTML5 + CSS3 + Javascript + jQuery + JSON + Kendo UI
+
+⁃ Description: CMS for internal use based on RazorC.net Creation and maintenance of various websites.
 
 ### Senior Solution Architect - Timesys S.r.l
 
 May 2012 - August 2012 (4 months)
 
-Project: Milletrix - Client: Internal - Role: Solution Architect / WinForms Developer - Solution Type: Windows Application - Technologies used: Windows Forms + LINQ + RegEx + XML + SQLite - Description: The application is designed to cooperate with a series of baropodometric platforms of different types in order to acquire data on posture, position of the feet and back, with two-dimensional and three-dimensional views of the acquired data. All data is encoded and reprocessed and then sent to the ReBioDes data analysis software Project: ReBioDes - Client: Internal - Role: Solution Architect / WinForms Developer - Solution type: Windows Application - Technologies used: Windows Forms + LINQ + RegEx + XML + SQLite - Description: The application was created to manage and analyze the data produced by the Milletrix software, in order to create an intelligent medical report that helps orthopedic doctors to prescribe insoles and / or specific analyzes or therapies for the various possible pathologies of patients.
+Project: Milletrix
+
+- Client: Internal
+
+- Role: Solution Architect / WinForms Developer
+
+- Solution Type: Windows Application
+
+- Technologies used: Windows Forms + LINQ + RegEx + XML + SQLite
+
+- Description: The application is designed to cooperate with a series of baropodometric platforms of different types in order to acquire data on posture, position of the feet and back, with two-dimensional and three-dimensional views of the acquired data. All data is encoded and reprocessed and then sent to the ReBioDes data analysis software
+
+Project: ReBioDes
+
+- Client: Internal
+
+- Role: Solution Architect / WinForms Developer
+
+- Solution type: Windows Application
+
+- Technologies used: Windows Forms + LINQ + RegEx + XML + SQLite
+
+- Description: The application was created to manage and analyze the data produced by the Milletrix software, in order to create an intelligent medical report that helps orthopedic doctors to prescribe insoles and / or specific analyzes or therapies for the various possible pathologies of patients.
 
 ### Senior Full-stack Developer - Thera s.r.l.
 
 2007 - March 2012 (5 years)
 
-Project: Accident at work Management - Client: Autostrade S.p. A. - Role: Full-stack Developer - Software type: Web Application - Technologies used: ASP. NET + HTML + CSS2 + Javascript + Adobe Flash + SQL - Description: Create and manage an accident at work archive, the system provides a flash application to create a graph in order to better understand the event. Project: INPS - Client: Elsag-Datamat S.p. A. - Role: Developer Analyst - Software type: Components for web portal - Technologies used: ASP. NET + Web Services + HTML + CSS2 + jQuery + SQL - Description: Management system and menu profiling of services to the citizen Project: GEA - Client: Baicr S. C. A. R. L. - Role: Developer - Software type: Windows Forms Management Application + Web Portal - Used technologies: Visual C# + ASP. NET + Web Services + HTML + CSS2 + jQuery + SQL - Description: Application aimed at managing the document archiving of the Company's Historical Archives.
+Project: Accident at work Management
+
+- Client: Autostrade S.p.A.
+
+- Role: Full-stack Developer
+
+- Software type: Web Application
+
+- Technologies used: ASP.NET + HTML + CSS2 + Javascript + Adobe Flash + SQL
+
+- Description: Create and manage an accident at work archive, the system provides a flash application to create a graph in order to better understand the event.
+
+Project: INPS
+
+- Client: Elsag-Datamat S.p.A.
+
+- Role: Developer Analyst
+
+- Software type: Components for web portal
+
+- Technologies used: ASP.NET + Web Services + HTML + CSS2 + jQuery + SQL
+
+- Description: Management system and menu profiling of services to the citizen
+
+Project: GEA
+
+- Client: Baicr S.C.A.R.L.
+
+- Role: Developer
+
+- Software type: Windows Forms Management Application + Web Portal
+
+- Used technologies: Visual C# + ASP.NET + Web Services + HTML + CSS2 + jQuery + SQL
+
+- Description: Application aimed at managing the document archiving of the Company's Historical Archives.
 
 ### Mid Frontend Developer - Zucchetti Software s.r.l.
 
@@ -1781,6 +2307,8 @@ Various projects creation and maintenance
 ### Junior Developer - Alpha Logic S.p.A.
 
 2001 - 2001 (less than a year)
+
+Windows-based application developer
 
 ## Skills
 

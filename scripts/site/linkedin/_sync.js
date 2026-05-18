@@ -7,6 +7,14 @@ import {
 } from "../_resume-document.js";
 import { normalizeWhitespace, toArray } from "../_text.js";
 
+function normalizeMarkdownParagraphs(value = "") {
+  return String(value)
+    .split(/\r?\n+/)
+    .map(normalizeWhitespace)
+    .filter(Boolean)
+    .join("\n\n");
+}
+
 function formatTimelineHeading(entry) {
   const title = normalizeWhitespace(entry?.title);
   const organization = normalizeWhitespace(entry?.organization || entry?.subtitle);
@@ -23,7 +31,7 @@ function normalizeEntry(entry = {}) {
     organization: normalizeWhitespace(entry.organization),
     subtitle: normalizeWhitespace(entry.subtitle),
     dateRange: normalizeWhitespace(entry.dateRange),
-    summary: normalizeWhitespace(entry.summary),
+    summary: normalizeMarkdownParagraphs(entry.summary),
     highlights: toArray(entry.highlights).map(normalizeWhitespace).filter(Boolean),
     skills: toArray(entry.skills).map(normalizeWhitespace).filter(Boolean),
   };

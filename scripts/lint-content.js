@@ -39,12 +39,12 @@ const forbiddenCharacters = [
   [String.fromCharCode(0x00bb), "right guillemet"],
 ];
 const nonEnglishParserLabels = [
-  ["P", "resente"].join(""),
-  ["esper", "ienza"].join(""),
-  ["istr", "uzione"].join(""),
-  ["compet", "enze"].join(""),
-  ["Req", "uisiti"].join(""),
-  ["Durata", " preferita"].join(""),
+  "Presente",
+  "Esperienza",
+  "Istruzione",
+  "Competenze",
+  "Requisiti",
+  "Durata preferita",
 ];
 
 export function getExtension(pathname) {
