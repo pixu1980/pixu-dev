@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Commit messages follow Conventional Commits.
 
+### [0.2.9](https://github.com/pixu1980/pixu-dev-resume/compare/v0.2.8...v0.2.9) (2026-05-18)
+
+### Features
+
+* **refinement:** improving content management scripts and logics, minor UI fixes ([95d1177](https://github.com/pixu1980/pixu-dev-resume/commit/95d1177))
+* **funding:** update funding information for GitHub and Patreon ([87c9354](https://github.com/pixu1980/pixu-dev-resume/commit/87c9354))
+
 ### [0.2.8](https://github.com/pixu1980/pixu-dev-resume/compare/v0.2.6...v0.2.8) (2026-05-18)
 
 ### Features
