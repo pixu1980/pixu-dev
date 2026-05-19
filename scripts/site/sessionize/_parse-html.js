@@ -4,8 +4,8 @@ import {
   englishText,
   isLikelyEnglish,
   normalizeWhitespace,
+  summarizeText,
   toArray,
-  truncateText,
   uniqueBy,
 } from "../_text.js";
 import { buildLanguagesFromText, getLanguageScore, getSessionLanguageInfo } from "./_language.js";
@@ -55,13 +55,13 @@ export function parseSessionizeSpeaker(html, fallback) {
     name,
     headline,
     image,
-    summary: truncateText(
+    summary: summarizeText(
       cleanSessionizeSpeakerSummary(
         englishText(summaryParagraphs.slice(0, 3).join(" "), fallback?.summary || ""),
         headline,
         fallback?.summary || "",
       ),
-      540,
+      420,
     ),
     topics: uniqueBy(
       [...topics, ...toArray(fallback?.topics)]

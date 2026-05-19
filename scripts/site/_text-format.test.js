@@ -19,6 +19,7 @@ import {
   normalizeWhitespace,
   slugify,
   splitTextLines,
+  summarizeText,
   toArray,
   toNumber,
   truncateText,
@@ -34,6 +35,20 @@ test("text helpers normalize typography, escaping, slugs, arrays, and uniqueness
   assert.equal(escapeAttr("`x`"), "&#96;x&#96;");
   assert.equal(normalizeWhitespace(" a\n b "), "a b");
   assert.equal(truncateText("one two three", 8), "one two...");
+  assert.equal(
+    summarizeText(
+      "First sentence stays. Second sentence also stays. Third sentence must not fit.",
+      44,
+    ),
+    "First sentence stays.",
+  );
+  assert.equal(
+    summarizeText(
+      "VeryLongSentenceWithoutUsefulBreakpointsThatShouldStayWholeEvenWhenItIsLongerThanLimit",
+      12,
+    ),
+    "VeryLongSentenceWithoutUsefulBreakpointsThatShouldStayWholeEvenWhenItIsLongerThanLimit",
+  );
   assert.equal(slugify("Hello, World!"), "hello-world");
   assert.deepEqual(splitTextLines(" a\n\n b "), ["a", "b"]);
   assert.deepEqual(toArray("x"), []);

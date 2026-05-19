@@ -36,6 +36,78 @@ export function truncateText(value = "", maxLength = 420) {
   return `${normalized.slice(0, maxLength).replace(/\s+\S*$/, "")}...`;
 }
 
+export function summarizeText(value = "", maxLength = 220) {
+  const normalized = normalizeWhitespace(value);
+
+  if (!normalized || normalized.length <= maxLength) {
+    return normalized;
+  }
+
+  const sentences =
+    normalized
+      .match(/[^.!?]+(?:[.!?]+|$)/g)
+      ?.map((sentence) => normalizeWhitespace(sentence))
+      .filter(Boolean) || [];
+
+  if (!sentences.length || sentences[0].length > maxLength) {
+    return normalized;
+  }
+
+  let summary = "";
+
+  for (const sentence of sentences) {
+    const nextValue = summary ? `${summary} ${sentence}` : sentence;
+
+    if (nextValue.length > maxLength) {
+      break;
+    }
+
+    summary = nextValue;
+  }
+
+  return summary || normalized;
+}
+
+export function extractExcerptText(value = "", options = {}) {
+  const maxLength = options.maxLength ?? 220;
+  const maxSentences = options.maxSentences ?? 2;
+  const normalized = normalizeWhitespace(value).replace(/([.!?])(?=[A-Z0-9(])/g, "$1 ");
+
+  if (!normalized) {
+    return normalized;
+  }
+
+  const sentences =
+    normalized
+      .match(/[^.!?]+(?:[.!?]+|$)/g)
+      ?.map((sentence) => normalizeWhitespace(sentence))
+      .filter(Boolean) || [];
+
+  if (!sentences.length) {
+    return normalized;
+  }
+
+  let excerpt = "";
+  let sentenceCount = 0;
+
+  for (const sentence of sentences) {
+    if (sentenceCount >= maxSentences) {
+      break;
+    }
+
+    const nextValue = excerpt ? `${excerpt} ${sentence}` : sentence;
+
+    if (nextValue.length > maxLength) {
+      break;
+    }
+
+    excerpt = nextValue;
+    sentenceCount += 1;
+  }
+
+  return excerpt || sentences[0] || normalized;
+}
+
 export function escapeRegExp(value = "") {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }

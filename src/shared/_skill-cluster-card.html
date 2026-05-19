@@ -1,0 +1,8 @@
+<article data-panel="skill-cluster" data-surface="lifted" data-hover-surface data-reveal>
+  <h3>{{ cluster.title }}</h3>
+  <p>{{ cluster.summary }}</p>
+  <include
+    src="./_tag-list.html"
+    data='{"items": {{ cluster.items | json | raw }}, "ariaLabel": ""}'
+  ></include>
+</article>

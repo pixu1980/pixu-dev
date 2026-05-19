@@ -125,6 +125,8 @@ const DEFAULT_PREFERENCES = Object.freeze({
   reduceMotion: false,
   reduceTransparency: false,
 });
+const supportsNativePopover =
+  typeof HTMLElement !== "undefined" && "showPopover" in HTMLElement.prototype;
 
 let nextId = 0;
 
@@ -253,15 +255,15 @@ function renderRadiusPresetControls(panelId, selectedValue) {
     const inputId = `${panelId}-radius-${option.id}`;
 
     return `
-      <label class="preferences-choice" for="${inputId}">
+      <label data-choice for="${inputId}">
         <input id="${inputId}" type="radio" name="radiusPreset" value="${option.id}"${checked} />
-        <span class="preferences-choice__preview" data-radius-preview="${option.id}" aria-hidden="true">
+        <span data-choice-preview data-radius-preview="${option.id}" aria-hidden="true">
           <span></span>
           <span></span>
         </span>
-        <span class="preferences-choice__copy">
-          <span class="preferences-choice__label">${option.label}</span>
-          <span class="preferences-choice__hint">${option.description}</span>
+        <span data-choice-copy>
+          <span data-choice-label>${option.label}</span>
+          <span data-choice-hint>${option.description}</span>
         </span>
       </label>
     `;
@@ -274,15 +276,84 @@ function renderAccessibilityOptions(panelId, preferences) {
     const inputId = `${panelId}-${option.name}`;
 
     return `
-      <div class="preferences-checkbox">
+      <div data-checkbox>
         <input id="${inputId}" type="checkbox" name="${option.name}"${checked} />
-        <label class="preferences-checkbox__copy" for="${inputId}">
-          <span class="preferences-checkbox__label">${option.label}</span>
-          <span class="preferences-checkbox__hint">${option.description}</span>
+        <label data-checkbox-copy for="${inputId}">
+          <span data-checkbox-label>${option.label}</span>
+          <span data-checkbox-hint>${option.description}</span>
         </label>
       </div>
     `;
   }).join("");
+}
+
+function renderPanelSections(panelId, preferences) {
+  return `
+    <div data-group>
+      <div data-group-title>
+        <h3>Accent color</h3>
+        <p>Choose the palette used for links, actions, focus, and highlights.</p>
+      </div>
+      <accent-color-selector></accent-color-selector>
+    </div>
+
+    <section
+      data-group="fieldset"
+      role="group"
+      aria-labelledby="${panelId}-corners-title"
+    >
+      <div data-group-title>
+        <h3 id="${panelId}-corners-title">Corner style</h3>
+        <p>Choose how rounded cards and controls should feel.</p>
+      </div>
+      <div data-choice-grid>
+        ${renderRadiusPresetControls(panelId, preferences.radiusPreset)}
+      </div>
+    </section>
+
+    <div data-group>
+      <div data-group-title>
+        <h3>Accessibility</h3>
+        <p>Reduce friction when you want a calmer, sharper interface.</p>
+      </div>
+      <div data-checklist>
+        ${renderAccessibilityOptions(panelId, preferences)}
+      </div>
+    </div>
+
+    <div data-group>
+      <div data-group-title>
+        <h3>Typography</h3>
+        <p>Adjust scale and font stacks across headings, body copy, and code.</p>
+      </div>
+      <div data-grid>
+        <div data-field>
+          <label for="${panelId}-font-scale">Font scale</label>
+          <select id="${panelId}-font-scale" name="fontScale">
+            ${renderScaleOptions(preferences.fontScale)}
+          </select>
+        </div>
+        <div data-field>
+          <label for="${panelId}-heading-font">Heading font</label>
+          <select id="${panelId}-heading-font" name="headingFont">
+            ${renderSelectOptions(HEADING_FONT_OPTIONS, preferences.headingFont)}
+          </select>
+        </div>
+        <div data-field>
+          <label for="${panelId}-body-font">Body font</label>
+          <select id="${panelId}-body-font" name="bodyFont">
+            ${renderSelectOptions(BODY_FONT_OPTIONS, preferences.bodyFont)}
+          </select>
+        </div>
+        <div data-field>
+          <label for="${panelId}-code-font">Code font</label>
+          <select id="${panelId}-code-font" name="codeFont">
+            ${renderSelectOptions(CODE_FONT_OPTIONS, preferences.codeFont)}
+          </select>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 export class DisplayPreferencesPopover extends HTMLElement {
@@ -309,19 +380,66 @@ export class DisplayPreferencesPopover extends HTMLElement {
 
     this._toggle = this.querySelector("[data-toggle]");
     this._panel = this.querySelector("[data-panel]");
+    this._closeButton = this.querySelector("[data-panel-close]");
     this._controls = [...this.querySelectorAll("input, select")];
     this._handleToggleClick = () => {
+      if (!this._panel) return;
+
+      if (supportsNativePopover) {
+        this.positionPanel();
+
+        if (this.isOpen()) {
+          this._panel.hidePopover();
+        } else {
+          this._panel.showPopover();
+        }
+
+        return;
+      }
+
       this.syncOpenState(!this.isOpen());
     };
+    this._handleCloseClick = () => {
+      if (!this._panel || !this.isOpen()) {
+        return;
+      }
+
+      if (supportsNativePopover) {
+        this._panel.hidePopover();
+        return;
+      }
+
+      this.syncOpenState(false);
+      this._toggle?.focus();
+    };
     this._handleDocumentKeydown = (event) => {
+      if (supportsNativePopover) return;
       if (event.key !== "Escape" || !this.isOpen()) return;
 
       this.syncOpenState(false);
       this._toggle?.focus();
     };
     this._handleDocumentPointerDown = (event) => {
+      if (supportsNativePopover) return;
       if (!this.isOpen() || this.contains(event.target)) return;
       this.syncOpenState(false);
+    };
+    this._handlePanelToggle = (event) => {
+      const isOpen = event.newState === "open";
+
+      this.syncOpenState(isOpen);
+
+      if (isOpen) {
+        this.positionPanel();
+        return;
+      }
+
+      this._toggle?.focus();
+    };
+    this._handleViewportChange = () => {
+      if (this.isOpen()) {
+        this.positionPanel();
+      }
     };
     this._handlePreferenceChange = (event) => {
       const control = event.target.closest("input, select");
@@ -334,28 +452,35 @@ export class DisplayPreferencesPopover extends HTMLElement {
     };
 
     this._toggle?.addEventListener("click", this._handleToggleClick);
+    this._closeButton?.addEventListener("click", this._handleCloseClick);
+    this._panel?.addEventListener("toggle", this._handlePanelToggle);
     this.addEventListener("change", this._handlePreferenceChange);
     document.addEventListener("keydown", this._handleDocumentKeydown);
     document.addEventListener("pointerdown", this._handleDocumentPointerDown);
     document.addEventListener("click", this._handleDocumentPointerDown);
+    window.addEventListener("resize", this._handleViewportChange, { passive: true });
     this.syncFormControls();
     this.syncOpenState(false);
   }
 
   disconnectedCallback() {
     this._toggle?.removeEventListener("click", this._handleToggleClick);
+    this._closeButton?.removeEventListener("click", this._handleCloseClick);
+    this._panel?.removeEventListener("toggle", this._handlePanelToggle);
     this.removeEventListener("change", this._handlePreferenceChange);
     document.removeEventListener("keydown", this._handleDocumentKeydown);
     document.removeEventListener("pointerdown", this._handleDocumentPointerDown);
     document.removeEventListener("click", this._handleDocumentPointerDown);
+    window.removeEventListener("resize", this._handleViewportChange);
   }
 
   render() {
+    const fallbackStateAttributes = supportsNativePopover ? "" : ' aria-hidden="true" hidden';
+
     this.innerHTML = `
-      <div class="preferences-shell">
+      <div data-shell>
         <button
           type="button"
-          class="preferences-toggle"
           data-toggle
           aria-controls="${this._panelId}"
           aria-expanded="false"
@@ -376,83 +501,19 @@ export class DisplayPreferencesPopover extends HTMLElement {
         </button>
         <section
           id="${this._panelId}"
-          class="preferences-panel"
           data-panel
+          popover="auto"
           role="dialog"
           aria-labelledby="${this._titleId}"
-          aria-hidden="true"
-          hidden
+          ${fallbackStateAttributes}
         >
-          <div class="preferences-panel__header" data-panel-header>
-            <p class="preferences-panel__eyebrow" data-panel-kicker>Display</p>
+          <div data-panel-header>
+            <p data-panel-eyebrow data-panel-kicker>Display</p>
             <h2 id="${this._titleId}">Display preferences</h2>
-            <p class="preferences-panel__lede">Tune typography, motion, contrast, and radius without leaving the page.</p>
+            <p data-panel-lede>Tune typography, motion, contrast, and radius without leaving the page.</p>
+            <button type="button" data-panel-close aria-label="Close display preferences">X</button>
           </div>
-
-          <div class="preferences-group">
-            <div class="preferences-group__title">
-              <h3>Accent color</h3>
-              <p>Choose the palette used for links, actions, focus, and highlights.</p>
-            </div>
-            <accent-color-selector></accent-color-selector>
-          </div>
-
-          <section
-            class="preferences-group preferences-group--fieldset"
-            role="group"
-            aria-labelledby="${this._panelId}-corners-title"
-          >
-            <div class="preferences-group__title">
-              <h3 id="${this._panelId}-corners-title">Corner style</h3>
-              <p>Choose how rounded cards and controls should feel.</p>
-            </div>
-            <div class="preferences-choice-grid">
-              ${renderRadiusPresetControls(this._panelId, this.preferences.radiusPreset)}
-            </div>
-          </section>
-
-          <div class="preferences-group">
-            <div class="preferences-group__title">
-              <h3>Accessibility</h3>
-              <p>Reduce friction when you want a calmer, sharper interface.</p>
-            </div>
-            <div class="preferences-checklist">
-              ${renderAccessibilityOptions(this._panelId, this.preferences)}
-            </div>
-          </div>
-
-          <div class="preferences-group">
-            <div class="preferences-group__title">
-              <h3>Typography</h3>
-              <p>Adjust scale and font stacks across headings, body copy, and code.</p>
-            </div>
-            <div class="preferences-grid">
-              <div class="preferences-field">
-                <label for="${this._panelId}-font-scale">Font scale</label>
-                <select id="${this._panelId}-font-scale" name="fontScale">
-                  ${renderScaleOptions(this.preferences.fontScale)}
-                </select>
-              </div>
-              <div class="preferences-field">
-                <label for="${this._panelId}-heading-font">Heading font</label>
-                <select id="${this._panelId}-heading-font" name="headingFont">
-                  ${renderSelectOptions(HEADING_FONT_OPTIONS, this.preferences.headingFont)}
-                </select>
-              </div>
-              <div class="preferences-field">
-                <label for="${this._panelId}-body-font">Body font</label>
-                <select id="${this._panelId}-body-font" name="bodyFont">
-                  ${renderSelectOptions(BODY_FONT_OPTIONS, this.preferences.bodyFont)}
-                </select>
-              </div>
-              <div class="preferences-field">
-                <label for="${this._panelId}-code-font">Code font</label>
-                <select id="${this._panelId}-code-font" name="codeFont">
-                  ${renderSelectOptions(CODE_FONT_OPTIONS, this.preferences.codeFont)}
-                </select>
-              </div>
-            </div>
-          </div>
+          ${renderPanelSections(this._panelId, this.preferences)}
         </section>
       </div>
     `;
@@ -497,7 +558,7 @@ export class DisplayPreferencesPopover extends HTMLElement {
   }
 
   syncChoiceState() {
-    this.querySelectorAll(".preferences-choice").forEach((choice) => {
+    this.querySelectorAll("[data-choice]").forEach((choice) => {
       choice.dataset.selected = String(
         Boolean(choice.querySelector('input[type="radio"]:checked')),
       );
@@ -508,6 +569,18 @@ export class DisplayPreferencesPopover extends HTMLElement {
     return this.dataset.open === "true";
   }
 
+  positionPanel() {
+    if (!this._toggle || !this._panel) return;
+
+    const rect = this._toggle.getBoundingClientRect();
+
+    this._panel.style.setProperty("--popover-top", `${Math.round(rect.bottom + 8)}px`);
+    this._panel.style.setProperty(
+      "--popover-right",
+      `${Math.max(16, Math.round(window.innerWidth - rect.right))}px`,
+    );
+  }
+
   syncOpenState(isOpen) {
     this.dataset.open = String(isOpen);
     this._toggle?.setAttribute("aria-expanded", String(isOpen));
@@ -515,6 +588,16 @@ export class DisplayPreferencesPopover extends HTMLElement {
     if (!this._panel) return;
 
     this._panel.dataset.open = String(isOpen);
+
+    if (supportsNativePopover) {
+      !isOpen && this._panel.matches(":popover-open") && this._panel.hidePopover();
+
+      this._panel.removeAttribute("aria-hidden");
+      this._panel.hidden = false;
+
+      return;
+    }
+
     this._panel.setAttribute("aria-hidden", String(!isOpen));
     this._panel.hidden = !isOpen;
   }

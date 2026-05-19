@@ -48,6 +48,39 @@ async function copyProfileAssets() {
   );
 }
 
+async function replaceDistContents(sourceDir) {
+  const tempRoot = await mkdtemp(join(tmpdir(), "pixu-dist-"));
+  const tempOutput = join(tempRoot, "site");
+
+  try {
+    await cp(sourceDir, tempOutput, { recursive: true });
+    await rm(DIST, { recursive: true, force: true });
+    await cp(tempOutput, DIST, { recursive: true });
+  } finally {
+    await rm(tempRoot, { recursive: true, force: true });
+  }
+}
+
+async function buildStagedSite(options = {}) {
+  const tempRoot = await mkdtemp(join(tmpdir(), "pixu-build-"));
+  const stagedOutput = join(tempRoot, "site");
+
+  try {
+    await buildSite({
+      outDir: stagedOutput,
+      publicDir: stagedOutput,
+      sourcePath: options.sourcePath,
+      useFrontmatterFallbacksOnly: options.useFrontmatterFallbacksOnly,
+      interactions: options.interactions,
+    });
+
+    return stagedOutput;
+  } catch (error) {
+    await rm(tempRoot, { recursive: true, force: true });
+    throw error;
+  }
+}
+
 function isWatchedFile(pathname = "") {
   return WATCHED_ROOTS.some((root) => {
     const rel = relative(root, pathname);
@@ -57,10 +90,17 @@ function isWatchedFile(pathname = "") {
 
 function resumeGenerator() {
   let rebuildTimer;
+  let rebuildChain = Promise.resolve();
 
   async function rebuild(server) {
-    await buildSite({ outDir: DIST, publicDir: DIST, interactions: { enabled: false } });
-    server.ws.send({ type: "full-reload" });
+    const stagedOutput = await buildStagedSite({ interactions: { enabled: false } });
+
+    try {
+      await replaceDistContents(stagedOutput);
+      server.ws.send({ type: "full-reload" });
+    } finally {
+      await rm(dirname(stagedOutput), { recursive: true, force: true });
+    }
   }
 
   return {
@@ -72,9 +112,11 @@ function resumeGenerator() {
         if (!isWatchedFile(pathname)) return;
         clearTimeout(rebuildTimer);
         rebuildTimer = setTimeout(() => {
-          rebuild(server).catch((error) => {
-            server.config.logger.error(error.stack || error.message);
-          });
+          rebuildChain = rebuildChain
+            .then(() => rebuild(server))
+            .catch((error) => {
+              server.config.logger.error(error.stack || error.message);
+            });
         }, 120);
       };
 
@@ -91,12 +133,7 @@ function finalizeDistBuild() {
     apply: "build",
     async closeBundle() {
       await copyProfileAssets();
-      const tempRoot = await mkdtemp(join(tmpdir(), "pixu-dist-"));
-      const tempOutput = join(tempRoot, "site");
-      await cp(BUILD_OUTPUT, tempOutput, { recursive: true });
-      await rm(DIST, { recursive: true, force: true });
-      await cp(tempOutput, DIST, { recursive: true });
-      await rm(tempRoot, { recursive: true, force: true });
+      await replaceDistContents(BUILD_OUTPUT);
     },
   };
 }

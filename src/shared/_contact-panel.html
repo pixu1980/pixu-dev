@@ -4,10 +4,8 @@
   <p>{{ contact.summary }}</p>
   <div data-chip-list>
     <for each="method in contact.methods">
-      <span data-chip>{{ method }}</span>
+      <span data-chip>{{ method.value }}</span>
     </for>
-  </div>
-  <div data-link-list>
     <for each="link in contact.links">
       <include src="./_link.html" data='{"link": {{ link | json | raw }}}'></include>
     </for>

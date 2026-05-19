@@ -69,6 +69,7 @@ test("template context applies frontmatter sectionsConfig.order to navigation an
     context.navigation.map((item) => item.slug),
     ["speaking", "about", "experience"],
   );
+
   assert.deepEqual(
     context.sections.map((section) => section.slug),
     ["speaking", "about", "experience"],

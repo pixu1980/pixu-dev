@@ -1,15 +1,14 @@
 import "./components/index.js";
+import { initScrollSpy } from "./components/scroll-spy/index.js";
+import { initMobileDetails } from "./mobile-details.js";
 
 const root = document.documentElement;
 const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
-const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
-const sections = Array.from(document.querySelectorAll("main > section[id]"));
 const liveRegion = document.querySelector("[data-live-region]");
 const mobileQuery = window.matchMedia("(max-width: 992px)");
 
-let activeId = "";
 let navMode = "";
 
 function announce(message) {
@@ -18,10 +17,6 @@ function announce(message) {
   window.requestAnimationFrame(() => {
     liveRegion.textContent = message;
   });
-}
-
-function getHeaderOffset() {
-  return Math.ceil((header?.getBoundingClientRect().height || 0) + 24);
 }
 
 function setNavOpen(isOpen, options = {}) {
@@ -56,57 +51,6 @@ function syncNavMode() {
   }
 
   navMode = nextMode;
-}
-
-function getActiveSectionId() {
-  const offset = getHeaderOffset() + 16;
-  const anchor = window.scrollY + offset;
-  const candidates = sections
-    .map((section) => ({
-      id: section.id,
-      top: section.offsetTop,
-      bottom: section.offsetTop + section.offsetHeight,
-    }))
-    .filter((section) => section.top <= anchor && section.bottom > anchor)
-    .sort((left, right) => right.top - left.top);
-
-  if (candidates[0]) return candidates[0].id;
-
-  const passed = sections
-    .map((section) => ({ id: section.id, top: section.offsetTop }))
-    .filter((section) => section.top <= anchor)
-    .sort((left, right) => right.top - left.top);
-
-  return passed[0]?.id || sections[0]?.id || "";
-}
-
-function updateActiveNav() {
-  const nextId = getActiveSectionId();
-  if (!nextId || nextId === activeId) return;
-
-  activeId = nextId;
-  navLinks.forEach((link) => {
-    const isActive = link.getAttribute("href") === `#${nextId}`;
-    link.toggleAttribute("aria-current", isActive);
-    link.dataset.active = String(isActive);
-  });
-}
-
-function handleNavClick(event) {
-  const anchor = event.target.closest('a[href^="#"]');
-  if (!anchor) return;
-
-  const target = document.getElementById(anchor.getAttribute("href").slice(1));
-  if (!target) return;
-
-  event.preventDefault();
-  const top = Math.max(target.offsetTop - getHeaderOffset(), 0);
-  window.history.pushState(null, "", `#${target.id}`);
-  window.scrollTo({ top, behavior: "smooth" });
-
-  if (mobileQuery.matches) {
-    setNavOpen(false);
-  }
 }
 
 function initReveal() {
@@ -218,8 +162,6 @@ navToggle?.addEventListener("click", () => {
   setNavOpen(root.dataset.navState !== "open", { announce: true });
 });
 
-nav?.addEventListener("click", handleNavClick);
-
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape" || !mobileQuery.matches || root.dataset.navState !== "open") return;
   event.preventDefault();
@@ -227,18 +169,9 @@ document.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener(
-  "scroll",
-  () => {
-    updateActiveNav();
-  },
-  { passive: true },
-);
-
-window.addEventListener(
   "resize",
   () => {
     syncNavMode();
-    updateActiveNav();
   },
   { passive: true },
 );
@@ -252,4 +185,13 @@ if (typeof mobileQuery.addEventListener === "function") {
 syncNavMode();
 normalizeExternalLinks();
 initReveal();
-updateActiveNav();
+initScrollSpy({
+  closeNavigation: () => {
+    setNavOpen(false);
+  },
+  header,
+  mobileQuery,
+  nav,
+  window,
+});
+initMobileDetails();

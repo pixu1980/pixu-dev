@@ -7,5 +7,5 @@ export function mergeSectionsForRender(sections) {
     aboutSection.contactHtml = contactSection.bodyHtml;
   }
 
-  return clonedSections.filter((section) => section.slug !== "contact");
+  return clonedSections;
 }

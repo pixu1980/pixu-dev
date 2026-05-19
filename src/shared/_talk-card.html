@@ -5,16 +5,51 @@
   data-generated="sessionize-talk"
   data-reveal
 >
-  <p data-kicker>Talk</p>
-  <h3>{{ talk.title }}</h3>
-  <p>{{ talk.abstractText }}</p>
-  <footer>
-    <include src="./_link.html" data='{"link": {{ talk.sessionizeLink | json | raw }}}'></include>
-    <if condition="talk.githubLink">
-      <include src="./_link.html" data='{"link": {{ talk.githubLink | json | raw }}}'></include>
-    </if>
-    <if condition="talk.slidesLink">
-      <include src="./_link.html" data='{"link": {{ talk.slidesLink | json | raw }}}'></include>
-    </if>
-  </footer>
+  <section data-summary>
+    <p data-kicker>Talk</p>
+    <h3>{{ talk.title }}</h3>
+    <p>{{ talk.teaserText }}</p>
+    <button
+      type="button"
+      data-action
+      data-item-detail-trigger
+      data-detail-kind="talk"
+      popovertarget="{{ talk.detailId }}"
+      aria-expanded="false"
+    >
+      Open
+    </button>
+  </section>
+
+  <section
+    id="{{ talk.detailId }}"
+    popover="auto"
+    data-item-detail="talk"
+    aria-labelledby="{{ talk.detailId }}-title"
+  >
+    <header data-popover-header>
+      <p data-kicker>Talk</p>
+      <h3 id="{{ talk.detailId }}-title">{{ talk.title }}</h3>
+      <button
+        type="button"
+        data-link
+        data-popover-close
+        aria-label="Close talk details"
+        popovertarget="{{ talk.detailId }}"
+        popovertargetaction="hide"
+      >
+        X
+      </button>
+    </header>
+    <p>{{ talk.abstractText }}</p>
+    <footer>
+      <include src="./_link.html" data='{"link": {{ talk.sessionizeLink | json | raw }}}'></include>
+      <if condition="talk.githubLink">
+        <include src="./_link.html" data='{"link": {{ talk.githubLink | json | raw }}}'></include>
+      </if>
+      <if condition="talk.slidesLink">
+        <include src="./_link.html" data='{"link": {{ talk.slidesLink | json | raw }}}'></include>
+      </if>
+    </footer>
+  </section>
 </article>

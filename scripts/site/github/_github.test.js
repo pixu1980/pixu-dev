@@ -52,6 +52,7 @@ test("GitHub shared helpers normalize repos and tokens", () => {
   assert.deepEqual(tokenize("The CSS + HTML toolkit"), ["css", "html", "toolkit"]);
 
   const normalized = normalizeGitHubRepos([...repos, { name: "private", private: true }]);
+
   assert.equal(normalized.length, 2);
   assert.equal(normalized[0].slug, "dout-dev");
   assert.equal(sortGitHubRepos(normalized, ["talk-css"])[0].name, "dout-dev");
@@ -88,6 +89,7 @@ test("GitHub repos sort by latest update before stars or featured order", () => 
     sorted.map((repo) => repo.name),
     ["fresh-low-star", "middle", "featured-old"],
   );
+
   assert.equal(buildGitHubStats(sorted).lastUpdatedAt, "2026-05-15T00:00:00Z");
 });
 
@@ -95,18 +97,22 @@ test("GitHub stats split portfolio and talk repos", () => {
   const normalized = normalizeGitHubRepos(repos);
 
   assert.equal(isTalkRepo(normalized[1]), true);
+
   assert.deepEqual(
     getPortfolioRepos(normalized).map((repo) => repo.name),
     ["dout-dev"],
   );
+
   assert.deepEqual(
     getTalkRepos(normalized).map((repo) => repo.name),
     ["talk-css"],
   );
+
   assert.deepEqual(
     buildLanguageStats(normalized).map((entry) => entry.name),
     ["CSS", "JavaScript"],
   );
+
   assert.equal(buildTopicStats(normalized)[0].name, "cms");
   assert.equal(buildGitHubStats(normalized, 10).publicRepos, 10);
   assert.equal(buildGitHubCollections(normalized).talkRepos.length, 1);

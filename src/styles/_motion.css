@@ -22,12 +22,12 @@
       transform 220ms ease,
       border-color 220ms ease,
       background-color 220ms ease;
-  }
 
-  [data-hover-surface]:hover {
-    transform: translateY(-4px);
-    border-color: var(--line-strong);
-    background-color: rgb(255 255 255 / 0.065);
+    &:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      background-color: rgb(255 255 255 / 0.065);
+    }
   }
 
   @supports not (animation-timeline: view(block)) {
@@ -36,71 +36,69 @@
       transform: none;
     }
 
-    html[data-reveal-ready="true"] [data-reveal] {
-      opacity: 0;
-      transform: translateY(18px);
-      transition:
-        opacity 520ms ease,
-        transform 520ms ease;
-      transition-delay: calc(var(--reveal-order, 0) * 45ms);
-      will-change: opacity, transform;
-    }
+    html[data-reveal-ready="true"] {
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 520ms ease,
+          transform 520ms ease;
+        transition-delay: calc(var(--reveal-order, 0) * 45ms);
+        will-change: opacity, transform;
 
-    html[data-reveal-ready="true"] [data-reveal][data-visible="true"],
-    html[data-reveal-ready="true"] [data-hero] [data-reveal] {
-      opacity: 1;
-      transform: translateY(0);
+        &[data-visible="true"] {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      [data-hero] [data-reveal] {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 
   @supports (animation-timeline: view(block)) {
-    html[data-reveal-ready="true"] [data-reveal] {
-      opacity: 0;
-      transform: translateY(calc(14px + (var(--reveal-order, 0) * 2px)));
+    html[data-reveal-ready="true"] {
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(calc(14px + (var(--reveal-order, 0) * 2px)));
+        transition: none;
+        animation-name: reveal-on-scroll;
+        animation-duration: 1ms;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: view(block);
+        animation-range: entry 8% cover 24%;
+      }
+
+      [data-hero] [data-reveal],
+      main > [data-section][data-reveal] {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      [data-section="speaking"] [data-speaking-recap],
+      [data-section="speaking"] [data-talk]:first-child {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  }
+
+  html[data-reveal-ready="true"] {
+    [data-about-story][data-reveal],
+    [data-portfolio-summary][data-reveal],
+    [data-section="speaking"] [data-speaking-recap],
+    [data-section="speaking"] [data-talk]:first-child {
+      opacity: 1;
+      transform: none;
       transition: none;
-      animation-name: reveal-on-scroll;
-      animation-duration: 1ms;
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: view(block);
-      animation-range: entry 8% cover 24%;
-    }
-
-    html[data-reveal-ready="true"] [data-hero] [data-reveal] {
-      opacity: 1;
-      transform: translateY(0);
       animation: none;
     }
-
-    html[data-reveal-ready="true"] main > [data-section][data-reveal] {
-      opacity: 1;
-      transform: none;
-      animation: none;
-    }
-
-    html[data-reveal-ready="true"]
-      [data-section="speaking"]
-      :where([data-speaking-recap], [data-talk]:first-child) {
-      opacity: 1;
-      transform: none;
-      animation: none;
-    }
-  }
-
-  html[data-reveal-ready="true"] [data-about-story][data-reveal],
-  html[data-reveal-ready="true"] [data-portfolio-summary][data-reveal],
-  html[data-reveal-ready="true"] [data-speaking-recap][data-reveal] {
-    opacity: 1;
-    transform: none;
-    transition: none;
-    animation: none;
-  }
-
-  html[data-reveal-ready="true"] [data-section="speaking"] [data-talk]:first-child {
-    opacity: 1;
-    transform: none;
-    transition: none;
-    animation: none;
   }
 
   [data-hero-copy] {
@@ -120,6 +118,7 @@
       opacity: 0;
       transform: translateY(22px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -131,6 +130,7 @@
       opacity: 0;
       transform: scale(0.96) translateY(18px);
     }
+
     to {
       opacity: 1;
       transform: scale(1) translateY(0);
@@ -153,10 +153,10 @@
     *,
     *::before,
     *::after {
-      scroll-behavior: auto !important;
-      animation-duration: 1ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 1ms !important;
+      scroll-behavior: auto;
+      animation-duration: 1ms;
+      animation-iteration-count: 1;
+      transition-duration: 1ms;
     }
 
     [data-reveal] {
@@ -165,21 +165,19 @@
     }
   }
 
-  :root[data-reduce-motion="true"] *,
-  :root[data-reduce-motion="true"] *::before,
-  :root[data-reduce-motion="true"] *::after,
-  :root[data-reduce-animations="true"] *,
-  :root[data-reduce-animations="true"] *::before,
-  :root[data-reduce-animations="true"] *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 1ms !important;
-  }
+  :root:is([data-reduce-motion="true"], [data-reduce-animations="true"]) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto;
+      animation-duration: 1ms;
+      animation-iteration-count: 1;
+      transition-duration: 1ms;
+    }
 
-  :root[data-reduce-motion="true"] [data-reveal],
-  :root[data-reduce-animations="true"] [data-reveal] {
-    opacity: 1;
-    transform: none;
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+    }
   }
 }

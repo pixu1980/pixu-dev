@@ -1,16 +1,24 @@
 <footer data-footer>
   <section data-footer-recap>
     <p data-kicker>.finally()</p>
-    <h2>Design systems, frontend architecture, public speaking.</h2>
-    <p>
-      I turn design into handcrafted frontend and accessible experiences, possibly sharing clear
-      talks in the meantime. I actually enjoy bridging the gap between design and code.
-    </p>
+    <h2>I'm your Man if:</h2>
+    <ul>
+      <li>You need someone that helps teams building resilient, accessible, performant, handcrafted experiences with a focus on quality.</li>
+      <li>You need someone who can turn design into web accessible experiences, possibly sharing clear talks in the meantime.</li>
+      <li>You need someone who actually enjoys bridging the gap between design and code.</li>
+      <li>You need someone who also writes about the web, and shares insights and reusable solutions in talks and articles.</li>
+    </ul>
+    <p>If you want to chat, find me on social media or via email.</p>
   </section>
   <section data-footer-meta>
-    <p>Build {{ site.buildDate }}</p>
-    <p>&copy; {{ site.year }} {{ site.name }}</p>
-    <section data-link-list>
+    <p data-kicker>Elsewhere</p>
+    <h3>Keep reading. Keep in touch.</h3>
+    <p data-note>Blog, community, code, and talks.</p>
+    <div data-footer-facts>
+      <p>Build {{ site.buildDate }}</p>
+      <p>&copy; {{ site.year }} {{ site.name }}</p>
+    </div>
+    <section data-link-list data-footer-links>
       <for each="link in site.footerLinks">
         <include src="../shared/_link.html" data='{"link": {{ link | json | raw }}}'></include>
       </for>

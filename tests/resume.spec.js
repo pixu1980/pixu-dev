@@ -151,14 +151,14 @@ test.describe("resume page", () => {
 
   test("renders identity and semantic structure", async ({ page }) => {
     await expect(page).toHaveTitle(/Emiliano Pisu/);
-    await expect(page.locator("h1")).toHaveText(/Emiliano Pisu/);
+    await expect(page.locator("#hero-title")).toHaveText(/Emiliano Pisu/);
     await expect(page.locator("[data-role]")).toContainText(
       /Emiliano Pisu|Senior (Design|Frontend) Engineer|Frontend Engineer|Design Engineer/,
     );
-    await expect(page.locator("[data-site-rail] nav")).toBeAttached();
+    await expect(page.locator("[data-scroll-spy] nav")).toBeAttached();
     await expect(page.locator("main")).toBeAttached();
     await expect(page.locator("footer[data-footer]")).toBeAttached();
-    await expect(page.locator("h1")).toHaveCount(1);
+    await expect(page.locator("#hero-title")).toHaveCount(1);
   });
 
   test("navigation mirrors rendered sections", async ({ page }) => {
@@ -173,16 +173,223 @@ test.describe("resume page", () => {
     expect(sections.map((section) => section.heading)).toContain("Public Speaking");
   });
 
-  test("about absorbs contact and LinkedIn snapshot data", async ({ page }) => {
+  test("about stays concise and skills owns six synthesized clusters", async ({ page }) => {
     await expect(
       page.locator('main > section#about [data-generated="linkedin-profile"]'),
-    ).toBeVisible();
-    await expect(page.locator("main > section#contact")).toHaveCount(0);
-    await expect(page.locator('main > section#about [data-panel="contact"]')).toBeVisible();
-    await expect(page.locator("main > section#about [data-chip]")).toHaveCount(3);
+    ).toHaveCount(0);
+    await expect(page.locator('main > section#about [data-panel="principle"]')).toHaveCount(0);
+
+    const clusters = page.locator('main > section#skills [data-panel="skill-cluster"]');
+    await expect(clusters).toHaveCount(6);
+    await expect(clusters.first().locator("h3")).toHaveText("AI Product and Engineering");
+    expect(await page.locator("main > section#skills [data-tags] li").count()).toBeGreaterThan(5);
+
+    const htmlContent = await page.evaluate(() => ({
+      skillSummaries: Array.from(
+        document.querySelectorAll('main > section#skills [data-panel="skill-cluster"] p'),
+      ).map((node) => node.textContent?.trim() || ""),
+      talkSummaries: Array.from(
+        document.querySelectorAll(
+          '[data-generated="sessionize-talk"] :is([data-summary], [data-item-detail="talk"]) p:not([data-kicker])',
+        ),
+      ).map((node) => node.textContent?.trim() || ""),
+    }));
+
     expect(
-      await page.locator("main > section#experience [data-timeline-item]").count(),
-    ).toBeGreaterThan(5);
+      [...htmlContent.skillSummaries, ...htmlContent.talkSummaries].some((value) =>
+        /(\.\.\.|…)$/.test(value),
+      ),
+    ).toBe(false);
+
+    const spacing = await page.evaluate(() => {
+      const skillGrid = document.querySelector("[data-skill-grid]");
+      const firstCluster = document.querySelector('[data-panel="skill-cluster"]');
+      const tags = firstCluster?.querySelector("[data-tags]");
+
+      return {
+        cardGap: Number.parseFloat(getComputedStyle(firstCluster).gap || "0"),
+        cardPadding: Number.parseFloat(getComputedStyle(firstCluster).paddingTop || "0"),
+        gridGap: Number.parseFloat(getComputedStyle(skillGrid).gap || "0"),
+        tagGap: Number.parseFloat(getComputedStyle(tags).gap || "0"),
+      };
+    });
+
+    expect(spacing.gridGap).toBeGreaterThanOrEqual(16);
+    expect(spacing.cardGap).toBeGreaterThanOrEqual(16);
+    expect(spacing.cardPadding).toBeGreaterThanOrEqual(18);
+    expect(spacing.tagGap).toBeGreaterThanOrEqual(10);
+  });
+
+  test("contact renders headline, methods, and links", async ({ page }) => {
+    const contactPanel = page.locator('[data-section="contact"] [data-panel="contact"]');
+    const chips = page.locator('[data-section="contact"] [data-chip-list] [data-chip]');
+    const links = page.locator('[data-section="contact"] [data-chip-list] [data-link]');
+    const calendar = page.locator("#my-cal-inline-15-min-coffee-chat");
+
+    await expect(page.locator("main > section#contact")).toHaveCount(1);
+    await expect(contactPanel).toBeVisible();
+
+    // Contact methods (email, phone, location)
+    const chipCount = await chips.count();
+    expect(chipCount).toBeGreaterThanOrEqual(3);
+
+    // Contact links (external profiles) - inside chip-list
+    const linkCount = await links.count();
+    expect(linkCount).toBeGreaterThanOrEqual(3);
+
+    // Calendar widget
+    await expect(calendar).toHaveCount(1);
+
+    // Verify headline and summary text
+    await expect(contactPanel).toContainText("Available for");
+    await expect(contactPanel).toContainText("AI engineering");
+  });
+
+  test("mobile teaser cards open full-screen detail popovers", async ({ page, isMobile }) => {
+    test.skip(!isMobile, "mobile contract");
+
+    const experienceTrigger = page
+      .locator('[data-item-detail-trigger][data-detail-kind="experience"]')
+      .first();
+    const experiencePopover = page.locator('[data-item-detail="experience"]').first();
+
+    await experienceTrigger.click();
+    await expect(experiencePopover).toBeVisible();
+    await experiencePopover.locator("[data-popover-close]").click();
+    await expect(experienceTrigger).toBeFocused();
+
+    const firstTalk = page.locator('[data-generated="sessionize-talk"]').first();
+    const talkTrigger = page.locator('[data-item-detail-trigger][data-detail-kind="talk"]').first();
+    const talkPopover = firstTalk.locator('[data-item-detail="talk"]');
+
+    await expect(firstTalk.locator("[data-summary]")).toHaveCount(1);
+    await expect(firstTalk.locator("[data-desktop-detail]")).toHaveCount(0);
+    await expect(firstTalk.locator("[data-summary]")).toBeVisible();
+
+    await talkTrigger.click();
+    await expect(talkPopover).toBeVisible();
+    await talkPopover.locator("[data-popover-close]").click();
+
+    const firstEvent = page.locator('[data-generated="sessionize-event"]').first();
+    await expect(
+      firstEvent.locator('[data-item-detail-trigger][data-detail-kind="event"]'),
+    ).toHaveCount(0);
+    await expect(firstEvent.locator('[data-item-detail="event"]')).toHaveCount(0);
+    await expect(firstEvent.locator("[data-event-detail]")).toBeVisible();
+  });
+
+  test("mobile popover controls stay compact and timeline cards drop separators", async ({
+    page,
+    isMobile,
+  }) => {
+    test.skip(!isMobile, "mobile contract");
+
+    const metrics = await page.evaluate(() => {
+      const firstTimeline = document.querySelector("[data-timeline-item]");
+      const triggerNodes = Array.from(document.querySelectorAll("[data-item-detail-trigger]"));
+
+      return {
+        timelineBorderBottomWidth: Number.parseFloat(
+          getComputedStyle(firstTimeline).borderBottomWidth || "0",
+        ),
+        triggerMetrics: triggerNodes.map((node) => {
+          const rect = node.getBoundingClientRect();
+          const parentRect = node.parentElement?.getBoundingClientRect();
+
+          return {
+            centerOffset: parentRect
+              ? Math.abs(rect.left + rect.width / 2 - (parentRect.left + parentRect.width / 2))
+              : Number.POSITIVE_INFINITY,
+            parentWidth: parentRect?.width || 0,
+            width: rect.width,
+          };
+        }),
+      };
+    });
+
+    expect(metrics.timelineBorderBottomWidth).toBe(0);
+
+    for (const trigger of metrics.triggerMetrics) {
+      expect(trigger.width).toBeLessThan(trigger.parentWidth - 16);
+      expect(trigger.centerOffset).toBeLessThanOrEqual(2);
+    }
+
+    const experienceTrigger = page
+      .locator('[data-item-detail-trigger][data-detail-kind="experience"]')
+      .first();
+    const experiencePopover = page.locator('[data-item-detail="experience"]').first();
+    const closeButton = experiencePopover.locator("[data-popover-close]");
+
+    await experienceTrigger.click();
+    await expect(experiencePopover).toBeVisible();
+    await expect(closeButton).toHaveText("X");
+
+    const closeMetrics = await page.evaluate(() => {
+      const header = document.querySelector(
+        '[data-item-detail="experience"] [data-popover-header]',
+      );
+      const close = document.querySelector('[data-item-detail="experience"] [data-popover-close]');
+      const headerRect = header?.getBoundingClientRect();
+      const closeRect = close?.getBoundingClientRect();
+
+      return {
+        rightGap: headerRect && closeRect ? Math.abs(headerRect.right - closeRect.right) : 999,
+        topGap: headerRect && closeRect ? Math.abs(closeRect.top - headerRect.top) : 999,
+      };
+    });
+
+    expect(closeMetrics.rightGap).toBeLessThanOrEqual(20);
+    expect(closeMetrics.topGap).toBeLessThanOrEqual(20);
+
+    await closeButton.click();
+    await expect(experiencePopover).toBeHidden();
+
+    const displayPreferences = page.locator("[data-header-tools] > display-preferences-popover");
+    const displayPreferencesToggle = displayPreferences.locator("[data-toggle]");
+    const displayPreferencesPanel = displayPreferences.locator("[data-panel]");
+
+    await page.evaluate(() => {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    });
+
+    await displayPreferencesToggle.click({ force: true });
+    await expect(displayPreferencesPanel).toBeVisible();
+
+    const displayClose = displayPreferencesPanel.locator("[data-panel-close]");
+    await expect(displayClose).toHaveCount(1);
+    await expect(displayClose).toHaveText("X");
+
+    const sharedCloseMetrics = await page.evaluate(() => {
+      const experienceClose = document.querySelector(
+        '[data-item-detail="experience"] [data-popover-close]',
+      );
+      const displayCloseNode = document.querySelector(
+        "display-preferences-popover [data-panel] [data-panel-close]",
+      );
+
+      if (!(experienceClose instanceof HTMLElement) || !(displayCloseNode instanceof HTMLElement)) {
+        return null;
+      }
+
+      const experienceStyle = getComputedStyle(experienceClose);
+      const displayStyle = getComputedStyle(displayCloseNode);
+
+      return {
+        experienceBorderRadius: experienceStyle.borderRadius,
+        experienceHeight: experienceStyle.height,
+        experienceWidth: experienceStyle.width,
+        displayBorderRadius: displayStyle.borderRadius,
+        displayHeight: displayStyle.height,
+        displayWidth: displayStyle.width,
+      };
+    });
+
+    expect(sharedCloseMetrics).not.toBeNull();
+    expect(sharedCloseMetrics?.displayWidth).toBe(sharedCloseMetrics?.experienceWidth);
+    expect(sharedCloseMetrics?.displayHeight).toBe(sharedCloseMetrics?.experienceHeight);
+    expect(sharedCloseMetrics?.displayBorderRadius).toBe(
+      sharedCloseMetrics?.experienceBorderRadius,
+    );
   });
 
   test("build no longer exposes runtime resume json", async ({ page }) => {
@@ -212,8 +419,15 @@ test.describe("resume page", () => {
     ).toBeGreaterThan(0);
   });
 
-  test("public speaking renders Sessionize talks, events, and related repos", async ({ page }) => {
+  test("public speaking renders Sessionize talks, events, and related repos", async ({
+    page,
+    isMobile,
+  }) => {
     const firstTalk = page.locator('[data-generated="sessionize-talk"]').first();
+    const talkSummary = firstTalk.locator("[data-summary]");
+    const talkDetail = firstTalk.locator('[data-item-detail="talk"]');
+    const talkLinks = talkDetail.locator("footer [data-link]");
+    const firstEvent = page.locator('[data-generated="sessionize-event"]').first();
 
     expect(await page.locator('[data-generated="sessionize-talk"]').count()).toBeGreaterThanOrEqual(
       8,
@@ -221,15 +435,25 @@ test.describe("resume page", () => {
     expect(await page.locator('[data-generated="sessionize-event"]').count()).toBeGreaterThan(0);
     expect(await page.locator("[data-related-repo]").count()).toBeGreaterThan(0);
     await expect(page.locator('[data-section="speaking"] [data-speaking-recap]')).toBeVisible();
-    await expect(firstTalk.locator("footer [data-link]")).toHaveText([
-      "Sessionize",
-      "GitHub",
-      "Slides",
-    ]);
+    await expect(talkSummary).toHaveCount(1);
+    await expect(firstTalk.locator("[data-desktop-detail]")).toHaveCount(0);
+    await expect(talkDetail).toHaveCount(1);
+    await expect(firstEvent.locator("[data-event-detail]")).toHaveCount(1);
+    await expect(firstEvent.locator('[data-item-detail="event"]')).toHaveCount(0);
+    await expect(talkLinks).toHaveText(["Sessionize", "GitHub", "Slides"]);
 
-    const hrefs = await firstTalk
-      .locator("footer [data-link]")
-      .evaluateAll((links) => links.map((link) => link.getAttribute("href") || ""));
+    if (isMobile) {
+      await expect(talkSummary).toBeVisible();
+      await expect(talkDetail).toBeHidden();
+    } else {
+      await expect(talkSummary).toBeHidden();
+      await expect(talkDetail).toBeVisible();
+      await expect(talkDetail.locator("[data-popover-close]")).toBeHidden();
+    }
+
+    const hrefs = await talkLinks.evaluateAll((links) =>
+      links.map((link) => link.getAttribute("href") || ""),
+    );
     expect(hrefs[0]).toMatch(/^https:\/\/sessionize\.com\//);
     expect(hrefs[1]).toMatch(/^https:\/\/github\.com\/pixu1980\/talk-/);
     expect(hrefs[2]).toMatch(/^https:\/\/pixu1980\.github\.io\/talk-.*\/$/);
@@ -252,10 +476,13 @@ test.describe("resume page", () => {
     }
   });
 
-  test("display preferences popover updates the document accent color", async ({ page }) => {
+  test("display preferences popover updates the document accent color", async ({
+    page,
+    isMobile,
+  }) => {
     const popover = page.locator("[data-header-tools] > display-preferences-popover");
-    const toggle = popover.locator("button");
-    const panel = popover.locator('[role="dialog"]');
+    const toggle = popover.locator("[data-toggle]");
+    const panel = popover.locator("[data-panel]");
 
     await expect(popover).toBeVisible();
     await expect(toggle).toBeVisible();
@@ -263,6 +490,12 @@ test.describe("resume page", () => {
 
     await toggle.click();
     await expect(panel).toBeVisible();
+    if (isMobile) {
+      await expect(panel.locator("[data-panel-close]")).toHaveCount(1);
+      await expect(panel.locator("[data-panel-close]")).toBeVisible();
+    } else {
+      await expect(panel.locator("[data-panel-close]")).toBeHidden();
+    }
     await expect(popover.locator('input[name="radiusPreset"]')).toHaveCount(3);
     await expect(popover.locator('input[name="reduceMotion"]')).toHaveCount(1);
     await expect(popover.locator('input[name="reduceAnimations"]')).toHaveCount(1);
@@ -275,6 +508,42 @@ test.describe("resume page", () => {
 
     const selector = popover.locator("accent-color-selector");
     await expect(selector.locator('input[type="radio"]')).toHaveCount(5);
+
+    const selectorMetrics = await page.evaluate(() => {
+      const panelNode = document.querySelector("display-preferences-popover [data-panel]");
+      const selectorNode = document.querySelector(
+        "display-preferences-popover accent-color-selector",
+      );
+      const selectorParentNode = selectorNode?.parentElement || null;
+      const swatchNode = document.querySelector(
+        'display-preferences-popover accent-color-selector [data-option="purple"] [data-swatch]',
+      );
+      const titleNode = document.querySelector("display-preferences-popover [data-group-title] h3");
+      const checklistNode = document.querySelector("display-preferences-popover [data-checklist]");
+      const selectorParentStyle = selectorParentNode ? getComputedStyle(selectorParentNode) : null;
+      const selectorParentContentWidth = selectorParentNode
+        ? selectorParentNode.clientWidth -
+          Number.parseFloat(selectorParentStyle?.paddingLeft || "0") -
+          Number.parseFloat(selectorParentStyle?.paddingRight || "0")
+        : 0;
+
+      return {
+        groupTitleSize: Number.parseFloat(getComputedStyle(titleNode).fontSize || "0"),
+        panelWidth: panelNode?.getBoundingClientRect().width || 0,
+        selectorParentContentWidth,
+        selectorWidth: selectorNode?.getBoundingClientRect().width || 0,
+        swatchSize: swatchNode?.getBoundingClientRect().width || 0,
+        checklistGap: Number.parseFloat(getComputedStyle(checklistNode).gap || "0"),
+      };
+    });
+
+    expect(selectorMetrics.selectorWidth).toBeGreaterThanOrEqual(
+      selectorMetrics.selectorParentContentWidth - 2,
+    );
+    expect(selectorMetrics.swatchSize).toBeGreaterThanOrEqual(34);
+    expect(selectorMetrics.groupTitleSize).toBeGreaterThanOrEqual(21);
+    expect(selectorMetrics.checklistGap).toBeGreaterThanOrEqual(13);
+
     await selector.locator('[data-option="purple"]').click();
     await expect(page.locator("html")).toHaveAttribute("data-accent", "purple");
     await expect(selector.locator('[data-option="purple"] [data-swatch]')).toHaveCSS(
@@ -294,13 +563,62 @@ test.describe("resume page", () => {
     await popover.locator('select[name="fontScale"]').selectOption("110%");
     expect(await page.locator("html").evaluate((node) => node.style.fontSize)).toBe("110%");
 
-    await page.locator("[data-mark]").click({ force: true });
+    if (!isMobile) {
+      await page.locator("[data-mark]").click({ force: true });
+      await expect(panel).toBeHidden();
+
+      await toggle.click();
+      await expect(panel).toBeVisible();
+    }
+
+    await page.keyboard.press("Escape");
     await expect(panel).toBeHidden();
 
     await toggle.click();
     await expect(panel).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(panel).toBeHidden();
+    await expect(toggle).toBeFocused();
+  });
+
+  test("display preferences uses native popover and mobile full-screen layout", async ({
+    page,
+    isMobile,
+  }) => {
+    const popover = page.locator("[data-header-tools] > display-preferences-popover");
+    const toggle = popover.locator("[data-toggle]");
+    const panel = popover.locator("[data-panel]");
+
+    await toggle.click();
+    await expect(panel).toHaveAttribute("popover", "auto");
+    await expect(panel).toBeVisible();
+    if (isMobile) {
+      await expect(panel.locator("[data-panel-close]")).toHaveCount(1);
+      await expect(panel.locator("[data-panel-close]")).toBeVisible();
+    } else {
+      await expect(panel.locator("[data-panel-close]")).toBeHidden();
+    }
+
+    const panelBox = await panel.evaluate((node) => {
+      const rect = node.getBoundingClientRect();
+      return {
+        height: rect.height,
+        position: getComputedStyle(node).position,
+        width: rect.width,
+      };
+    });
+
+    if (isMobile) {
+      expect(Math.round(panelBox.width || 0)).toBe(page.viewportSize()?.width);
+      expect(Math.round(panelBox.height || 0)).toBeGreaterThanOrEqual(
+        (page.viewportSize()?.height || 0) - 4,
+      );
+    } else {
+      expect(panelBox.position).toBe("fixed");
+      expect(Math.round(panelBox.width || 0)).toBeLessThan(page.viewportSize()?.width || 0);
+    }
+
+    await page.keyboard.press("Escape");
     await expect(toggle).toBeFocused();
   });
 
@@ -375,23 +693,6 @@ test.describe("resume page", () => {
     expect(new Set(heights).size).toBe(1);
   });
 
-  test("Contact link in header scrolls to contact panel", async ({ page, isMobile }) => {
-    test.skip(!!isMobile, "desktop contract - scroll behavior differs on mobile");
-
-    await expect(page.locator("skip-link")).toBeVisible();
-    await expect(page.locator("scroll-progress")).toBeAttached();
-    await expect(page.locator("pointer-glow")).toBeAttached();
-
-    const contactLink = page.locator('a[data-header-action][href="#contact"]');
-    await expect(contactLink).toHaveText("Contact");
-
-    const contactPanel = page.locator('[data-panel="contact"]');
-    await expect(contactPanel).toBeAttached();
-
-    await contactLink.click();
-    await expect(contactPanel).toBeInViewport({ timeout: 10000 });
-  });
-
   test("long live-data sections reveal while scrolling", async ({ page }) => {
     const portfolioSection = page.locator('[data-section="portfolio"]').first();
     await expect(portfolioSection).toBeAttached();
@@ -453,6 +754,7 @@ test.describe("resume page", () => {
     expect(diagnostics.outOfBounds).toEqual([]);
 
     await page.locator('[data-nav-link][href="#portfolio"]').click();
+
     await expect(page.locator('[data-nav-link][href="#portfolio"]')).toHaveAttribute(
       "aria-current",
       "",

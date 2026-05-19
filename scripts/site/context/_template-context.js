@@ -3,19 +3,20 @@ import {
   parseEducationEntriesFromHtml,
   parseExperienceEntriesFromHtml,
   withSectionMeta,
-  collectStructuredSectionBlocks,
 } from "../markdown/index.js";
 
 import { getPreferredProfileImage } from "../_profile-image.js";
 import { normalizeWhitespace, slugify, toArray } from "../_text.js";
 
 import {
+  buildDetailId,
   buildDateMeta,
   buildHeroMeta,
   buildHeroMetrics,
   buildSourceStatus,
   normalizeLinks,
 } from "./_helpers.js";
+import { buildSkillClusters } from "./sections/_skills-clusters.js";
 import { SECTION_BUILDERS } from "./sections/index.js";
 
 const MONTH_SHORT = new Map([
@@ -111,6 +112,14 @@ function normalizeEntry(entry) {
 
   return {
     ...entry,
+    detailId: buildDetailId("experience", [
+      entry?.title,
+      entry?.organization,
+      dateRangeDisplay.label,
+    ]),
+    teaserMeta: [entry?.organization || entry?.subtitle, dateRangeDisplay.label]
+      .filter(Boolean)
+      .join(" / "),
     highlights: toArray(entry.highlights),
     skills: toArray(entry.skills),
     dateRangeLabel: dateRangeDisplay.label,
@@ -130,8 +139,20 @@ function buildExperienceSection(section, data, leadHtml) {
   return { ...section, leadHtml, entries: entries.map(normalizeEntry) };
 }
 
-function buildSkillsSection(section, leadHtml) {
-  return { ...section, leadHtml, blocks: collectStructuredSectionBlocks(section) };
+function buildSkillsSection(section, data, leadHtml, sections = []) {
+  const aboutSection = sections.find((candidate) => candidate.slug === "about");
+  const clusters = buildSkillClusters({
+    aboutSection,
+    linkedin: data.linkedin,
+    skillsSection: section,
+  });
+
+  return {
+    ...section,
+    leadHtml,
+    clusters,
+    skillTags: [...new Set(clusters.flatMap((cluster) => cluster.items))].slice(0, 16),
+  };
 }
 
 function buildEducationSection(section, data, leadHtml) {
@@ -142,7 +163,7 @@ function buildEducationSection(section, data, leadHtml) {
   return { ...section, leadHtml, entries: entries.map(normalizeEntry) };
 }
 
-function buildSectionView(section, frontmatter, data) {
+function buildSectionView(section, frontmatter, data, sectionsWithMeta) {
   const leadHtml = getLeadingSectionHtml(section);
   const builder = SECTION_BUILDERS[section.slug];
 
@@ -155,7 +176,7 @@ function buildSectionView(section, frontmatter, data) {
   }
 
   if (section.slug === "skills") {
-    return buildSkillsSection(section, leadHtml);
+    return buildSkillsSection(section, data, leadHtml, sectionsWithMeta);
   }
 
   if (section.slug === "education") {
@@ -192,6 +213,8 @@ export function buildTemplateContext({ frontmatter, data, profileImage, sections
       slug: section.slug,
       label: section.label,
     })),
-    sections: sectionsWithMeta.map((section) => buildSectionView(section, frontmatter, data)),
+    sections: sectionsWithMeta.map((section) =>
+      buildSectionView(section, frontmatter, data, sectionsWithMeta),
+    ),
   };
 }

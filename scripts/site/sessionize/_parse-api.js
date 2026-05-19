@@ -1,4 +1,4 @@
-import { englishText, normalizeWhitespace, toArray, truncateText, uniqueBy } from "../_text.js";
+import { englishText, normalizeWhitespace, summarizeText, toArray, uniqueBy } from "../_text.js";
 import { getSessionizeApiCollection, getSessionizeApiLanguages } from "./_language.js";
 import { cleanSessionizeSpeakerSummary } from "./_speaker-summary.js";
 
@@ -58,13 +58,13 @@ export function parseSessionizeApiData(payload, profileUrl, fallback, preferredL
       name: normalizeWhitespace(speaker?.fullName || speaker?.name || ""),
       headline,
       image: speaker?.profilePicture || speaker?.image || "",
-      summary: truncateText(
+      summary: summarizeText(
         cleanSessionizeSpeakerSummary(
           englishText(speaker?.bio || speaker?.summary || fallback?.summary, ""),
           headline,
           fallback?.summary || "",
         ),
-        540,
+        420,
       ),
       topics: uniqueBy(
         [...toArray(speaker?.categories), ...toArray(speaker?.tags), ...toArray(fallback?.topics)]

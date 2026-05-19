@@ -1,0 +1,56 @@
+<section data-contact-layout>
+  <include src="../shared/_contact-panel.html" data='{"contact": {{ section.contact | json | raw }}}'></include>
+  <section data-contact-calendar data-surface="lifted" data-reveal>
+    <p data-kicker>Calendar</p>
+    <h3>Book a 15min Coffee Chat</h3>
+    <div style="width: 100%; height: 100%; overflow: scroll" id="my-cal-inline-15-min-coffee-chat"></div>
+
+    <script type="text/javascript">
+      ((C, A, L) => {
+        const pushQueue = (api, args) => {
+          api.q.push(args);
+        };
+        const d = C.document;
+        C.Cal =
+          C.Cal ||
+          ((...args) => {
+            const cal = C.Cal;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              d.head.appendChild(d.createElement("script")).src = A;
+              cal.loaded = true;
+            }
+            if (args[0] === L) {
+              const api = (...apiArgs) => {
+                pushQueue(api, apiArgs);
+              };
+              const namespace = args[1];
+              api.q = api.q || [];
+              if (typeof namespace === "string") {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                pushQueue(cal.ns[namespace], args);
+                pushQueue(cal, ["initNamespace", namespace]);
+              } else {
+                pushQueue(cal, args);
+              }
+              return;
+            }
+            pushQueue(cal, args);
+          });
+      })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "15-min-coffee-chat", { origin: "https://app.cal.com" });
+
+      Cal.ns["15-min-coffee-chat"]("inline", {
+        elementOrSelector: "#my-cal-inline-15-min-coffee-chat",
+        config: { layout: "month_view", useSlotsViewOnSmallScreen: "true", theme: "auto" },
+        calLink: "pixu1980/15-min-coffee-chat",
+      });
+
+      Cal.ns["15-min-coffee-chat"]("ui", {
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    </script>
+  </section>
+</section>

@@ -57,7 +57,7 @@
     line-height: 1.2;
   }
 
-  [data-summary] {
+  [data-hero] [data-summary] {
     max-width: 42rem;
     font-size: var(--step-1);
   }
@@ -65,7 +65,7 @@
   :where([data-actions], [data-link-list], [data-chip-list], [data-related-list]) {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem;
+    gap: 0.75rem;
   }
 
   [data-action]:first-child {
@@ -78,7 +78,7 @@
   :where([data-hero-meta], [data-source-status], [data-tags]) {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.65rem;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -89,7 +89,7 @@
   }
 
   :where([data-hero-meta], [data-source-status], [data-tags]) li {
-    padding: 0.45rem 0.65rem;
+    padding: 0.5rem 0.75rem;
     border: 1px solid var(--line);
     border-radius: var(--radius-round);
     color: var(--ink-muted);

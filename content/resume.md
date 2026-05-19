@@ -1,8 +1,7 @@
 ---
 name: Emiliano Pisu
 title: >-
-  Frontend Engineer | Design Engineer | AI Product Engineer | Accessibility WCAG
-  Advocate | Speaker | Mentor
+  Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor
 location: 'Rome, Italy'
 email: pisuemiliano.1980 @ gmail.com
 phone: +39 366 258 0888
@@ -160,13 +159,10 @@ metrics:
 generated:
   linkedin:
     headline: >-
-      Frontend Engineer | Design Engineer | AI Product Engineer | Accessibility
-      WCAG Advocate | Speaker | Mentor
+      Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor
     summary: >-
-      AI Product Engineer, Frontend Engineer, Design Engineer, Mentor and
-      Speaker focused on accessible interfaces, native web architectures, and
-      teaching teams how to ship with less friction, less dependencies and more
-      sustainable solutions.
+      Focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction, less dependencies
+      and more sustainable solutions.
     focus:
       - AI product engineering
       - Frontend engineering
@@ -1125,7 +1121,7 @@ generated:
         createdAt: '2026-04-29T21:11:30Z'
         slug: pix-galaxy
       - name: pixu1980
-        description: "Emiliano Pisu | Senior Frontend Engineer ✨ AI Product Engineer \U0001F3A8 Design Engineer ♿️ Accessibility WCAG Advocate \U0001F3A4 Speaker \U0001F468\U0001F3FB‍\U0001F3EB Mentor \U0001F9B8‍♂️ Your friendly neighborhood interactive things nerd"
+        description: "Emiliano Pisu | Senior Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor"
         url: 'https://github.com/pixu1980/pixu1980'
         homepage: 'https://pixu.dev'
         language: Mixed
@@ -1460,7 +1456,7 @@ generated:
     profileUrl: 'https://sessionize.com/pixu1980/'
     speaker:
       name: Emiliano Pisu
-      headline: "Senior Frontend Engineer ✨ AI Product Engineer \U0001F3A8 Design Engineer ♿️ Accessibility WCAG Advocate \U0001F3A4 Speaker \U0001F468\U0001F3FB‍\U0001F3EB Mentor"
+      headline: "Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor"
       image: 'https://sessionize.com/image/6fab-400o400o2-sBNH39EcgEDbD4nyjs7jwV.png'
       summary: ''
       topics:
@@ -1955,62 +1951,20 @@ generated:
 ---
 ## About
 
-My mantra is: "*Make learning a habit!*" and I started writing code in **1994** and never left the keyboard.
+I'm a Frontend Engineer, Design Engineer, AI Product Engineer, Accessibility Advocate, Speaker and Mentor with 27+ years of experience in the industry. I have a passion for building thoughtful, accessible and high-quality digital products that bridge design and development without losing craft.
 
-I **bridge design and development** without losing craft: *semantics-first HTML*, *CSS on purpose*, *progressive enhancement with JS* and *long-term maintainability*.
+My mantra is "Make learning a habit!" and I still build with the same curiosity that started in 1994.
 
-My *IT childhood* was a classic Gen X story: a **Commodore 64** at home when I was just **3 years old**, learning to type before learning to write with a pen.
+I bridge design and development without losing craft: semantics-first HTML, CSS on purpose, progressive enhancement with JavaScript, and long-term maintainability.
 
-Those first lines of code were the ones needed to run **Buck Rogers** and **Ghostbusters** from cassette tapes.
+I started professionally in 2001, moved into the web in 2003, and now focus on frontend architecture, design systems, accessibility, lean web thinking, mentoring, and public speaking. Italian is my native language, and I work comfortably in English.
 
-My **professional career began in 2001** with Delphi and VB 6.0, then evolved through C#.NET, building *Client/Server applications*, *database architectures* and *database-driven software*.
+I work best where product direction, interface craft, and implementation quality need to stay aligned.
 
-From there, I **moved into the web in 2003** experimenting over the years with a long list of *languages*, *databases*, *IDEs*, *frameworks*, *patterns* and *servers*.
+I focus on frontend architecture, design systems, accessibility, performance, maintainability, and mentoring.
 
-Today I focus on **frontend architecture**, **design systems**, **accessibility** and **lean-web thinking**.
+I also have experience in AI product engineering, helping teams integrate AI into real-world workflows and applications with a focus on practical value and engineering quality.
 
-Lately I have also focused on giving back to the community through **public talks**, **mentoring**, **open-source experiments** and **accessible design systems that work in the real world**.
-
-### Bridge design and code
-
-Turn visual language into production-grade systems without flattening the original intent.
-
-### Accessibility is product quality
-
-Semantics, WCAG patterns, motion restraint, keyboard-first thinking are part of the build, not a retrofit.
-
-### Native web thinking
-
-Prioritize platform capabilities and browser APIs over abstractions and cargo cult patterns.
-
-### Durable delivery
-
-Architect for maintainability, readability, and resilience to team and product changes over time.
-
-### Mentorship as delivery
-
-Share knowledge, tools, and approaches that teams can reuse immediately, not just in the current project but in future work as well.
-
-### Lean web over cargo cult complexity
-
-Reach for the platform before reaching for weight.
-
-### Teach while shipping
-
-Mentorship, talks, pairing are part of delivery.
-
-### Make learning a habit
-
-Stay curious, experiment, share what you learn, and keep growing.
-
-### Have fun
-
-Enjoy the process, celebrate small wins, and find joy in the craft of building things that people use and love.
-
-### Languages
-
-- Italian - Native
-- English - Full Professional
 
 ## Experience
 
@@ -2312,21 +2266,41 @@ Windows-based application developer
 
 ## Skills
 
-### Design Engineering
+### AI Product and Engineering
 
-UI architecture, design systems, typography systems, motion systems, design analysis
+Shape AI-assisted product workflows that stay useful, testable, and grounded in delivery.
 
-### Frontend Core
+Tags: AI-assisted workflows, agentic product thinking, prompt-driven prototyping, evaluation loops, practical integration.
 
-HTML, CSS, JavaScript, TypeScript, responsive design, progressive enhancement
+### Frontend Architecture
 
-### Frameworks & Tooling
+Build native-web interfaces that stay readable, resilient, and maintainable as products grow.
 
-React, Angular, Vue, Web Components, Node.js, Playwright
+Tags: HTML, CSS, JavaScript, TypeScript, component design, progressive enhancement, and performance-minded frontend systems.
 
-### Quality & Delivery
+### Design Engineering Systems
 
-Accessibility, cross-browser testing, performance, CI/CD, documentation, mentoring
+Turn visual intent into durable component systems, tokens, and implementation rules.
+
+Tags: Design systems, UI architecture, typography systems, motion systems, token-driven implementation, and design-to-code translation.
+
+### Accessibility and Quality
+
+Treat accessibility, browser coverage, and implementation quality as product constraints, not cleanup.
+
+Tags: WCAG patterns, keyboard-first interaction, cross-browser testing, resilient motion, and maintainable quality habits.
+
+### Mentoring and Enablement
+
+Raise team capability through reusable guidance, mentoring, and delivery-friendly documentation.
+
+Tags: Documentation, team coaching, pairing, code reviews, implementation playbooks, and reusable delivery practices.
+
+### Speaking and Community
+
+Share working patterns through talks, workshops, open source, and community-facing material.
+
+Tags: Conference talks, workshops, mentoring sessions, open source, technical writing, and community-facing knowledge sharing.
 
 ## Portfolio
 

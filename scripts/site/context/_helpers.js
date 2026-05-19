@@ -1,5 +1,11 @@
 import { formatDate, formatNumber, getBuildDateParts, getStatusLabel } from "../_format.js";
-import { isExternalUrl, normalizeWhitespace, toArray, truncateText } from "../_text.js";
+import {
+  extractExcerptText,
+  isExternalUrl,
+  normalizeWhitespace,
+  slugify,
+  toArray,
+} from "../_text.js";
 
 export function normalizeLinks(links, kind = "link") {
   return toArray(links)
@@ -50,9 +56,43 @@ export function buildSourceStatus(sources) {
 }
 
 export function buildContactMethods(frontmatter) {
-  return [frontmatter.email, frontmatter.phone, frontmatter.location]
-    .map((value) => normalizeWhitespace(value))
-    .filter(Boolean);
+  const email = normalizeWhitespace(frontmatter.email || "");
+  const phoneLabel = normalizeWhitespace(frontmatter.phone || "");
+  const phoneHref = phoneLabel.replace(/[^\d+]/g, "");
+  const location = normalizeWhitespace(frontmatter.location || "");
+
+  return [
+    email
+      ? {
+          href: `mailto:${email}`,
+          label: "Email",
+          value: email,
+          description: "Start a project conversation or ask about availability.",
+          kind: "email",
+          isExternal: false,
+        }
+      : null,
+    phoneLabel
+      ? {
+          href: `tel:${phoneHref}`,
+          label: "Phone",
+          value: phoneLabel,
+          description: "Use this for direct coordination when async is too slow.",
+          kind: "phone",
+          isExternal: false,
+        }
+      : null,
+    location
+      ? {
+          href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`,
+          label: "Location",
+          value: location,
+          description: "Based in Rome, available for remote and selected onsite work.",
+          kind: "location",
+          isExternal: true,
+        }
+      : null,
+  ].filter(Boolean);
 }
 
 export function buildRepoView(repo) {
@@ -69,6 +109,15 @@ export function buildRepoView(repo) {
       ? { href: repo.homepage, label: "Site", kind: "link", isExternal: true }
       : null,
   };
+}
+
+export function buildDetailId(prefix, parts = []) {
+  const seed = toArray(parts)
+    .map((part) => normalizeWhitespace(String(part || "")))
+    .filter(Boolean)
+    .join("-");
+
+  return `${prefix}-${slugify(seed || "item")}`;
 }
 
 export function buildTalkView(talk) {
@@ -92,9 +141,13 @@ export function buildTalkView(talk) {
 
   return {
     ...talk,
-    abstractText: truncateText(
+    detailId: buildDetailId("talk", [talk.title]),
+    teaserText: extractExcerptText(
       talk.abstract || "Talk abstract imported from Sessionize or local fallback data.",
-      360,
+      { maxLength: 140, maxSentences: 2 },
+    ),
+    abstractText: normalizeWhitespace(
+      talk.abstract || "Talk abstract imported from Sessionize or local fallback data.",
     ),
     sessionizeLink,
     githubLink,
@@ -105,6 +158,8 @@ export function buildTalkView(talk) {
 export function buildEventView(event) {
   return {
     ...event,
+    detailId: buildDetailId("event", [event.name, event.when, event.where]),
+    teaserText: [event.when, event.where].filter(Boolean).join(" / "),
     summary: [event.when, event.where, event.note].filter(Boolean).join(" / "),
   };
 }

@@ -1,6 +1,5 @@
 @layer components {
-  [data-nav-link][data-active="true"],
-  [data-nav-link]:hover {
+  [data-nav-link]:where([data-active="true"], :hover) {
     background: color-mix(in srgb, var(--accent) 14%, transparent);
     color: var(--ink-strong);
   }

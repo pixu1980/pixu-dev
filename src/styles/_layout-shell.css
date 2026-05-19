@@ -12,43 +12,43 @@
     position: sticky;
     inset-block-start: 0;
     z-index: 20;
-    display: grid;
-    grid-template-areas:
-      "mark spacer contact menu"
-      "accent accent accent accent"
-      "scheme scheme scheme scheme";
-    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: var(--space-3);
     min-height: var(--header-height);
     padding-block: var(--space-3);
     border-block-end: 1px solid var(--line);
     background: color-mix(in srgb, var(--paper) 82%, transparent);
     backdrop-filter: blur(18px);
-  }
 
-  [data-header] > * {
-    min-width: 0;
+    > * {
+      min-width: 0;
+    }
   }
 
   [data-mark] {
-    grid-area: mark;
-    display: grid;
-    place-items: center;
-    width: 3.25rem;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: var(--header-control-size);
+    block-size: var(--header-control-size);
     aspect-ratio: 1;
-    padding: 0.22rem;
+    padding: 0.18rem;
     border: 1px solid var(--line-strong);
     background: var(--logo-surface);
     border-radius: var(--radius-2);
     box-shadow: 0 10px 26px rgb(0 0 0 / 0.18);
     text-decoration: none;
-  }
 
-  [data-mark] img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+    }
   }
 
   :where(
@@ -77,17 +77,49 @@
   }
 
   [data-nav-toggle] {
-    order: 2;
     inline-size: var(--header-control-size);
     block-size: var(--header-control-size);
     min-height: auto;
     padding: 0;
     cursor: pointer;
+    background: color-mix(in srgb, var(--surface-2) 92%, transparent);
+
+    &:hover {
+      border-color: color-mix(in srgb, var(--accent) 36%, var(--line));
+      background: color-mix(in srgb, var(--accent) 10%, var(--surface-2));
+    }
+
+    &:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: var(--focus-offset);
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    [data-nav-toggle] {
+      background: color-mix(in srgb, var(--ink) 8%, var(--paper));
+      border-color: var(--line-strong);
+
+      &:hover {
+        background: var(--surface-hover);
+        border-color: color-mix(in srgb, var(--accent) 26%, var(--line));
+      }
+    }
+  }
+
+  :root[data-resolved-scheme="light"] {
+    [data-nav-toggle] {
+      background: color-mix(in srgb, var(--ink) 8%, var(--paper));
+      border-color: var(--line-strong);
+
+      &:hover {
+        background: var(--surface-hover);
+        border-color: color-mix(in srgb, var(--accent) 26%, var(--line));
+      }
+    }
   }
 
   [data-header-action] {
-    grid-area: contact;
-    order: 1;
     display: inline-flex;
     box-sizing: border-box;
     block-size: var(--header-control-size);
@@ -100,43 +132,50 @@
   }
 
   [data-header-tools] {
-    display: contents;
-  }
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 0 0 auto;
 
-  [data-header-tools]
     > :where(
-      color-scheme-selector,
-      display-preferences-popover,
-      [data-header-action],
-      [data-nav-toggle]
-    ) {
-    min-block-size: var(--header-control-size);
-  }
+        color-scheme-selector,
+        display-preferences-popover,
+        [data-header-action],
+        [data-nav-toggle]
+      ) {
+      min-block-size: var(--header-control-size);
+    }
 
-  [data-header-tools] > color-scheme-selector {
-    grid-area: scheme;
-    justify-self: end;
-    order: 3;
-  }
+    > color-scheme-selector {
+      order: 1;
+    }
 
-  [data-header-tools] > display-preferences-popover {
-    grid-area: preferences;
-    justify-self: end;
-    order: 4;
-  }
+    > display-preferences-popover {
+      order: 2;
+    }
 
-  [data-header-tools] > [data-nav-toggle] {
-    grid-area: menu;
-  }
-
-  @media (min-width: 42rem) {
-    [data-header] {
-      grid-template-areas: "mark spacer scheme preferences contact menu";
-      grid-template-columns: auto minmax(0, 1fr) auto auto auto auto;
+    > [data-nav-toggle] {
+      order: 3;
     }
   }
 
-  [data-site-rail] {
+  @media (max-width: 42rem) {
+    :root {
+      --header-height: 3.75rem;
+      --header-control-size: 2.75rem;
+    }
+
+    [data-header] {
+      gap: 0.375rem;
+      padding-block: 0.5rem;
+    }
+
+    [data-header-tools] {
+      gap: 0.375rem;
+    }
+  }
+
+  [data-scroll-spy] {
     position: fixed;
     inset: var(--header-height) var(--gutter) auto var(--gutter);
     z-index: 19;
@@ -147,11 +186,12 @@
     padding: 0.8rem;
     border: 1px solid var(--line-strong);
     border-radius: var(--radius-2);
-    background: rgb(17 21 29 / 0.96);
+    background: color-mix(in srgb, var(--surface-2) 96%, transparent);
     box-shadow: var(--shadow);
+    backdrop-filter: blur(16px);
   }
 
-  html[data-nav-state="open"] [data-site-rail] {
+  html[data-nav-state="open"] [data-scroll-spy] {
     display: block;
   }
 }
