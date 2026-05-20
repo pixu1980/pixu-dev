@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Commit messages follow Conventional Commits.
 
+### [0.2.10](https://github.com/pixu1980/pixu-dev-resume/compare/v0.2.9...v0.2.10) (2026-05-20)
+
+### Bug Fixes
+
+* IntersectionObserver scroll-spy tests + contact rendering test update ([4a16266](https://github.com/pixu1980/pixu-dev-resume/commit/4a16266))
+
 ### [0.2.9](https://github.com/pixu1980/pixu-dev-resume/compare/v0.2.8...v0.2.9) (2026-05-18)
 
 ### Features
