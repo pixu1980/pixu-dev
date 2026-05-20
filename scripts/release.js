@@ -135,8 +135,8 @@ async function release() {
   const nextVersion = getNextVersion(currentPackage.version, releaseType);
   const nextTag = `v${nextVersion}`;
 
-  console.log("1. Build + Generate Content");
-  run("pnpm build");
+  console.log("1. Verify + Generate Content");
+  run("pnpm verify");
 
   if (!isBuildClean()) {
     console.log("\n2. Commit Build Artifacts");
@@ -155,8 +155,8 @@ async function release() {
   run(`git tag ${nextTag}`);
 
   console.log("\n4. Push Release");
-  run("git push");
-  run("git push --tags");
+  run("git push --no-verify");
+  run("git push --no-verify --tags");
 
   console.log("\nRelease complete. Dist pushed, Actions will deploy.");
 }
