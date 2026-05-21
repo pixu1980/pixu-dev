@@ -1,90 +1,44 @@
 <article data-timeline-item data-reveal>
-  <div data-mobile-summary="experience">
-    <time>{{ entry.dateRangeLabel || entry.dateRange || 'Selected work' }}</time>
-    <div>
-      <h3>{{ entry.title }}</h3>
-      <if condition="entry.organization || entry.subtitle">
-        <p data-eyebrow>{{ entry.organization || entry.subtitle }}</p>
-      </if>
-    </div>
-    <button
-      type="button"
-      data-action
-      data-item-detail-trigger
-      data-detail-kind="experience"
-      popovertarget="{{ entry.detailId }}"
-      aria-expanded="false"
-    >
-      Open
-    </button>
-  </div>
-
-  <div data-desktop-detail>
-    <div>
-      <time>
-        {{ entry.dateRangeLabel || entry.dateRange || 'Selected work' }}
-        <if condition="entry.dateRangeDuration">
-          <br />({{ entry.dateRangeDuration }})
-        </if>
-      </time>
-    </div>
-    <div>
-      <h3>{{ entry.title }}</h3>
-      <if condition="entry.organization || entry.subtitle">
-        <p data-eyebrow>{{ entry.organization || entry.subtitle }}</p>
-      </if>
-      <if condition="entry.summary">
-        {{ entry.summary | markdown | raw }}
-      </if>
-      <if condition="entry.highlights.length > 0">
-        <ul>
-          <for each="item in entry.highlights">
-            <li>{{ item }}</li>
-          </for>
-        </ul>
-      </if>
-      <include
-        src="./_tag-list.html"
-        data='{"items": {{ entry.skills | json | raw }}, "ariaLabel": ""}'
-      ></include>
-    </div>
-  </div>
-
-  <section
-    id="{{ entry.detailId }}"
-    popover="auto"
-    data-item-detail="experience"
-    aria-labelledby="{{ entry.detailId }}-title"
-  >
-    <header data-popover-header>
-      <p data-kicker>Experience</p>
-      <h3 id="{{ entry.detailId }}-title">{{ entry.title }}</h3>
-      <button
-        type="button"
-        data-link
-        data-popover-close
-        aria-label="Close experience details"
-        popovertarget="{{ entry.detailId }}"
-        popovertargetaction="hide"
-      >
-        X
-      </button>
-    </header>
-    <p data-eyebrow>{{ entry.organization || entry.subtitle }}</p>
-    <p data-note>{{ entry.teaserMeta }}</p>
-    <if condition="entry.summary">
-      {{ entry.summary | markdown | raw }}
+  <section data-timeline-item-summary="experience">
+    <time>
+      {{ entry.dateRangeLabel || entry.dateRange || 'Selected work' }}
+      <if condition="entry.dateRangeDuration"> ({{ entry.dateRangeDuration }}) </if>
+    </time>
+    <h3>{{ entry.title }}</h3>
+    <if condition="entry.organization || entry.subtitle">
+      <h4 data-eyebrow>Company: {{ entry.organization || entry.subtitle }}</h4>
     </if>
-    <if condition="entry.highlights.length > 0">
-      <ul>
-        <for each="item in entry.highlights">
-          <li>{{ item }}</li>
-        </for>
-      </ul>
-    </if>
-    <include
-      src="./_tag-list.html"
-      data='{"items": {{ entry.skills | json | raw }}, "ariaLabel": ""}'
-    ></include>
   </section>
+  <if condition="entry.teaserText">
+    <button type="button" data-action data-item-detail-trigger data-detail-kind="experience" popovertarget="{{ entry.detailId }}" aria-expanded="false">See more</button>
+  </if>
+
+  <if condition="entry.teaserText">
+    <section id="{{ entry.detailId }}" popover="auto" data-item-detail="experience" data-timeline-item-detail="experience" aria-labelledby="{{ entry.detailId }}-title">
+      <header data-popover-header>
+        <div data-timeline-item-meta>
+          <time>
+            {{ entry.dateRangeLabel || entry.dateRange || 'Selected work' }}
+            <if condition="entry.dateRangeDuration"> ({{ entry.dateRangeDuration }}) </if>
+          </time>
+          <if condition="entry.organization || entry.subtitle">
+            <h4 data-eyebrow>Company: {{ entry.organization || entry.subtitle }}</h4>
+          </if>
+        </div>
+        <h3 id="{{ entry.detailId }}-title">{{ entry.title }}</h3>
+        <button type="button" data-link data-popover-close aria-label="Close experience details" popovertarget="{{ entry.detailId }}" popovertargetaction="hide">X</button>
+      </header>
+      <section data-container>
+        <if condition="entry.summary"> {{ entry.summary | markdown | raw }} </if>
+        <if condition="entry.highlights.length > 0">
+          <ul>
+            <for each="item in entry.highlights">
+              <li>{{ item }}</li>
+            </for>
+          </ul>
+        </if>
+        <include src="./_tag-list.html" data='{"items": {{ entry.skills | json | raw }}, "ariaLabel": ""}'></include>
+      </section>
+    </section>
+  </if>
 </article>

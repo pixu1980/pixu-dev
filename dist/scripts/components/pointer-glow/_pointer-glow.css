@@ -1,0 +1,15 @@
+@layer components {
+  pointer-glow {
+    position: fixed;
+    top: calc(var(--y, 50vh) - 10rem);
+    left: calc(var(--x, 50vw) - 10rem);
+    width: 20rem;
+    height: 20rem;
+    pointer-events: none;
+    background: color-mix(in srgb, var(--accent) 18%, transparent);
+    filter: blur(4rem);
+    will-change: top, left;
+    opacity: 0.35;
+    z-index: 1;
+  }
+}

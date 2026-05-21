@@ -7,6 +7,60 @@ import {
   toArray,
 } from "../_text.js";
 
+function collectExperienceStartYears(frontmatter, data) {
+  const years = [];
+
+  for (const experience of toArray(data.linkedin?.experience)) {
+    const match = String(experience?.dateRange || "").match(/\b(19|20)\d{2}\b/);
+    if (match) years.push(Number(match[0]));
+  }
+
+  for (const metric of toArray(frontmatter.metrics)) {
+    const match = String(metric?.note || "").match(/\b(19|20)\d{2}\b/);
+    if (match) years.push(Number(match[0]));
+  }
+
+  const explicitYear = Number(frontmatter.careerStartYear);
+  if (Number.isFinite(explicitYear)) years.push(explicitYear);
+
+  return years.filter((year) => Number.isFinite(year) && year > 1900);
+}
+
+export function buildYearsOfExperience(frontmatter, data) {
+  const years = collectExperienceStartYears(frontmatter, data);
+  const startYear = years.length ? Math.min(...years) : new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
+
+  return `~${Math.max(currentYear - startYear, 0)}`;
+}
+
+function replaceYearsPlaceholder(value, yearsOfExperience) {
+  if (typeof value !== "string") return value;
+
+  return value.replaceAll("{{ yearsOfExperience }}", yearsOfExperience);
+}
+
+function mapYearsPlaceholders(value, yearsOfExperience) {
+  if (Array.isArray(value)) {
+    return value.map((item) => mapYearsPlaceholders(item, yearsOfExperience));
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [
+        key,
+        mapYearsPlaceholders(item, yearsOfExperience),
+      ]),
+    );
+  }
+
+  return replaceYearsPlaceholder(value, yearsOfExperience);
+}
+
+export function applyYearsOfExperiencePlaceholders(value, frontmatter, data) {
+  return mapYearsPlaceholders(value, buildYearsOfExperience(frontmatter, data));
+}
+
 export function normalizeLinks(links, kind = "link") {
   return toArray(links)
     .filter((link) => link?.url && link?.label)
@@ -19,20 +73,26 @@ export function normalizeLinks(links, kind = "link") {
 }
 
 export function buildHeroMetrics(frontmatter, data) {
+  const yearsOfExperience = buildYearsOfExperience(frontmatter, data);
+
   return [
     ...toArray(frontmatter.metrics).map((metric) => ({
       label: metric.label,
-      value: metric.value,
+      value:
+        metric.label === "shipping software" &&
+        replaceYearsPlaceholder(metric.value, yearsOfExperience) === metric.value
+          ? yearsOfExperience
+          : replaceYearsPlaceholder(metric.value, yearsOfExperience),
       note: metric.note,
     })),
     {
       label: "GitHub repositories",
-      value: formatNumber(data.github.stats.publicRepos || data.github.stats.importedRepos),
+      value: `${formatNumber(data.github.stats.publicRepos || data.github.stats.importedRepos)} repo`,
       note: `${formatNumber(data.github.stats.totalStars)} stars, ${formatNumber(data.github.stats.totalForks)} forks`,
     },
     {
       label: "Sessionize talks",
-      value: formatNumber(data.sessionize.talks.length),
+      value: `${formatNumber(data.sessionize.talks.length)} talks`,
       note: `${formatNumber(data.sessionize.events.length)} event appearances`,
     },
   ];
@@ -120,6 +180,10 @@ export function buildDetailId(prefix, parts = []) {
   return `${prefix}-${slugify(seed || "item")}`;
 }
 
+function buildCompactSummary(value = "", fallback = "") {
+  return extractExcerptText(value || fallback, { maxLength: 120, maxSentences: 1 });
+}
+
 export function buildTalkView(talk) {
   const sessionizeLink = talk.talkLinks?.sessionize || {
     href: talk.url,
@@ -142,9 +206,9 @@ export function buildTalkView(talk) {
   return {
     ...talk,
     detailId: buildDetailId("talk", [talk.title]),
-    teaserText: extractExcerptText(
-      talk.abstract || "Talk abstract imported from Sessionize or local fallback data.",
-      { maxLength: 140, maxSentences: 2 },
+    teaserText: buildCompactSummary(
+      talk.abstract,
+      "Talk abstract imported from Sessionize or local fallback data.",
     ),
     abstractText: normalizeWhitespace(
       talk.abstract || "Talk abstract imported from Sessionize or local fallback data.",

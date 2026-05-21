@@ -1,18 +1,35 @@
 import { DEFAULT_PROFILE_IMAGE } from "../_profile-image.js";
+import { applyYearsOfExperiencePlaceholders } from "./_helpers.js";
 
 export function buildLinkedInFallback(frontmatter, _githubUsername, derivedFallbacks) {
   const storedLinkedIn = frontmatter.generated?.linkedin || frontmatter.fallbacks?.linkedin || {};
+  const experience = storedLinkedIn.experience?.length
+    ? storedLinkedIn.experience
+    : derivedFallbacks.linkedin.experience;
+  const education = storedLinkedIn.education?.length
+    ? storedLinkedIn.education
+    : derivedFallbacks.linkedin.education;
+
+  const yearsAwareLinkedIn = applyYearsOfExperiencePlaceholders(
+    {
+      ...storedLinkedIn,
+      experience,
+      education,
+    },
+    frontmatter,
+    {
+      linkedin: {
+        experience,
+      },
+    },
+  );
 
   return {
-    ...storedLinkedIn,
+    ...yearsAwareLinkedIn,
     name: frontmatter.name,
     profileImage: storedLinkedIn.profileImage || DEFAULT_PROFILE_IMAGE,
-    experience: storedLinkedIn.experience?.length
-      ? storedLinkedIn.experience
-      : derivedFallbacks.linkedin.experience,
-    education: storedLinkedIn.education?.length
-      ? storedLinkedIn.education
-      : derivedFallbacks.linkedin.education,
+    experience: yearsAwareLinkedIn.experience,
+    education: yearsAwareLinkedIn.education,
   };
 }
 

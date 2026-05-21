@@ -1,23 +1,17 @@
 <div data-speaking>
-  <aside
-    data-speaking-recap
-    data-surface="lifted"
-    data-hover-surface
-    data-generated="sessionize-speaker"
-  >
+  <aside data-speaking-recap data-surface="accent" data-hover-surface data-generated="sessionize-speaker">
     <p data-kicker>Sessionize profile</p>
     <h3>{{ section.speaker.headline || 'Public speaking' }}</h3>
     <p>{{ section.speaker.summary }}</p>
-    <include
-      src="../shared/_tag-list.html"
-      data='{"items": {{ section.speaker.topics | json | raw }}, "ariaLabel": ""}'
-    ></include>
-    <section data-link-list>
-      <include
-        src="../shared/_link.html"
-        data='{"link": {{ section.profileLink | json | raw }}}'
-      ></include>
-    </section>
+    <include src="../shared/_link.html" data='{"link": {{ section.profileLink | json | raw }}}'></include>
+    <if condition="section.events.length > 0">
+      <p data-kicker>Events</p>
+      <ol>
+        <for each="event in section.events">
+          <include src="../shared/_event-item.html" data='{"event": {{ event | json | raw }}}'></include>
+        </for>
+      </ol>
+    </if>
   </aside>
   <section data-speaking-content>
     <section data-talk-grid>
@@ -25,24 +19,5 @@
         <include src="../shared/_talk-card.html" data='{"talk": {{ talk | json | raw }}}'></include>
       </for>
     </section>
-    <if condition="section.events.length > 0">
-      <section
-        data-event-strip
-        data-surface="lifted"
-        data-hover-surface
-        data-reveal
-        aria-label="Sessionize events"
-      >
-        <p data-kicker>Events</p>
-        <ol>
-          <for each="event in section.events">
-            <include
-              src="../shared/_event-item.html"
-              data='{"event": {{ event | json | raw }}}'
-            ></include>
-          </for>
-        </ol>
-      </section>
-    </if>
   </section>
 </div>

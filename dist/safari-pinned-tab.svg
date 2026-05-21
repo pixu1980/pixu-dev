@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  
+  <path fill="#3f60fc" d="M44 0h10v31H44z" />
+  <path fill="#03c2fd" d="M54 0h9v31h-9z" />
+  <path fill="#021758" d="M63 0h36v20H63zm80 1h43v32h-43zm-2 5h2v27h-2zm45 0h16v48h-16zm-60 2h15v25h-15zm76 2h7v126h-7zM99 11h27v43H99zm110 0h3v116h-3z" />
+  <path fill="#03c2fd" d="M63 20h10v165H63z" />
+  <path fill="#021758" d="M73 20h26v196H73zm139 1h7v106h-7zm7 1h3v87h-3z" />
+  <path fill="#3f60fc" d="M54 31h9v11h-9z" />
+  <path fill="#021758" d="M126 33h11v10h-11z" />
+  <path fill="#03c2fd" d="M137 33h11v10h-11zm22 0h10v10h-10z" />
+  <path fill="#021758" d="M169 33h17v10h-17zm53 0h8v7h-8zm0 7h7v69h-7z" />
+  <path fill="#8a54fb" d="M229 42h9v67h-9z" />
+  <path fill="#021758" d="M126 43h1v11h-1z" />
+  <path fill="#03c2fd" d="M127 43h10v11h-10z" />
+  <path fill="#b08dfc" d="M169 43h10v11h-10z" />
+  <path fill="#021758" d="M179 43h7v11h-7zM99 54h18v162H99z" />
+  <path fill="#03c2fd" d="M117 54h10v11h-10z" />
+  <path fill="#b08dfc" d="M179 54h10v10h-10z" />
+  <path fill="#021758" d="M189 54h13v82h-13z" />
+  <path fill="#8a54fb" d="M179 64h10v36h-10z" />
+  <path fill="#1d8efb" d="M117 65h10v35h-10z" />
+  <path fill="#b08dfc" d="M168 99h11v11h-11z" />
+  <path fill="#021758" d="M117 100h10v45h-10zm62 0h10v53h-10zm-52 5h2v48h-2zm2 4h8v44h-8z" />
+  <path fill="#9271fc" d="M137 109h22v11h-22z" />
+  <path fill="#b08dfc" d="M159 109h9v11h-9z" />
+  <path fill="#021758" d="M219 109h1v18h-1z" />
+  <path fill="#8a54fb" d="M220 109h10v9h-10z" />
+  <path fill="#b08dfc" d="M168 110h1v10h-1z" />
+  <path fill="#021758" d="M169 110h10v43h-10z" />
+  <path fill="#b08dfc" d="M220 118h10v9h-10z" />
+  <path fill="#021758" d="M137 120h32v33h-32zm72 7h1v9h-1z" />
+  <path fill="#b08dfc" d="M210 127h10v9h-10z" />
+  <path fill="#021758" d="M189 136h12v9h-12z" />
+  <path fill="#9271fc" d="M201 136h10v9h-10z" />
+  <path fill="#8a54fb" d="M117 145h10v10h-10z" />
+  <path fill="#021758" d="M189 145h1v8h-1z" />
+  <path fill="#8a54fb" d="M190 145h12v9h-12zm-63 8h23v9h-23z" />
+  <path fill="#021758" d="M150 153h27v9h-27z" />
+  <path fill="#8a54fb" d="M177 153h13v9h-13zm13 1h1v8h-1z" />
+  <path fill="#021758" d="M117 155h10v7h-10z" />
+  <path fill="#8a54fb" d="M117 162h10v34h-10zm33 0h27v10h-27z" />
+  <path fill="#03c2fd" d="M53 185h10v11H53z" />
+  <path fill="#021758" d="M63 185h10v31H63z" />
+  <path fill="#03c2fd" d="M44 196h10v10H44z" />
+  <path fill="#021758" d="M54 196h9v20h-9zm63 0h10v20h-10z" />
+  <path fill="#8a54fb" d="M127 196h10v20h-10z" />
+  <path fill="#1d8efb" d="M44 206h10v10H44z" />
+  <path fill="#0759ee" d="M44 216h10v12H44z" />
+  <path fill="#3f60fc" d="M54 216h73v14H54z" />
+  <path fill="#5d19ea" d="M127 216h10v12h-10z" />
+  <path fill="#021758" d="M42 234h7v7h-7z" />
+  <path fill="#0759ee" d="M189 235h7v40h-7z" />
+  <path fill="#021758" d="M0 246h22v7H0zm37 0h12v7H37zm30 0h7v7h-7zm18 0h7v7h-7zm19 0h7v23h-7zm19 0h7v29h-7z" />
+  <path fill="#0759ee" d="M174 246h15v7h-15zm37 0h17v7h-17zm33 0h7v17h-7zm19 0h7v18h-7z" />
+  <path fill="#021758" d="M22 251h4v19h-4z" />
+  <path fill="#0759ee" d="M170 251h4v20h-4z" />
+  <path fill="#021758" d="M74 252h4v7h-4zm8 0h3v7h-3z" />
+  <path fill="#0759ee" d="M207 252h4v17h-4zm21 0h4v12h-4z" />
+  <path fill="#021758" d="M0 253h7v31H0zm19 0h3v17h-3zm23 0h7v22h-7zm29 0h3v6h-3zm14 0h4v6h-4z" />
+  <path fill="#0759ee" d="M174 253h3v18h-3zm37 0h3v22h-3zm14 0h3v11h-3z" />
+  <path fill="#021758" d="M78 257h4v7h-4z" />
+  <path fill="#0759ee" d="M214 257h11v7h-11z" />
+  <path fill="#021758" d="M76 259h2v11h-2zm6 0h1v11h-1zm-11 4h5v7h-5zm12 0h5v7h-5z" />
+  <path fill="#0759ee" d="M248 263h7v7h-7zm11 0h4v7h-4z" />
+  <path fill="#021758" d="M81 264h1v6h-1z" />
+  <path fill="#0759ee" d="M263 264h3v6h-3z" />
+  <path fill="#5d19ea" d="M146 267h7v7h-7z" />
+  <path fill="#021758" d="M7 268h12v7H7zm30 0h5v7h-5zm12 0h5v7h-5zm18 0h4v7h-4zm21 0h4v7h-4zm23 0h12v7h-12z" />
+  <path fill="#0759ee" d="M177 268h12v7h-12zm37 0h13v7h-13zm41 0h4v7h-4z" />
+  <path fill="#021758" d="M109 269h2v6h-2zm-90 1h2v5h-2zm52 0h3v5h-3zm14 0h3v5h-3z" />
+  <path fill="#0759ee" d="M253 270h2v5h-2zm6 0h1v5h-1zm-84 1h2v4h-2z" />
+
+</svg>

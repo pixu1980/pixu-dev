@@ -5,8 +5,7 @@ test.describe("scroll-spy", () => {
   test("nav click keeps aria-current in sync during smooth scroll", async ({ page, isMobile }) => {
     test.skip(!!isMobile, "desktop only");
 
-    await page.goto("/");
-    await page.waitForLoadState("domcontentloaded");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     const portfolioLink = page.locator('[data-nav-link][href="#portfolio"]');
     await portfolioLink.click();
@@ -17,11 +16,10 @@ test.describe("scroll-spy", () => {
   test("nav link aria-current updates after scroll to section", async ({ page, isMobile }) => {
     test.skip(!!isMobile, "desktop only");
 
-    await page.goto("/");
-    await page.waitForLoadState("domcontentloaded");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     // Scroll to portfolio using browser's scrollIntoViewIfNeeded (more reliable)
-    const portfolioSection = page.locator("main > section#portfolio");
+    const portfolioSection = page.locator("[data-content] > section#portfolio");
     await portfolioSection.scrollIntoViewIfNeeded();
 
     // Wait for IntersectionObserver to trigger
@@ -46,11 +44,10 @@ test.describe("scroll-spy", () => {
   }) => {
     test.skip(!!isMobile, "desktop only");
 
-    await page.goto("/");
-    await page.waitForLoadState("domcontentloaded");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     // Scroll to portfolio
-    const portfolioSection = page.locator("main > section#portfolio");
+    const portfolioSection = page.locator("[data-content] > section#portfolio");
     await portfolioSection.scrollIntoViewIfNeeded();
     await page.waitForTimeout(500);
 
@@ -58,7 +55,7 @@ test.describe("scroll-spy", () => {
     await expect(portfolioLink).toHaveAttribute("aria-current", "");
 
     // Now scroll to speaking
-    const speakingSection = page.locator("main > section#speaking");
+    const speakingSection = page.locator("[data-content] > section#speaking");
     await speakingSection.scrollIntoViewIfNeeded();
     await page.waitForTimeout(500);
 

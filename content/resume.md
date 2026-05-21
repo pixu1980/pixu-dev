@@ -144,13 +144,13 @@ links:
     url: 'https://linkedin.com/in/pixu1980/'
     icon: linkedin
 metrics:
-  - value: 29+ years
+  - value: '{{ yearsOfExperience }} years'
     label: shipping software
     note: Professional work started in late 1997
   - value: 0 deps
     label: architectural choice
     note: 'Native web first, dependencies by exception'
-  - value: 6x
+  - value: 6x skills
     label: core tracks
     note: 'AI, Frontend, Design, A11y, Mentoring, Speaking'
   - value: 3 d&d
@@ -200,7 +200,7 @@ generated:
           Engineering and AI Product Engineering.
 
 
-          With 27+ years in the industry, I help teams and companies design,
+          With {{ yearsOfExperience }} years in the industry, I help teams and companies design,
           build and improve modern, accessible, high-performance and sustainable
           digital products.
 
@@ -257,7 +257,7 @@ generated:
           knowledge sharing and community growth.
 
 
-          After 27+ years in the industry, I am in a phase where mentoring has
+          After {{ yearsOfExperience }} years in the industry, I am in a phase where mentoring has
           become one of the most meaningful parts of my work. The web community
           has given me knowledge, opportunities, inspiration and a professional
           path. Today, I try to give part of that value back by helping
@@ -1951,7 +1951,7 @@ generated:
 ---
 ## About
 
-I'm a Frontend Engineer, Design Engineer, AI Product Engineer, Accessibility Advocate, Speaker and Mentor with 27+ years of experience in the industry. I have a passion for building thoughtful, accessible and high-quality digital products that bridge design and development without losing craft.
+I'm a Frontend Engineer, Design Engineer, AI Product Engineer, Accessibility Advocate, Speaker and Mentor with {{ yearsOfExperience }} years of experience in the industry. I have a passion for building thoughtful, accessible and high-quality digital products that bridge design and development without losing craft.
 
 My mantra is "Make learning a habit!" and I still build with the same curiosity that started in 1994.
 
@@ -1974,7 +1974,7 @@ April 2019 - Present (7 years 1 month)
 
 Freelance Consultant focused on Senior Frontend Engineering, Design Engineering and AI Product Engineering.
 
-With 27+ years in the industry, I help teams and companies design, build and improve modern, accessible, high-performance and sustainable digital products.
+With {{ yearsOfExperience }} years in the industry, I help teams and companies design, build and improve modern, accessible, high-performance and sustainable digital products.
 
 My work sits at the intersection of design, development, AI and product. I translate business needs, visual systems and technical requirements into solid, scalable and maintainable frontend solutions.
 
@@ -1998,7 +1998,7 @@ December 2024 - Present (1 year 5 months)
 
 Mentor, Sensei and Co-Host @ DevDojoIT, focused on frontend education, knowledge sharing and community growth.
 
-After 27+ years in the industry, I am in a phase where mentoring has become one of the most meaningful parts of my work. The web community has given me knowledge, opportunities, inspiration and a professional path. Today, I try to give part of that value back by helping developers grow with clarity, confidence and practical guidance.
+After {{ yearsOfExperience }} years in the industry, I am in a phase where mentoring has become one of the most meaningful parts of my work. The web community has given me knowledge, opportunities, inspiration and a professional path. Today, I try to give part of that value back by helping developers grow with clarity, confidence and practical guidance.
 
 At DevDojoIT, my role is centered on education, mentorship and community building. I support developers who want to improve their frontend skills, understand the web platform more deeply and build interfaces that are accessible, scalable, maintainable and respectful of users.
 

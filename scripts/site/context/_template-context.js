@@ -6,13 +6,14 @@ import {
 } from "../markdown/index.js";
 
 import { getPreferredProfileImage } from "../_profile-image.js";
-import { normalizeWhitespace, slugify, toArray } from "../_text.js";
+import { extractExcerptText, normalizeWhitespace, slugify, toArray } from "../_text.js";
 
 import {
   buildDetailId,
   buildDateMeta,
   buildHeroMeta,
   buildHeroMetrics,
+  buildYearsOfExperience,
   buildSourceStatus,
   normalizeLinks,
 } from "./_helpers.js";
@@ -109,6 +110,10 @@ function orderSections(sections = [], frontmatter = {}) {
 
 function normalizeEntry(entry) {
   const dateRangeDisplay = buildDateRangeDisplay(entry?.dateRange);
+  const summarySource = [entry?.summary, ...toArray(entry?.highlights)]
+    .map((value) => normalizeWhitespace(value || ""))
+    .filter(Boolean)
+    .join(" ");
 
   return {
     ...entry,
@@ -120,6 +125,7 @@ function normalizeEntry(entry) {
     teaserMeta: [entry?.organization || entry?.subtitle, dateRangeDisplay.label]
       .filter(Boolean)
       .join(" / "),
+    teaserText: extractExcerptText(summarySource, { maxLength: 130, maxSentences: 1 }),
     highlights: toArray(entry.highlights),
     skills: toArray(entry.skills),
     dateRangeLabel: dateRangeDisplay.label,
@@ -205,6 +211,7 @@ export function buildTemplateContext({ frontmatter, data, profileImage, sections
       footerLinks: normalizeLinks(toArray(frontmatter.links), "link"),
       heroMeta: buildHeroMeta(frontmatter, data),
       heroMetrics: buildHeroMetrics(frontmatter, data),
+      yearsOfExperience: buildYearsOfExperience(frontmatter, data),
       sourceStatus: buildSourceStatus([data.github, data.sessionize, data.linkedin]),
       activeProfileImage: getPreferredProfileImage(data),
       ...dateMeta,

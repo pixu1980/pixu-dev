@@ -49,18 +49,20 @@
 
     <include src="./layout/_header.html"></include>
 
-    <aside data-scroll-spy>
-      <include src="./layout/_nav.html"></include>
-    </aside>
-
     <main id="main">
-      <include src="./layout/_hero.html"></include>
-      <for each="section in sections">
-        <include
-          src="./sections/_section.html"
-          data='{"section": {{ section | json | raw }}}'
-        ></include>
-      </for>
+      <aside data-scroll-spy>
+        <include src="./layout/_nav.html"></include>
+      </aside>
+
+      <section data-content>
+        <include src="./layout/_hero.html"></include>
+        <for each="section in sections">
+          <include
+            src="./sections/_section.html"
+            data='{"section": {{ section | json | raw }}}'
+          ></include>
+        </for>
+      </section>
     </main>
 
     <include src="./layout/_footer.html"></include>

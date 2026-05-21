@@ -14,6 +14,7 @@ import {
   buildEventView,
   buildHeroMeta,
   buildHeroMetrics,
+  buildYearsOfExperience,
   buildRepoView,
   buildSourceStatus,
   buildTalkView,
@@ -91,7 +92,13 @@ const frontmatter = {
   phone: "+39",
   motto: "Learn",
   links: [{ label: "GitHub", url: "https://github.com/pixu1980" }],
-  metrics: [{ label: "Years", value: "29", note: "Shipping" }],
+  metrics: [
+    {
+      label: "shipping software",
+      value: "{{ yearsOfExperience }} years",
+      note: "Professional work started in late 1997",
+    },
+  ],
   availability: { headline: "Available", summary: "Contact me" },
 };
 
@@ -103,6 +110,10 @@ test("context helpers build normalized links, hero data, repo views, and talk vi
     isExternal: true,
   });
   assert.equal(buildHeroMetrics(frontmatter, data).length, 3);
+  assert.equal(buildHeroMetrics(frontmatter, data)[0].value, "~29 years");
+  assert.equal(buildHeroMetrics(frontmatter, data)[1].value, "12 repo");
+  assert.equal(buildHeroMetrics(frontmatter, data)[2].value, "1 talks");
+  assert.equal(buildYearsOfExperience(frontmatter, data), "~29");
   assert.deepEqual(buildHeroMeta(frontmatter, data), [
     "Rome",
     "8 public repos",
@@ -153,7 +164,7 @@ test("context helpers build normalized links, hero data, repo views, and talk vi
   assert.equal(buildTalkView(longTalk).abstractText.endsWith("..."), false);
   assert.equal(
     buildTalkView(excerptTalk).teaserText,
-    "What if browser already provided design system? Does CSS Reset still make sense in 2025?",
+    "What if browser already provided design system?",
   );
   assert.match(buildEventView(data.sessionize.events[0]).detailId, /^event-/);
 });
@@ -217,13 +228,17 @@ test("profile, public data, and section builders compose render context", () => 
     { ...frontmatter, fallbacks: { linkedin: { focus: ["CSS"] } } },
     "pixu1980",
     {
-      linkedin: { experience: [{ title: "Dev" }], education: [] },
+      linkedin: {
+        experience: [{ title: "Dev", summary: "With {{ yearsOfExperience }} years" }],
+        education: [],
+      },
     },
   );
   const profile = buildEffectiveProfile(frontmatter, data);
   const publicData = buildPublicData(frontmatter, data, "/profile.jpg", profile);
 
   assert.equal(fallback.profileImage, "assets/images/profile.png");
+  assert.equal(fallback.experience[0].summary, "With ~29 years");
   assert.equal(profile.name, "Pixu");
   assert.equal(publicData.profile.sourceStatus.github, "live");
 
