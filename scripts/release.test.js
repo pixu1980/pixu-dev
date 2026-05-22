@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 
 import {
+  getReleasePreparationCommands,
   getNextVersion,
   getReleaseType,
   hasConventionalReleaseCommit,
@@ -40,4 +41,8 @@ test("git status parser treats untracked files as dirty", () => {
   assert.equal(isGitStatusClean(""), true);
   assert.equal(isGitStatusClean(" M dist/index.html\n"), false);
   assert.equal(isGitStatusClean("?? dist/new-file.js\n"), false);
+});
+
+test("release preparation runs verify before build", () => {
+  assert.deepEqual(getReleasePreparationCommands(), ["pnpm verify", "pnpm build"]);
 });

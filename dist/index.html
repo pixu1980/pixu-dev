@@ -6,14 +6,14 @@
     <meta property="og:title" content="Emiliano Pisu - Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor">
     <meta property="og:description" content="Focused on accessible interfaces, native web architectures, and teaching teams how to ship with less friction, less dependencies and more sustainable solutions.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/images/profile.png">
+    <meta property="og:image" content="/assets/profile.png">
 
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#663399">
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="mask-icon" href="/assets/favicon.svg" color="#663399">
+    <link rel="manifest" href="/assets/site.webmanifest">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f3e7">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#080a0f">
     <script>
@@ -38,7 +38,8 @@
         } catch {}
       })();
     </script>
-    <link rel="stylesheet" href="./styles/index.css">
+    <script type="module" crossorigin src="/assets/app.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/app.css">
   </head>
   <body>
     <skip-link href="#main"></skip-link>
@@ -47,7 +48,7 @@
 
     <header data-header>
   <a data-mark href="#top" aria-label="Emiliano Pisu home">
-    <img src="assets/images/logo.png" width="64" height="64" alt="" decoding="async">
+    <img src="data:image/png;base64,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" width="64" height="64" alt="" decoding="async">
   </a>
 
   <div data-header-tools>
@@ -145,7 +146,7 @@
   </div>
 
   <figure data-portrait data-reveal>
-    <img src="assets/images/profile.png" alt="Emiliano Pisu profile portrait" loading="eager" decoding="async">
+    <img src="/assets/profile.png" alt="Emiliano Pisu profile portrait" loading="eager" decoding="async">
     <figcaption>
       <span>Emiliano Pisu</span>
       <strong>Frontend Engineer ✨ AI Product Engineer 🎨 Design Engineer ♿️ Accessibility WCAG Advocate 🎤 Speaker 👨🏻‍🏫 Mentor</strong>
@@ -2253,7 +2254,7 @@
     <h3>Keep reading. Keep learning. Keep in touch.</h3>
     <p data-note>Blog, Community, Code, and Talks.</p>
     <div data-footer-facts>
-      <p>Build 2026-05-21</p>
+      <p>Build 2026-05-22</p>
       <p>© 2026 Emiliano Pisu</p>
     </div>
     <section data-link-list data-footer-links>
@@ -2299,7 +2300,6 @@
 
 
     <p data-live-region aria-live="polite"></p>
-    <script type="module" src="./scripts/app.js"></script>
   
 
 </body></html>

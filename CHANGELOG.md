@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Commit messages follow Conventional Commits.
 
+### [0.2.12](https://github.com/pixu1980/pixu-dev-resume/compare/v0.2.11...v0.2.12) (2026-05-22)
+
+### Features
+
+* **ui:** portfolio, public speaking, experience layout and ux ([e8fe6d1](https://github.com/pixu1980/pixu-dev-resume/commit/e8fe6d1))
+
 ### [0.2.11](https://github.com/pixu1980/pixu-dev-resume/compare/v0.2.10...v0.2.11) (2026-05-20)
 
 ### Bug Fixes

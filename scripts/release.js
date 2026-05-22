@@ -62,6 +62,10 @@ function validateCommits(log = getReleaseCommitLog()) {
   return true;
 }
 
+function getReleasePreparationCommands() {
+  return ["pnpm verify", "pnpm build"];
+}
+
 export function getReleaseType(argv = process.argv.slice(2)) {
   const releaseType = argv[0] || "patch";
   const allowedReleaseTypes = new Set(["patch", "minor", "major", "prerelease"]);
@@ -136,7 +140,9 @@ async function release() {
   const nextTag = `v${nextVersion}`;
 
   console.log("1. Verify + Generate Content");
-  run("pnpm verify");
+  for (const command of getReleasePreparationCommands()) {
+    run(command);
+  }
 
   if (!isBuildClean()) {
     console.log("\n2. Commit Build Artifacts");
@@ -176,6 +182,7 @@ export {
   isBranchClean,
   isBuildClean,
   isGitStatusClean,
+  getReleasePreparationCommands,
   release,
   run,
   validateCommits,
