@@ -355,6 +355,7 @@
       flex-direction: column;
       gap: 0.8125rem;
       align-items: flex-start;
+      min-inline-size: 0;
       padding: 0.8rem;
       border: 1px solid var(--line);
       border-radius: var(--radius-2);
@@ -398,9 +399,11 @@
       place-items: start;
       gap: 0.5625rem;
       inline-size: 100%;
+      min-inline-size: 0;
 
       & span {
         flex: 1 1 45%;
+        min-inline-size: 0;
         display: block;
         min-block-size: 3rem;
         border: 1px solid var(--line);
@@ -457,7 +460,7 @@
 
     & [data-grid] {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.0625rem;
     }
 
@@ -468,8 +471,8 @@
       position: relative;
       z-index: 1;
       display: flex;
-      flex-flow: row nowrap;
-      gap: 0.75rem;
+      flex-flow: row wrap;
+      gap: 0.5rem;
       align-items: center;
       justify-content: space-between;
       justify-self: stretch;
@@ -477,10 +480,11 @@
       max-inline-size: 100%;
       min-block-size: 0;
       block-size: auto;
-      padding: 0.625rem 0.75rem;
+      padding: 0.625rem;
 
       & label {
-        flex: 1 1 0;
+        flex: 1 1 7.5rem;
+        min-inline-size: 7.5rem;
       }
     }
 

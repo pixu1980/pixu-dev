@@ -625,6 +625,12 @@ test.describe("resume page", () => {
       const swatchNode = document.querySelector(
         'display-preferences-popover accent-color-selector [data-option="purple"] [data-swatch]',
       );
+      const fontFields = Array.from(
+        document.querySelectorAll("display-preferences-popover [data-grid] [data-field]"),
+      ).map((node) => node.getBoundingClientRect());
+      const choiceCards = Array.from(
+        document.querySelectorAll("display-preferences-popover [data-choice-grid] [data-choice]"),
+      ).map((node) => node.getBoundingClientRect());
       const titleNode = document.querySelector("display-preferences-popover [data-group-title] h3");
       const checklistNode = document.querySelector("display-preferences-popover [data-checklist]");
       const selectorParentStyle = selectorParentNode ? getComputedStyle(selectorParentNode) : null;
@@ -641,6 +647,8 @@ test.describe("resume page", () => {
         selectorWidth: selectorNode?.getBoundingClientRect().width || 0,
         swatchSize: swatchNode?.getBoundingClientRect().width || 0,
         checklistGap: Number.parseFloat(getComputedStyle(checklistNode).gap || "0"),
+        fontFieldTops: fontFields.map((rect) => rect.top),
+        choiceCardWidths: choiceCards.map((rect) => rect.width),
       };
     });
 
@@ -650,6 +658,11 @@ test.describe("resume page", () => {
     expect(selectorMetrics.swatchSize).toBeGreaterThanOrEqual(34);
     expect(selectorMetrics.groupTitleSize).toBeGreaterThanOrEqual(21);
     expect(selectorMetrics.checklistGap).toBeGreaterThanOrEqual(13);
+    expect(selectorMetrics.fontFieldTops).toHaveLength(4);
+    expect(selectorMetrics.fontFieldTops[1]).toBeGreaterThan(selectorMetrics.fontFieldTops[0]);
+    expect(selectorMetrics.fontFieldTops[2]).toBeGreaterThan(selectorMetrics.fontFieldTops[1]);
+    expect(selectorMetrics.fontFieldTops[3]).toBeGreaterThan(selectorMetrics.fontFieldTops[2]);
+    expect(selectorMetrics.choiceCardWidths.every((width) => width > 0)).toBe(true);
 
     await selector.locator('[data-option="purple"]').click();
     await expect(page.locator("html")).toHaveAttribute("data-accent", "purple");
